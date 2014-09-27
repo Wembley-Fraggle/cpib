@@ -26,5 +26,4 @@ public class Position implements IPosition {
     public int getCharacterPosition() {
         return charPosition;
     }
-
 }
