@@ -147,6 +147,7 @@ public class LexerContextTest {
         }
         
         // Move over lineend (e.g. Windows Linefeed)
+        // So we should be on a new line with column position resetted
         expectedPos++;
         ctx.movePosition(1);
 
@@ -155,7 +156,7 @@ public class LexerContextTest {
         Assert.assertEquals(1, pos.getCurrentColumn());
         Assert.assertEquals(expectedPos, pos.getCharacterPosition());
         
-        // Check character position of current line
+        // Check character position in current line
         expectedPos++;
         ctx.movePosition(1);
         pos = ctx.getCurrentPosition();
@@ -163,5 +164,7 @@ public class LexerContextTest {
         Assert.assertEquals(2, pos.getCurrentColumn());
         Assert.assertEquals(expectedPos, pos.getCharacterPosition());
         
+        CharSequence seq = ctx.getText();
+        Assert.assertEquals("nd is near", seq.subSequence(expectedPos-1, seq.length()));
     }
 }
