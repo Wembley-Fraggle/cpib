@@ -5,7 +5,7 @@ package ch.fhnw.cpib.lexing;
  * either by its row and column or by the amount of characters relative
  * to the beginning of the text.
  */
-public interface IPosition {
+public interface IPosition{
     /**
      * Gets the current line pointed to.
      * @return the current line to which the text positions points to.
