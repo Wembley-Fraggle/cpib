@@ -1,5 +1,6 @@
 package ch.fhnw.cpib.lexing;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -20,5 +21,5 @@ public interface ILexer {
      *            the text to be analysed
      * @return a list of recognized tokens.
      */
-    List<IToken> consume(InputStream text);
+    List<IToken> consume(InputStream text) throws LexerException, IOException;
 }

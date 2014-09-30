@@ -8,7 +8,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+<<<<<<< wembley
+=======
 import org.junit.Assert;
+>>>>>>> local
 
 public final class LexerContext implements ILexerContext {
 
@@ -68,7 +71,7 @@ public final class LexerContext implements ILexerContext {
         lineIndex--;
         int column = currentOffset - lineOffsetList.get(lineIndex);
 
-        return new Position(lineIndex + 1, column + 1, currentOffset+1);
+        return new Position(lineIndex + 1, column + 1, currentOffset);
     }
 
     @Override
@@ -93,6 +96,8 @@ public final class LexerContext implements ILexerContext {
     public CharSequence getText() {
         return new StringBuffer(text);
     }
+<<<<<<< wembley
+=======
     
     @Override
     public boolean isFinished() {
@@ -102,6 +107,7 @@ public final class LexerContext implements ILexerContext {
     @Override
     public CharSequence getTextFromCurrentPosition() {
         IPosition position = getCurrentPosition();
-        return text.subSequence(position.getCharacterPosition() -1 , text.length());
+        return text.subSequence(position.getCharacterPosition(), text.length()-1);
     }
+>>>>>>> local
 }

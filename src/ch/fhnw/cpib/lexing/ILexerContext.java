@@ -49,4 +49,9 @@ public interface ILexerContext {
      * @return the text to be analysed by the lexer.
      */
     CharSequence getText();
+    
+    // TODO
+    CharSequence getTextFromCurrentPosition();
+    
+    boolean isFinished();
 }

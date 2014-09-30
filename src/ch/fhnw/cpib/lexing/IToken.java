@@ -38,4 +38,8 @@ public interface IToken {
 	 * @return the token
 	 */
 	Object getAttribute();
+	
+	// TODO 
+	String getName();
+	
 }
