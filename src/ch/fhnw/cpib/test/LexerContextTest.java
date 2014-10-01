@@ -111,7 +111,7 @@ public class LexerContextTest {
         IPosition pos = ctx.getCurrentPosition();
         Assert.assertEquals(1, pos.getCurrentLine());
         Assert.assertEquals(1, pos.getCurrentColumn());
-        Assert.assertEquals(0, pos.getCharacterPosition());
+        Assert.assertEquals(1, pos.getCharacterPosition());
     }
 
     @Test

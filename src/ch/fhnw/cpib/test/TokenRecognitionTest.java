@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import ch.fhnw.cpib.lexing.ILexerState;
+import ch.fhnw.cpib.lexing.ITokenType;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.lexing.IlmLexer;
 import ch.fhnw.cpib.lexing.LexerContext;
@@ -24,8 +24,8 @@ public class TokenRecognitionTest {
     @Before
     public void setup() {
         SyntaxBuilder builder = new SyntaxBuilder();
-        ILexerState rootState = builder.build();
-        lexer = new IlmLexer(rootState);
+        List<ITokenType> syntax = builder.build();
+        lexer = new IlmLexer(syntax);
     }
     
     @Test
@@ -33,8 +33,8 @@ public class TokenRecognitionTest {
         InputStream input = new ByteArrayInputStream("     ".toString().getBytes());
         List<IToken> tokenList = lexer.consume(input);
         
+        // Whitespaces are ignored
         Assert.assertNotNull(tokenList);
-        // Whitespaces will be ignored
         Assert.assertEquals(0, tokenList.size());
     }
     
@@ -51,11 +51,11 @@ public class TokenRecognitionTest {
         IToken t1 = tokenList.get(0);
         IToken t2 = tokenList.get(1);
         
-        Assert.assertEquals("IDENT", t1.getName());
-        Assert.assertEquals("Liebe", t1.getAttribute());
+        Assert.assertEquals("IDENTIFIER", t1.getType().getName());
+        Assert.assertEquals("Liebe", t1.getValue());
         
-        Assert.assertEquals("IDENT", t2.getName());
-        Assert.assertEquals("Grossmutter", t2.getAttribute());
+        Assert.assertEquals("IDENTIFIER", t2.getType().getName());
+        Assert.assertEquals("Grossmutter", t2.getValue());
         
         
         

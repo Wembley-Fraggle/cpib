@@ -6,59 +6,42 @@ import java.util.List;
 
 public class Token implements IToken{
 
-    private String name;
+    private ITokenType type;
     private IPosition start;
-    private int length;
-    private Object argument;
-    
-    
-    public Token(String name, IPosition start, int length) {
-        this(name,start,length,null);
-    }
-    
-    public Token(String name, IPosition start, int length,  Object arguments) {
-        this.name = name;
+    private CharSequence value;
+
+    public Token(ITokenType type,IPosition start, CharSequence value) {
+        this.type = type;
         this.start = start;
-        this.length = length;
-        this.argument = arguments;
+        this.value = value;
     }
     
-    public String getName() {
-        return this.name;
-    }
     
     @Override
     public IPosition getStart() {
         return start;
     }
-
-    @Override
-    public int getLength() {
-        return length;
-    }
-
-    @Override
-    public Object getAttribute() {
-        return this.argument;
-    }
-    
     
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        boolean hasArguments = this.argument != null;
-        if(hasArguments) {
-            builder.append("(");
-        }
-        builder.append(name);
+        builder.append("(");
+        builder.append("\"").append(value).append("\" : ");
+        builder.append(type.getName()).append(" ");
+        builder.append(start);
+        builder.append(")");
         
-        if(hasArguments) {
-            builder.append(" ,");
-            builder.append(argument.toString());
-        }
-         
-        if(hasArguments) {
-            builder.append(")");
-        }
         return builder.toString();
+    }
+
+
+    @Override
+    public CharSequence getValue() {
+        return this.value;
+    }
+
+
+    @Override
+    public ITokenType getType() {
+        return type;
     }
 }

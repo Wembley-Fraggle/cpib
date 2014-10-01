@@ -24,22 +24,15 @@ public interface IToken {
 	IPosition getStart();
 	
 	/**
-	 * The length of the token. The size is the the number of characters
-	 * in a text which represent this token.
-	 * @return
-	 */
-	int getLength();
-	
-	/**
 	 * Additional attributes may give some more metadata about the 
 	 * token. E.g. identifier name or the litteral value of a number
 	 * can be read from this token.
 	 * 
 	 * @return the token
 	 */
-	Object getAttribute();
+	CharSequence getValue();
 	
 	// TODO 
-	String getName();
+	ITokenType getType();
 	
 }
