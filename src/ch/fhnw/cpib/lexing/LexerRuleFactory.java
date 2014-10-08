@@ -3,9 +3,9 @@ package ch.fhnw.cpib.lexing;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SyntaxBuilder {
+public class LexerRuleFactory {
     
-    public List<ITokenType> build() {
+    public List<ITokenType> create() {
         
         LinkedList<ITokenType> types = new LinkedList<>();
        

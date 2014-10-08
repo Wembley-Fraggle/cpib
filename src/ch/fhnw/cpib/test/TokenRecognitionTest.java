@@ -15,7 +15,7 @@ import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.lexing.IlmLexer;
 import ch.fhnw.cpib.lexing.LexerContext;
 import ch.fhnw.cpib.lexing.LexerException;
-import ch.fhnw.cpib.lexing.SyntaxBuilder;
+import ch.fhnw.cpib.lexing.LexerRuleFactory;
 
 public class TokenRecognitionTest {
     
@@ -23,8 +23,8 @@ public class TokenRecognitionTest {
     
     @Before
     public void setup() {
-        SyntaxBuilder builder = new SyntaxBuilder();
-        List<ITokenType> syntax = builder.build();
+        LexerRuleFactory builder = new LexerRuleFactory();
+        List<ITokenType> syntax = builder.create();
         lexer = new IlmLexer(syntax);
     }
     
