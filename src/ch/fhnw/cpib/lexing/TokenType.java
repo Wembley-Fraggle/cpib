@@ -10,12 +10,10 @@ public class TokenType implements ITokenType {
 
     private String name;
     private Pattern pattern;
-    private List<ITokenType> types;
     private boolean ignore;
 
     public TokenType(String name) {
         this.name = name;
-        this.types = new LinkedList<>();
     }
 
     public TokenType(String name, String pattern) {
@@ -60,20 +58,10 @@ public class TokenType implements ITokenType {
 
     }
 
-    public ITokenType isA(ITokenType type) {
-        types.add(type);
-        return type;
-    }
-
     @Override
     public boolean isType(String name) {
-        if (this.name.equals(name)) {
+        if (getName().equals(name)) {
             return true;
-        }
-        for (ITokenType t : types) {
-            if (t.isType(name)) {
-                return true;
-            }
         }
 
         return false;
@@ -85,7 +73,7 @@ public class TokenType implements ITokenType {
     }
 
     @Override
-    public void ignore(boolean doIgnore) {
+    public void doIgnore(boolean doIgnore) {
         this.ignore = doIgnore;
     }
 
