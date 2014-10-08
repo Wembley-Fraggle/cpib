@@ -8,17 +8,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.junit.Assert;
 
 public final class LexerContext implements ILexerContext {
 
     private static final Logger logger = Logger.getLogger(LexerContext.class);
     private StringBuffer text;
     private List<IToken> tokenList = new LinkedList<>();
-    private int currentOffset = 0;
-    private int lineOffset = 0;
-    private int currentLineIndex = 0;
-    private List<Integer> lineOffsetList;
+    private IPosition currentPosition;
 
     public LexerContext(InputStream stream) throws IOException {
         if (stream == null) {
@@ -26,28 +22,17 @@ public final class LexerContext implements ILexerContext {
         }
 
         text = new StringBuffer();
-        lineOffsetList = new LinkedList<Integer>();
+        currentPosition = new Position(1,1,0);
         InputStreamReader ioReader = new InputStreamReader(stream);
         BufferedReader reader = new BufferedReader(ioReader);
 
-        int separatorSize = System.lineSeparator().length();
-
         try {
-            int textOffset = 0;
             String line = reader.readLine();
-            if (line == null) {
-                lineOffsetList.add(0);
-            }
 
             while (line != null) {
                 text.append(line);
                 text.append('\n');
-                lineOffsetList.add(textOffset);
-                textOffset += line.length() + separatorSize;
                 line = reader.readLine();
-            }
-            if (text.length() > 0) {
-                text.replace(text.length() - 1, text.length(), "");
             }
         } finally {
             try {
@@ -60,23 +45,32 @@ public final class LexerContext implements ILexerContext {
 
     @Override
     public IPosition getCurrentPosition() {
-        int lineIndex = 0;
-        while (lineIndex < lineOffsetList.size() &&
-                lineOffsetList.get(lineIndex) <= currentOffset) {
-            lineIndex++;
-        }
-        lineIndex--;
-        int column = currentOffset - lineOffsetList.get(lineIndex);
-
-        return new Position(lineIndex + 1, column + 1, currentOffset+1);
+        return currentPosition;
     }
 
     @Override
     public void movePosition(int count) {
-        if (currentOffset + count > text.length()) {
+        IPosition pos = getCurrentPosition();
+        int offset = pos.getCharacterPosition();
+        int line = pos.getCurrentLine();
+        int col = pos.getCurrentColumn();
+        
+        if (offset + count > text.length()) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        currentOffset += count;
+        CharSequence text = getTextFromCurrentPosition();
+        String passed = text.subSequence(0, count).toString();
+        int newlineIndex = passed.indexOf('\n');
+        while(newlineIndex > -1) {
+            line++;
+            col = 1;
+            passed = passed.substring(newlineIndex+1);
+            newlineIndex = passed.indexOf('\n');
+        }
+        col += passed.length();
+        offset += count;
+        currentPosition = new Position(line,col,offset);
+        
     }
 
     @Override
@@ -102,6 +96,6 @@ public final class LexerContext implements ILexerContext {
     @Override
     public CharSequence getTextFromCurrentPosition() {
         IPosition position = getCurrentPosition();
-        return text.subSequence(position.getCharacterPosition() -1 , text.length());
+        return text.subSequence(position.getCharacterPosition() , text.length());
     }
 }

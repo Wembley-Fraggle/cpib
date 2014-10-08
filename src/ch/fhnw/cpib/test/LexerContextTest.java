@@ -94,8 +94,9 @@ public class LexerContextTest {
         InputStream input = new ByteArrayInputStream(text.getBytes());
         LexerContext ctx = new LexerContext(input);
 
-        Assert.assertNotSame(text, ctx.getText());
-        Assert.assertEquals(text.toString(), ctx.getText().toString());
+        // Trailing newline is always appended if text does not terminate
+        // with a trailing newline
+        Assert.assertNotSame(text+'\n', ctx.getText());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -111,14 +112,14 @@ public class LexerContextTest {
         IPosition pos = ctx.getCurrentPosition();
         Assert.assertEquals(1, pos.getCurrentLine());
         Assert.assertEquals(1, pos.getCurrentColumn());
-        Assert.assertEquals(1, pos.getCharacterPosition());
+        Assert.assertEquals(0, pos.getCharacterPosition());
     }
 
     @Test
     public void testPositionsMoveInText() throws IOException {
         StringBuffer buffer = new StringBuffer();
         buffer.append("The\n");
-        buffer.append("end is near");
+        buffer.append("end is near\n");
 
         InputStream input = new ByteArrayInputStream(buffer.toString()
                 .getBytes());
@@ -132,19 +133,6 @@ public class LexerContextTest {
         Assert.assertEquals(1, pos.getCurrentLine());
         Assert.assertEquals(4, pos.getCurrentColumn());
         Assert.assertEquals(expectedPos, pos.getCharacterPosition());
-
-        if(System.lineSeparator().length() == 2) {
-            // This is normmally on windows platforms where
-            // the line separator is \r\n (aka carriage return\linefeed)
-            // In that case, when moving over \r we are still on the same
-            // line. 
-            expectedPos++;
-            ctx.movePosition(1);
-            pos = ctx.getCurrentPosition();
-            Assert.assertEquals(1, pos.getCurrentLine());
-            Assert.assertEquals(5, pos.getCurrentColumn());
-            Assert.assertEquals(expectedPos, pos.getCharacterPosition());
-        }
         
         // Move over lineend (e.g. Windows Linefeed)
         // So we should be on a new line with column position resetted
@@ -164,7 +152,6 @@ public class LexerContextTest {
         Assert.assertEquals(2, pos.getCurrentColumn());
         Assert.assertEquals(expectedPos, pos.getCharacterPosition());
         
-        CharSequence seq = ctx.getText();
-        Assert.assertEquals("nd is near", seq.subSequence(expectedPos-1, seq.length()));
+        Assert.assertEquals("nd is near\n",  ctx.getTextFromCurrentPosition());
     }
 }
