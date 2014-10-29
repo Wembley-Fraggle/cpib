@@ -1,41 +1,21 @@
 package ch.fhnw.cpib.parsing.nodes;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
 public final class ProductionNodeUtil {
     private ProductionNodeUtil() {
         
     }
     
-    public static boolean containsEmptyWord(Set<IProductionNode> nodes) {
-        for (IProductionNode node : nodes) {
-            if (node instanceof IEmptyWord) {
-                return true;
-            }
+    public static String toString(List<IProductionNode> nodes) {
+        StringBuilder builder = new StringBuilder();
+        for(IProductionNode node : nodes) {
+            builder.append(node.toString());
+            builder.append(" ");
         }
-        return false;
-    }
-    
-    public static boolean containsNode(String name, Set<IProductionNode> nodes) {
-        for (IProductionNode node : nodes) {
-            if (node.getName().equals(name)) {
-                return true;
-            }
+        if(builder.length() > 0) {
+            builder.delete(builder.length()-1, builder.length());
         }
-        return false;
-    }
-    
-
-    public static Set<IProductionNode> removeEmptyWord(
-            Set<IProductionNode> nodes) {
-        Set<IProductionNode> result = new LinkedHashSet<>(nodes);
-
-        for (IProductionNode node : nodes) {
-            if (node instanceof IEmptyWord) {
-                result.remove(node);
-            }
-        }
-        return result;
+        return builder.toString();
     }
 }
