@@ -13,17 +13,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ch.fhnw.cpib.parsing.ParserException;
-import ch.fhnw.cpib.parsing.rule.EmptyWord;
-import ch.fhnw.cpib.parsing.rule.IEmptyWord;
-import ch.fhnw.cpib.parsing.rule.INonTerminal;
-import ch.fhnw.cpib.parsing.rule.IProduction;
-import ch.fhnw.cpib.parsing.rule.IProductionNode;
-import ch.fhnw.cpib.parsing.rule.ITerminal;
-import ch.fhnw.cpib.parsing.rule.NonTerminal;
-import ch.fhnw.cpib.parsing.rule.Production;
-import ch.fhnw.cpib.parsing.rule.ProductionNodeUtil;
-import ch.fhnw.cpib.parsing.rule.Syntax;
-import ch.fhnw.cpib.parsing.rule.Terminal;
+import ch.fhnw.cpib.parsing.nodes.EmptyWord;
+import ch.fhnw.cpib.parsing.nodes.IEmptyWord;
+import ch.fhnw.cpib.parsing.nodes.INonTerminal;
+import ch.fhnw.cpib.parsing.nodes.IProduction;
+import ch.fhnw.cpib.parsing.nodes.IProductionNode;
+import ch.fhnw.cpib.parsing.nodes.ITerminal;
+import ch.fhnw.cpib.parsing.nodes.NonTerminal;
+import ch.fhnw.cpib.parsing.nodes.Production;
+import ch.fhnw.cpib.parsing.nodes.ProductionNodeUtil;
+import ch.fhnw.cpib.parsing.nodes.Syntax;
+import ch.fhnw.cpib.parsing.nodes.Terminal;
 
 public class SyntaxTest {
 

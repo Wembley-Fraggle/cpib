@@ -1,4 +1,4 @@
-package ch.fhnw.cpib.parsing.rule;
+package ch.fhnw.cpib.parsing.nodes;
 
 public abstract class AbstractProductionNode implements IProductionNode {
 

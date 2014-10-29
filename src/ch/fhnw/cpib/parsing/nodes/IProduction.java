@@ -1,4 +1,4 @@
-package ch.fhnw.cpib.parsing.rule;
+package ch.fhnw.cpib.parsing.nodes;
 
 import java.util.List;
 import java.util.Set;

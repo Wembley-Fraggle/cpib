@@ -1,4 +1,4 @@
-package ch.fhnw.cpib.parsing.rule;
+package ch.fhnw.cpib.parsing.nodes;
 
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
