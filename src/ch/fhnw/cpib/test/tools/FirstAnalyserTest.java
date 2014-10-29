@@ -14,7 +14,7 @@ import ch.fhnw.cpib.parsing.nodes.INonTerminal;
 import ch.fhnw.cpib.parsing.nodes.IProduction;
 import ch.fhnw.cpib.parsing.nodes.ITerminal;
 import ch.fhnw.cpib.parsing.nodes.NonTerminal;
-import ch.fhnw.cpib.parsing.nodes.Syntax;
+import ch.fhnw.cpib.parsing.nodes.Grammar;
 import ch.fhnw.cpib.parsing.nodes.Terminal;
 import ch.fhnw.cpib.parsing.tools.FirstAnalyser;
 import ch.fhnw.cpib.test.DragonGrammar;
@@ -28,7 +28,7 @@ public class FirstAnalyserTest {
 
     @Before
     public void setup() {
-        grammar = new Syntax();
+        grammar = new Grammar();
         analyser = new FirstAnalyser();
         dragonGrammar = new DragonGrammar();
 

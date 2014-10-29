@@ -10,7 +10,7 @@ import ch.fhnw.cpib.parsing.nodes.IProduction;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
 import ch.fhnw.cpib.parsing.nodes.ITerminal;
 import ch.fhnw.cpib.parsing.nodes.NonTerminal;
-import ch.fhnw.cpib.parsing.nodes.Syntax;
+import ch.fhnw.cpib.parsing.nodes.Grammar;
 import ch.fhnw.cpib.parsing.nodes.Terminal;
 
 public class DragonGrammar implements IGrammar {
@@ -50,7 +50,7 @@ public class DragonGrammar implements IGrammar {
     }
 
     public DragonGrammar() {
-        grammarDelegate = new Syntax();
+        grammarDelegate = new Grammar();
         plus = createTerminal("+");
         times = createTerminal("*");
         brOpen = createTerminal("(");

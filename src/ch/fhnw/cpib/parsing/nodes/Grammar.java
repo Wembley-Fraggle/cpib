@@ -7,13 +7,13 @@ import org.apache.log4j.Logger;
 
 // TODO More logging
 // TODO Call it a grammar
-public final class Syntax implements IGrammar{
+public final class Grammar implements IGrammar{
     private Set<IProduction> productionList;
-    private static final Logger logger = Logger.getLogger(Syntax.class);
+    private static final Logger logger = Logger.getLogger(Grammar.class);
     private INonTerminal startSymbol;
     private IEndMarker endMarker;
     
-    public Syntax() {
+    public Grammar() {
         productionList = new LinkedHashSet<>();
         endMarker = new EndMarker();
     }
