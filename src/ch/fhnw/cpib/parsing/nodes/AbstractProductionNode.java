@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing.nodes;
 public abstract class AbstractProductionNode implements IProductionNode {
 
     private String name;
-
+    
     public AbstractProductionNode(String name) {
         if (name == null || name.length() == 0) {
             throw new IllegalArgumentException("name must not be null or empty");
@@ -43,4 +43,5 @@ public abstract class AbstractProductionNode implements IProductionNode {
     public String toString() {
         return name;
     }
+    
 }
