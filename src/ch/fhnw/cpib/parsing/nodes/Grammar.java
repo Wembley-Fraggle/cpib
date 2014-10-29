@@ -5,6 +5,8 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import ch.fhnw.cpib.parsing.IGrammar;
+
 // TODO More logging
 // TODO Call it a grammar
 public final class Grammar implements IGrammar{

@@ -9,8 +9,8 @@ import java.util.Stack;
 
 import org.apache.log4j.Logger;
 
+import ch.fhnw.cpib.parsing.IGrammar;
 import ch.fhnw.cpib.parsing.nodes.IEmptyWord;
-import ch.fhnw.cpib.parsing.nodes.IGrammar;
 import ch.fhnw.cpib.parsing.nodes.INonTerminal;
 import ch.fhnw.cpib.parsing.nodes.IProduction;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;

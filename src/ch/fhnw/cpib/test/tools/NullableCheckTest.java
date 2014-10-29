@@ -7,10 +7,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import ch.fhnw.cpib.parsing.IGrammar;
 import ch.fhnw.cpib.parsing.ParserException;
 import ch.fhnw.cpib.parsing.nodes.EmptyWord;
 import ch.fhnw.cpib.parsing.nodes.IEmptyWord;
-import ch.fhnw.cpib.parsing.nodes.IGrammar;
 import ch.fhnw.cpib.parsing.nodes.INonTerminal;
 import ch.fhnw.cpib.parsing.nodes.ITerminal;
 import ch.fhnw.cpib.parsing.nodes.NonTerminal;
