@@ -1,11 +1,17 @@
-package ch.fhnw.cpib.parsing.nodes;
+package ch.fhnw.cpib.parsing;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import ch.fhnw.cpib.parsing.IGrammar;
+import ch.fhnw.cpib.parsing.nodes.EndMarker;
+import ch.fhnw.cpib.parsing.nodes.IEndMarker;
+import ch.fhnw.cpib.parsing.nodes.INonTerminal;
+import ch.fhnw.cpib.parsing.nodes.IProduction;
+import ch.fhnw.cpib.parsing.nodes.IProductionNode;
+import ch.fhnw.cpib.parsing.nodes.ITerminal;
+import ch.fhnw.cpib.parsing.nodes.Production;
 
 // TODO More logging
 // TODO Call it a grammar
