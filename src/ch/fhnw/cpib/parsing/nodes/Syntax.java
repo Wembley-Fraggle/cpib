@@ -23,11 +23,9 @@ public final class Syntax implements IGrammar{
      */
     @Override
     public IProduction addProduction(INonTerminal head, IProductionNode body, IProductionNode... optionalBody) {
-        // IProduction production = new Production(head,body, optionalBody);
-        // productionList.add(production);
-        // return production;
-        // TODO
-        return null;
+        IProduction production = new Production(head,body, optionalBody);
+        productionList.add(production);
+        return production;
     }
     
     /* (non-Javadoc)
