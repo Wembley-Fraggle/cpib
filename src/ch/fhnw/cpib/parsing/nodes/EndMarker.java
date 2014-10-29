@@ -1,6 +1,6 @@
 package ch.fhnw.cpib.parsing.nodes;
 
-public class EndMarker extends AbstractProductionNode {
+public class EndMarker extends AbstractProductionNode implements IEndMarker{
 
     public EndMarker() {
         super("<$>");
