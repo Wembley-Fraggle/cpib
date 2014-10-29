@@ -1,6 +1,8 @@
-package ch.fhnw.cpib.parsing.nodes;
+package ch.fhnw.cpib.parsing.tools;
 
 import java.util.List;
+
+import ch.fhnw.cpib.parsing.nodes.IProductionNode;
 
 public final class ProductionNodeUtil {
     private ProductionNodeUtil() {

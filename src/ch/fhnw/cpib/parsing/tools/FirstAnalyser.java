@@ -15,7 +15,6 @@ import ch.fhnw.cpib.parsing.nodes.INonTerminal;
 import ch.fhnw.cpib.parsing.nodes.IProduction;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
 import ch.fhnw.cpib.parsing.nodes.ITerminal;
-import ch.fhnw.cpib.parsing.nodes.ProductionNodeUtil;
 
 // TODO Fix confusing logging
 public class FirstAnalyser {
