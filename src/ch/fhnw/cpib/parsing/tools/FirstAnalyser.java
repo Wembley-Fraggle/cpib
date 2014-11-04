@@ -62,7 +62,7 @@ public class FirstAnalyser {
         return result;
     }
     
-    public Set<ITerminal> first(Stack<List<IProductionNode>> nodes) {
+    private Set<ITerminal> first(Stack<List<IProductionNode>> nodes) {
         if (grammar == null) {
             throw new IllegalStateException("Syntax must be set before");
         }
