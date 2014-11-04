@@ -21,9 +21,9 @@ public class FirstAnalyser {
     private static final Logger logger = Logger.getLogger(FirstAnalyser.class);
 
     private IGrammar grammar;
+    private NullableCheck nullabelChecker;
 
     public FirstAnalyser() {
-
     }
     
     public FirstAnalyser(IGrammar grammar) {
@@ -36,6 +36,10 @@ public class FirstAnalyser {
     
     public void setGrammar(IGrammar grammer) {
         this.grammar = grammer;
+    }
+    
+    public void setNullableAnalyser(NullableCheck tool) {
+        this.nullabelChecker = tool;
     }
 
     public Set<ITerminal> first(List<IProductionNode> chain) {
@@ -65,8 +69,9 @@ public class FirstAnalyser {
         if(nodes == null || nodes.size() == 0) {
             throw new IllegalStateException("Nodes not initialized");
         }
-        
-        NullableCheck nullabelChecker = new NullableCheck(grammar);
+        if(nullabelChecker == null) {
+            nullabelChecker = createDefaultNullableAnalyser();
+        }
 
         Set<ITerminal> result = new LinkedHashSet<>();
         while (!nodes.isEmpty()) {
@@ -160,5 +165,11 @@ public class FirstAnalyser {
         builder.append(")");
         logger.debug(builder.toString());
         return result;
+    }
+    
+    private NullableCheck createDefaultNullableAnalyser() {
+        NullableCheck tool = new NullableCheck();
+        tool.setGrammar(getGrammar());
+        return tool;
     }
 }
