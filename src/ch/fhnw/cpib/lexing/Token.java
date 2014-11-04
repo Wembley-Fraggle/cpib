@@ -1,8 +1,5 @@
 package ch.fhnw.cpib.lexing;
 
-import java.security.KeyStore.Entry.Attribute;
-import java.util.LinkedList;
-import java.util.List;
 
 public class Token implements IToken{
 
