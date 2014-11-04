@@ -47,30 +47,62 @@ public class NullableCheck {
 
     }
 
+    /*
+     * As a Precondition this method expects, that the internal stack has
+     * already been initialized with a production body. This is a chain of
+     * Terminals or nonterminals.
+     * 
+     * In order to decide whether the chain is nullable or not. The aim is to
+     * find a way to derivy the rule to nullable.
+     * 
+     * Therefore we analyse the first node of the chain. If it is a empty word,
+     * the rule can be derivied to the empty word. Therefore the production must
+     * be nullable. If the first element of the production body is a terminal,
+     * the whole rule is not nullable. In that case, we can remove it from the
+     * internal stack. (Note that all possible pathes must not be nullable in
+     * order to be able to make a statement about nullability.
+     * 
+     * The third possibility is, that the first node is a NonTerminal. In That
+     * case we expand this node taking the productions with an equal head. Note
+     * that this may result in multiple chains.
+     */
     private boolean isNullable(Stack<List<IProductionNode>> nodes) {
         if (nodes == null || nodes.size() == 0) {
+            // As a precondition in this method, the stack has already
+            // be initialized with the first production body.
             throw new IllegalStateException("Nodes have not been prepared");
         }
 
+        // Repeat this until we can make a decision or the stack is empty
         while (!nodes.isEmpty()) {
             List<IProductionNode> nodeChain = nodes.peek();
-            
             IProductionNode first = null;
-            if(nodeChain.size() > 0) {
+            if (nodeChain.size() > 0) {
                 first = nodeChain.get(0);
-            }
-            if (first instanceof IEmptyWord) {
-                return true;
-            } else if (first instanceof ITerminal) {
-                nodeChain.clear();
-            } else if (first instanceof INonTerminal) {
-                List<IProductionNode> chain = nodes.pop();
-                for (List<IProductionNode> expanded : expand(chain)) {
-                    nodes.push(expanded);
+                if (first instanceof IEmptyWord) {
+                    logger.debug(ProductionNodeUtil.toString(nodeChain)
+                            + " => "
+                            + true);
+                    return true;
+                } else if (first instanceof ITerminal) {
+                    logger.debug(ProductionNodeUtil.toString(nodeChain)
+                            + " => "
+                            + false);
+                    nodeChain.clear();
+                } else if (first instanceof INonTerminal) {
+                    List<IProductionNode> chain = nodes.pop();
+                    for (List<IProductionNode> expanded : expand(chain)) {
+                        if (logger.isDebugEnabled()) {
+                            logger.debug(ProductionNodeUtil.toString(nodeChain)
+                                    + " => "
+                                    + ProductionNodeUtil.toString(expanded));
+                        }
+                        nodes.push(expanded);
+                    }
                 }
-            }
-
-            if (nodeChain.size() == 0) {
+            } else {
+                // Remove the chain. This chain does terminate for sure
+                // but there may be some others on the stack
                 nodes.pop();
             }
         }
@@ -106,9 +138,8 @@ public class NullableCheck {
                 chainClone.addAll(0, p.getBody());
                 result.add(chainClone);
             }
-        }
-        else {
-            logger.warn("Can not expand node:"+first.getName());
+        } else {
+            logger.warn("Can not expand node:" + first.getName());
             result.add(new LinkedList<>(chain));
         }
         return result;
