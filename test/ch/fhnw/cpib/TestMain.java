@@ -1,4 +1,4 @@
-package ch.fhnw.cpib.test;
+package ch.fhnw.cpib;
 
 import ch.fhnw.cpib.errors.LexicalError;
 import ch.fhnw.cpib.lex.Scanner;

@@ -1,12 +1,12 @@
-package ch.fhnw.cpib.test.tools;
+package ch.fhnw.cpib.tools;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import ch.fhnw.cpib.DragonGrammar;
 import ch.fhnw.cpib.parsing.ParserException;
 import ch.fhnw.cpib.parsing.tools.ParserTable;
 import ch.fhnw.cpib.parsing.tools.ParserTableBuilder;
-import ch.fhnw.cpib.test.DragonGrammar;
 
 public class ParserTableBuilderTest {
     private DragonGrammar grammar;

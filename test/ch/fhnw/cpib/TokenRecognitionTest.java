@@ -1,4 +1,4 @@
-package ch.fhnw.cpib.test;
+package ch.fhnw.cpib;
 
 
 import java.io.ByteArrayInputStream;

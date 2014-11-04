@@ -1,12 +1,11 @@
-package ch.fhnw.cpib.test.tools;
-
-import java.util.Set;
+package ch.fhnw.cpib.tools;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import ch.fhnw.cpib.DragonGrammar;
 import ch.fhnw.cpib.parsing.Grammar;
 import ch.fhnw.cpib.parsing.IGrammar;
 import ch.fhnw.cpib.parsing.ParserException;
@@ -17,7 +16,6 @@ import ch.fhnw.cpib.parsing.nodes.ITerminal;
 import ch.fhnw.cpib.parsing.nodes.NonTerminal;
 import ch.fhnw.cpib.parsing.nodes.Terminal;
 import ch.fhnw.cpib.parsing.tools.NullableCheck;
-import ch.fhnw.cpib.test.DragonGrammar;
 
 public class NullableCheckTest {
 

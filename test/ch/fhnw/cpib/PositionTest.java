@@ -1,4 +1,4 @@
-package ch.fhnw.cpib.test;
+package ch.fhnw.cpib;
 
 import org.junit.Assert;
 import org.junit.Test;

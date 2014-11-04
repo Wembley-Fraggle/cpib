@@ -1,4 +1,4 @@
-package ch.fhnw.cpib.test.tools;
+package ch.fhnw.cpib.tools;
 
 import java.util.Set;
 
@@ -6,11 +6,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import ch.fhnw.cpib.DragonGrammar;
 import ch.fhnw.cpib.parsing.nodes.IEndMarker;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
 import ch.fhnw.cpib.parsing.tools.FollowAnalyser;
-import ch.fhnw.cpib.parsing.tools.ProductionNodeUtil;
-import ch.fhnw.cpib.test.DragonGrammar;
 
 public class FollowAnalyserTest {
     private DragonGrammar dragonGrammer;
