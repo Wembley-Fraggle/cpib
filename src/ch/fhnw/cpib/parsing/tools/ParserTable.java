@@ -59,7 +59,8 @@ public final class ParserTable {
             msg.append(currentValue);
             throw new ParserException(msg.toString());
         }
-        theRow.add(ci, value); 
+        theRow.remove(ci); 
+        theRow.add(ci,value);
     }
 
     public IProduction get(INonTerminal row, IProductionNode column) {
