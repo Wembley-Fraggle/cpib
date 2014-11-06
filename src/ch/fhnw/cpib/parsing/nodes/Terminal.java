@@ -1,6 +1,5 @@
 package ch.fhnw.cpib.parsing.nodes;
 
-import ch.fhnw.cpib.lexing.Terminal;
 
 public class Terminal extends AbstractProductionNode implements ITerminal {
     
