@@ -7,6 +7,11 @@ public class Token implements IToken{
     private IPosition start;
     private CharSequence value;
 
+    public Token(ITerminal type,CharSequence value) {
+        this.type = type;
+        this.value = value;
+    }
+    
     public Token(ITerminal type,IPosition start, CharSequence value) {
         this.type = type;
         this.start = start;
@@ -24,7 +29,9 @@ public class Token implements IToken{
         builder.append("(");
         builder.append("\"").append(value).append("\" : ");
         builder.append(type.getName()).append(" ");
-        builder.append(start);
+        if(start != null) {
+            builder.append(start);
+        }
         builder.append(")");
         
         return builder.toString();
