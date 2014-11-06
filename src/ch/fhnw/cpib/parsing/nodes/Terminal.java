@@ -1,6 +1,6 @@
 package ch.fhnw.cpib.parsing.nodes;
 
-import ch.fhnw.cpib.lexing.TokenType;
+import ch.fhnw.cpib.lexing.Terminal;
 
 public class Terminal extends AbstractProductionNode implements ITerminal {
     
@@ -8,7 +8,7 @@ public class Terminal extends AbstractProductionNode implements ITerminal {
         super(name);
     }
     
-    public Terminal(TokenType tokenType) {
+    public Terminal(Terminal tokenType) {
         super(tokenType.getName());
     }
 }

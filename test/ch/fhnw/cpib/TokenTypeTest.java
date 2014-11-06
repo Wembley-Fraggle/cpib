@@ -14,26 +14,26 @@ import ch.fhnw.cpib.lexing.ILexerContext;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.lexing.ITokenType;
 import ch.fhnw.cpib.lexing.LexerException;
-import ch.fhnw.cpib.lexing.TokenType;
+import ch.fhnw.cpib.lexing.Terminal;
 
 public class TokenTypeTest {
 
     private ILexerContext context;
-    private TokenType wsIgnored;
-    private TokenType ws;
-    private TokenType intval;
+    private Terminal wsIgnored;
+    private Terminal ws;
+    private Terminal intval;
 
     @Before
     public void setup() {
         context = mock(ILexerContext.class);
-        wsIgnored = new TokenType("WS", "\\s+", true);
-        ws = new TokenType("WS", "\\s+", false);
-        intval = new TokenType("IDENTIFIER", "[A-Z][A-Z0-9]*");
+        wsIgnored = new Terminal("WS", "\\s+", true);
+        ws = new Terminal("WS", "\\s+", false);
+        intval = new Terminal("IDENTIFIER", "[A-Z][A-Z0-9]*");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testMissingName() throws LexerException {
-       new TokenType(null);
+       new Terminal(null);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class TokenTypeTest {
         when(context.getTextFromCurrentPosition()).thenReturn("Lorem ipsum");
 
         // empty pattern accepted. No exception expected
-        TokenType type = new TokenType("TEST", null);
+        Terminal type = new Terminal("TEST", null);
         int count = type.canConsume(context);
 
         // Due to missing pattern, no consumption is expected

@@ -3,21 +3,21 @@ package ch.fhnw.cpib.lexing;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TokenType implements ITokenType {
+public class Terminal implements ITokenType {
 
     private String name;
     private String patternStr;
     private Pattern pattern;
     private boolean ignore;
 
-    public TokenType(String name) {
+    public Terminal(String name) {
         if(name == null) {
             throw new IllegalArgumentException("name must not be null");
         }
         this.name = name;
     }
 
-    public TokenType(String name, String pattern) {
+    public Terminal(String name, String pattern) {
         this(name);
         
         if(pattern != null) {
@@ -26,7 +26,7 @@ public class TokenType implements ITokenType {
         }
     }
 
-    public TokenType(String name, String pattern, boolean ignore) {
+    public Terminal(String name, String pattern, boolean ignore) {
         this(name, pattern);
         this.ignore = ignore;
     }
