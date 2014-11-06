@@ -111,7 +111,7 @@ public class FirstAnalyser {
             StringBuilder builder = new StringBuilder();
             builder.append("FIRST(")
                     .append(ProductionNodeUtil.toString(nodeChain))
-                    .append(") -> {").append(node.toString()).append("}");
+                    .append(") -> {").append(node.getName()).append("}");
             logger.debug(builder.toString());
         }
     }
@@ -120,7 +120,7 @@ public class FirstAnalyser {
         if (logger.isDebugEnabled()) {
             StringBuilder builder = new StringBuilder();
             builder.append("FIRST(");
-            builder.append(node);
+            builder.append(node.getName());
             builder.append(") -> {}");
             logger.debug(builder.toString());
         }
@@ -151,9 +151,9 @@ public class FirstAnalyser {
         StringBuilder builder = new StringBuilder();
         
         List<List<IProductionNode>> result = new LinkedList<>();        
-        builder.append("FIRST(").append(nonterminal).append(") -> UNION( ");
+        builder.append("FIRST(").append(nonterminal.getName()).append(") -> UNION( ");
 
-        for (IProduction p : grammar.getProductions(nonterminal)) {
+        for (IProduction p : grammar.getProductions(nonterminal.getName())) {
             result.add(p.getBody());
 
             builder.append("FIRST(")
