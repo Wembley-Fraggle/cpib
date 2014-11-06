@@ -1,15 +1,12 @@
 package ch.fhnw.cpib.parsing.tools;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import ch.fhnw.cpib.parsing.ParserException;
 import ch.fhnw.cpib.parsing.nodes.INonTerminal;
 import ch.fhnw.cpib.parsing.nodes.IProduction;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
-import ch.fhnw.cpib.parsing.nodes.ITerminal;
 
 public final class ParserTable {
     private List<INonTerminal> rowIndex;
