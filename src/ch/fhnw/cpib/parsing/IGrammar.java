@@ -2,10 +2,10 @@ package ch.fhnw.cpib.parsing;
 
 import java.util.Set;
 
+import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.parsing.nodes.INonTerminal;
 import ch.fhnw.cpib.parsing.nodes.IProduction;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
-import ch.fhnw.cpib.parsing.nodes.ITerminal;
 
 public interface IGrammar {
     

@@ -64,7 +64,7 @@ public class FollowAnalyser {
         for (IProduction p : expand(nonTerminal)) {
             nodes.push(p);
         }
-        return follow(nodes);
+        return follow(nodes); 
     }
 
     private Set<IProductionNode> follow(Stack<IProduction> nodes) {

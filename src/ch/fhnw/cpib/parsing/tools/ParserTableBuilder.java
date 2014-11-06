@@ -2,13 +2,13 @@ package ch.fhnw.cpib.parsing.tools;
 
 import java.util.Set;
 
+import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.parsing.IGrammar;
 import ch.fhnw.cpib.parsing.ParserException;
 import ch.fhnw.cpib.parsing.nodes.EndMarker;
 import ch.fhnw.cpib.parsing.nodes.INonTerminal;
 import ch.fhnw.cpib.parsing.nodes.IProduction;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
-import ch.fhnw.cpib.parsing.nodes.ITerminal;
 
 public class ParserTableBuilder {
 

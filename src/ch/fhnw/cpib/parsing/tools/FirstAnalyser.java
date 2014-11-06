@@ -1,6 +1,5 @@
 package ch.fhnw.cpib.parsing.tools;
 
-import java.nio.channels.IllegalSelectorException;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,12 +8,12 @@ import java.util.Stack;
 
 import org.apache.log4j.Logger;
 
+import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.parsing.IGrammar;
 import ch.fhnw.cpib.parsing.nodes.IEmptyWord;
 import ch.fhnw.cpib.parsing.nodes.INonTerminal;
 import ch.fhnw.cpib.parsing.nodes.IProduction;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
-import ch.fhnw.cpib.parsing.nodes.ITerminal;
 
 // TODO Fix confusing logging
 public class FirstAnalyser {

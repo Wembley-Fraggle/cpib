@@ -2,6 +2,8 @@ package ch.fhnw.cpib;
 
 import java.util.Set;
 
+import ch.fhnw.cpib.lexing.ITerminal;
+import ch.fhnw.cpib.lexing.Terminal;
 import ch.fhnw.cpib.parsing.Grammar;
 import ch.fhnw.cpib.parsing.IGrammar;
 import ch.fhnw.cpib.parsing.nodes.EmptyWord;
@@ -9,9 +11,7 @@ import ch.fhnw.cpib.parsing.nodes.IEmptyWord;
 import ch.fhnw.cpib.parsing.nodes.INonTerminal;
 import ch.fhnw.cpib.parsing.nodes.IProduction;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
-import ch.fhnw.cpib.parsing.nodes.ITerminal;
 import ch.fhnw.cpib.parsing.nodes.NonTerminal;
-import ch.fhnw.cpib.parsing.nodes.Terminal;
 
 public class DragonGrammar implements IGrammar {
 
