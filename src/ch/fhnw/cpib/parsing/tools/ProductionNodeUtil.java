@@ -12,7 +12,7 @@ public final class ProductionNodeUtil {
     public static String toString(List<IProductionNode> nodes) {
         StringBuilder builder = new StringBuilder();
         for(IProductionNode node : nodes) {
-            builder.append(node.toString());
+            builder.append(node.getName());
             builder.append(" ");
         }
         if(builder.length() > 0) {
