@@ -3,7 +3,7 @@ package ch.fhnw.cpib.lexing;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Terminal implements ITokenType {
+public class Terminal implements ITerminal {
 
     private String name;
     private String patternStr;

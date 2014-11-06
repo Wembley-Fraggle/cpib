@@ -7,10 +7,10 @@ import java.util.List;
 
 public class IlmLexer implements ILexer {
 
-    private List<ITokenType> syntax;
+    private List<ITerminal> syntax;
     
-    public IlmLexer(List<ITokenType> lexerStates) {
-        this.syntax = new LinkedList<ITokenType>(lexerStates);
+    public IlmLexer(List<ITerminal> lexerStates) {
+        this.syntax = new LinkedList<ITerminal>(lexerStates);
     }
     
     @Override
@@ -26,9 +26,9 @@ public class IlmLexer implements ILexer {
     
     private void consume(ILexerContext ctx) throws LexerException {
         int bestSize = 0;
-        List<ITokenType> candiates = new LinkedList<>();
+        List<ITerminal> candiates = new LinkedList<>();
         
-        for (ITokenType type : syntax) {
+        for (ITerminal type : syntax) {
             int otherSize = type.canConsume(ctx);
             if (otherSize > bestSize) {
                 candiates.clear();

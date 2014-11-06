@@ -1,6 +1,6 @@
 package ch.fhnw.cpib.lexing;
 
-public interface ITokenType {
+public interface ITerminal {
     int canConsume(ILexerContext context) throws LexerException;
     void consume(ILexerContext context) throws LexerException;
     boolean isIgnore();

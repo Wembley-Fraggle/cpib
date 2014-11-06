@@ -5,9 +5,9 @@ import java.util.List;
 
 public class LexerRuleFactory {
     
-    public List<ITokenType> create() {
+    public List<ITerminal> create() {
         
-        LinkedList<ITokenType> types = new LinkedList<>();
+        LinkedList<ITerminal> types = new LinkedList<>();
        
         types.add(new Terminal("WS", "\\s+",true));
         types.add(new Terminal("IDENTIFIER", "[a-zA-Z][a-zA-Z0-9]*"));

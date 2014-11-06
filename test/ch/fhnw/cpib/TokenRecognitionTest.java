@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import ch.fhnw.cpib.lexing.ITokenType;
+import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.lexing.IlmLexer;
 import ch.fhnw.cpib.lexing.LexerContext;
@@ -24,7 +24,7 @@ public class TokenRecognitionTest {
     @Before
     public void setup() {
         LexerRuleFactory builder = new LexerRuleFactory();
-        List<ITokenType> syntax = builder.create();
+        List<ITerminal> syntax = builder.create();
         lexer = new IlmLexer(syntax);
     }
     

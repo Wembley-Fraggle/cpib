@@ -12,7 +12,7 @@ import org.mockito.ArgumentCaptor;
 
 import ch.fhnw.cpib.lexing.ILexerContext;
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.lexing.ITokenType;
+import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.LexerException;
 import ch.fhnw.cpib.lexing.Terminal;
 
@@ -128,7 +128,7 @@ public class TokenTypeTest {
         Assert.assertNotNull(receivedArg);
         verify(context).movePosition(3);
 
-        ITokenType receivedType = receivedArg.getType();
+        ITerminal receivedType = receivedArg.getType();
         Assert.assertNotNull(receivedType);
         Assert.assertEquals("WS", receivedType.getName());
     }

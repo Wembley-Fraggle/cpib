@@ -3,11 +3,11 @@ package ch.fhnw.cpib.lexing;
 
 public class Token implements IToken{
 
-    private ITokenType type;
+    private ITerminal type;
     private IPosition start;
     private CharSequence value;
 
-    public Token(ITokenType type,IPosition start, CharSequence value) {
+    public Token(ITerminal type,IPosition start, CharSequence value) {
         this.type = type;
         this.start = start;
         this.value = value;
@@ -38,7 +38,7 @@ public class Token implements IToken{
 
 
     @Override
-    public ITokenType getType() {
+    public ITerminal getType() {
         return type;
     }
 }

@@ -33,6 +33,6 @@ public interface IToken {
 	CharSequence getValue();
 	
 	// TODO 
-	ITokenType getType();
+	ITerminal getType();
 	
 }
