@@ -94,5 +94,4 @@ public class Terminal implements ITerminal {
     public String getPattern() {
        return patternStr;
     }
-
 }
