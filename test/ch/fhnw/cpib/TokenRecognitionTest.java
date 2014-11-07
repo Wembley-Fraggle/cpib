@@ -16,6 +16,8 @@ import ch.fhnw.cpib.lexing.IlmLexer;
 import ch.fhnw.cpib.lexing.LexerContext;
 import ch.fhnw.cpib.lexing.LexerException;
 import ch.fhnw.cpib.lexing.LexerRuleFactory;
+import ch.fhnw.cpib.parsing.nodes.EndMarker;
+import ch.fhnw.cpib.parsing.nodes.IEndMarker;
 
 public class TokenRecognitionTest {
     
@@ -34,8 +36,11 @@ public class TokenRecognitionTest {
         List<IToken> tokenList = lexer.consume(input);
         
         // Whitespaces are ignored
+        // The endmarker is the only one which is appended
         Assert.assertNotNull(tokenList);
-        Assert.assertEquals(0, tokenList.size());
+        Assert.assertEquals(1, tokenList.size());
+        IToken last = tokenList.get(0);
+        Assert.assertTrue(last.getType() instanceof IEndMarker);
     }
     
     @Test
@@ -46,17 +51,18 @@ public class TokenRecognitionTest {
 
         Assert.assertNotNull(tokenList);
         // Whitespaces will be ignored
-        Assert.assertEquals(2, tokenList.size());
+        Assert.assertEquals(3, tokenList.size());
         
         IToken t1 = tokenList.get(0);
         IToken t2 = tokenList.get(1);
+        IToken t3 = tokenList.get(2);
         
         Assert.assertEquals("IDENTIFIER", t1.getType().getName());
         Assert.assertEquals("Liebe", t1.getValue());
         
         Assert.assertEquals("IDENTIFIER", t2.getType().getName());
         Assert.assertEquals("Grossmutter", t2.getValue());
-        
+        Assert.assertEquals(new EndMarker(), t3.getType());
         
         
     }

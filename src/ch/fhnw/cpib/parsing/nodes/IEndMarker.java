@@ -1,5 +1,7 @@
 package ch.fhnw.cpib.parsing.nodes;
 
-public interface IEndMarker extends IProductionNode {
+import ch.fhnw.cpib.lexing.ITerminal;
+
+public interface IEndMarker extends ITerminal {
 
 }

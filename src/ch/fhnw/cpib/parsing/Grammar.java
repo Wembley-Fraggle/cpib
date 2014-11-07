@@ -23,7 +23,6 @@ public final class Grammar implements IGrammar{
     
     public Grammar() {
         productionList = new LinkedHashSet<>();
-        endMarker = new EndMarker();
     }
 
     /* (non-Javadoc)

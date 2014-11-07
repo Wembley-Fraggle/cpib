@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
 
+import ch.fhnw.cpib.parsing.nodes.EndMarker;
+
 public class IlmLexer implements ILexer {
 
     private List<ITerminal> syntax;
@@ -20,6 +22,9 @@ public class IlmLexer implements ILexer {
         while(!ctx.isFinished()) {
             consume(ctx);
         }
+        IPosition lastPos = ctx.getCurrentPosition();
+        IPosition endPos = new Position(lastPos.getCurrentLine()+1, 0,lastPos.getCharacterPosition()+1);
+        ctx.addToken(new Token(new EndMarker(),endPos,""));
         
         return ctx.getTokens();
     }
