@@ -107,5 +107,12 @@ public final class Grammar implements IGrammar{
     @Override
     public boolean isStartSymbol(INonTerminal node) {
         return this.startSymbol.equals(node);
-    }    
+    }
+
+//    @Override
+//    public ITransformation addTransformation(IProduction prod,
+//            IProductionNode... target) {
+//        // TODO Auto-generated method stub
+//        return null;
+//    }    
 }

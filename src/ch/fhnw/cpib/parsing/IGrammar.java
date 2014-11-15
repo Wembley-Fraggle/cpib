@@ -20,9 +20,12 @@ public interface IGrammar {
     IProduction addProduction(INonTerminal head,IProductionNode body,
             IProductionNode... optionalBody);
 
+//    ITransformation addTransformation(IProduction prod, IProductionNode... target);
+//    
     Set<IProduction> getProductions(INonTerminal nonterminal);
 
     Set<IProduction> getProductions();
 
-    Set<IProduction> getProductions(String name);    
+    Set<IProduction> getProductions(String name);
+    
 }
