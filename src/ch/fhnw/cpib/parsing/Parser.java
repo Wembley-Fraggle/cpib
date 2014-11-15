@@ -1,5 +1,6 @@
 package ch.fhnw.cpib.parsing;
 
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,13 +24,14 @@ public class Parser {
     private ParserTable parserTable;
     private List<IToken> input;
     private static Logger logger = Logger.getLogger(Parser.class);
-    private List<IParserEventListener> eventListeners;
+    private List<WeakReference<IParserEventListener>> eventListeners;
     private Method onOutputProduction;
     private Method onOutputToken;
     private Method onParserStart;
     private Method onParserEnd;
 
     public Parser() {
+        
         this.eventListeners = new LinkedList<>();
         try {
             Class<IParserEventListener> clazz = IParserEventListener.class;
@@ -58,7 +60,7 @@ public class Parser {
     }
 
     public Parser notifyEvent(IParserEventListener listener) {
-        this.eventListeners.add(listener);
+        this.eventListeners.add(new WeakReference<IParserEventListener>(listener));
         return this;
     }
 
@@ -170,7 +172,10 @@ public class Parser {
     private void fireListenerEvent(Method method, Object... args) {
         List<IParserEventListener> localListeners;
         synchronized (this) {
-            localListeners = new LinkedList<>(this.eventListeners);
+            localListeners = new LinkedList<>();
+            for(WeakReference<IParserEventListener> refs : eventListeners) {
+                localListeners.add(refs.get());
+            }
         }
         for (IParserEventListener listner : localListeners) {
             try {
