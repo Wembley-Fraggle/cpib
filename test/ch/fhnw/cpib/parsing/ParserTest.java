@@ -49,6 +49,7 @@ public class ParserTest {
        .grammar(grammer)
        .parserTable(table)
        .notifyEvent(new ParserEventLogger())
+       .notifyEvent(new ConcreteParserTree())
        .input(input)
        .build();
     }

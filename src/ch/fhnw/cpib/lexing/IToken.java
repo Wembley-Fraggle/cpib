@@ -1,5 +1,7 @@
 package ch.fhnw.cpib.lexing;
 
+import ch.fhnw.cpib.parsing.IParserTreeValue;
+
 /**
  * <p>An IToken is the product of a lexing step. Tokens are used to
  * structure a sequence of characters into a sequence of objects, which allows
@@ -15,7 +17,7 @@ package ch.fhnw.cpib.lexing;
  * <p>Some tokens may have attributes. E.g. an identifier needs the information
  * of the identifier value.</p>
  */
-public interface IToken {
+public interface IToken extends IParserTreeValue {
     
     /**
      * The starting postion of the token.

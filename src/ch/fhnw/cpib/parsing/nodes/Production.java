@@ -1,13 +1,9 @@
 package ch.fhnw.cpib.parsing.nodes;
 
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import ch.fhnw.cpib.parsing.ParserException;
 
 public class Production implements IProduction {
     private INonTerminal head;
