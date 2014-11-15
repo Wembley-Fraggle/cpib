@@ -11,7 +11,7 @@ import ch.fhnw.cpib.parsing.nodes.INonTerminal;
 import ch.fhnw.cpib.parsing.nodes.IProduction;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
 
-public class ConcreteParserTree implements IParserEventListener {
+public class ConcreteParserTree extends ParserEventListenerAdapter {
 
     private TreeNode<IParserTreeValue> root;
     private Map<TreeNode<IParserTreeValue>, List<TreeNode<IParserTreeValue>>> childLinks;
@@ -25,7 +25,6 @@ public class ConcreteParserTree implements IParserEventListener {
         this.parentLinks = new HashMap<>(); 
         orphanNonTerminals = new LinkedList<>();
         orphanTerminals = new LinkedList<>();
-        
     }
 
     @Override
@@ -143,11 +142,6 @@ public class ConcreteParserTree implements IParserEventListener {
         }
         
         return children.size() == 0;
-    }
-
-    @Override
-    public void onEnd() {
-        // Ignore this
     }
 
     private TreeNode<IParserTreeValue> getOrphan(INonTerminal type) {
