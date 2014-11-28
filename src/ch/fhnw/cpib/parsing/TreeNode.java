@@ -1,19 +1,20 @@
 package ch.fhnw.cpib.parsing;
 
-import java.util.LinkedList;
-import java.util.List;
+import ch.fhnw.cpib.parsing.nodes.IProductionNode;
 
-public class TreeNode<V> {
-    private List<TreeNode<V>> children;
+// TODO Remove Type safety
+public class TreeNode<V extends IParserTreeValue> {
     private V value;
     
-    public TreeNode() {
-        children = new LinkedList<>();
+    public TreeNode(V value) {
+        if(value == null) {
+            throw new IllegalArgumentException("Value must not be null");
+        }
+        this.value = value;
     }
     
-    public TreeNode(V value) {
-        this();
-        this.value = value;
+    public IProductionNode getProductionType() {
+        return null; // TODO 
     }
     
     public V getValue() {
