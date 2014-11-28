@@ -24,51 +24,50 @@ public class FirstAnalyser {
 
     public FirstAnalyser() {
     }
-    
+
     public FirstAnalyser(IGrammar grammar) {
         this.grammar = grammar;
     }
-    
+
     public IGrammar getGrammar() {
         return this.grammar;
     }
-    
+
     public void setGrammar(IGrammar grammer) {
         this.grammar = grammer;
     }
-    
+
     public void setNullableAnalyser(NullableCheck tool) {
         this.nullabelChecker = tool;
     }
 
     public Set<ITerminal> first(List<IProductionNode> chain) {
         Stack<List<IProductionNode>> nodes = new Stack<>();
-        
+
         nodes.push(new LinkedList<>(chain));
         Set<ITerminal> result = first(nodes);
         return result;
     }
-    
-    
+
     public Set<ITerminal> first(INonTerminal nonTerminal) {
         Stack<List<IProductionNode>> nodes = new Stack<>();
-        
-        for(List<IProductionNode> chain : expand(nonTerminal)) {
+
+        for (List<IProductionNode> chain : expand(nonTerminal)) {
             nodes.push(chain);
         }
-        
+
         Set<ITerminal> result = first(nodes);
         return result;
     }
-    
+
     private Set<ITerminal> first(Stack<List<IProductionNode>> nodes) {
         if (grammar == null) {
             throw new IllegalStateException("Syntax must be set before");
         }
-        if(nodes == null || nodes.size() == 0) {
+        if (nodes == null || nodes.size() == 0) {
             throw new IllegalStateException("Nodes not initialized");
         }
-        if(nullabelChecker == null) {
+        if (nullabelChecker == null) {
             nullabelChecker = createDefaultNullableAnalyser();
         }
 
@@ -76,10 +75,10 @@ public class FirstAnalyser {
         while (!nodes.isEmpty()) {
             List<IProductionNode> nodeChain = nodes.pop();
             IProductionNode node = null;
-            if(nodeChain.size() > 0) {
+            if (nodeChain.size() > 0) {
                 node = nodeChain.get(0);
             }
-            
+
             if (node instanceof IEmptyWord) {
                 logResolveEmptyWord((IEmptyWord) node);
             } else if (node instanceof ITerminal) {
@@ -87,11 +86,10 @@ public class FirstAnalyser {
                 logResolveTerminal(nodeChain, node);
             } else if (node instanceof INonTerminal) {
                 INonTerminal nt = (INonTerminal) node;
-                
-                for(List<IProductionNode> chain : expand(nt)) {
+
+                for (List<IProductionNode> chain : expand(nt)) {
                     nodes.push(chain);
                 }
-                
 
                 if (nodeChain.size() == 1 || !nullabelChecker.isNullable(nt)) {
                     logResolveNonTerminal(nodeChain, nt);
@@ -138,8 +136,8 @@ public class FirstAnalyser {
             StringBuilder builder = new StringBuilder();
             builder.append("FIRST(")
                     .append(ProductionNodeUtil.toString(nodeChain))
-                    .append(") -> {FIRST(").append(nt.getName())
-                    .append("), ").append("FIRST(")
+                    .append(") -> {FIRST(").append(nt.getName()).append("), ")
+                    .append("FIRST(")
                     .append(ProductionNodeUtil.toString(nodeChain))
                     .append(")}");
 
@@ -149,8 +147,8 @@ public class FirstAnalyser {
 
     private List<List<IProductionNode>> expand(INonTerminal nonterminal) {
         StringBuilder builder = new StringBuilder();
-        
-        List<List<IProductionNode>> result = new LinkedList<>();        
+
+        List<List<IProductionNode>> result = new LinkedList<>();
         builder.append("FIRST(").append(nonterminal.getName()).append(") -> {");
 
         for (IProduction p : grammar.getProductions(nonterminal.getName())) {
@@ -160,12 +158,12 @@ public class FirstAnalyser {
                     .append(ProductionNodeUtil.toString(p.getBody()))
                     .append("), ");
         }
-        builder.delete(builder.length()-2, builder.length());
+        builder.delete(builder.length() - 2, builder.length());
         builder.append("}");
         logger.debug(builder.toString());
         return result;
     }
-    
+
     private NullableCheck createDefaultNullableAnalyser() {
         NullableCheck tool = new NullableCheck();
         tool.setGrammar(getGrammar());
