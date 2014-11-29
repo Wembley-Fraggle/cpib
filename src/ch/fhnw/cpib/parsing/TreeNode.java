@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
 
 // TODO Remove Type safety
-public class TreeNode<V extends IParserTreeValue> {
+public abstract class TreeNode<V extends IParserTreeValue> {
     private V value;
     
     public TreeNode(V value) {
@@ -13,9 +13,7 @@ public class TreeNode<V extends IParserTreeValue> {
         this.value = value;
     }
     
-    public IProductionNode getProductionType() {
-        return null; // TODO 
-    }
+    public abstract IProductionNode getProductionType();
     
     public V getValue() {
         return this.value;
