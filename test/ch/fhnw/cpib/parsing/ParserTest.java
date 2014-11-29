@@ -44,12 +44,13 @@ public class ParserTest {
        input.add(new Token(grammer.getId(),"id"));
        input.add(new Token(new EndMarker(),"<$>"));
        
+       ConcreteParserTree concreteTree = new ConcreteParserTree();
        Parser parser = new Parser();
        parser
        .grammar(grammer)
        .parserTable(table)
        .notifyEvent(new ParserEventLogger())
-       .notifyEvent(new ConcreteParserTree())
+       .notifyEvent(concreteTree)
        .input(input)
        .build();
     }
