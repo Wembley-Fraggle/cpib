@@ -119,6 +119,48 @@ public class ParserTree {
         }
     }
 
+    public final void swap(TreeNode first, TreeNode second) {
+        checkValidSwap(first,second);
+        if(first.equals(second)) {
+            return;
+        }
+        
+        TreeNode firstParent = getParent(first);
+        TreeNode secondParent = getParent(second);
+        List<TreeNode> firstChildren = parentToChildrenMap.get(first);
+        List<TreeNode> secondChildren = parentToChildrenMap.get(second);
+        List<TreeNode> firstParentChilds = parentToChildrenMap.get(firstParent);
+        List<TreeNode> secondParentChilds = parentToChildrenMap.get(secondParent);
+        
+        // Swap parents
+        childToParentMap.put(first, secondParent);
+        childToParentMap.put(second, firstParent);
+        int firstPos = firstParentChilds.indexOf(first);
+        int secondPos = firstParentChilds.indexOf(second);
+        firstParentChilds.set(firstPos, second);
+        secondParentChilds.set(secondPos, first);
+        
+        // Swap children
+        parentToChildrenMap.put(first, secondChildren);
+        parentToChildrenMap.put(second, firstChildren);
+        for(TreeNode child: firstChildren) {
+            childToParentMap.put(child, second);
+        }
+        for(TreeNode child : secondChildren) {
+            childToParentMap.put(child, first);
+        }
+        
+    }
+    
+    private void checkValidSwap(TreeNode first, TreeNode second) {
+        if(!parentToChildrenMap.containsKey(first)) {
+            throw new IllegalArgumentException("fisrt node is not a tree element");
+        }
+        if(!parentToChildrenMap.containsKey(second)) {
+            throw new IllegalArgumentException("second node is not a tree element");
+        }
+    }
+
     private void checkCanReplace(TreeNode old, TreeNode theNew) {
         if(!parentToChildrenMap.containsKey(old)) {
             throw new IllegalArgumentException("Unknown node to be replaced");
