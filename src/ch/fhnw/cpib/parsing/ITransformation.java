@@ -1,5 +1,10 @@
 package ch.fhnw.cpib.parsing;
 
-public interface ITransformation {
+import java.util.List;
 
+import ch.fhnw.cpib.parsing.nodes.IProduction;
+import ch.fhnw.cpib.parsing.nodes.IProductionNode;
+
+public interface ITransformation {
+    void transfer(ParserTree source, ParserTree target); 
 }

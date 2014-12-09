@@ -13,8 +13,6 @@ import ch.fhnw.cpib.parsing.nodes.IProduction;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
 import ch.fhnw.cpib.parsing.nodes.Production;
 
-// TODO More logging
-// TODO Call it a grammar
 public final class Grammar implements IGrammar{
     private Set<IProduction> productionList;
     private static final Logger logger = Logger.getLogger(Grammar.class);

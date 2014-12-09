@@ -210,5 +210,4 @@ public class DragonGrammar implements IGrammar {
     public boolean isStartSymbol(INonTerminal node) {
         return grammarDelegate.isStartSymbol(node);
     }
-
 }
