@@ -7,7 +7,7 @@ import java.util.List;
 
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
 
-public class TokenTypeTreeSearch {
+public class TokenTypeTreeSearch implements ITreeSearch{
     IProductionNode head;
     List<IProductionNode> body;
 
