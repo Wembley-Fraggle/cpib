@@ -21,8 +21,8 @@ public class ImlGrammarFactory {
     ITerminal intVal;
     ITerminal ref;
     ITerminal copy;
-    ITerminal var;
-    ITerminal constant;
+    ITerminal varChangeMode;
+    ITerminal constChangeMode;
     ITerminal int32;
     ITerminal boolType;
     ITerminal corOpr;
@@ -46,7 +46,7 @@ public class ImlGrammarFactory {
     ITerminal init;
     ITerminal assertCmd;
     ITerminal debugOut;
-    ITerminal deboutIn;
+    ITerminal debugIn;
     ITerminal call;
     ITerminal whileLoop;
     ITerminal endWhile;
@@ -179,7 +179,7 @@ public class ImlGrammarFactory {
     INonTerminal changemode;
     INonTerminal mechmode;
     INonTerminal literal;
-    INonTerminal boolval;
+    INonTerminal boolVal;
     INonTerminal flowmode;
     
     IGrammar create() {
@@ -202,8 +202,8 @@ public class ImlGrammarFactory {
         intVal = new Terminal("INTVAL32","[0-9]+");
         ref = new Terminal("REF","ref");
         copy = new Terminal("COPY","copy");
-        var = new Terminal("VAR","var");
-        constant = new Terminal("CONST","const");
+        varChangeMode = new Terminal("VAR","var");
+        constChangeMode = new Terminal("CONST","const");
         int32 = new Terminal("INT32", "int32");
         boolType = new Terminal("BOOL","bool");
         corOpr = new Terminal("COR","|?");
@@ -227,7 +227,7 @@ public class ImlGrammarFactory {
         init = new Terminal("INIT","init");
         assertCmd = new Terminal("ASSERT","assert");
         debugOut = new Terminal("DEBUGOUT","debugout");
-        deboutIn = new Terminal("DEBUGIN","debugin");
+        debugIn = new Terminal("DEBUGIN","debugin");
         call = new Terminal("CALL","call");
         whileLoop = new Terminal("WHILE","while");
         endWhile = new Terminal("ENDWHILE","endwhile");
@@ -363,48 +363,27 @@ public class ImlGrammarFactory {
         changemode       = new NonTerminal("changemode");
         mechmode         = new NonTerminal("mechmode");
         literal          = new NonTerminal("literal");
-        boolval          = new NonTerminal("boolval");
+        boolVal          = new NonTerminal("boolval");
         flowmode         = new NonTerminal("flowmode");
     }
     
     public void createProgram() {
-        // program : PROGRAM IDENT programParamList 
-        // program1 program2 program3
-        // DO
-        //   cpsCmd
-        // program4
-        // ENDPROGRAM
         grammar.addProduction(programNt, id , progParamList, doBlock, cpsCmd,program4,endProgram);
-        
-        // program1: invariant | <e>
         grammar.addProduction(program1, invariant);
         grammar.addProduction(program1, emptyWord);
-        
-        // program2 : program21 | <e>
         grammar.addProduction(program2, program21);
         grammar.addProduction(program2,emptyWord);
-        
-        // program21 : GLOBAL cpsDecl
         grammar.addProduction(program21, global, cpsDecl);
-
-        // program3: precondition | <e>
         grammar.addProduction(program3, precondition);
         grammar.addProduction(program3, emptyWord);
-        
-        // program4: postcondition | <e>
         grammar.addProduction(program4, postcondition);
         grammar.addProduction(program4, emptyWord);
     }
     
     private void createDeclarations() {
-        // decl : stoDecl | funDecl | procDecl
         grammar.addProduction(decl, stoDecl);
         grammar.addProduction(decl, funDecl);
         grammar.addProduction(decl, procDecl);
-        
-        createStoDecl();
-        createFunDecl();
-        // createProcDecl();
     }
     
     private void createStoDecl() {
@@ -414,15 +393,215 @@ public class ImlGrammarFactory {
     }
     
     private void createFunDecl() {
-//        grammar.addProduction(fun, ident, paramList, returns, stoDecl, funDecl1,funDecl2, funDecl3, doBlock, cpsCmd, funDecl4, endfun);
-//        grammar.addProduction(funDecl1, funDecl11);
-//        grammar.addProduction(funDecl1, emptyWord);
-//        (funDecl1,[[N funDecl11],[]]),        (* [GLOBAL globImps] *)
-//        (funDecl11,[[T GLOBAL, N globImps]]), (* GLOBAL globImps *)
-//        (funDecl2,[[N funDecl21],[]]),        (* [LOCAL cpsStoDecl] *)
-//        (funDecl21,[[T LOCAL, N cpsStoDecl]]), (* LOCAL cpsStoDecl *)
-//        (funDecl3,[[N precondition],[]]),  (* [precondition] *)
-//        (funDecl4,[[N postcondition],[]]), (* [postcondition] *)
-
+        grammar.addProduction(funDecl, id, paramList, returns, stoDecl, funDecl1,funDecl2, funDecl3, doBlock, cpsCmd, funDecl4, endfun);
+        grammar.addProduction(funDecl1, funDecl11);
+        grammar.addProduction(funDecl1, emptyWord);
+        grammar.addProduction(funDecl11, global, globImps);
+        grammar.addProduction(funDecl2, funDecl21);
+        grammar.addProduction(funDecl2, emptyWord);
+        grammar.addProduction(funDecl21, local, cpsStoDecl);
+        grammar.addProduction(funDecl3, precondition);
+        grammar.addProduction(funDecl3, emptyWord);
+        grammar.addProduction(funDecl4, postcondition);
+        grammar.addProduction(funDecl4, emptyWord);
     }
+    
+    private void createProdcDecl() {
+        grammar.addProduction(procDecl, proc, id, paramList, procDecl1, procDecl2, procDecl3, doBlock, cpsCmd, procDecl4, endProc);
+        grammar.addProduction(procDecl1, procDecl11);
+        grammar.addProduction(procDecl1, emptyWord);
+        grammar.addProduction(procDecl11, global, globImps);
+        grammar.addProduction(procDecl2, procDecl21);
+        grammar.addProduction(procDecl2, emptyWord);
+        grammar.addProduction(procDecl21, local, cpsStoDecl);
+        grammar.addProduction(procDecl3, precondition);
+        grammar.addProduction(procDecl3, emptyWord);
+        grammar.addProduction(procDecl4, postcondition);
+        grammar.addProduction(procDecl4, emptyWord);
+    }
+    
+    private void createGlobals() {
+        grammar.addProduction(globImps, globImp, globImps1);
+        grammar.addProduction(globImps1, globImps2, globImps1);
+        grammar.addProduction(globImps1, emptyWord);
+        grammar.addProduction(globImps2, comma, globImp);
+        grammar.addProduction(globImp, globImp1, globImp2, id);
+        grammar.addProduction(globImp1, flowmode);
+        grammar.addProduction(globImp1, emptyWord);
+        grammar.addProduction(globImp2, changemode);
+        grammar.addProduction(globImp2, emptyWord);
+    }
+    
+    private void createDecls() {
+        grammar.addProduction(cpsDecl, decl, cpsDecl1);
+        grammar.addProduction(cpsDecl1, cpsDecl2, cpsDecl1);
+        grammar.addProduction(cpsDecl1, emptyWord);
+        grammar.addProduction(cpsDecl2, semicolon, decl);
+        grammar.addProduction(cpsStoDecl, stoDecl, cpsStoDecl1);
+        grammar.addProduction(cpsStoDecl1, cpsStoDecl2, cpsStoDecl1);
+        grammar.addProduction(cpsStoDecl1, emptyWord);
+        grammar.addProduction(cpsStoDecl2, semicolon, stoDecl);
+    }
+  
+    
+    private void createParamList() {
+        grammar.addProduction(progParamList, lparent, progParamList1, rparent);
+        grammar.addProduction(progParamList1, progParamList2);
+        grammar.addProduction(progParamList1, emptyWord);
+        grammar.addProduction(progParamList2, progParam, progParamList3);
+        grammar.addProduction(progParamList3, progParamList4, progParamList3);
+        grammar.addProduction(progParamList3, emptyWord);
+        grammar.addProduction(progParamList4, comma, progParam);
+        grammar.addProduction(progParam, progParam1, progParam2, typedIdent);
+        grammar.addProduction(progParam1, flowmode);
+        grammar.addProduction(progParam1, emptyWord);
+        grammar.addProduction(progParam2, changemode);
+        grammar.addProduction(progParam2, emptyWord);
+        grammar.addProduction(paramList, lparent, paramList1, rparent);
+        grammar.addProduction(paramList1, paramList2);
+        grammar.addProduction(paramList1, emptyWord);
+        grammar.addProduction(paramList2, param, paramList3);
+        grammar.addProduction(paramList3, paramList4, paramList3);
+        grammar.addProduction(paramList3, emptyWord);
+        grammar.addProduction(paramList4, comma, param);
+        grammar.addProduction(param, param1, param2, param3, typedIdent);
+        grammar.addProduction(param1, flowmode);
+        grammar.addProduction(param1, emptyWord);
+        grammar.addProduction(param2, mechmode);
+        grammar.addProduction(param2, emptyWord);
+        grammar.addProduction(param3, changemode);
+        grammar.addProduction(param3, emptyWord);
+        grammar.addProduction(typedIdent, id, colon, atomtype);
+    }
+    
+    private void createProgramParamList() {
+        grammar.addProduction(progParamList,lparent, progParamList1, rparent);
+        grammar.addProduction(progParamList1,progParamList2);
+        grammar.addProduction(progParamList1,emptyWord);
+        grammar.addProduction(progParamList2,progParam, progParamList3);
+        grammar.addProduction(progParamList3,progParamList4, progParamList3);
+        grammar.addProduction(progParamList3,emptyWord);
+        grammar.addProduction(progParamList4,comma, progParam);
+        grammar.addProduction(progParam,progParam1, progParam2, typedIdent);
+        grammar.addProduction(progParam1,flowmode);
+        grammar.addProduction(progParam1,emptyWord);
+        grammar.addProduction(progParam2,changemode);
+        grammar.addProduction(progParam2,emptyWord);
+        grammar.addProduction(paramList,lparent, paramList1, rparent);
+        grammar.addProduction(paramList1, paramList2);
+        grammar.addProduction(paramList1, emptyWord);
+        grammar.addProduction(paramList2, param, paramList3);
+        grammar.addProduction(paramList3, paramList4,paramList3);
+        grammar.addProduction(paramList3, emptyWord);
+        grammar.addProduction(paramList4, comma, param);
+        grammar.addProduction(param, param1,param2,param3,typedIdent);
+        grammar.addProduction(param1,flowmode);
+        grammar.addProduction(param1,emptyWord);
+        grammar.addProduction(param2,mechmode);
+        grammar.addProduction(param2,emptyWord);
+        grammar.addProduction(param3,changemode);
+        grammar.addProduction(param3,emptyWord);
+        grammar.addProduction(typedIdent, id, colon, atomtype);
+    }
+    
+    private void createCommands() {
+        grammar.addProduction(cmd,skip,cmd1, cmd2,cmd3, cmd4,cmd5, cmd6, cmd7);
+        grammar.addProduction(cmd1,expr, becomes, expr); 
+        grammar.addProduction(cmd2,condIf , expr, condThen, cpsCmd, condElse, cpsCmd,condEnd); 
+        grammar.addProduction(cmd3,whileLoop, expr,cmd31, doBlock,cpsCmd, endWhile); 
+        grammar.addProduction(cmd31,invariant);
+        grammar.addProduction(cmd31,emptyWord);
+        grammar.addProduction(cmd4,call, id, exprList, cmd41); 
+        grammar.addProduction(cmd41,globInits);    
+        grammar.addProduction(cmd41,emptyWord);
+        grammar.addProduction(cmd5,debugIn, expr);  
+        grammar.addProduction(cmd6,debugOut, expr); 
+        grammar.addProduction(cmd7,assertCmd, expr);   
+        grammar.addProduction(cpsCmd,cmd, cpsCmd1); 
+        grammar.addProduction(cpsCmd1,cpsCmd2, cpsCmd1); 
+        grammar.addProduction(cpsCmd1,emptyWord); 
+        grammar.addProduction(cpsCmd2,semicolon, cmd); 
+        grammar.addProduction(globInits,init, idents); 
+        grammar.addProduction(idents,id, idents1);  
+        grammar.addProduction(idents1,idents2, idents1); 
+        grammar.addProduction(idents1,emptyWord);
+        grammar.addProduction(idents2,comma, id); 
+    }
+
+    private void createExpressions() {
+        grammar.addProduction(expr,term1,expr1); 
+        grammar.addProduction(expr1,expr2, expr1); 
+        grammar.addProduction(expr2,boolopr, term1); 
+             
+        grammar.addProduction(term1,term2, term11); 
+        grammar.addProduction(term11,term12); 
+        grammar.addProduction(term12,relopr, term2); 
+             
+        grammar.addProduction(term2,term3,term21);
+        grammar.addProduction(term21,term211, term21);
+        grammar.addProduction(term211,addopr, term3);
+        grammar.addProduction(term3,factor, term31);
+        grammar.addProduction(term31,term311, term31);
+        grammar.addProduction(term31,emptyWord);
+        grammar.addProduction(term311,multopr, factor);
+             
+        grammar.addProduction(factor,
+                factor1,   
+                factor2,    
+                factor3,    
+                factor4,    
+                factor5);  
+        grammar.addProduction(factor1,literal);
+        grammar.addProduction(factor2,id, factor21);   
+        grammar.addProduction(factor21,factor211);
+        grammar.addProduction(factor21,emptyWord);     
+        grammar.addProduction(factor211,id,exprList); 
+        grammar.addProduction(factor3,monadicOpr, factor);
+        grammar.addProduction(factor4,old, lparent, expr, rparent); 
+        grammar.addProduction(factor5,lparent, expr, rparent); 
+        grammar.addProduction(exprList,lparent, exprList1, rparent);
+        grammar.addProduction(exprList1,exprList2);
+        grammar.addProduction(exprList1,emptyWord); 
+        grammar.addProduction(exprList2,expr, exprList3); 
+        grammar.addProduction(exprList3,exprList4, exprList3); 
+        grammar.addProduction(exprList3,emptyWord); 
+        grammar.addProduction(exprList4,comma, expr);
+        grammar.addProduction(monadicOpr,boolNot,addopr);
+    }
+
+    private void createDesignByContract() {
+        grammar.addProduction(precondition, pre, id, colon, expr);
+        grammar.addProduction(postcondition, post,id,colon,expr);
+        grammar.addProduction(invariant, inv, id, colon, expr);
+    }
+    
+    private void createPrimitives() {
+        grammar.addProduction(addopr,plus);
+        grammar.addProduction(addopr,minus);
+        grammar.addProduction(multopr, times);
+        grammar.addProduction(multopr, div);
+        grammar.addProduction(multopr, mod);
+        grammar.addProduction(relopr, eq);
+        grammar.addProduction(relopr, ne);
+        grammar.addProduction(relopr, lt);
+        grammar.addProduction(relopr, gt);
+        grammar.addProduction(boolopr, andOpr);
+        grammar.addProduction(boolopr, orOpr);
+        grammar.addProduction(boolopr, candOpr);
+        grammar.addProduction(boolopr, corOpr);
+        grammar.addProduction(atomtype, boolType);
+        grammar.addProduction(atomtype, int32);
+        grammar.addProduction(changemode, constChangeMode);
+        grammar.addProduction(changemode, varChangeMode);
+        grammar.addProduction(mechmode, copy);
+        grammar.addProduction(mechmode, ref);
+        grammar.addProduction(literal, boolVal);
+        grammar.addProduction(literal, intVal);
+        grammar.addProduction(boolVal, boolFalse);
+        grammar.addProduction(boolVal,boolTrue);
+        grammar.addProduction(flowmode, in);
+        grammar.addProduction(flowmode, inout);
+        grammar.addProduction(flowmode, out);
+    }
+    
 }
