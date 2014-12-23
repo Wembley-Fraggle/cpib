@@ -19,6 +19,12 @@ public interface IGrammar {
     
     IProduction addProduction(INonTerminal head,IProductionNode body,
             IProductionNode... optionalBody);
+    
+    
+    void addTerminal(ITerminal t);
+    void addNonTerminal(INonTerminal nt);
+    ITerminal getTerminal(String name);
+    INonTerminal getNonTerminal(String name);
 
 //    ITransformation addTransformation(IProduction prod, IProductionNode... target);
 //    

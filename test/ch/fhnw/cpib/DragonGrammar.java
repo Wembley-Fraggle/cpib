@@ -210,4 +210,24 @@ public class DragonGrammar implements IGrammar {
     public boolean isStartSymbol(INonTerminal node) {
         return grammarDelegate.isStartSymbol(node);
     }
+
+    @Override
+    public void addTerminal(ITerminal t) {
+        grammarDelegate.addTerminal(t);
+    }
+
+    @Override
+    public void addNonTerminal(INonTerminal nt) {
+        grammarDelegate.addNonTerminal(nt);
+    }
+
+    @Override
+    public ITerminal getTerminal(String name) {
+        return grammarDelegate.getTerminal(name);
+    }
+
+    @Override
+    public INonTerminal getNonTerminal(String name) {
+        return grammarDelegate.getNonTerminal(name);
+    }
 }

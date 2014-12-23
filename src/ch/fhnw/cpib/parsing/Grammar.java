@@ -1,12 +1,13 @@
 package ch.fhnw.cpib.parsing;
 
+import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
 
 import ch.fhnw.cpib.lexing.ITerminal;
-import ch.fhnw.cpib.parsing.nodes.EndMarker;
 import ch.fhnw.cpib.parsing.nodes.IEndMarker;
 import ch.fhnw.cpib.parsing.nodes.INonTerminal;
 import ch.fhnw.cpib.parsing.nodes.IProduction;
@@ -14,6 +15,8 @@ import ch.fhnw.cpib.parsing.nodes.IProductionNode;
 import ch.fhnw.cpib.parsing.nodes.Production;
 
 public final class Grammar implements IGrammar{
+    
+    private Map<String, IProductionNode> symbols;
     private Set<IProduction> productionList;
     private static final Logger logger = Logger.getLogger(Grammar.class);
     private INonTerminal startSymbol;
@@ -21,6 +24,7 @@ public final class Grammar implements IGrammar{
     
     public Grammar() {
         productionList = new LinkedHashSet<>();
+        symbols = new HashMap<>();
     }
 
     /* (non-Javadoc)
@@ -105,6 +109,27 @@ public final class Grammar implements IGrammar{
     @Override
     public boolean isStartSymbol(INonTerminal node) {
         return this.startSymbol.equals(node);
+    }
+
+    @Override
+    public void addTerminal(ITerminal t) {
+        symbols.put(t.getName(), t);
+    }
+
+    @Override
+    public void addNonTerminal(INonTerminal nt) {
+        
+        symbols.put(nt.getName(), nt);
+    }
+
+    @Override
+    public ITerminal getTerminal(String name) {
+        return (ITerminal)symbols.get(name);
+    }
+
+    @Override
+    public INonTerminal getNonTerminal(String name) {
+        return (INonTerminal)symbols.get(name);
     }
 
 //    @Override

@@ -1,9 +1,6 @@
 package ch.fhnw.cpib.parsing;
 
-import static org.mockito.Mockito.mock;
-import ch.fhnw.cpib.lexing.ILexerContext;
 import ch.fhnw.cpib.lexing.ITerminal;
-import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.lexing.Terminal;
 import ch.fhnw.cpib.parsing.nodes.EmptyWord;
 import ch.fhnw.cpib.parsing.nodes.IEmptyWord;
@@ -187,6 +184,18 @@ public class ImlGrammarFactory {
         createTerminals();
         createNonTerminals();
         createProgram();
+        createDeclarations();
+        createStoDecl();
+        createFunDecl();
+        createProdcDecl();
+        createGlobals();
+        createDecls();
+        createParamList();
+        createProgramParamList();
+        createCommands();
+        createExpressions();
+        createDesignByContract();
+        createPrimitives();
         IGrammar result = grammar;
         grammar = null;
         return result;
