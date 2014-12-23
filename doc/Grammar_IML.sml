@@ -474,22 +474,22 @@ val productions =
 (procDecl3,[[N precondition],[]]),
 (procDecl4,[[N postcondition],[]]),
 
-(* globImp {COMMA globImp} *)
+(* globImps     ::= globImp {COMMA globImp} *)
 (globImps,[[N globImp, N globImps1]]),
 (globImps1,[[N globImps2, N globImps1],[]]),
 (globImps2,[[T COMMA, N globImp]]),
 
-(* [flowmode] [changemode] IDENT *)
+(* globImp ::= [flowmode] [changemode] IDENT *)
 (globImp,[[N globImp1,N globImp2,T IDENT]]),
 (globImp1,[[N flowmode],[]]),
 (globImp2,[[N changemode],[]]),
 
-(* decl {SEMICOLON decl} *)
+(* cpsDecl ::= decl {SEMICOLON decl} *)
 (cpsDecl,[[N decl,N cpsDecl1]]),
 (cpsDecl1,[[N cpsDecl2, N cpsDecl1],[]]),
 (cpsDecl2,[[T SEMICOLON, N decl]]),
 
-(* stoDecl {SEMICOLON stoDecl} *)
+(* cpsStoDecl ::= stoDecl {SEMICOLON stoDecl} *)
 (cpsStoDecl,[[N stoDecl,N cpsStoDecl1]]),
 (cpsStoDecl1,[[N cpsStoDecl2, N cpsStoDecl1],[]]),
 (cpsStoDecl2, [[T SEMICOLON, N stoDecl]]),
