@@ -71,7 +71,7 @@ public final class ConcreteParserTree extends ParserTree implements IParserEvent
             setRoot(createTreeNode(token));
         } else {
             // The terminal will be replaced by the concrete token
-            TreeNode terminalTreeNode = getOrphan(token.getType());
+            ITreeNode terminalTreeNode = getOrphan(token.getType());
             replace(terminalTreeNode, createTreeNode(token));
             removeOrphan(terminalTreeNode);
         }
@@ -82,7 +82,7 @@ public final class ConcreteParserTree extends ParserTree implements IParserEvent
         return getOrphan(type, orphanNonTerminals);
     }
 
-    private TreeNode getOrphan(ITerminal type) {
+    private ITreeNode getOrphan(ITerminal type) {
         return getOrphan(type, orphanTerminals);
     }
     
@@ -95,7 +95,7 @@ public final class ConcreteParserTree extends ParserTree implements IParserEvent
         }
     }
 
-    private void removeOrphan(TreeNode node) {
+    private void removeOrphan(ITreeNode node) {
         orphanTerminals.remove(node);
         orphanNonTerminals.remove(node);
     }

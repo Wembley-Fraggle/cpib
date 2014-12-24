@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
-public class ParserTree {
+public class ParserTree implements IParseTree {
 
     private TreeNode<IParserTreeValue> root;
     private Map<TreeNode, List<TreeNode>> parentToChildrenMap;
@@ -42,6 +42,10 @@ public class ParserTree {
 
     }
 
+    /* (non-Javadoc)
+     * @see ch.fhnw.cpib.parsing.IParseTree#topDownIterator()
+     */
+    @Override
     public final Iterator<TreeNode> topDownIterator() {
         return new TopDownIterator();
     }
@@ -93,11 +97,19 @@ public class ParserTree {
         }
     }
 
+    /* (non-Javadoc)
+     * @see ch.fhnw.cpib.parsing.IParseTree#getRootNode()
+     */
+    @Override
     public final TreeNode getRootNode() {
         return root;
     }
     
-    public final void replace(TreeNode old, TreeNode theNew) {
+    /* (non-Javadoc)
+     * @see ch.fhnw.cpib.parsing.IParseTree#replace(ch.fhnw.cpib.parsing.ITreeNode, ch.fhnw.cpib.parsing.TreeNode)
+     */
+    @Override
+    public final void replace(ITreeNode old, TreeNode theNew) {
         checkCanReplace(old, theNew);
         TreeNode parent = childToParentMap.remove(old);
         List<TreeNode> parentsChild = parentToChildrenMap.get(parent);
@@ -119,6 +131,10 @@ public class ParserTree {
         }
     }
 
+    /* (non-Javadoc)
+     * @see ch.fhnw.cpib.parsing.IParseTree#swap(ch.fhnw.cpib.parsing.TreeNode, ch.fhnw.cpib.parsing.TreeNode)
+     */
+    @Override
     public final void swap(TreeNode first, TreeNode second) {
         checkValidSwap(first,second);
         if(first.equals(second)) {
@@ -152,7 +168,7 @@ public class ParserTree {
         
     }
     
-    private void checkValidSwap(TreeNode first, TreeNode second) {
+    private void checkValidSwap(ITreeNode first, ITreeNode second) {
         if(!parentToChildrenMap.containsKey(first)) {
             throw new IllegalArgumentException("fisrt node is not a tree element");
         }
@@ -161,7 +177,7 @@ public class ParserTree {
         }
     }
 
-    private void checkCanReplace(TreeNode old, TreeNode theNew) {
+    private void checkCanReplace(ITreeNode old, ITreeNode theNew) {
         if(!parentToChildrenMap.containsKey(old)) {
             throw new IllegalArgumentException("Unknown node to be replaced");
         }
@@ -171,10 +187,14 @@ public class ParserTree {
         }
     }
 
-    public final void removeNode(TreeNode node) {
+    /* (non-Javadoc)
+     * @see ch.fhnw.cpib.parsing.IParseTree#removeNode(ch.fhnw.cpib.parsing.ITreeNode)
+     */
+    @Override
+    public final void removeNode(ITreeNode node) {
         List<TreeNode> childs = parentToChildrenMap.remove(node);
         if (childs != null) {
-            for (TreeNode child : childs) {
+            for (ITreeNode child : childs) {
                 childToParentMap.remove(this);
             }
         }
@@ -184,6 +204,10 @@ public class ParserTree {
         modCount++;
     }
 
+    /* (non-Javadoc)
+     * @see ch.fhnw.cpib.parsing.IParseTree#setRoot(ch.fhnw.cpib.parsing.TreeNode)
+     */
+    @Override
     public final void setRoot(TreeNode root) {
         this.root = root;
         this.parentToChildrenMap = new HashMap<>();
@@ -191,6 +215,10 @@ public class ParserTree {
         modCount++;
     }
 
+    /* (non-Javadoc)
+     * @see ch.fhnw.cpib.parsing.IParseTree#add(ch.fhnw.cpib.parsing.TreeNode, ch.fhnw.cpib.parsing.TreeNode)
+     */
+    @Override
     public final void add(TreeNode parent, TreeNode child) {
         checkCanAdd(parent, child);
         List<TreeNode> children = parentToChildrenMap.get(parent);
@@ -203,7 +231,7 @@ public class ParserTree {
         modCount++;
     }
 
-    private final void checkCanAdd(TreeNode parent, TreeNode child) {
+    private final void checkCanAdd(ITreeNode parent, ITreeNode child) {
         if (root == null) {
             throw new IllegalStateException("root node not previously set");
         }
@@ -218,7 +246,11 @@ public class ParserTree {
         ;
     }
 
-    public final List<TreeNode> getChildren(TreeNode node) {
+    /* (non-Javadoc)
+     * @see ch.fhnw.cpib.parsing.IParseTree#getChildren(ch.fhnw.cpib.parsing.ITreeNode)
+     */
+    @Override
+    public final List<TreeNode> getChildren(ITreeNode node) {
         List<TreeNode> children = parentToChildrenMap.get(node);
         if (children == null) {
             throw new IllegalArgumentException(
@@ -227,11 +259,19 @@ public class ParserTree {
         return new LinkedList<>(children);
     }
 
-    public final TreeNode getParent(TreeNode node) {
+    /* (non-Javadoc)
+     * @see ch.fhnw.cpib.parsing.IParseTree#getParent(ch.fhnw.cpib.parsing.ITreeNode)
+     */
+    @Override
+    public final TreeNode getParent(ITreeNode node) {
         return childToParentMap.get(node);
     }
 
-    public final boolean isLeaf(TreeNode node) {
+    /* (non-Javadoc)
+     * @see ch.fhnw.cpib.parsing.IParseTree#isLeaf(ch.fhnw.cpib.parsing.ITreeNode)
+     */
+    @Override
+    public final boolean isLeaf(ITreeNode node) {
         List<TreeNode> children = parentToChildrenMap.get(node);
         if (children == null) {
             throw new IllegalArgumentException(

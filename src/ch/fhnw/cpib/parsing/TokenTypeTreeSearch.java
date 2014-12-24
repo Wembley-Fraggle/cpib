@@ -20,10 +20,10 @@ public class TokenTypeTreeSearch implements ITreeSearch{
         }
     }
 
-    public TreeNode search(ParserTree tree) {
+    public ITreeNode search(IParseTree tree) {
         Iterator<TreeNode> iter = tree.topDownIterator();        
         while(iter.hasNext()) {
-            TreeNode treeHead = searchHead(iter);
+            ITreeNode treeHead = searchHead(iter);
             if(treeHead != null && hasSameBody(tree, treeHead)) {
                 return treeHead;
             }
@@ -32,9 +32,9 @@ public class TokenTypeTreeSearch implements ITreeSearch{
         return null;
     }
     
-    private TreeNode searchHead(Iterator<TreeNode> iter) {
+    private ITreeNode searchHead(Iterator<TreeNode> iter) {
         while (iter.hasNext()) {
-            TreeNode treeHead = iter.next();
+            ITreeNode treeHead = iter.next();
             if (this.head.equals(treeHead.getProductionType())) {
                 return treeHead;
             }
@@ -42,7 +42,7 @@ public class TokenTypeTreeSearch implements ITreeSearch{
         return null;
     }
 
-    private boolean hasSameBody(ParserTree tree, TreeNode treeHead) {
+    private boolean hasSameBody(IParseTree tree, ITreeNode treeHead) {
         List<TreeNode> treeChildren = tree.getChildren(treeHead);
         if (body.size() > treeChildren.size()) {
             return false;

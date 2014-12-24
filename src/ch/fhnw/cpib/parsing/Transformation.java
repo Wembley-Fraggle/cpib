@@ -13,9 +13,9 @@ public abstract class Transformation implements ITransformation {
     }
 
     @Override
-    public void transfer(ParserTree source, ParserTree target) {
+    public void transfer(IParseTree source, IParseTree target) {
         ITreeSearch search = getSearch();
-        TreeNode node = search.search(source);
+        ITreeNode node = search.search(source);
         while (node != null) {
             applyTransformation(node,source, target);
             node = search.search(source);
@@ -24,5 +24,5 @@ public abstract class Transformation implements ITransformation {
     
     protected abstract ITreeSearch getSearch();
 
-    public abstract void applyTransformation(TreeNode node,ParserTree source, ParserTree target);
+    public abstract void applyTransformation(ITreeNode node,IParseTree source, IParseTree target);
 }

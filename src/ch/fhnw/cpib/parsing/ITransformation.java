@@ -6,5 +6,5 @@ import ch.fhnw.cpib.parsing.nodes.IProduction;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
 
 public interface ITransformation {
-    void transfer(ParserTree source, ParserTree target); 
+    void transfer(IParseTree source, IParseTree target); 
 }
