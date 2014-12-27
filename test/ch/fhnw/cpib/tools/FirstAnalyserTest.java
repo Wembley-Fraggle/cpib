@@ -9,14 +9,14 @@ import org.junit.Test;
 import ch.fhnw.cpib.DragonGrammar;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.Terminal;
+import ch.fhnw.cpib.parsing.EmptyWord;
 import ch.fhnw.cpib.parsing.Grammar;
+import ch.fhnw.cpib.parsing.IEmptyWord;
 import ch.fhnw.cpib.parsing.IGrammar;
+import ch.fhnw.cpib.parsing.INonTerminal;
+import ch.fhnw.cpib.parsing.IProduction;
+import ch.fhnw.cpib.parsing.NonTerminal;
 import ch.fhnw.cpib.parsing.ParserException;
-import ch.fhnw.cpib.parsing.nodes.EmptyWord;
-import ch.fhnw.cpib.parsing.nodes.IEmptyWord;
-import ch.fhnw.cpib.parsing.nodes.INonTerminal;
-import ch.fhnw.cpib.parsing.nodes.IProduction;
-import ch.fhnw.cpib.parsing.nodes.NonTerminal;
 import ch.fhnw.cpib.parsing.tools.FirstAnalyser;
 
 public class FirstAnalyserTest {

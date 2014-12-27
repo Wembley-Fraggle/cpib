@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import ch.fhnw.cpib.DragonGrammar;
 import ch.fhnw.cpib.lexing.IEndMarker;
-import ch.fhnw.cpib.parsing.nodes.IProductionNode;
+import ch.fhnw.cpib.parsing.IProductionNode;
 import ch.fhnw.cpib.parsing.tools.FollowAnalyser;
 
 public class FollowAnalyserTest {

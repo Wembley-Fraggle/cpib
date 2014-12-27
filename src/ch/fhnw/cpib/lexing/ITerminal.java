@@ -1,6 +1,6 @@
 package ch.fhnw.cpib.lexing;
 
-import ch.fhnw.cpib.parsing.nodes.IProductionNode;
+import ch.fhnw.cpib.parsing.IProductionNode;
 
 public interface ITerminal extends IProductionNode{
     int canConsume(ILexerContext context) throws LexerException;
