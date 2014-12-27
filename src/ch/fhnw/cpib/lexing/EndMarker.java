@@ -1,8 +1,5 @@
-package ch.fhnw.cpib.parsing.nodes;
+package ch.fhnw.cpib.lexing;
 
-import ch.fhnw.cpib.lexing.ILexerContext;
-import ch.fhnw.cpib.lexing.ITerminal;
-import ch.fhnw.cpib.lexing.LexerException;
 
 public class EndMarker implements IEndMarker, ITerminal {
 
