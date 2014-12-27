@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ch.fhnw.cpib.DragonGrammar;
-import ch.fhnw.cpib.parsing.nodes.IEndMarker;
+import ch.fhnw.cpib.lexing.IEndMarker;
 import ch.fhnw.cpib.parsing.nodes.IProductionNode;
 import ch.fhnw.cpib.parsing.tools.FollowAnalyser;
 

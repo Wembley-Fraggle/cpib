@@ -6,9 +6,9 @@ import java.util.List;
 import org.junit.Test;
 
 import ch.fhnw.cpib.DragonGrammar;
+import ch.fhnw.cpib.lexing.EndMarker;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.lexing.Token;
-import ch.fhnw.cpib.parsing.nodes.EndMarker;
 import ch.fhnw.cpib.parsing.tools.FirstAnalyser;
 import ch.fhnw.cpib.parsing.tools.FollowAnalyser;
 import ch.fhnw.cpib.parsing.tools.NullableCheck;

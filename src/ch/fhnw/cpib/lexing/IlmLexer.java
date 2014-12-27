@@ -5,8 +5,6 @@ import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
 
-import ch.fhnw.cpib.parsing.nodes.EndMarker;
-
 public class IlmLexer implements ILexer {
 
     private List<ITerminal> syntax;

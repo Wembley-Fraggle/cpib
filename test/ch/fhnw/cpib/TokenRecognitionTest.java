@@ -10,14 +10,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import ch.fhnw.cpib.lexing.EndMarker;
+import ch.fhnw.cpib.lexing.IEndMarker;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.lexing.IlmLexer;
 import ch.fhnw.cpib.lexing.LexerContext;
 import ch.fhnw.cpib.lexing.LexerException;
 import ch.fhnw.cpib.lexing.LexerRuleFactory;
-import ch.fhnw.cpib.parsing.nodes.EndMarker;
-import ch.fhnw.cpib.parsing.nodes.IEndMarker;
 
 public class TokenRecognitionTest {
     
