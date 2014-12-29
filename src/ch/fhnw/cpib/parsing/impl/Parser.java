@@ -381,8 +381,16 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void paramList() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LPARENT".equals(name)) {
+            LOG.debug("paramList1 ::= LPARENT paramList1 RPARENT");
+            consume(terminal);
+            paramList1();
+            consume("RPARENT");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -799,11 +807,15 @@ public class Parser implements IParser, IConcSyn{
     @Override
     public void paramList1() throws GrammarError {
         String name = terminal.getName();
-        if("LPARENT".equals(name)) {
-            LOG.debug("paramList1 ::= LPARENT paramList1 RPARENT");
-            consume(terminal);
-            paramList1();
-            consume("RPARENT");
+        if("IDENT".equals(name)
+                || "VAR".equals(name) || "CONST".equals(name)
+                || "REF".equals(name) || "COPY".equals(name)
+                || "OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+            LOG.debug("paramList1 ::= paramList2");
+            paramList2();
+        }
+        else  if("RPARENT".equals(name)) {
+            LOG.debug("paramList1 ::= <e>");
         }
         else {
             handleInvalidToken();
@@ -812,32 +824,82 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void paramList2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("IDENT".equals(name)
+            || "VAR".equals(name) || "CONST".equals(name)
+            || "REF".equals(name) || "COPY".equals(name)
+            || "OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+            LOG.debug("paramList2 ::= param paramList3");
+            param();
+            paramList3();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void paramList3() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("COMMA".equals(name)) {
+            LOG.debug("paramList3 ::= paramList4 paramList3");
+            paramList4();
+            paramList3();
+        }
+        else if("RPARENT".equals(name)) {
+            LOG.debug("paramList3 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void param() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("IDENT".equals(name)
+                || "VAR".equals(name) || "CONST".equals(name)
+                || "REF".equals(name) || "COPY".equals(name)
+                || "OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+            LOG.debug("param ::= param1 param2 param3 typedIdent");
+            param1();
+            param2();
+            param3();
+            typedIdent();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void paramList4() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("COMMA".equals(name)) {
+            LOG.debug("paramList4 ::= COMMA param");
+            consume(terminal);
+            param();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void param1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+            LOG.debug("param1 ::= flowmode");
+            flowmode();
+        } else if("IDENT".equals(name)
+            || "VAR".equals(name) || "CONST".equals(name)
+            || "REF".equals(name) || "COPY".equals(name)) {
+            LOG.debug("param1 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
+            
     }
 
     @Override
