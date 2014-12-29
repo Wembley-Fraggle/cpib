@@ -165,8 +165,16 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void progParamList() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LPARENT".equals(name) ) {
+            LOG.debug("progParamList ::= LPARENT progParamList1 RPARENT");
+            consume(terminal);
+            progParamList1();
+            consume("RPARENT");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -675,50 +683,131 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void progParamList1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("IDENT".equals(name)
+           || "VAR".equals(name) || "CONST".equals(name)
+           || "OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+            LOG.debug("progParamList1 ::= progParamList2");
+            progParamList2();
+        }
+        else if("RPARENT".equals(name)) {
+            LOG.debug("progParamList1 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void progParamList2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("IDENT".equals(name)
+           || "VAR".equals(name) || "CONST".equals(name)
+           || "OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+            LOG.debug("progParamList2 ::= progParam progParamList3");
+            progParam();
+            progParamList3();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void progParam() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("IDENT".equals(name)
+           || "VAR".equals(name) || "CONST".equals(name)
+           || "OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+            LOG.debug("progParam ::= progParam1 progParam2 typedIdent");
+            progParam1();
+            progParam2();
+            typedIdent();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void progParamList3() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("COMMA".equals(name)
+           || "VAR".equals(name) || "CONST".equals(name)
+           || "OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+            LOG.debug("progParamList3 ::= progParamList4 progParamList3");
+            progParam();
+            progParamList3();
+        }
+        else if("RPARENT".equals(name)) {
+            LOG.debug("progParamList3 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void progParamList4() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("COMMA".equals(name)) {
+            LOG.debug("progParamList4 ::= COMMA progParam");
+            consume(terminal);
+            progParam();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void progParam1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+            LOG.debug("progParam1 ::= flowmode");
+            flowmode();
+        }
+        else  if("IDENT".equals(name)) {
+            LOG.debug("progParam1 ::= <e>");
+        }
+        else  if("VAR".equals(name)) {
+            LOG.debug("progParam1 ::= <e>");
+        }
+        else  if("CONST".equals(name)) {
+            LOG.debug("progParam1 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void progParam2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("VAR".equals(name) || "CONST".equals(name) ) {
+            LOG.debug("progParam2 ::= changemode");
+            changemode();
+        }
+        else  if("IDENT".equals(name)) {
+            LOG.debug("progParam2 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void paramList1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LPARENT".equals(name)) {
+            LOG.debug("paramList1 ::= LPARENT paramList1 RPARENT");
+            consume(terminal);
+            paramList1();
+            consume("RPARENT");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
