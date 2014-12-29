@@ -372,8 +372,34 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void decl() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("IDENT".equals(name)) {
+            LOG.debug("decl ::= stoDecl");
+            consume(terminal);
+            stoDecl();
+        }
+        else if("VAR".equals(name)) {
+            LOG.debug("decl ::= stoDecl");
+            consume(terminal);
+            stoDecl();
+        }
+        else if("CONST".equals(name)) {
+            LOG.debug("decl ::= stoDecl");
+            consume(terminal);
+            stoDecl();
+        }
+        else if("FUN".equals(name)) {
+            LOG.debug("decl ::= funDecl");
+            consume(terminal);
+            funDecl();
+        }
+        else if("PROC".equals(name)) {
+            LOG.debug("decl ::= procDecl");
+        }
+        else {
+            handleInvalidToken();
+        }
+
     }
 
     @Override
