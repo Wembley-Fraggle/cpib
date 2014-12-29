@@ -62,27 +62,27 @@ datatype term
   | OLD
   
 val string_of_term =
- fn LPAREN                => "(" 
-  | RPAREN                => ")"
-  | COMMA                 => ","
-  | SEMICOLON             => ";"
-  | COLON                 => ":"
-  | BECOMES               => ":="
-  | MULTOPR_TIMES         => "*"
+ fn LPAREN                => "LPARENT" 
+  | RPAREN                => "RPARENT"
+  | COMMA                 => "COMMA"
+  | SEMICOLON             => "SEMI"
+  | COLON                 => "COLON"
+  | BECOMES               => "BECOMES"
+  | MULTOPR_TIMES         => "TIMES"
   | MULTOPR_DIV           => "DIV"
   | MULTOPR_MOD           => "MOD"
-  | ADDOPR_PLUS           => "+"
-  | ADDOPR_MINUS          => "-"
-  | RELOPR_EQ             => "="
-  | RELOPR_NE             => "/="
-  | RELOPR_LT             => "<"
-  | RELOPR_GT             => ">"
-  | RELOPR_LE             => "<="
-  | RELOPR_GE             => ">="
-  | BOOLOPR_AND           => "&&"
-  | BOOLOPR_OR            => "||"
-  | BOOLOPR_CAND          => "&?"
-  | BOOLOPR_COR           => "|?"
+  | ADDOPR_PLUS           => "PLUS"
+  | ADDOPR_MINUS          => "MINUS"
+  | RELOPR_EQ             => "EQ"
+  | RELOPR_NE             => "NE"
+  | RELOPR_LT             => "LT"
+  | RELOPR_GT             => "GT"
+  | RELOPR_LE             => "LE"
+  | RELOPR_GE             => "GE"
+  | BOOLOPR_AND           => "AND"
+  | BOOLOPR_OR            => "OR"
+  | BOOLOPR_CAND          => "CAND"
+  | BOOLOPR_COR           => "COR"
   | TYPE_BOOL             => "BOOL"
   | TYPE_INT32            => "INT32"
   | CALL                  => "CALL"
@@ -117,7 +117,7 @@ val string_of_term =
   | SKIP                  => "SKIP"
   | THEN                  => "THEN"
   | WHILE                 => "WHILE"
-  | IDENT                 => "ID"
+  | IDENT                 => "IDENT"
   | ASSERT                => "ASSERT"
   | PRE                   => "PRE"
   | POST                  => "POST"
@@ -142,7 +142,6 @@ datatype nonterm
   | funDecl2
   | funDecl21
   | funDecl3
-  | funDecl31
   | funDecl4
   | funDecl41
   | funDecl5
@@ -260,7 +259,6 @@ val string_of_nonterm =
   | funDecl2       => "funDecl2"
   | funDecl21      => "funDecl21"
   | funDecl3       => "funDecl3"
-  | funDecl31      => "funDecl31"
   | funDecl4       => "funDecl4"
   | funDecl41      => "funDecl41"
   | funDecl5       => "funDecl5"
