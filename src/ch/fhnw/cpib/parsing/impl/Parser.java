@@ -205,13 +205,30 @@ public class Parser implements IParser, IConcSyn{
             stoDecl1();
             typedIdent();
         }
-        
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void stoDecl1() throws GrammarError {
         String name = terminal.getName();
-        
+        if("VAR".equals(name)) {
+            LOG.debug("stoDecl1 ::= changemode");
+            consume(terminal);
+            changemode();
+        }
+        else if("CONST".equals(name)) {
+            LOG.debug("stoDecl1 ::= changemode");
+            consume(terminal);
+            changemode();
+        }
+        else if("IDENT".equals(name)) {
+            LOG.debug("stoDecl1 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
