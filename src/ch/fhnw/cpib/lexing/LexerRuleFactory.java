@@ -10,11 +10,11 @@ public class LexerRuleFactory {
         LinkedList<ITerminal> types = new LinkedList<>();
        
         types.add(new Terminal("WS", "\\s+",true));
-        types.add(new Terminal("IDENTIFIER", "[a-zA-Z][a-zA-Z0-9]*"));
+        types.add(new Terminal("IDENT", "[a-zA-Z][a-zA-Z0-9]*"));
         types.add(new Terminal("LPAREN", "\\("));
         types.add(new Terminal("RPAREN", "\\)"));  
         types.add(new Terminal("COMMA",","));  
-        types.add(new Terminal("SEMICOLON", ";"));  
+        types.add(new Terminal("SEMI", ";"));  
         types.add(new Terminal("COLON", ":"));  
         types.add(new Terminal("BECOMES",":="));  
         types.add(new Terminal("TIMES", "\\*"));
@@ -60,8 +60,8 @@ public class LexerRuleFactory {
         types.add(new Terminal("INIT", "init"));
         types.add(new Terminal("INTVAL", "[0-9]+"));
         types.add(new Terminal("COMMENT"));
-        types.add(new Terminal("BLOCKCOMMENT","/\\*.*?\\*/"));
-        types.add(new Terminal("LINECOMMENT","//.*\n"));
+        types.add(new Terminal("BLOCKCOMMENT","/\\*.*?\\*/"),,true);
+        types.add(new Terminal("LINECOMMENT","//.*\n",true));
         
         return types;
     }
