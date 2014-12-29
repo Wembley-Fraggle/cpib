@@ -107,7 +107,6 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("GLOBAL".equals(name)) {
             LOG.debug("program2 ::= program21");
-            consume(terminal);
             program21();
         }
         else if("DO".equals(name)) {
@@ -139,7 +138,6 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("PRE".equals(name)) {
             LOG.debug("program3 ::= precondition");
-            consume(terminal);
             precondition();
         }
         else if("DO".equals(name)) {
@@ -154,9 +152,8 @@ public class Parser implements IParser, IConcSyn{
     public void program4() throws GrammarError {
         String name = terminal.getName();
         if("POST".equals(name)) {
-            LOG.debug("program4 ::= precondition");
-            consume(terminal);
-            precondition();
+            LOG.debug("program4 ::= postcondition");
+            postcondition();
         }
         else if("ENDPROGRAM".equals(name)) {
             LOG.debug("program4 ::= <e>");
@@ -180,8 +177,16 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void cpsDecl() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("PROC".equals(name) || "FUN".equals(name) || "IDENT".equals(name)
+           || "VAR".equals(name) || "CONST".equals(name) ) {
+            LOG.debug("cpsDecl ::= decl cpsDecl1");
+            decl();
+            cpsDecl1();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -189,19 +194,16 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("IDENT".equals(name)) {
             LOG.debug("stoDecl ::= stoDecl1 typedIdent");
-            consume(terminal);
             stoDecl1();
             typedIdent();
         }
         else if("VAR".equals(name)) {
             LOG.debug("stoDecl ::= stoDecl1 typedIdent");
-            consume(terminal);
             stoDecl1();
             typedIdent();
         }
         else if("CONST".equals(name)) {
             LOG.debug("stoDecl ::= stoDecl1 typedIdent");
-            consume(terminal);
             stoDecl1();
             typedIdent();
         }
@@ -215,12 +217,10 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("VAR".equals(name)) {
             LOG.debug("stoDecl1 ::= changemode");
-            consume(terminal);
             changemode();
         }
         else if("CONST".equals(name)) {
             LOG.debug("stoDecl1 ::= changemode");
-            consume(terminal);
             changemode();
         }
         else if("IDENT".equals(name)) {
@@ -259,7 +259,6 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("GLOBAL".equals(name)) {
             LOG.debug("funDecl1 ::= funDecl11");
-            consume(terminal);
             funDecl11();
         }
         else if("DO".equals(name)) {
@@ -311,8 +310,7 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("POST".equals(name)) {
             LOG.debug("funDecl4 ::= postcondition");
-            consume(terminal);
-            funDecl4();
+            postcondition();
         }
         else if("ENDFUN".equals(name)) {
             LOG.debug("funDecl4 ::= <e>");
@@ -382,39 +380,9 @@ public class Parser implements IParser, IConcSyn{
     @Override
     public void globImps() throws GrammarError {
         String name = terminal.getName();
-        if("IDENT".equals(name)) {
+        if("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)
+           || "OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
             LOG.debug("globImps ::= globImp globImps1");
-            consume(terminal);
-            globImp();
-            globImps1();
-        }
-        else if("VAR".equals(name)) {
-            LOG.debug("globImps ::= globImp globImps1");
-            consume(terminal);
-            globImp();
-            globImps1();
-        }
-        else if("CONST".equals(name)) {
-            LOG.debug("globImps ::= globImp globImps1");
-            consume(terminal);
-            globImp();
-            globImps1();
-        }
-        else if("OUT".equals(name)) {
-            LOG.debug("globImps ::= globImp globImps1");
-            consume(terminal);
-            globImp();
-            globImps1();
-        }
-        else if("INOUT".equals(name)) {
-            LOG.debug("globImps ::= globImp globImps1");
-            consume(terminal);
-            globImp();
-            globImps1();
-        }
-        else if("IN".equals(name)) {
-            LOG.debug("globImps ::= globImp globImps1");
-            consume(terminal);
             globImp();
             globImps1();
         }
@@ -425,8 +393,16 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void cpsStoDecl() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)) {
+            LOG.debug("cpsStoDecl ::= stoDecl cpsStoDecl1");
+            consume(terminal);
+            stoDecl();
+            cpsStoDecl1();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -434,7 +410,6 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("GLOBAL".equals(name)) {
             LOG.debug("procDecl1 ::= procDecl11");
-            consume(terminal);
             procDecl11();
         }
         else if("DO".equals(name)) {
@@ -456,7 +431,6 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("GLOBAL".equals(name)) {
             LOG.debug("procDecl11 ::= globImps");
-            consume(terminal);
             globImps();
         }
         else {
@@ -469,7 +443,6 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("LOCAL".equals(name)) {
             LOG.debug("procDecl2 ::= procDecl21");
-            consume(terminal);
             procDecl21();
         }
         else if("DO".equals(name)) {
@@ -488,7 +461,6 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("LOCAL".equals(name)) {
             LOG.debug("procDecl21 ::= cpsStoDecl");
-            consume(terminal);
             cpsStoDecl();
         }
         else {
@@ -501,7 +473,6 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("PRE".equals(name)) {
             LOG.debug("procDecl3 ::= precondition");
-            consume(terminal);
             precondition();
         }
         else if("DO".equals(name)) {
@@ -517,7 +488,6 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("POST".equals(name)) {
             LOG.debug("procDecl4 ::= postcondition");
-            consume(terminal);
             postcondition();
         }
         else if("ENDPROC".equals(name)) {
@@ -530,8 +500,17 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void globImp() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)
+           || "OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+            LOG.debug("globImp ::= globImp1 globImp2 IDENT");
+            globImp1();
+            globImp2();
+            consume("IDENT");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -539,7 +518,6 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("COMMA".equals(name)) {
             LOG.debug("globImps1 ::= globImps2 globImps1");
-            consume(terminal);
             globImps2();
             globImps1();
         }
@@ -559,20 +537,50 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void globImps2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("COMMA".equals(name)) {
+            LOG.debug("globImps2 ::= globImp");
+            globImp();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void globImp1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+            LOG.debug("globImp1 ::= flowmode");
+            flowmode();
+        }
+        else if("IDENT".equals("IDENT")) {
+            LOG.debug("globImp1 ::= <e>");
+        }
+        else if("VAR".equals("IDENT")) {
+            LOG.debug("globImp1 ::= <e>");
+        }
+        else if("CONST".equals("IDENT")) {
+            LOG.debug("globImp1 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void globImp2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("VAR".equals(name) || "CONST".equals(name)) {
+            LOG.debug("globImp2 ::= changemode");
+            changemode();
+        }
+        if("IDENT".equals(name)) {
+            LOG.debug("globImp2 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -584,28 +592,17 @@ public class Parser implements IParser, IConcSyn{
     @Override
     public void decl() throws GrammarError {
         String name = terminal.getName();
-        if("IDENT".equals(name)) {
+        if("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("decl ::= stoDecl");
-            consume(terminal);
-            stoDecl();
-        }
-        else if("VAR".equals(name)) {
-            LOG.debug("decl ::= stoDecl");
-            consume(terminal);
-            stoDecl();
-        }
-        else if("CONST".equals(name)) {
-            LOG.debug("decl ::= stoDecl");
-            consume(terminal);
             stoDecl();
         }
         else if("FUN".equals(name)) {
             LOG.debug("decl ::= funDecl");
-            consume(terminal);
             funDecl();
         }
         else if("PROC".equals(name)) {
             LOG.debug("decl ::= procDecl");
+            procDecl();
         }
         else {
             handleInvalidToken();
@@ -615,26 +612,65 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void cpsDecl1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("SEMI".equals(name)) {
+            LOG.debug("cpsDecl1 ::= cpsDecl2 cpsDecl1");
+            cpsDecl2();
+            cpsDecl1();
+        }
+        else if("DO".equals(name)) {
+            LOG.debug("cpsDecl1 ::= <e>");
+        }
+        else if("PRE".equals(name)) {
+            LOG.debug("cpsDecl1 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void cpsDecl2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("SEMI".equals(name)) {
+            LOG.debug("cpsDecl2 ::= decl");
+            decl();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void cpsStoDecl1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("SEMI".equals(name)) {
+            LOG.debug("cpsStoDecl1 ::= cpsStoDecl2 cpsStoDecl1");
+            cpsStoDecl2();
+            cpsStoDecl1();
+        }
+        else if("DO".equals(name)) {
+            LOG.debug("cpsStoDecl1 ::= <e>");
+        }
+        else if("PRE".equals(name)) {
+            LOG.debug("cpsStoDecl1 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void cpsStoDecl2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("SEMI".equals(name)) {
+            LOG.debug("cpsStoDecl2 ::= SEMI stoDecl");
+            consume(terminal);
+            stoDecl();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
