@@ -186,13 +186,31 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void stoDecl() throws GrammarError {
-        // TODO Auto-generated method stub
+        String name = terminal.getName();
+        if("IDENT".equals(name)) {
+            LOG.debug("stoDecl ::= stoDecl1 typedIdent");
+            consume(terminal);
+            stoDecl1();
+            typedIdent();
+        }
+        else if("VAR".equals(name)) {
+            LOG.debug("stoDecl ::= stoDecl1 typedIdent");
+            consume(terminal);
+            stoDecl1();
+            typedIdent();
+        }
+        else if("CONST".equals(name)) {
+            LOG.debug("stoDecl ::= stoDecl1 typedIdent");
+            consume(terminal);
+            stoDecl1();
+            typedIdent();
+        }
         
     }
 
     @Override
     public void stoDecl1() throws GrammarError {
-        // TODO Auto-generated method stub
+        String name = terminal.getName();
         
     }
 
