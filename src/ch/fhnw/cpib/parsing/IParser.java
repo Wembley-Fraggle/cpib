@@ -1,5 +1,7 @@
 package ch.fhnw.cpib.parsing;
 
-public class IParser {
+import ch.fhnw.cpib.errors.GrammarError;
 
+public interface IParser {
+    void parse() throws GrammarError;
 }
