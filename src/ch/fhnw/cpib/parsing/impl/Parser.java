@@ -107,28 +107,63 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("GLOBAL".equals(name)) {
             LOG.debug("program2 ::= program21");
+            consume(terminal);
+            program21();
         }
         else if("DO".equals(name)) {
-            LOG.debug("program2 ::= program21");
+            LOG.debug("program2 ::= <e>");
+        }
+        else if("PRE".equals(name)) {
+            LOG.debug("program2 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
         }
     }
 
     @Override
     public void program21() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("GLOBAL".equals(name)) {
+            LOG.debug("program21 ::= GLOBAL cpsDecl");
+            consume(terminal);
+            cpsDecl();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void program3() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("PRE".equals(name)) {
+            LOG.debug("program3 ::= precondition");
+            consume(terminal);
+            precondition();
+        }
+        else if("DO".equals(name)) {
+            LOG.debug("program3 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void program4() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("POST".equals(name)) {
+            LOG.debug("program4 ::= precondition");
+            consume(terminal);
+            precondition();
+        }
+        else if("ENDPROGRAM".equals(name)) {
+            LOG.debug("program4 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
