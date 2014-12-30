@@ -179,8 +179,28 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void cpsCmd() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("ASSERT".equals(name)
+           || "DEBUGOUT".equals(name)
+           || "DEBUGIN".equals(name)
+           || "CALL".equals(name)
+           || "WHILE".equals(name)
+           || "IF".equals(name)
+           || "LPARENT".equals(name)
+           || "OLD".equals(name)
+           || "MINUS".equals(name)
+           || "PLUS".equals(name)
+           || "IDENT".equals(name)
+           || "TRUE".equals(name)
+           || "FALSE".equals(name)
+           || "SKIP".equals(name)) {
+            LOG.debug("cpsCmd ::= cmd cpsCmd1");
+            cmd();
+            cpsCmd1();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
