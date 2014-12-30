@@ -993,8 +993,15 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void exprList() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LPARENT".equals(name)) {
+            LOG.debug("exprList ::= LPARENT exprList1 RPARENT");
+            consume(terminal);
+            exprList1();
+            consume("RPARENT");
+        } else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1487,69 +1494,127 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void factor1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("INTVAL32".equals(name)
+            || "TRUE".equals(name)
+            || "FALSE".equals(name)) {
+            LOG.debug("factor1 ::= literal");
+            literal();
+        } else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void factor2() throws GrammarError {
-//        else if("PRE".equals(name)
-//                || "GLOBAL".equals(name)
-//                || "COMMA".equals(name)
-//                || "RPARENT".equals(name)
-//                || "DO".equals(name)
-//                || "INV".equals(name)
-//                || "THEN".equals(name)
-//                || "ENDWHILE".equals(name)
-//                || "ENDIF".equals(name)
-//                || "ELSE".equals(name)
-//                || "ENDPROC".equals(name)
-//                || "ENDFUN".equals(name)
-//                || "ENDPROGRAM".equals(name)
-//                || "POST".equals(name)
-//                || "SEMI".equals(name)
-//                || "BECOMES".equals(name)
-//                || "COR".equals(name)
-//                || "CAND".equals(name)
-//                || "OR".equals(name)
-//                || "AND".equals(name)
-//                || "GT".equals(name)
-//                || "LT".equals(name)
-//                || "NE".equals(name)
-//                || "EQ".equals(name)
-//                || "MINUS".equals(name)
-//                || "PLUS".equals(name)) {
-//                    LOG.debug("term31 ::= <e>");
+        String name = terminal.getName();
+        if("IDENT".equals(name)) {
+            LOG.debug("factor2 ::= IDENT factor21");
+            consume(terminal);
+            factor21();
+        } else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void factor21() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LPARENT".equals(name)
+            || "INIT".equals(name)) {
+            LOG.debug("factor21 ::= factor211");
+            factor211();
+        } else if("PRE".equals(name)
+              || "GLOBAL".equals(name)
+              || "COMMA".equals(name)
+              || "RPARENT".equals(name)
+              || "DO".equals(name)
+              || "INV".equals(name)
+              || "THEN".equals(name)
+              || "ENDWHILE".equals(name)
+              || "ENDIF".equals(name)
+              || "ELSE".equals(name)
+              || "ENDPROC".equals(name)
+              || "ENDFUN".equals(name)
+              || "ENDPROGRAM".equals(name)
+              || "POST".equals(name)
+              || "SEMI".equals(name)
+              || "BECOMES".equals(name)
+              || "COR".equals(name)
+              || "CAND".equals(name)
+              || "OR".equals(name)
+              || "AND".equals(name)
+              || "GT".equals(name)
+              || "LT".equals(name)
+              || "NE".equals(name)
+              || "EQ".equals(name)
+              || "MINUS".equals(name)
+              || "PLUS".equals(name)
+              || "MOD".equals(name)
+              || "DIV".equals(name)
+              || "TIMES".equals(name)) {
+              LOG.debug("factor21 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void factor211() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("INIT".equals(name)) {
+            LOG.debug("factor211 ::= INIT");
+            consume(terminal);
+        } else if("LPARENT".equals(name)) {
+            LOG.debug("factor211 ::= exprList");
+            exprList();
+        } else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void factor3() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("MINUS".equals(name)
+            || "PLUS".equals(name)
+            || "NOT".equals(name)) {
+            LOG.debug("factor3 ::= monadicOpr factor");
+            monadicOpr();
+            factor();
+        } else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void factor4() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("OLD".equals(name)
+            || "PLUS".equals(name)
+            || "NOT".equals(name)) {
+            LOG.debug("factor4 ::= OLD LPARENT expr RPARENT");
+            consume(terminal);
+            consume("LPARENT");
+            expr();
+            consume("RPARENT");
+        } else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void factor5() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LPARENT".equals(name)) {
+            LOG.debug("factor5 ::= LPARENT expr RPARENT");
+            consume(terminal);
+            expr();
+            consume("RPARENT");
+        } else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1560,14 +1625,44 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void exprList1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LPARENT".equals(name)
+            || "OLD".equals(name)
+            || "MINUS".equals(name)
+            || "PLUS".equals(name)
+            || "NOT".equals(name)
+            || "IDENT".equals(name)
+            || "INTVAL32".equals(name)
+            || "TRUE".equals(name)
+            || "FALSE".equals(name)) {
+             LOG.debug("exprList1 ::= exprList2");
+             exprList2();
+         } else if("RPARENT".equals(name)) {
+             LOG.debug("exprList1 ::= <e>");
+         }
+         else {
+             handleInvalidToken();
+         }
     }
 
     @Override
     public void exprList2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LPARENT".equals(name)
+                || "OLD".equals(name)
+                || "MINUS".equals(name)
+                || "PLUS".equals(name)
+                || "NOT".equals(name)
+                || "IDENT".equals(name)
+                || "INTVAL32".equals(name)
+                || "TRUE".equals(name)
+                || "FALSE".equals(name)) {
+             LOG.debug("exprList2 ::= expr exprList3");
+             expr();
+             exprList3();
+         } else {
+             handleInvalidToken();
+         }
     }
 
     @Override
