@@ -369,8 +369,16 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void typedIdent() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("IDENT".equals(name)) {
+            LOG.debug("typedIdent ::= IDENT COLON atomtype");
+            consume(terminal);
+            consume("COLON");
+            atomtype();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -898,20 +906,36 @@ public class Parser implements IParser, IConcSyn{
         }
         else {
             handleInvalidToken();
-        }
-            
+        }  
     }
 
     @Override
     public void param2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("REF".equals(name) || "COPY".equals(name) ) {
+            LOG.debug("param2 ::= mechmode");
+            mechmode();
+        } else if("IDENT".equals(name)
+            || "VAR".equals(name) || "CONST".equals(name)) {
+            LOG.debug("param2 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void param3() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("VAR".equals(name) || "CONST".equals(name)) {
+            LOG.debug("param3 ::= changemode");
+            changemode();
+        } else if("IDENT".equals(name)) {
+            LOG.debug("param3 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -964,8 +988,47 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void cmd() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("SKIP".equals(name) ) {
+            LOG.debug("cmd ::= SKIP");
+            consume(terminal);
+        } else if("LPARENT".equals(name) 
+                || "IDENT".equals(name)
+                || "INTVAL32".equals(name)
+                || "TRUE".equals(name) || "FALSE".equals(name)
+                || "MINUS".equals(name) || "PLUS".equals(name)
+                || "NOT".equals(name)
+                || "OLD".equals(name)) {
+            LOG.debug("cmd ::= <cmd1>");
+            cmd1();
+        }
+        else if("IF".equals(name)) {
+            LOG.debug("cmd ::= <cmd2>");
+            cmd2();
+        }
+        else if("WHILE".equals(name)) {
+            LOG.debug("cmd ::= <cmd3>");
+            cmd3();
+        }
+        else if("CALL".equals(name)) {
+            LOG.debug("cmd ::= <cmd4>");
+            cmd4();
+        }
+        else if("DEBUGIN".equals(name)) {
+            LOG.debug("cmd ::= <cmd5>");
+            cmd5();
+        }
+        else if("DEBUGOUT".equals(name)) {
+            LOG.debug("cmd ::= <cmd6>");
+            cmd6();
+        }
+        else if("ASSERT".equals(name)) {
+            LOG.debug("cmd ::= <cmd7>");
+            cmd7();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
