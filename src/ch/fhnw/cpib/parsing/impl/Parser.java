@@ -972,8 +972,23 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void expr() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LPARENT".equals(name)
+           || "OLD".equals(name)
+           || "MINUS".equals(name)
+           || "PLUS".equals(name)
+           || "NOT".equals(name)
+           || "IDENT".equals(name)
+           || "INTVAL32".equals(name)
+           || "TRUE".equals(name)
+           || "FALSE".equals(name)) {
+            LOG.debug("expr ::= term1 expr1");
+            term1();
+            expr1();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1005,20 +1020,51 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void globInits() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("INIT".equals(name)) {
+            LOG.debug("globInits ::= INIT idents");
+            consume(terminal);
+            idents();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void cpsCmd1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("SEMI".equals(name)) {
+            LOG.debug("cpsCmd1 ::= cpsCmd2 cpsCmd1");
+            cpsCmd2();
+            cpsCmd1();
+        }
+        else if(
+                "ENDWHILE".equals(name)
+                || "ENDIF".equals(name)
+                || "ELSE".equals(name)
+                || "ENDPROC".equals(name)
+                || "ENDFUN".equals(name)
+                || "ENDPROGRAM".equals(name)
+                || "POST".equals(name)) {
+            LOG.debug("cpsCmd1 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void cpsCmd2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("SEMI".equals(name)) {
+            LOG.debug("cpsCmd2 ::= SEMI cmd");
+            consume(terminal);
+            cmd();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1068,38 +1114,116 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void idents() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("IDENT".equals(name) ) {
+            LOG.debug("idents ::= IDENT idents1");
+            consume(terminal);
+            idents1();
+        } else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void idents1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("COMMA".equals(name) ) {
+            LOG.debug("idents1 ::= idents2 idents1");
+            idents2();
+            idents1();
+        } else if("ENDWHILE".equals(name)
+                || "ENDIF".equals(name)
+                || "ELSE".equals(name)
+                || "ENDPROC".equals(name)
+                || "ENDFUN".equals(name)
+                || "ENDPROGRAM".equals(name)
+                || "POST".equals(name)
+                || "SEMI".equals(name)){
+            LOG.debug("idents1 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void idents2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("COMMA".equals(name) ) {
+            LOG.debug("idents2 ::= COMMA IDENT");
+            consume(terminal);
+            consume("IDENT");
+        } 
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void term1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LPARENT".equals(name)
+                || "OLD".equals(name)
+                || "MINUS".equals(name)
+                || "PLUS".equals(name)
+                || "NOT".equals(name)
+                || "IDENT".equals(name)
+                || "INTVAL32".equals(name)
+                || "TRUE".equals(name)
+                || "FALSE".equals(name)) {
+            LOG.debug("term1 ::= term2 term11");
+            term2();
+            term11();
+        } else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void expr1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("COR".equals(name)
+           || "CAND".equals(name)
+           || "OR".equals(name)
+           || "AND".equals(name)) {
+            LOG.debug("expr1 ::= expr2 expr1");
+            expr2();
+            expr1();
+        } else if("PRE".equals(name)
+                || "GLOBAL".equals(name)
+                || "COMMA".equals(name)
+                || "RPARENT".equals(name)
+                || "DO".equals(name)
+                || "INV".equals(name)
+                || "THEN".equals(name)
+                || "ENDWHILE".equals(name)
+                || "ENDIF".equals(name)
+                || "ELSE".equals(name)
+                || "ENDPROC".equals(name)
+                || "ENDFUN".equals(name)
+                || "ENDPROGRAM".equals(name)
+                || "POST".equals(name)
+                || "SEMI".equals(name)
+                || "BECOMES".equals(name)) {
+            LOG.debug("expr1 ::= <e>");
+        } else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void expr2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("COR".equals(name)
+            || "CAND".equals(name)
+            || "OR".equals(name)
+            || "AND".equals(name)) {
+             LOG.debug("expr2 ::= boolopr term1");
+             boolopr();
+             term1();
+         } else {
+             handleInvalidToken();
+         }
     }
 
     @Override
@@ -1122,8 +1246,38 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void term11() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("GT".equals(name)
+            || "LT".equals(name)
+            || "NE".equals(name)
+            || "EQ".equals(name)) {
+             LOG.debug("term11 ::= term12");
+             term12();
+        } else if("PRE".equals(name)
+            || "GLOBAL".equals(name)
+            || "COMMA".equals(name)
+            || "RPARENT".equals(name)
+            || "DO".equals(name)
+            || "INV".equals(name)
+            || "THEN".equals(name)
+            || "ENDWHILE".equals(name)
+            || "ENDIF".equals(name)
+            || "ELSE".equals(name)
+            || "ENDPROC".equals(name)
+            || "ENDFUN".equals(name)
+            || "ENDPROGRAM".equals(name)
+            || "POST".equals(name)
+            || "SEMI".equals(name)
+            || "BECOMES".equals(name)
+            || "COR".equals(name)
+            || "CAND".equals(name)
+            || "OR".equals(name)
+            || "AND".equals(name)) {
+            LOG.debug("term11 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
