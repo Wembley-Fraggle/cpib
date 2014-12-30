@@ -1339,14 +1339,28 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void cmd6() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("DEBUGOUT".equals(name)) {
+            LOG.debug("cmd6 ::= DEBUGOUT expr");
+            consume(terminal);
+            expr();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void cmd7() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("ASSERT".equals(name)) {
+            LOG.debug("cmd7 ::= ASSERT expr");
+            consume(terminal);
+            expr();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
