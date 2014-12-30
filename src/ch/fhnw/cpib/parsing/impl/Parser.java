@@ -1619,8 +1619,17 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void monadicOpr() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("NOT".equals(name)) {
+             LOG.debug("monadicOpr ::= NOT");
+             consume(terminal);
+        } else if("MINUS".equals(name)
+            || "PLUS".equals(name)) {
+            LOG.debug("monadicOpr ::= addopr");
+            addopr();
+        } else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1667,14 +1676,28 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void exprList3() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("COMMA".equals(name)) {
+             LOG.debug("exprList3 ::= exprList4 exprList3");
+             exprList4();
+             exprList3();
+         } else if("RPARENT".equals(name)) {
+             LOG.debug("exprList3 ::= <e>");
+         } else {
+             handleInvalidToken();
+         }
     }
 
     @Override
     public void exprList4() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("COMMA".equals(name)) {
+             LOG.debug("exprList4 ::= COMMA expr");
+             consume(terminal);
+             expr();
+         } else {
+             handleInvalidToken();
+         }
     }
 
     @Override
