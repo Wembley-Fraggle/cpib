@@ -1234,14 +1234,40 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void term2() throws GrammarError {
-        // TODO Auto-generated method stub
+        String name = terminal.getName();
+        if("LPARENT".equals(name)
+            || "OLD".equals(name)
+            || "MINUS".equals(name)
+            || "PLUS".equals(name)
+            || "NOT".equals(name)
+            || "IDENT".equals(name)
+            || "INTVAL32".equals(name)
+            || "TRUE".equals(name)
+            || "FALSE".equals(name)) {
+            LOG.debug("term2 ::= term3 term21");
+            term3();
+            term21();
+        }
+        else {
+            handleInvalidToken();
+        }
         
     }
 
     @Override
     public void term12() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("GT".equals(name)
+            || "LT".equals(name)
+            || "NE".equals(name)
+            || "EQ".equals(name)) {
+            LOG.debug("term12 ::= relopr term2");
+            relopr();
+            term2();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1288,20 +1314,76 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void term3() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LPARENT".equals(name) 
+            || "OLD".equals(name)
+            || "MINUS".equals(name)
+            || "PLUS".equals(name)
+            || "NOT".equals(name)
+            || "IDENT".equals(name)
+            || "INTVAL32".equals(name)
+            || "TRUE".equals(name)
+            || "FALSE".equals(name)) {
+            LOG.debug("term3 ::= factor term31");
+            factor();
+            term31();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void term21() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("MINUS".equals(name)
+           || "PLUS".equals(name)) {
+            LOG.debug("term21 ::= term211 term21");
+            term211();
+            term21();
+        }
+        else if("PRE".equals(name)
+        || "GLOBAL".equals(name)
+        || "COMMA".equals(name)
+        || "RPARENT".equals(name)
+        || "DO".equals(name)
+        || "INV".equals(name)
+        || "THEN".equals(name)
+        || "ENDWHILE".equals(name)
+        || "ENDIF".equals(name)
+        || "ELSE".equals(name)
+        || "ENDPROC".equals(name)
+        || "ENDFUN".equals(name)
+        || "ENDPROGRAM".equals(name)
+        || "POST".equals(name)
+        || "SEMI".equals(name)
+        || "BECOMES".equals(name)
+        || "COR".equals(name)
+        || "CAND".equals(name)
+        || "OR".equals(name)
+        || "AND".equals(name)
+        || "GT".equals(name)
+        || "LT".equals(name)
+        || "NE".equals(name)
+        || "EQ".equals(name)) {
+            LOG.debug("term21 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void term211() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("MINUS".equals(name)
+           || "PLUS".equals(name)) { 
+            LOG.debug("term211 ::= addopr term3");
+            addopr();
+            term3();
+        } else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1312,14 +1394,61 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void term31() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("MOD".equals(name)
+           || "DIV".equals(name)
+           || "TIMES".equals(name)
+           ) {
+            LOG.debug("term31 ::= term311 term31");
+            term311();
+            term31();
+        }
+        else if("PRE".equals(name)
+        || "GLOBAL".equals(name)
+        || "COMMA".equals(name)
+        || "RPARENT".equals(name)
+        || "DO".equals(name)
+        || "INV".equals(name)
+        || "THEN".equals(name)
+        || "ENDWHILE".equals(name)
+        || "ENDIF".equals(name)
+        || "ELSE".equals(name)
+        || "ENDPROC".equals(name)
+        || "ENDFUN".equals(name)
+        || "ENDPROGRAM".equals(name)
+        || "POST".equals(name)
+        || "SEMI".equals(name)
+        || "BECOMES".equals(name)
+        || "COR".equals(name)
+        || "CAND".equals(name)
+        || "OR".equals(name)
+        || "AND".equals(name)
+        || "GT".equals(name)
+        || "LT".equals(name)
+        || "NE".equals(name)
+        || "EQ".equals(name)
+        || "MINUS".equals(name)
+        || "PLUS".equals(name)) {
+            LOG.debug("term31 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void term311() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("MOD".equals(name)
+            || "DIV".equals(name)
+            || "TIMES".equals(name)) {
+            LOG.debug("term311 ::= multopr factor");
+            multopr();
+            factor();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1330,8 +1459,30 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void factor() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("INTVAL32".equals(name)
+            || "TRUE".equals(name)
+            || "FALSE".equals(name)) {
+            LOG.debug("factor ::= factor1");
+            factor1();
+        } else if("IDENT".equals(name)) {
+                LOG.debug("factor ::= factor2");
+                factor2();
+        } else if("MINUS".equals(name)
+                || "PLUS".equals(name)
+                || "NOT".equals(name)) {
+            LOG.debug("factor ::= factor3");
+            factor3();
+        } else if("OLD".equals(name)) {
+            LOG.debug("factor ::= factor4");
+            factor4();
+        } else if("LPARENT".equals(name)) {
+            LOG.debug("factor ::= factor5");
+            factor5();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1342,8 +1493,33 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void factor2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+//        else if("PRE".equals(name)
+//                || "GLOBAL".equals(name)
+//                || "COMMA".equals(name)
+//                || "RPARENT".equals(name)
+//                || "DO".equals(name)
+//                || "INV".equals(name)
+//                || "THEN".equals(name)
+//                || "ENDWHILE".equals(name)
+//                || "ENDIF".equals(name)
+//                || "ELSE".equals(name)
+//                || "ENDPROC".equals(name)
+//                || "ENDFUN".equals(name)
+//                || "ENDPROGRAM".equals(name)
+//                || "POST".equals(name)
+//                || "SEMI".equals(name)
+//                || "BECOMES".equals(name)
+//                || "COR".equals(name)
+//                || "CAND".equals(name)
+//                || "OR".equals(name)
+//                || "AND".equals(name)
+//                || "GT".equals(name)
+//                || "LT".equals(name)
+//                || "NE".equals(name)
+//                || "EQ".equals(name)
+//                || "MINUS".equals(name)
+//                || "PLUS".equals(name)) {
+//                    LOG.debug("term31 ::= <e>");
     }
 
     @Override
