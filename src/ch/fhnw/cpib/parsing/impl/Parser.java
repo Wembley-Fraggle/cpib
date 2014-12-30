@@ -1225,32 +1225,88 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void cmd1() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LPARENT".equals(name) 
+                || "IDENT".equals(name)
+                || "INTVAL32".equals(name)
+                || "TRUE".equals(name) || "FALSE".equals(name)
+                || "MINUS".equals(name) || "PLUS".equals(name)
+                || "NOT".equals(name)
+                || "OLD".equals(name)) {
+            LOG.debug("cmd1 ::= expr BECOMES expr");
+            expr();
+            consume("BECOMES");
+            expr();
+            cmd1();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void cmd2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("IF".equals(name)) {
+            LOG.debug("cmd2 ::= IF expr THEN cpsCmd ELSE cpsCmd ENDIF");
+            consume(terminal);
+            expr();
+            consume("THEN");
+            cpsCmd();
+            consume("ELSE");
+            cpsCmd();
+            consume("ENDIF");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void cmd3() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("WHILE".equals(name)) {
+            LOG.debug("cmd3 ::= WHILE expr cmd31 DO cpsCmd ENDWHILE");
+            consume(terminal);
+            expr();
+            cmd31();
+            consume("DO");
+            cpsCmd();
+            consume("ENDWHILE");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void cmd31() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("INV".equals(name)) {
+            LOG.debug("cmd31 ::= invariant");
+            invariant();
+        }
+        else if("DO".equals(name)) {
+            LOG.debug("cmd31 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void cmd4() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("CALL".equals(name)) {
+            LOG.debug("cmd4 ::= CALL IDENT exprList cmd41");
+            consume(terminal);
+            consume("IDENT");
+            exprList();
+            cmd41();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
