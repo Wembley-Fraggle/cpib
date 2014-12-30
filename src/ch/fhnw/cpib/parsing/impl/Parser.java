@@ -403,8 +403,17 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void changemode() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("CONST".equals(name)) {
+            LOG.debug("changemode ::= CONST");
+            consume(terminal);
+        } else if("VAR".equals(name)) {
+            LOG.debug("changemode ::= VAR");
+            consume(terminal);
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -960,14 +969,32 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void mechmode() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("COPY".equals(name)) {
+            LOG.debug("mechmode ::= COPY");
+            consume(terminal);
+        } else if("REF".equals(name)) {
+            LOG.debug("mechmode ::= REF");
+            consume(terminal);
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void atomtype() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("BOOL".equals(name)) {
+            LOG.debug("atomtype ::= BOOL");
+           consume(terminal);
+        } else if("INT32".equals(name)) {
+            LOG.debug("atomtype ::= INT32");
+            consume(terminal);
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
