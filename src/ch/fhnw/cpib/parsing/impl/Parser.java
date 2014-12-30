@@ -964,8 +964,23 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void cmd41() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("INIT".equals(name) || "CONST".equals(name)) {
+            LOG.debug("cmd41 ::= globInits");
+            globInits();
+        } else if("ENDWHILE".equals(name)
+                || "ENDIF".equals(name)
+                || "ELSE".equals(name)
+                || "ENDPROC".equals(name)
+                || "ENDFUN".equals(name)
+                || "ENDPROGRAM".equals(name)
+                || "POST".equals(name)
+                || "SEMI".equals(name)) {
+            LOG.debug("cmd41 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
