@@ -638,8 +638,20 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void flowmode() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("IN".equals(name)) {
+            LOG.debug("flowmode ::= IN");
+            consume(terminal);
+        } else if("INOUT".equals(name)) {
+            LOG.debug("flowmode ::= INOUT");
+            consume(terminal);
+        } else if("OUT".equals(name)) {
+            LOG.debug("flowmode ::= OUT");
+            consume(terminal);
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
