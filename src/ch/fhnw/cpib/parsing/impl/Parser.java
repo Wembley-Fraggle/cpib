@@ -1235,8 +1235,26 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void boolopr() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("AND".equals(name)) { 
+            LOG.debug("boolopr ::= AND");
+            consume(terminal);
+        } 
+        else if("OR".equals(name)) { 
+            LOG.debug("relopr ::= OR");
+            consume(terminal);
+        }
+        else if("CAND".equals(name)) { 
+            LOG.debug("relopr ::= CAND");
+            consume(terminal);
+        }
+        if("COR".equals(name)) { 
+            LOG.debug("relopr ::= COR");
+            consume(terminal);
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1315,8 +1333,26 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void relopr() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("EQ".equals(name)) { 
+            LOG.debug("relopr ::= EQ");
+            consume(terminal);
+        } 
+        else if("NE".equals(name)) { 
+            LOG.debug("relopr ::= NE");
+            consume(terminal);
+        }
+        else if("LT".equals(name)) { 
+            LOG.debug("relopr ::= LT");
+            consume(terminal);
+        }
+        if("GT".equals(name)) { 
+            LOG.debug("relopr ::= GT");
+            consume(terminal);
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1395,8 +1431,18 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void addopr() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("PLUS".equals(name)) { 
+            LOG.debug("addopr ::= PLUS");
+            consume(terminal);
+        } 
+        else if("MINUS".equals(name)) { 
+            LOG.debug("addopr ::= MINUS");
+            consume(terminal);
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1460,8 +1506,22 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void multopr() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("TIMES".equals(name)) { 
+            LOG.debug("multopr ::= TIMES");
+            consume(terminal);
+        } 
+        else if("DIV".equals(name)) { 
+            LOG.debug("multopr ::= DIV");
+            consume(terminal);
+        }
+        else if("MOD".equals(name)) { 
+            LOG.debug("multopr ::= MOD");
+            consume(terminal);
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -1839,20 +1899,47 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void precondition() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("PRE".equals(name)) {
+            LOG.debug("precondition ::= PRE IDENT COLON expr");
+            consume(terminal);
+            consume("IDENT");
+            consume("COLON");
+            expr();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void postcondition() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("POST".equals(name)) {
+            LOG.debug("postcondition ::= POST IDENT COLON expr");
+            consume(terminal);
+            consume("IDENT");
+            consume("COLON");
+            expr();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void invariant() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("INV".equals(name)) {
+            LOG.debug("invariant ::= INV IDENT COLON expr");
+            consume(terminal);
+            consume("IDENT");
+            consume("COLON");
+            expr();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
     
     private void handleInvalidToken() throws GrammarError {
