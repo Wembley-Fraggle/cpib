@@ -1920,8 +1920,17 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void literal() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("TRUE".equals(name) || "FALSE".equals(name)) {
+            LOG.debug("literal ::= boolval");
+            boolval();
+        } else if("INTVAL32".equals(name)) {
+            LOG.debug("literal ::= INTVAL32");
+            consume(terminal);
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
