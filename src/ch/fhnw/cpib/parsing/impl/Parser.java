@@ -1326,8 +1326,15 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void cmd5() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("DEBUGIN".equals(name)) {
+            LOG.debug("cmd5 ::= DEBUGIN expr");
+            consume(terminal);
+            expr();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
