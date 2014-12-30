@@ -1789,8 +1789,17 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void boolval() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("FALSE".equals(name)) {
+            LOG.debug("boolval ::= FALSE");
+            consume(terminal);
+        } else if("TRUE".equals(name)) {
+            LOG.debug("boolval ::= TRUE");
+            consume(terminal);
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
