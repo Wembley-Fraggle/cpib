@@ -214,19 +214,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("FUN".equals(name)) {
             LOG.debug("funDecl ::= FUN IDENT paramList RETURNS stoDecl funDecl1 funDecl2 funDecl3 DO cpsCmd funDecl4 ENDFUN");
-            return new FunDecl(
-            consume(terminal),
-            consume("IDENT"),
-            paramList(),
-            consume("RETURNS"),
-            stoDecl(),
-            funDecl1(),
-            funDecl2(),
-            funDecl3(),
-            consume("DO"),
-            cpsCmd(),
-            funDecl4(),
-            consume("ENDFUN"));
+            return new FunDecl(consume(terminal), consume("IDENT"),
+                    paramList(), consume("RETURNS"), stoDecl(), funDecl1(),
+                    funDecl2(), funDecl3(), consume("DO"), cpsCmd(),
+                    funDecl4(), consume("ENDFUN"));
         } else {
             throw createError();
         }
@@ -237,8 +228,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("funDecl1 ::= funDecl11");
-            return new FunDecl1(
-            funDecl11());
+            return new FunDecl1(funDecl11());
         } else if ("DO".equals(name) || "PRE".equals(name)
                 || "LOCAL".equals(name)) {
             LOG.debug("funDecl1 ::= <e>");
@@ -253,9 +243,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("funDecl11 ::= GLOBAL globImps");
-            return new FunDecl11(
-            consume(terminal),
-            globImps());
+            return new FunDecl11(consume(terminal), globImps());
         } else {
             throw createError();
         }
@@ -266,8 +254,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("LOCAL".equals(name)) {
             LOG.debug("funDecl2 ::= funDecl21");
-            return new FunDecl2(
-            funDecl21());
+            return new FunDecl2(funDecl21());
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("funDecl2 ::= <e>");
             return new FunDecl2Eps();
@@ -281,9 +268,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("LOCAL".equals(name)) {
             LOG.debug("funDecl21 ::= LOCAL cpsStoDecl");
-            return new FunDecl21(
-            consume(terminal),
-            cpsStoDecl());
+            return new FunDecl21(consume(terminal), cpsStoDecl());
         } else {
             throw createError();
         }
@@ -294,8 +279,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("PRE".equals(name)) {
             LOG.debug("funDecl3 ::= precondition");
-            return new FunDecl3(
-            precondition());
+            return new FunDecl3(precondition());
         } else if ("DO".equals(name)) {
             LOG.debug("funDecl3 ::= <e>");
             return new FunDecl3Eps();
@@ -309,8 +293,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("POST".equals(name)) {
             LOG.debug("funDecl4 ::= postcondition");
-            return new FunDecl4(
-            postcondition());
+            return new FunDecl4(postcondition());
         } else if ("ENDFUN".equals(name)) {
             LOG.debug("funDecl4 ::= <e>");
             return new FunDecl4Eps();
@@ -324,17 +307,9 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("PROC".equals(name)) {
             LOG.debug("procDecl ::= PROC IDENT paramList procDecl1 procDecl2 procDecl3 DO cpsCmd procDecl4 ENDPROC");
-            return new ProcDecl(
-            consume(terminal),
-            consume("IDENT"),
-            paramList(),
-            procDecl1(),
-            procDecl2(),
-            procDecl3(),
-            consume("DO"),
-            cpsCmd(),
-            procDecl4(),
-            consume("ENDPROC"));
+            return new ProcDecl(consume(terminal), consume("IDENT"),
+                    paramList(), procDecl1(), procDecl2(), procDecl3(),
+                    consume("DO"), cpsCmd(), procDecl4(), consume("ENDPROC"));
         } else {
             throw createError();
         }
@@ -357,12 +332,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("CONST".equals(name)) {
             LOG.debug("changemode ::= CONST");
-            return new ChangemodeConst(
-            consume(terminal));
+            return new ChangemodeConst(consume(terminal));
         } else if ("VAR".equals(name)) {
             LOG.debug("changemode ::= VAR");
-            return new ChangemodeVar(
-            consume(terminal));
+            return new ChangemodeVar(consume(terminal));
         } else {
             throw createError();
         }
@@ -387,9 +360,7 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("globImps ::= globImp globImps1");
-            return new GlobImps(
-            globImp(),
-            globImps1());
+            return new GlobImps(globImp(), globImps1());
         } else {
             throw createError();
         }
@@ -400,9 +371,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("cpsStoDecl ::= stoDecl cpsStoDecl1");
-            return new CpsStoDecl(
-                stoDecl(),
-                cpsStoDecl1());
+            return new CpsStoDecl(stoDecl(), cpsStoDecl1());
         } else {
             throw createError();
         }
@@ -413,8 +382,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("procDecl1 ::= procDecl11");
-            return new ProcDecl1(
-            procDecl11());
+            return new ProcDecl1(procDecl11());
         } else if ("DO".equals(name) || "PRE".equals(name)
                 || "LOCAL".equals(name)) {
             LOG.debug("procDecl1 ::= <e>");
@@ -429,9 +397,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("procDecl11 ::= GLOBAL globImps");
-            return new ProcDecl11(
-            consume(terminal),
-            globImps());
+            return new ProcDecl11(consume(terminal), globImps());
         } else {
             throw createError();
         }
@@ -442,11 +408,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("LOCAL".equals(name)) {
             LOG.debug("procDecl2 ::= procDecl21");
-            return new ProcDecl2(
-            procDecl21());
+            return new ProcDecl2(procDecl21());
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("procDecl2 ::= <e>");
-           return new ProcDecl2Eps();
+            return new ProcDecl2Eps();
         } else {
             throw createError();
         }
@@ -457,9 +422,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("LOCAL".equals(name)) {
             LOG.debug("procDecl21 ::= LOCAL cpsStoDecl");
-            return new ProcDecl21(
-            consume(terminal),
-            cpsStoDecl());
+            return new ProcDecl21(consume(terminal), cpsStoDecl());
         } else {
             throw createError();
         }
@@ -484,8 +447,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("POST".equals(name)) {
             LOG.debug("procDecl4 ::= postcondition");
-            return new ProcDelc4(
-            postcondition());
+            return new ProcDelc4(postcondition());
         } else if ("ENDPROC".equals(name)) {
             LOG.debug("procDecl4 ::= <e>");
             return new ProcDecl4Eps();
@@ -501,10 +463,7 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("globImp ::= globImp1 globImp2 IDENT");
-            return new GlobImp(
-            globImp1(),
-            globImp2(),
-            consume("IDENT"));
+            return new GlobImp(globImp1(), globImp2(), consume("IDENT"));
         } else {
             throw createError();
         }
@@ -515,9 +474,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("globImps1 ::= globImps2 globImps1");
-            return new GlobImps1(
-            globImps2(),
-            globImps1());
+            return new GlobImps1(globImps2(), globImps1());
         } else if ("DO".equals(name) || "PRE".equals(name)
                 || "LOCAL".equals(name)) {
             LOG.debug("globImps1 ::= <e>");
@@ -574,16 +531,13 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("IN".equals(name)) {
             LOG.debug("flowmode ::= IN");
-            return new FlowmodeIn(
-            consume(terminal));
+            return new FlowmodeIn(consume(terminal));
         } else if ("INOUT".equals(name)) {
             LOG.debug("flowmode ::= INOUT");
-            return new FlowmodeInOut(
-            consume(terminal));
+            return new FlowmodeInOut(consume(terminal));
         } else if ("OUT".equals(name)) {
             LOG.debug("flowmode ::= OUT");
-            return new FlowmodeOut(
-            consume(terminal));
+            return new FlowmodeOut(consume(terminal));
         } else {
             throw createError();
         }
@@ -611,9 +565,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsDecl1 ::= cpsDecl2 cpsDecl1");
-            return new CpsDecl1(
-            cpsDecl2(),
-            cpsDecl1());
+            return new CpsDecl1(cpsDecl2(), cpsDecl1());
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("cpsDecl1 ::= <e>");
             return new CpsDeclEps();
@@ -627,9 +579,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsDecl2 ::= SEMI decl");
-            return new CpsDecl2(
-            consume(terminal),
-            decl());
+            return new CpsDecl2(consume(terminal), decl());
         } else {
             throw createError();
         }
@@ -640,9 +590,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsStoDecl1 ::= cpsStoDecl2 cpsStoDecl1");
-            return new CpsStoDecl1(
-            cpsStoDecl2(),
-            cpsStoDecl1());
+            return new CpsStoDecl1(cpsStoDecl2(), cpsStoDecl1());
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("cpsStoDecl1 ::= <e>");
             return new CpsStoDecl1Eps();
@@ -656,9 +604,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsStoDecl2 ::= SEMI stoDecl");
-            return new CpsStoDecl2(
-            consume(terminal),
-            stoDecl());
+            return new CpsStoDecl2(consume(terminal), stoDecl());
         } else {
             throw createError();
         }
@@ -671,8 +617,7 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("progParamList1 ::= progParamList2");
-            return new ProgParamList1(
-            progParamList2());
+            return new ProgParamList1(progParamList2());
         } else if ("RPARENT".equals(name)) {
             LOG.debug("progParamList1 ::= <e>");
             return new ProgParamList1Eps();
@@ -701,10 +646,7 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("progParam ::= progParam1 progParam2 typedIdent");
-            return new ProgParam(
-            progParam1(),
-            progParam2(),
-            typedIdent());
+            return new ProgParam(progParam1(), progParam2(), typedIdent());
         } else {
             throw createError();
         }
@@ -715,9 +657,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("progParamList3 ::= progParamList4 progParamList3");
-            return new ProgParamList3(
-            progParam(),
-            progParamList3());
+            return new ProgParamList3(progParam(), progParamList3());
         } else if ("RPARENT".equals(name)) {
             LOG.debug("progParamList3 ::= <e>");
             return new ProgParamList3Eps();
@@ -731,9 +671,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("progParamList4 ::= COMMA progParam");
-            return new ProgParamList4(
-            consume(terminal),
-            progParam());
+            return new ProgParamList4(consume(terminal), progParam());
         } else {
             throw createError();
         }
@@ -744,8 +682,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
             LOG.debug("progParam1 ::= flowmode");
-            return new ProgParam1(
-            flowmode());
+            return new ProgParam1(flowmode());
         } else if ("IDENT".equals(name) || "VAR".equals(name)
                 || "CONST".equals(name)) {
             LOG.debug("progParam1 ::= <e>");
@@ -760,8 +697,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("progParam2 ::= changemode");
-            return new ProgParam2(
-            changemode());
+            return new ProgParam2(changemode());
         } else if ("IDENT".equals(name)) {
             LOG.debug("progParam2 ::= <e>");
             return new ProgParam2Eps();
@@ -778,8 +714,7 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("paramList1 ::= paramList2");
-            return new ParamList1(
-                    paramList2());
+            return new ParamList1(paramList2());
         } else if ("RPARENT".equals(name)) {
             LOG.debug("paramList1 ::= <e>");
             return new ParamList1Eps();
@@ -846,8 +781,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
             LOG.debug("param1 ::= flowmode");
-            return new Param1(
-            flowmode());
+            return new Param1(flowmode());
         } else if ("IDENT".equals(name) || "VAR".equals(name)
                 || "CONST".equals(name) || "REF".equals(name)
                 || "COPY".equals(name)) {
@@ -935,10 +869,8 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("LPARENT".equals(name)) {
             LOG.debug("exprList ::= LPARENT exprList1 RPARENT");
-            return new ExprList(
-            consume(terminal),
-            exprList1(),
-            consume("RPARENT"));
+            return new ExprList(consume(terminal), exprList1(),
+                    consume("RPARENT"));
         } else {
             throw createError();
         }
@@ -949,8 +881,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("INIT".equals(name) || "CONST".equals(name)) {
             LOG.debug("cmd41 ::= globInits");
-            return new Cmd41(
-            globInits());
+            return new Cmd41(globInits());
         } else if ("ENDWHILE".equals(name) || "ENDIF".equals(name)
                 || "ELSE".equals(name) || "ENDPROC".equals(name)
                 || "ENDFUN".equals(name) || "ENDPROGRAM".equals(name)
@@ -967,9 +898,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("INIT".equals(name)) {
             LOG.debug("globInits ::= INIT idents");
-            return new GlobInits(
-            consume(terminal),
-            idents());
+            return new GlobInits(consume(terminal), idents());
         } else {
             throw createError();
         }
@@ -997,9 +926,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsCmd2 ::= SEMI cmd");
-            return new CpsCmd2(
-            consume(terminal),
-            cmd());
+            return new CpsCmd2(consume(terminal), cmd());
         } else {
             throw createError();
         }
@@ -1010,40 +937,32 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("SKIP".equals(name)) {
             LOG.debug("cmd ::= SKIP");
-            consume(terminal);
-            return null; // TODO
+            return new CmdSkip(consume(terminal));
         } else if ("LPARENT".equals(name) || "OLD".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)
                 || "NOT".equals(name) || "IDENT".equals(name)
                 || "INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
             LOG.debug("cmd ::= cmd1");
-            cmd1();
-            return null; // TODO
+            return new CmdCmd1(cmd1());
         } else if ("IF".equals(name)) {
             LOG.debug("cmd ::= cmd2");
-            cmd2();
-            return null; // TODO
+            return new CmdIf(cmd2());
         } else if ("WHILE".equals(name)) {
             LOG.debug("cmd ::= cmd3");
-            cmd3();
-            return null; // TODO
+            return new CmdWhile(cmd3());
         } else if ("CALL".equals(name)) {
             LOG.debug("cmd ::= cmd4");
-            cmd4();
-            return null; // TODO
+            return new CmdCall(cmd4());
         } else if ("DEBUGIN".equals(name)) {
             LOG.debug("cmd ::= cmd5");
-            cmd5();
-            return null; // TODO
+            return new CmdDebugIn(cmd5());
         } else if ("DEBUGOUT".equals(name)) {
             LOG.debug("cmd ::= cmd6");
-            cmd6();
-            return null; // TODO
+            return new CmdDebougOut(cmd6());
         } else if ("ASSERT".equals(name)) {
             LOG.debug("cmd ::= cmd7");
-            cmd7();
-            return null; // TODO
+            return new CmdAssert(cmd7());
         } else {
             throw createError();
         }
@@ -1424,7 +1343,7 @@ public class Parser implements IParser, IConcSyn {
         if ("INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
             LOG.debug("factor1 ::= literal");
-            ILiteral literal =  literal();
+            ILiteral literal = literal();
             return new Factor1(literal);
         } else {
             throw createError();
@@ -1754,7 +1673,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("TRUE".equals(name) || "FALSE".equals(name)) {
             LOG.debug("literal ::= boolval");
-            IBoolVal boolVal =  boolval();
+            IBoolVal boolVal = boolval();
             return new LiteralBool(boolVal);
         } else if ("INTVAL32".equals(name)) {
             LOG.debug("literal ::= INTVAL32");
@@ -1773,7 +1692,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             String ident = consume("IDENT").getValue();
             consume("COLON");
-            IExpr expr =  expr();
+            IExpr expr = expr();
             return new Precondition(ident, expr);
         } else {
             throw createError();
@@ -1803,14 +1722,14 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             String ident = consume("IDENT").getValue();
             consume("COLON");
-            IExpr expr = (IExpr)expr();
+            IExpr expr = (IExpr) expr();
             return new Invariant(ident, expr);
         } else {
             throw createError();
         }
     }
-    
-    private GrammarError createError(){
+
+    private GrammarError createError() {
         String errorMsg = "Unexpected token " + token.getType().getName()
                 + " at position" + token.getStart();
         LOG.error(errorMsg);
