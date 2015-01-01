@@ -906,12 +906,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("BOOL".equals(name)) {
             LOG.debug("atomtype ::= BOOL");
-            consume(terminal);
-            return null; // TODO
+            return new AtomtypeBool(consume(terminal));
         } else if ("INT32".equals(name)) {
             LOG.debug("atomtype ::= INT32");
-            consume(terminal);
-            return null; // TODO
+            return new AtomtypeInt32(consume(terminal));
         } else {
             throw createError();
         }
@@ -926,9 +924,7 @@ public class Parser implements IParser, IConcSyn {
                 || "INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
             LOG.debug("expr ::= term1 expr1");
-            term1();
-            expr1();
-            return null; // TODO
+            return new Expr(term1(), expr1());
         } else {
             throw createError();
         }
