@@ -545,12 +545,11 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
             LOG.debug("globImp1 ::= flowmode");
-            flowmode();
-            return null; // TODO
+            return new GlobImp1(flowmode());
         } else if ("IDENT".equals("IDENT") || "VAR".equals("IDENT")
                 || "CONST".equals("IDENT")) {
             LOG.debug("globImp1 ::= <e>");
-            return null; // TODO
+            return new GlobImp1Eps();
         } else {
             throw createError();
         }
