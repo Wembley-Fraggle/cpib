@@ -400,9 +400,9 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("cpsStoDecl ::= stoDecl cpsStoDecl1");
-            stoDecl();
-            cpsStoDecl1();
-            return null; // TODO
+            return new CpsStoDecl(
+                stoDecl(),
+                cpsStoDecl1());
         } else {
             throw createError();
         }
@@ -413,12 +413,12 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("procDecl1 ::= procDecl11");
-            procDecl11();
-            return null; // TODO
+            return new ProcDecl1(
+            procDecl11());
         } else if ("DO".equals(name) || "PRE".equals(name)
                 || "LOCAL".equals(name)) {
             LOG.debug("procDecl1 ::= <e>");
-            return null; // TODO
+            return new ProcDecl1Eps();
         } else {
             throw createError();
         }

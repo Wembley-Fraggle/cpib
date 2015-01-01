@@ -1,0 +1,16 @@
+package ch.fhnw.cpib.parsing.impl;
+
+import ch.fhnw.cpib.parsing.ICpsStoDecl;
+import ch.fhnw.cpib.parsing.ICpsStoDecl1;
+import ch.fhnw.cpib.parsing.IStoDecl;
+
+public class CpsStoDecl implements ICpsStoDecl {
+
+    private IStoDecl stoDecl;
+    private ICpsStoDecl1 cpsStoDecl1;
+    public CpsStoDecl(IStoDecl stoDecl, ICpsStoDecl1 cpsStoDecl1) {
+       this.stoDecl = stoDecl;
+       this.cpsStoDecl1 = cpsStoDecl1;
+    }
+
+}
