@@ -640,12 +640,12 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsStoDecl1 ::= cpsStoDecl2 cpsStoDecl1");
-            cpsStoDecl2();
-            cpsStoDecl1();
-            return null; // TODO
+            return new CpsStoDecl1(
+            cpsStoDecl2(),
+            cpsStoDecl1());
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("cpsStoDecl1 ::= <e>");
-            return null; // TODO
+            return new CpsStoDecl1Eps();
         } else {
             throw createError();
         }
