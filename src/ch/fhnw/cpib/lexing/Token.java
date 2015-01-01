@@ -5,14 +5,14 @@ public class Token implements IToken{
 
     private ITerminal type;
     private IPosition start;
-    private CharSequence value;
+    private String value;
 
-    public Token(ITerminal type,CharSequence value) {
+    public Token(ITerminal type,String value) {
         this.type = type;
         this.value = value;
     }
     
-    public Token(ITerminal type,IPosition start, CharSequence value) {
+    public Token(ITerminal type,IPosition start, String value) {
         this.type = type;
         this.start = start;
         this.value = value;
@@ -39,7 +39,7 @@ public class Token implements IToken{
 
 
     @Override
-    public CharSequence getValue() {
+    public String getValue() {
         return this.value;
     }
 

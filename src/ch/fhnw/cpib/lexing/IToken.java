@@ -31,7 +31,7 @@ public interface IToken {
 	 * 
 	 * @return the token
 	 */
-	CharSequence getValue();
+	String getValue();
 	
 	// TODO 
 	ITerminal getType();

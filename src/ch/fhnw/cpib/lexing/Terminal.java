@@ -61,7 +61,7 @@ public class Terminal implements ITerminal {
                 CharSequence text = context.getTextFromCurrentPosition();
                 IPosition start = context.getCurrentPosition();
                 CharSequence value = text.subSequence(0, count);
-                Token t = new Token(this, start, value);
+                Token t = new Token(this, start, value.toString());
                 context.addToken(t);
             }
             context.movePosition(count);
