@@ -892,12 +892,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("COPY".equals(name)) {
             LOG.debug("mechmode ::= COPY");
-            consume(terminal);
-            return null; // TODO
+            return new MechmodeCopy(consume(terminal));
         } else if ("REF".equals(name)) {
             LOG.debug("mechmode ::= REF");
-            consume(terminal);
-            return null; // TODO
+            return new MechmodeRef(consume(terminal));
         } else {
             throw createError();
         }
