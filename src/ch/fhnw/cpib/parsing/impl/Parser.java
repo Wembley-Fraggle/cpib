@@ -935,10 +935,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("LPARENT".equals(name)) {
             LOG.debug("exprList ::= LPARENT exprList1 RPARENT");
-            consume(terminal);
-            exprList1();
-            consume("RPARENT");
-            return null; // TODO
+            return new ExprList(
+            consume(terminal),
+            exprList1(),
+            consume("RPARENT"));
         } else {
             throw createError();
         }
