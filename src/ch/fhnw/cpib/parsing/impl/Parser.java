@@ -979,25 +979,25 @@ public class Parser implements IParser, IConcSyn {
                 || "NOT".equals(name) || "IDENT".equals(name)
                 || "INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
-            LOG.debug("cmd ::= <cmd1>");
+            LOG.debug("cmd ::= cmd1");
             cmd1();
         } else if ("IF".equals(name)) {
-            LOG.debug("cmd ::= <cmd2>");
+            LOG.debug("cmd ::= cmd2");
             cmd2();
         } else if ("WHILE".equals(name)) {
-            LOG.debug("cmd ::= <cmd3>");
+            LOG.debug("cmd ::= cmd3");
             cmd3();
         } else if ("CALL".equals(name)) {
-            LOG.debug("cmd ::= <cmd4>");
+            LOG.debug("cmd ::= cmd4");
             cmd4();
         } else if ("DEBUGIN".equals(name)) {
-            LOG.debug("cmd ::= <cmd5>");
+            LOG.debug("cmd ::= cmd5");
             cmd5();
         } else if ("DEBUGOUT".equals(name)) {
-            LOG.debug("cmd ::= <cmd6>");
+            LOG.debug("cmd ::= cmd6");
             cmd6();
         } else if ("ASSERT".equals(name)) {
-            LOG.debug("cmd ::= <cmd7>");
+            LOG.debug("cmd ::= cmd7");
             cmd7();
         } else {
             throw createError();
