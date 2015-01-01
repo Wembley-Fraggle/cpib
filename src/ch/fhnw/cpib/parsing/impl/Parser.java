@@ -611,12 +611,12 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsDecl1 ::= cpsDecl2 cpsDecl1");
-            cpsDecl2();
-            cpsDecl1();
-            return null; // TODO
+            return new CpsDecl1(
+            cpsDecl2(),
+            cpsDecl1());
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("cpsDecl1 ::= <e>");
-            return null; // TODO
+            return new CpsDeclEps();
         } else {
             throw createError();
         }
