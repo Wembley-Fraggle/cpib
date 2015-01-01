@@ -357,12 +357,12 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("CONST".equals(name)) {
             LOG.debug("changemode ::= CONST");
-            consume(terminal);
-            return null; // TODO
+            return new ChangemodeConst(
+            consume(terminal));
         } else if ("VAR".equals(name)) {
             LOG.debug("changemode ::= VAR");
-            consume(terminal);
-            return null; // TODO
+            return new ChangemodeVar(
+            consume(terminal));
         } else {
             throw createError();
         }
