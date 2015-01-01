@@ -470,11 +470,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("PRE".equals(name)) {
             LOG.debug("procDecl3 ::= precondition");
-            precondition();
-            return null; // TODO
+            return new ProcDecl3(precondition());
         } else if ("DO".equals(name)) {
             LOG.debug("procDecl3 ::= <e>");
-            return null; // TODO
+            return new ProcDecl3Eps();
         } else {
             throw createError();
         }
