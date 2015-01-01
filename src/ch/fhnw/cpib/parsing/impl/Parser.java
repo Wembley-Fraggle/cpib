@@ -13,6 +13,7 @@ import ch.fhnw.cpib.parsing.IBoolVal;
 import ch.fhnw.cpib.parsing.IConcSyn;
 import ch.fhnw.cpib.parsing.IExpr;
 import ch.fhnw.cpib.parsing.IInvariant;
+import ch.fhnw.cpib.parsing.ILiteral;
 import ch.fhnw.cpib.parsing.IParser;
 import ch.fhnw.cpib.parsing.IPostcondition;
 import ch.fhnw.cpib.parsing.IPrecondition;
@@ -1640,14 +1641,16 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void literal() throws GrammarError {
+    public ILiteral literal() throws GrammarError {
         String name = terminal.getName();
         if ("TRUE".equals(name) || "FALSE".equals(name)) {
             LOG.debug("literal ::= boolval");
-            boolval();
+            IBoolVal boolVal =  boolval();
+            return new LiteralBool(boolVal);
         } else if ("INTVAL32".equals(name)) {
             LOG.debug("literal ::= INTVAL32");
-            consume(terminal);
+            String intVal32 = consume(terminal).getValue();
+            return new LiteralInt32(Integer.valueOf(intVal32));
         } else {
             throw createError();
         }
