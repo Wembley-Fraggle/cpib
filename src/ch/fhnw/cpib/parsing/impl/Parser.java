@@ -387,9 +387,9 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("globImps ::= globImp globImps1");
-            globImp();
-            globImps1();
-            return null; // TODO
+            return new GlobImps(
+            globImp(),
+            globImps1());
         } else {
             throw createError();
         }
