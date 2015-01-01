@@ -1031,9 +1031,7 @@ public class Parser implements IParser, IConcSyn {
         if ("COR".equals(name) || "CAND".equals(name) || "OR".equals(name)
                 || "AND".equals(name)) {
             LOG.debug("expr1 ::= expr2 expr1");
-            expr2();
-            expr1();
-            return null; // TODO
+            return new Expr1(expr2(), expr1());
         } else if ("PRE".equals(name) || "GLOBAL".equals(name)
                 || "COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
@@ -1043,7 +1041,7 @@ public class Parser implements IParser, IConcSyn {
                 || "ENDPROGRAM".equals(name) || "POST".equals(name)
                 || "SEMI".equals(name) || "BECOMES".equals(name)) {
             LOG.debug("expr1 ::= <e>");
-            return null; // TODO
+            return new Expr1Eps();
         } else {
             throw createError();
         }
