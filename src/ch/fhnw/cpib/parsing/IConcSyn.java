@@ -87,7 +87,7 @@ public interface IConcSyn {
     void term311() throws GrammarError;
     void multopr() throws GrammarError;
     void factor() throws GrammarError;
-    void factor1() throws GrammarError;
+    IFactor1 factor1() throws GrammarError;
     void factor2() throws GrammarError;
     void factor21() throws GrammarError;
     void factor211() throws GrammarError;

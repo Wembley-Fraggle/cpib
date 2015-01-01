@@ -12,6 +12,7 @@ import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IBoolVal;
 import ch.fhnw.cpib.parsing.IConcSyn;
 import ch.fhnw.cpib.parsing.IExpr;
+import ch.fhnw.cpib.parsing.IFactor1;
 import ch.fhnw.cpib.parsing.IInvariant;
 import ch.fhnw.cpib.parsing.ILiteral;
 import ch.fhnw.cpib.parsing.IParser;
@@ -1336,12 +1337,13 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void factor1() throws GrammarError {
+    public IFactor1 factor1() throws GrammarError {
         String name = terminal.getName();
         if ("INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
             LOG.debug("factor1 ::= literal");
-            literal();
+            ILiteral literal =  literal();
+            return new Factor1(literal);
         } else {
             throw createError();
         }
