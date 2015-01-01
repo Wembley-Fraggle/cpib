@@ -1003,9 +1003,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("idents2 ::= COMMA IDENT");
-            consume(terminal);
-            consume("IDENT");
-            return null; // TODO
+            return new Idents2(consume(terminal), consume("IDENT"));
         } else {
             throw createError();
         }
