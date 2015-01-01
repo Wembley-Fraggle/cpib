@@ -14,6 +14,7 @@ import ch.fhnw.cpib.parsing.IExpr;
 import ch.fhnw.cpib.parsing.IIdent;
 import ch.fhnw.cpib.parsing.IInvariant;
 import ch.fhnw.cpib.parsing.IParser;
+import ch.fhnw.cpib.parsing.IPostcondition;
 
 public class Parser implements IParser, IConcSyn {
 
@@ -1664,14 +1665,15 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void postcondition() throws GrammarError {
+    public IPostcondition postcondition() throws GrammarError {
         String name = terminal.getName();
         if ("POST".equals(name)) {
             LOG.debug("postcondition ::= POST IDENT COLON expr");
             consume(terminal);
-            consume("IDENT");
+            String ident = consume("IDENT").getValue();
             consume("COLON");
-            expr();
+            IExpr expr = expr();
+            return new Postcondition(ident, expr);
         } else {
             throw createError();
         }
