@@ -878,11 +878,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("param3 ::= changemode");
-            changemode();
-            return null; // TODO
+            return new Param3(changemode());
         } else if ("IDENT".equals(name)) {
             LOG.debug("param3 ::= <e>");
-            return null; // TODO
+            return new Param3Eps();
         } else {
             throw createError();
         }
