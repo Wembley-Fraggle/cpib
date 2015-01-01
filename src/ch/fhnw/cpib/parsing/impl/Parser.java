@@ -701,10 +701,10 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("progParam ::= progParam1 progParam2 typedIdent");
-            progParam1();
-            progParam2();
-            typedIdent();
-            return null; // TODO
+            return new ProgParam(
+            progParam1(),
+            progParam2(),
+            typedIdent());
         } else {
             throw createError();
         }
