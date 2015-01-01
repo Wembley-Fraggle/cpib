@@ -457,9 +457,9 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("LOCAL".equals(name)) {
             LOG.debug("procDecl21 ::= LOCAL cpsStoDecl");
-            consume(terminal);
-            cpsStoDecl();
-            return null; // TODO
+            return new ProcDecl21(
+            consume(terminal),
+            cpsStoDecl());
         } else {
             throw createError();
         }
