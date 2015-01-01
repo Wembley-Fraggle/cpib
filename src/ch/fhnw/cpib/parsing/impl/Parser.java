@@ -1342,8 +1342,8 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("LPARENT".equals(name) || "INIT".equals(name)) {
             LOG.debug("factor21 ::= factor211");
-            factor211();
-            return null; // TODO
+            return new Factor21(
+            factor211());
         } else if ("PRE".equals(name) || "GLOBAL".equals(name)
                 || "COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
@@ -1359,7 +1359,7 @@ public class Parser implements IParser, IConcSyn {
                 || "MOD".equals(name) || "DIV".equals(name)
                 || "TIMES".equals(name)) {
             LOG.debug("factor21 ::= <e>");
-            return null; // TODO
+            return new Factor21Eps();
         } else {
             throw createError();
         }
@@ -1370,12 +1370,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("INIT".equals(name)) {
             LOG.debug("factor211 ::= INIT");
-            consume(terminal);
-            return null; // TODO
+            return new Factor211Init(consume(terminal));
         } else if ("LPARENT".equals(name)) {
             LOG.debug("factor211 ::= exprList");
-            exprList();
-            return null; // TODO
+            return new Factor211ExprList(exprList());
         } else {
             throw createError();
         }
