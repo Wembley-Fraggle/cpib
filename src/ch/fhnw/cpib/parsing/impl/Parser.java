@@ -324,17 +324,17 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("PROC".equals(name)) {
             LOG.debug("procDecl ::= PROC IDENT paramList procDecl1 procDecl2 procDecl3 DO cpsCmd procDecl4 ENDPROC");
-            consume(terminal);
-            consume("IDENT");
-            paramList();
-            procDecl1();
-            procDecl2();
-            procDecl3();
-            consume("DO");
-            cpsCmd();
-            procDecl4();
-            consume("ENDPROC");
-            return null; // TODO
+            return new ProcDecl(
+            consume(terminal),
+            consume("IDENT"),
+            paramList(),
+            procDecl1(),
+            procDecl2(),
+            procDecl3(),
+            consume("DO"),
+            cpsCmd(),
+            procDecl4(),
+            consume("ENDPROC"));
         } else {
             throw createError();
         }
