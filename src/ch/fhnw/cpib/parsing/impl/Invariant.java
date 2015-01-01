@@ -9,6 +9,7 @@ public class Invariant implements IInvariant{
     private IExpr expr;
     
     public Invariant(IIdent ident,IExpr expr) {
-     // TODO Auto-generated method stub
+        this.ident = ident;
+        this.expr = expr;
     }
 }
