@@ -824,11 +824,7 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("param ::= param1 param2 param3 typedIdent");
-            param1();
-            param2();
-            param3();
-            typedIdent();
-            return null; // TODO
+            return new Param(param1(), param2(), param3(), typedIdent());
         } else {
             throw createError();
         }
@@ -839,9 +835,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("paramList4 ::= COMMA param");
-            consume(terminal);
-            param();
-            return null; // TODO
+            return new ParamList4(consume(terminal), param());
         } else {
             throw createError();
         }
