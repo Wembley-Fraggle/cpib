@@ -90,11 +90,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("program2 ::= program21");
-            program21();
-            return null; // TODO
+            return new Program2(program21());
         } else if ("DO".equals(name) || "GLOBAL".equals(name)) {
             LOG.debug("program2 ::= <e>");
-            return null; // TODO
+            return new Program2Eps();
         } else {
             throw createError();
         }
