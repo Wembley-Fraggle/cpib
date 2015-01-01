@@ -1263,9 +1263,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("MOD".equals(name) || "DIV".equals(name) || "TIMES".equals(name)) {
             LOG.debug("term311 ::= multopr factor");
-            multopr();
-            factor();
-            return null; // TODO
+            return new Term311(multopr(), factor());
         } else {
             throw createError();
         }
