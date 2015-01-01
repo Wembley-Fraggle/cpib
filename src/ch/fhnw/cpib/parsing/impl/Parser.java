@@ -266,11 +266,11 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("LOCAL".equals(name)) {
             LOG.debug("funDecl2 ::= funDecl21");
-            funDecl21();
-            return null; // TODO
+            return new FunDecl2(
+            funDecl21());
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("funDecl2 ::= <e>");
-            return null; // TODO
+            return new FunDecl2Eps();
         } else {
             throw createError();
         }
