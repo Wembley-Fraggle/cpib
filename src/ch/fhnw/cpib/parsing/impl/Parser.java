@@ -75,16 +75,14 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("INV".equals(name)) {
             LOG.debug("program1 ::= invariant");
-            invariant();
-            return null; // TODO
+            return new Program1(invariant());
         } else if ("DO".equals(name) || "PRE".equals(name)
                 || "GLOBAL".equals(name)) {
             LOG.debug("program1 ::= <e>");
-            return null; // TODO
+            return new Program1Eps();
         } else {
             throw createError();
         }
-
     }
 
     @Override
