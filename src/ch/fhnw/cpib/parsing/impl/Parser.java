@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import ch.fhnw.cpib.errors.GrammarError;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
+import ch.fhnw.cpib.parsing.IBoolVal;
 import ch.fhnw.cpib.parsing.IConcSyn;
 import ch.fhnw.cpib.parsing.IExpr;
 import ch.fhnw.cpib.parsing.IInvariant;
@@ -1510,14 +1511,16 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void boolval() throws GrammarError {
+    public IBoolVal boolval() throws GrammarError {
         String name = terminal.getName();
         if ("FALSE".equals(name)) {
             LOG.debug("boolval ::= FALSE");
             consume(terminal);
+            return new BoolVal(false);
         } else if ("TRUE".equals(name)) {
             LOG.debug("boolval ::= TRUE");
             consume(terminal);
+            return new BoolVal(true);
         } else {
             throw createError();
         }

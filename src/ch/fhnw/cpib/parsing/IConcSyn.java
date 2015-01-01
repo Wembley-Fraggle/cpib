@@ -99,7 +99,7 @@ public interface IConcSyn {
     void exprList2() throws GrammarError;
     void exprList3() throws GrammarError;
     void exprList4() throws GrammarError;
-    void boolval() throws GrammarError;
+    IBoolVal boolval() throws GrammarError;
     void cmd1() throws GrammarError;
     void cmd2() throws GrammarError;
     void cmd3() throws GrammarError;
