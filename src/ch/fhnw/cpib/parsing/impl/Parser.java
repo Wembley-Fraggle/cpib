@@ -1172,9 +1172,9 @@ public class Parser implements IParser, IConcSyn {
                 || "INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
             LOG.debug("term3 ::= factor term31");
-            factor();
-            term31();
-            return null; // TODO
+            return new Term3(
+            factor(),
+            term31());
         } else {
             throw createError();
         }
