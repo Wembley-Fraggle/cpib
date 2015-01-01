@@ -309,11 +309,11 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("POST".equals(name)) {
             LOG.debug("funDecl4 ::= postcondition");
-            postcondition();
-            return null; // TODO
+            return new FunDecl4(
+            postcondition());
         } else if ("ENDFUN".equals(name)) {
             LOG.debug("funDecl4 ::= <e>");
-            return null; // TODO
+            return new FunDecl4Eps();
         } else {
             throw createError();
         }
