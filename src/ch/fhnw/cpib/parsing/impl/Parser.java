@@ -429,9 +429,9 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("procDecl11 ::= GLOBAL globImps");
-            consume(terminal);
-            globImps();
-            return null; // TODO
+            return new ProcDecl11(
+            consume(terminal),
+            globImps());
         } else {
             throw createError();
         }
