@@ -61,7 +61,7 @@ public interface IConcSyn {
     void param3() throws GrammarError;
     void mechmode() throws GrammarError;
     void atomtype() throws GrammarError;
-    void expr() throws GrammarError;
+    IExpr expr() throws GrammarError;
     void exprList() throws GrammarError;
     void cmd41() throws GrammarError;
     void globInits() throws GrammarError;
@@ -111,5 +111,5 @@ public interface IConcSyn {
     void literal() throws GrammarError;
     void precondition() throws GrammarError;
     void postcondition() throws GrammarError;
-    void invariant() throws GrammarError;
+    IInvariant invariant() throws GrammarError;
 }

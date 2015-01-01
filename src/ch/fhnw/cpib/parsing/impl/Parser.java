@@ -10,6 +10,9 @@ import ch.fhnw.cpib.errors.GrammarError;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IConcSyn;
+import ch.fhnw.cpib.parsing.IExpr;
+import ch.fhnw.cpib.parsing.IIdent;
+import ch.fhnw.cpib.parsing.IInvariant;
 import ch.fhnw.cpib.parsing.IParser;
 
 public class Parser implements IParser, IConcSyn {
@@ -74,7 +77,7 @@ public class Parser implements IParser, IConcSyn {
             program4();
             consume("ENDPROGRAM");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -88,7 +91,7 @@ public class Parser implements IParser, IConcSyn {
                 || "GLOBAL".equals(name)) {
             LOG.debug("program1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
 
     }
@@ -102,7 +105,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("DO".equals(name) || "GLOBAL".equals(name)) {
             LOG.debug("program2 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -114,7 +117,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             cpsDecl();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -127,7 +130,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("DO".equals(name)) {
             LOG.debug("program3 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -140,7 +143,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("ENDPROGRAM".equals(name)) {
             LOG.debug("program4 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -153,7 +156,7 @@ public class Parser implements IParser, IConcSyn {
             progParamList1();
             consume("RPARENT");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -172,7 +175,7 @@ public class Parser implements IParser, IConcSyn {
             cmd();
             cpsCmd1();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -185,7 +188,7 @@ public class Parser implements IParser, IConcSyn {
             decl();
             cpsDecl1();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -197,7 +200,7 @@ public class Parser implements IParser, IConcSyn {
             stoDecl1();
             typedIdent();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -210,7 +213,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("IDENT".equals(name)) {
             LOG.debug("stoDecl1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -232,7 +235,7 @@ public class Parser implements IParser, IConcSyn {
             funDecl4();
             consume("ENDFUN");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -246,7 +249,7 @@ public class Parser implements IParser, IConcSyn {
                 || "LOCAL".equals(name)) {
             LOG.debug("funDecl1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -258,7 +261,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             globImps();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -271,7 +274,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("funDecl2 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -283,7 +286,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             cpsStoDecl();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -296,7 +299,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("DO".equals(name)) {
             LOG.debug("funDecl3 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -309,7 +312,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("ENDFUN".equals(name)) {
             LOG.debug("funDecl4 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -329,7 +332,7 @@ public class Parser implements IParser, IConcSyn {
             procDecl4();
             consume("ENDPROC");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -342,7 +345,7 @@ public class Parser implements IParser, IConcSyn {
             consume("COLON");
             atomtype();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -356,7 +359,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("changemode ::= VAR");
             consume(terminal);
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -369,7 +372,7 @@ public class Parser implements IParser, IConcSyn {
             paramList1();
             consume("RPARENT");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -383,7 +386,7 @@ public class Parser implements IParser, IConcSyn {
             globImp();
             globImps1();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -395,7 +398,7 @@ public class Parser implements IParser, IConcSyn {
             stoDecl();
             cpsStoDecl1();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -409,7 +412,7 @@ public class Parser implements IParser, IConcSyn {
                 || "LOCAL".equals(name)) {
             LOG.debug("procDecl1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -421,7 +424,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             globImps();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -434,7 +437,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("procDecl2 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -446,7 +449,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             cpsStoDecl();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -459,7 +462,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("DO".equals(name)) {
             LOG.debug("procDecl3 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -472,7 +475,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("ENDPROC".equals(name)) {
             LOG.debug("procDecl4 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -487,7 +490,7 @@ public class Parser implements IParser, IConcSyn {
             globImp2();
             consume("IDENT");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -502,7 +505,7 @@ public class Parser implements IParser, IConcSyn {
                 || "LOCAL".equals(name)) {
             LOG.debug("globImps1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -514,7 +517,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             globImp();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -528,7 +531,7 @@ public class Parser implements IParser, IConcSyn {
                 || "CONST".equals("IDENT")) {
             LOG.debug("globImp1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -542,7 +545,7 @@ public class Parser implements IParser, IConcSyn {
         if ("IDENT".equals(name)) {
             LOG.debug("globImp2 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -559,7 +562,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("flowmode ::= OUT");
             consume(terminal);
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -576,7 +579,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("decl ::= procDecl");
             procDecl();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
 
     }
@@ -591,7 +594,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("cpsDecl1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -603,7 +606,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             decl();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -617,7 +620,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("cpsStoDecl1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -629,7 +632,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             stoDecl();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -644,7 +647,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("RPARENT".equals(name)) {
             LOG.debug("progParamList1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -658,7 +661,7 @@ public class Parser implements IParser, IConcSyn {
             progParam();
             progParamList3();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -673,7 +676,7 @@ public class Parser implements IParser, IConcSyn {
             progParam2();
             typedIdent();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -687,7 +690,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("RPARENT".equals(name)) {
             LOG.debug("progParamList3 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -699,7 +702,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             progParam();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -713,7 +716,7 @@ public class Parser implements IParser, IConcSyn {
                 || "CONST".equals(name)) {
             LOG.debug("progParam1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -726,7 +729,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("IDENT".equals(name)) {
             LOG.debug("progParam2 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -742,7 +745,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("RPARENT".equals(name)) {
             LOG.debug("paramList1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -757,7 +760,7 @@ public class Parser implements IParser, IConcSyn {
             param();
             paramList3();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -771,7 +774,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("RPARENT".equals(name)) {
             LOG.debug("paramList3 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -788,7 +791,7 @@ public class Parser implements IParser, IConcSyn {
             param3();
             typedIdent();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -800,7 +803,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             param();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -815,7 +818,7 @@ public class Parser implements IParser, IConcSyn {
                 || "COPY".equals(name)) {
             LOG.debug("param1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -829,7 +832,7 @@ public class Parser implements IParser, IConcSyn {
                 || "CONST".equals(name)) {
             LOG.debug("param2 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -842,7 +845,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("IDENT".equals(name)) {
             LOG.debug("param3 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -856,7 +859,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("mechmode ::= REF");
             consume(terminal);
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -870,12 +873,12 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("atomtype ::= INT32");
             consume(terminal);
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
     @Override
-    public void expr() throws GrammarError {
+    public IExpr expr() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name) || "OLD".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)
@@ -885,8 +888,9 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("expr ::= term1 expr1");
             term1();
             expr1();
+            return null; // FIXME 
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -899,7 +903,7 @@ public class Parser implements IParser, IConcSyn {
             exprList1();
             consume("RPARENT");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -915,7 +919,7 @@ public class Parser implements IParser, IConcSyn {
                 || "POST".equals(name) || "SEMI".equals(name)) {
             LOG.debug("cmd41 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -927,7 +931,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             idents();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -944,7 +948,7 @@ public class Parser implements IParser, IConcSyn {
                 || "POST".equals(name)) {
             LOG.debug("cpsCmd1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -956,7 +960,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             cmd();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -992,7 +996,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("cmd ::= <cmd7>");
             cmd7();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1004,7 +1008,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             idents1();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1021,7 +1025,7 @@ public class Parser implements IParser, IConcSyn {
                 || "POST".equals(name) || "SEMI".equals(name)) {
             LOG.debug("idents1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1033,7 +1037,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             consume("IDENT");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1049,7 +1053,7 @@ public class Parser implements IParser, IConcSyn {
             term2();
             term11();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1071,7 +1075,7 @@ public class Parser implements IParser, IConcSyn {
                 || "SEMI".equals(name) || "BECOMES".equals(name)) {
             LOG.debug("expr1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1084,7 +1088,7 @@ public class Parser implements IParser, IConcSyn {
             boolopr();
             term1();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1105,7 +1109,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("boolopr ::= COR");
             consume(terminal);
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1121,7 +1125,7 @@ public class Parser implements IParser, IConcSyn {
             term3();
             term21();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
 
     }
@@ -1135,7 +1139,7 @@ public class Parser implements IParser, IConcSyn {
             relopr();
             term2();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1158,7 +1162,7 @@ public class Parser implements IParser, IConcSyn {
                 || "OR".equals(name) || "AND".equals(name)) {
             LOG.debug("term11 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1179,7 +1183,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("relopr ::= GT");
             consume(terminal);
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1195,7 +1199,7 @@ public class Parser implements IParser, IConcSyn {
             factor();
             term31();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1219,7 +1223,7 @@ public class Parser implements IParser, IConcSyn {
                 || "LT".equals(name) || "NE".equals(name) || "EQ".equals(name)) {
             LOG.debug("term21 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1231,7 +1235,7 @@ public class Parser implements IParser, IConcSyn {
             addopr();
             term3();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1245,7 +1249,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("addopr ::= MINUS");
             consume(terminal);
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1270,7 +1274,7 @@ public class Parser implements IParser, IConcSyn {
                 || "MINUS".equals(name) || "PLUS".equals(name)) {
             LOG.debug("term31 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1282,7 +1286,7 @@ public class Parser implements IParser, IConcSyn {
             multopr();
             factor();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1299,7 +1303,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("multopr ::= MOD");
             consume(terminal);
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1324,7 +1328,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("factor ::= factor5");
             factor5();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1336,7 +1340,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("factor1 ::= literal");
             literal();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1348,7 +1352,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             factor21();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1374,7 +1378,7 @@ public class Parser implements IParser, IConcSyn {
                 || "TIMES".equals(name)) {
             LOG.debug("factor21 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1388,7 +1392,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("factor211 ::= exprList");
             exprList();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1400,7 +1404,7 @@ public class Parser implements IParser, IConcSyn {
             monadicOpr();
             factor();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1414,7 +1418,7 @@ public class Parser implements IParser, IConcSyn {
             expr();
             consume("RPARENT");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1427,7 +1431,7 @@ public class Parser implements IParser, IConcSyn {
             expr();
             consume("RPARENT");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1441,7 +1445,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("monadicOpr ::= addopr");
             addopr();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1458,7 +1462,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("RPARENT".equals(name)) {
             LOG.debug("exprList1 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1474,7 +1478,7 @@ public class Parser implements IParser, IConcSyn {
             expr();
             exprList3();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1488,7 +1492,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("RPARENT".equals(name)) {
             LOG.debug("exprList3 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1500,7 +1504,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             expr();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1514,7 +1518,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("boolval ::= TRUE");
             consume(terminal);
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1531,7 +1535,7 @@ public class Parser implements IParser, IConcSyn {
             consume("BECOMES");
             expr();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1548,7 +1552,7 @@ public class Parser implements IParser, IConcSyn {
             cpsCmd();
             consume("ENDIF");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1564,7 +1568,7 @@ public class Parser implements IParser, IConcSyn {
             cpsCmd();
             consume("ENDWHILE");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1577,7 +1581,7 @@ public class Parser implements IParser, IConcSyn {
         } else if ("DO".equals(name)) {
             LOG.debug("cmd31 ::= <e>");
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1591,7 +1595,7 @@ public class Parser implements IParser, IConcSyn {
             exprList();
             cmd41();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1603,7 +1607,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             expr();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1615,7 +1619,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             expr();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1627,7 +1631,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal);
             expr();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1641,7 +1645,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("literal ::= INTVAL32");
             consume(terminal);
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1655,7 +1659,7 @@ public class Parser implements IParser, IConcSyn {
             consume("COLON");
             expr();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
@@ -1669,29 +1673,29 @@ public class Parser implements IParser, IConcSyn {
             consume("COLON");
             expr();
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
 
     @Override
-    public void invariant() throws GrammarError {
+    public IInvariant invariant() throws GrammarError {
         String name = terminal.getName();
         if ("INV".equals(name)) {
             LOG.debug("invariant ::= INV IDENT COLON expr");
             consume(terminal);
-            consume("IDENT");
+            IIdent ident = (IIdent)consume("IDENT");
             consume("COLON");
-            expr();
+            IExpr expr = (IExpr)expr();
+            return new Invariant(ident, expr);
         } else {
-            handleInvalidToken();
+            throw createError();
         }
     }
-
-    private void handleInvalidToken() throws GrammarError {
+    
+    private GrammarError createError(){
         String errorMsg = "Unexpected token " + token.getType().getName()
                 + " at position" + token.getStart();
         LOG.error(errorMsg);
-        throw new GrammarError(errorMsg);
+        return new GrammarError(errorMsg);
     }
-
 }
