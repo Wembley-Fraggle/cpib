@@ -1066,21 +1066,20 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("AND".equals(name)) {
             LOG.debug("boolopr ::= AND");
-            consume(terminal);
-            return null; // TODO
+            return new BooloprAnd(
+            consume(terminal));
         } else if ("OR".equals(name)) {
             LOG.debug("boolopr ::= OR");
-            consume(terminal);
-            return null; // TODO
+            return new BooloprOr(
+            consume(terminal));
         } else if ("CAND".equals(name)) {
             LOG.debug("boolopr ::= CAND");
-            consume(terminal);
-            return null; // TODO
+            return new BoolopCand(consume(terminal));
         }
         if ("COR".equals(name)) {
             LOG.debug("boolopr ::= COR");
-            consume(terminal);
-            return null; // TODO
+            return new BooloprCor(
+            consume(terminal));
         } else {
             throw createError();
         }
