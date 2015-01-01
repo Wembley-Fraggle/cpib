@@ -560,12 +560,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("globImp2 ::= changemode");
-            changemode();
-            return null; // TODO
-        }
-        else if ("IDENT".equals(name)) {
+            return new GlobImp2(changemode());
+        } else if ("IDENT".equals(name)) {
             LOG.debug("globImp2 ::= <e>");
-            return null; // TODO
+            return new GlobImp2Eps();
         } else {
             throw createError();
         }
