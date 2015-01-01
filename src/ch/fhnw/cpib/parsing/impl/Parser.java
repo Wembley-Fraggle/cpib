@@ -656,9 +656,9 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsStoDecl2 ::= SEMI stoDecl");
-            consume(terminal);
-            stoDecl();
-            return null; // TODO
+            return new CpsStoDecl2(
+            consume(terminal),
+            stoDecl());
         } else {
             throw createError();
         }
