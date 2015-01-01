@@ -778,11 +778,11 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("paramList1 ::= paramList2");
-            paramList2();
-            return null; // TODO
+            return new ParamList1(
+                    paramList2());
         } else if ("RPARENT".equals(name)) {
             LOG.debug("paramList1 ::= <e>");
-            return null; // TODO
+            return new ParamList1Eps();
         } else {
             throw createError();
         }
