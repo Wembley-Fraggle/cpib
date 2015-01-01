@@ -501,10 +501,10 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("globImp ::= globImp1 globImp2 IDENT");
-            globImp1();
-            globImp2();
-            consume("IDENT");
-            return null; // TODO
+            return new GlobImp(
+            globImp1(),
+            globImp2(),
+            consume("IDENT"));
         } else {
             throw createError();
         }
