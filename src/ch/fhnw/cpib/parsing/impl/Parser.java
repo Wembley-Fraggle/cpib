@@ -594,20 +594,16 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("decl ::= stoDecl");
-            stoDecl();
-            return null; // TODO
+            return new DeclSto(stoDecl());
         } else if ("FUN".equals(name)) {
             LOG.debug("decl ::= funDecl");
-            funDecl();
-            return null; // TODO
+            return new DeclFun(funDecl());
         } else if ("PROC".equals(name)) {
             LOG.debug("decl ::= procDecl");
-            procDecl();
-            return null; // TODO
+            return new DeclProc(procDecl());
         } else {
             throw createError();
         }
-
     }
 
     @Override
