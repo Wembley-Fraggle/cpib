@@ -1120,8 +1120,7 @@ public class Parser implements IParser, IConcSyn {
         if ("GT".equals(name) || "LT".equals(name) || "NE".equals(name)
                 || "EQ".equals(name)) {
             LOG.debug("term11 ::= term12");
-            term12();
-            return null; // TODO
+            return new Term11(term12());
         } else if ("PRE".equals(name) || "GLOBAL".equals(name)
                 || "COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
@@ -1133,7 +1132,7 @@ public class Parser implements IParser, IConcSyn {
                 || "COR".equals(name) || "CAND".equals(name)
                 || "OR".equals(name) || "AND".equals(name)) {
             LOG.debug("term11 ::= <e>");
-            return null; // TODO
+            return new Term11Eps();
         } else {
             throw createError();
         }
