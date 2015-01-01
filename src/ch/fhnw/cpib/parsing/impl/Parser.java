@@ -104,9 +104,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("program21 ::= GLOBAL cpsDecl");
-            consume(terminal);
-            cpsDecl();
-            return null; // TODO
+            return new Program21(consume(terminal), cpsDecl());
         } else {
             throw createError();
         }
