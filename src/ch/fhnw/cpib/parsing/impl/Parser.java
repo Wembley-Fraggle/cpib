@@ -515,13 +515,13 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("globImps1 ::= globImps2 globImps1");
-            globImps2();
-            globImps1();
-            return null; // TODO
+            return new GlobImps1(
+            globImps2(),
+            globImps1());
         } else if ("DO".equals(name) || "PRE".equals(name)
                 || "LOCAL".equals(name)) {
             LOG.debug("globImps1 ::= <e>");
-            return null; // TODO
+            return new GlobImps1Eps();
         } else {
             throw createError();
         }
