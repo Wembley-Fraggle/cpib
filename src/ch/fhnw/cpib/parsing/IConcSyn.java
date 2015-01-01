@@ -106,7 +106,7 @@ public interface IConcSyn {
     void cmd31() throws GrammarError;
     void cmd4() throws GrammarError;
     void cmd5() throws GrammarError;
-    void cmd6() throws GrammarError;
+    ICmd6 cmd6() throws GrammarError;
     ICmd7 cmd7() throws GrammarError;
     ILiteral literal() throws GrammarError;
     IPrecondition precondition() throws GrammarError;
