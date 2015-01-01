@@ -1143,21 +1143,21 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("EQ".equals(name)) {
             LOG.debug("relopr ::= EQ");
-            consume(terminal);
-            return null; // TODO
+            return new ReloprEq(
+            consume(terminal));
         } else if ("NE".equals(name)) {
             LOG.debug("relopr ::= NE");
-            consume(terminal);
-            return null; // TODO
+            return new ReloprNe(
+            consume(terminal));
         } else if ("LT".equals(name)) {
             LOG.debug("relopr ::= LT");
-            consume(terminal);
-            return null; // TODO
+            return new ReloprLt(
+                    consume(terminal));
         }
         if ("GT".equals(name)) {
             LOG.debug("relopr ::= GT");
-            consume(terminal);
-            return null; // TODO
+            return new ReloprGt(
+            consume(terminal));
         } else {
             throw createError();
         }
