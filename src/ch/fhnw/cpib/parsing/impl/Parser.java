@@ -372,11 +372,9 @@ public class Parser implements IParser, IConcSyn {
     public IParamList paramList() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name)) {
-            LOG.debug("paramList1 ::= LPARENT paramList1 RPARENT");
-            consume(terminal);
-            paramList1();
-            consume("RPARENT");
-            return null; // TODO
+            LOG.debug("paramList ::= LPARENT paramList1 RPARENT");
+            return new ParamList(consume(terminal), paramList1(),
+                    consume("RPARENT"));
         } else {
             throw createError();
         }
