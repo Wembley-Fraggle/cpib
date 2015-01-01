@@ -796,9 +796,9 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("paramList2 ::= param paramList3");
-            param();
-            paramList3();
-            return null; // TODO
+            return new ParamList2(
+                    param(),
+                    paramList3());
         } else {
             throw createError();
         }
