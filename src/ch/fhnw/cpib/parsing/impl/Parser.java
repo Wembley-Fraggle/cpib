@@ -671,11 +671,11 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("progParamList1 ::= progParamList2");
-            progParamList2();
-            return null; // TODO
+            return new ProgParamList1(
+            progParamList2());
         } else if ("RPARENT".equals(name)) {
             LOG.debug("progParamList1 ::= <e>");
-            return null; // TODO
+            return new ProgParamList1Eps();
         } else {
             throw createError();
         }
