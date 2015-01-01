@@ -87,13 +87,9 @@ public class Parser implements IParser, IConcSyn{
             LOG.debug("program1 ::= invariant");
             invariant();
         }
-        else if("DO".equals(name)) {
-            LOG.debug("program1 ::= <e>");
-        }
-        else if("PRE".equals(name)) {
-            LOG.debug("program1 ::= <e>");
-        }
-        else if("GLOBAL".equals(name)) {
+        else if("DO".equals(name)
+                || "PRE".equals(name)
+                || "GLOBAL".equals(name)) {
             LOG.debug("program1 ::= <e>");
         }
         else {
@@ -109,10 +105,8 @@ public class Parser implements IParser, IConcSyn{
             LOG.debug("program2 ::= program21");
             program21();
         }
-        else if("DO".equals(name)) {
-            LOG.debug("program2 ::= <e>");
-        }
-        else if("PRE".equals(name)) {
+        else if("DO".equals(name)
+                || "GLOBAL".equals(name)) {
             LOG.debug("program2 ::= <e>");
         }
         else {
@@ -127,8 +121,7 @@ public class Parser implements IParser, IConcSyn{
             LOG.debug("program21 ::= GLOBAL cpsDecl");
             consume(terminal);
             cpsDecl();
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -139,11 +132,9 @@ public class Parser implements IParser, IConcSyn{
         if("PRE".equals(name)) {
             LOG.debug("program3 ::= precondition");
             precondition();
-        }
-        else if("DO".equals(name)) {
+        } else if("DO".equals(name)) {
             LOG.debug("program3 ::= <e>");
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -190,7 +181,9 @@ public class Parser implements IParser, IConcSyn{
            || "OLD".equals(name)
            || "MINUS".equals(name)
            || "PLUS".equals(name)
+           || "NOT".equals(name)
            || "IDENT".equals(name)
+           || "INTVAL32".equals(name)
            || "TRUE".equals(name)
            || "FALSE".equals(name)
            || "SKIP".equals(name)) {
@@ -220,17 +213,9 @@ public class Parser implements IParser, IConcSyn{
     @Override
     public void stoDecl() throws GrammarError {
         String name = terminal.getName();
-        if("IDENT".equals(name)) {
-            LOG.debug("stoDecl ::= stoDecl1 typedIdent");
-            stoDecl1();
-            typedIdent();
-        }
-        else if("VAR".equals(name)) {
-            LOG.debug("stoDecl ::= stoDecl1 typedIdent");
-            stoDecl1();
-            typedIdent();
-        }
-        else if("CONST".equals(name)) {
+        if("IDENT".equals(name)
+                || "VAR".equals(name)
+                || "CONST".equals(name)) {
             LOG.debug("stoDecl ::= stoDecl1 typedIdent");
             stoDecl1();
             typedIdent();
@@ -243,11 +228,7 @@ public class Parser implements IParser, IConcSyn{
     @Override
     public void stoDecl1() throws GrammarError {
         String name = terminal.getName();
-        if("VAR".equals(name)) {
-            LOG.debug("stoDecl1 ::= changemode");
-            changemode();
-        }
-        else if("CONST".equals(name)) {
+        if("VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("stoDecl1 ::= changemode");
             changemode();
         }
@@ -289,13 +270,9 @@ public class Parser implements IParser, IConcSyn{
             LOG.debug("funDecl1 ::= funDecl11");
             funDecl11();
         }
-        else if("DO".equals(name)) {
-            LOG.debug("funDecl1 ::= <e>");
-        }
-        else if("PRE".equals(name)) {
-            LOG.debug("funDecl1 ::= <e>");
-        }
-        else if("LOCAL".equals(name)) {
+        else if("DO".equals(name)
+            || "PRE".equals(name)
+            || "LOCAL".equals(name)) {
             LOG.debug("funDecl1 ::= <e>");
         }
         else {
@@ -305,32 +282,59 @@ public class Parser implements IParser, IConcSyn{
 
     @Override
     public void funDecl11() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("GLOBAL".equals(name)) {
+            LOG.debug("funDecl11 ::= GLOBAL globImps");
+            consume(terminal);
+            globImps();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void funDecl2() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LOCAL".equals(name)) {
+            LOG.debug("funDecl2 ::= funDecl21");
+            funDecl21();
+        }
+        else if("DO".equals(name)
+            || "PRE".equals(name)) {
+            LOG.debug("funDecl2 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void funDecl21() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("LOCAL".equals(name)) {
+            LOG.debug("funDecl21 ::= LOCAL cpsStoDecl");
+            consume(terminal);
+            cpsStoDecl();
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
     public void funDecl3() throws GrammarError {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void funDecl31() throws GrammarError {
-        // TODO Auto-generated method stub
-        
+        String name = terminal.getName();
+        if("PRE".equals(name)) {
+            LOG.debug("funDecl3 ::= precondition");
+            precondition();
+        }
+        else if("DO".equals(name)) {
+            LOG.debug("funDecl3 ::= <e>");
+        }
+        else {
+            handleInvalidToken();
+        }
     }
 
     @Override
@@ -346,24 +350,6 @@ public class Parser implements IParser, IConcSyn{
         else {
             handleInvalidToken();
         }
-    }
-
-    @Override
-    public void funDecl41() throws GrammarError {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void funDecl5() throws GrammarError {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void funDecl51() throws GrammarError {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override
@@ -449,11 +435,9 @@ public class Parser implements IParser, IConcSyn{
         String name = terminal.getName();
         if("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("cpsStoDecl ::= stoDecl cpsStoDecl1");
-            consume(terminal);
             stoDecl();
             cpsStoDecl1();
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -464,17 +448,11 @@ public class Parser implements IParser, IConcSyn{
         if("GLOBAL".equals(name)) {
             LOG.debug("procDecl1 ::= procDecl11");
             procDecl11();
-        }
-        else if("DO".equals(name)) {
+        } else if("DO".equals(name)
+                || "PRE".equals(name)
+                || "LOCAL".equals(name)) {
             LOG.debug("procDecl1 ::= <e>");
-        }
-        else if("DO".equals(name)) {
-            LOG.debug("procDecl1 ::= <e>");
-        }
-        else if("LOCAL".equals(name)) {
-            LOG.debug("procDecl1 ::= <e>");
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -483,10 +461,10 @@ public class Parser implements IParser, IConcSyn{
     public void procDecl11() throws GrammarError {
         String name = terminal.getName();
         if("GLOBAL".equals(name)) {
-            LOG.debug("procDecl11 ::= globImps");
+            LOG.debug("procDecl11 ::= GLOBAL globImps");
+            consume(terminal);
             globImps();
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -497,14 +475,10 @@ public class Parser implements IParser, IConcSyn{
         if("LOCAL".equals(name)) {
             LOG.debug("procDecl2 ::= procDecl21");
             procDecl21();
-        }
-        else if("DO".equals(name)) {
+        } else if("DO".equals(name)
+                || "PRE".equals(name)) {
             LOG.debug("procDecl2 ::= <e>");
-        }
-        else if("PRE".equals(name)) {
-            LOG.debug("procDecl2 ::= <e>");
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -513,10 +487,10 @@ public class Parser implements IParser, IConcSyn{
     public void procDecl21() throws GrammarError {
         String name = terminal.getName();
         if("LOCAL".equals(name)) {
-            LOG.debug("procDecl21 ::= cpsStoDecl");
+            LOG.debug("procDecl21 ::= LOCAL cpsStoDecl");
+            consume(terminal);
             cpsStoDecl();
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -542,11 +516,9 @@ public class Parser implements IParser, IConcSyn{
         if("POST".equals(name)) {
             LOG.debug("procDecl4 ::= postcondition");
             postcondition();
-        }
-        else if("ENDPROC".equals(name)) {
+        } else if("ENDPROC".equals(name)) {
             LOG.debug("procDecl4 ::= <e>");
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -574,13 +546,9 @@ public class Parser implements IParser, IConcSyn{
             globImps2();
             globImps1();
         }
-        else if("DO".equals(name)) {
-            LOG.debug("globImps1 ::= <e>");
-        }
-        else if("PRE".equals(name)) {
-            LOG.debug("globImps1 ::= <e>");
-        }
-        else if("LOCAL".equals(name)) {
+        else if("DO".equals(name)
+                || "PRE".equals(name)
+                || "LOCAL".equals(name)) {
             LOG.debug("globImps1 ::= <e>");
         }
         else {
@@ -592,7 +560,8 @@ public class Parser implements IParser, IConcSyn{
     public void globImps2() throws GrammarError {
         String name = terminal.getName();
         if("COMMA".equals(name)) {
-            LOG.debug("globImps2 ::= globImp");
+            LOG.debug("globImps2 ::= COMMA globImp");
+            consume(terminal);
             globImp();
         }
         else {
@@ -603,20 +572,16 @@ public class Parser implements IParser, IConcSyn{
     @Override
     public void globImp1() throws GrammarError {
         String name = terminal.getName();
-        if("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+        if("OUT".equals(name)
+            || "INOUT".equals(name)
+            || "IN".equals(name)) {
             LOG.debug("globImp1 ::= flowmode");
             flowmode();
-        }
-        else if("IDENT".equals("IDENT")) {
+        } else if("IDENT".equals("IDENT")
+                || "VAR".equals("IDENT")
+                || "CONST".equals("IDENT")) {
             LOG.debug("globImp1 ::= <e>");
-        }
-        else if("VAR".equals("IDENT")) {
-            LOG.debug("globImp1 ::= <e>");
-        }
-        else if("CONST".equals("IDENT")) {
-            LOG.debug("globImp1 ::= <e>");
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -682,14 +647,9 @@ public class Parser implements IParser, IConcSyn{
             LOG.debug("cpsDecl1 ::= cpsDecl2 cpsDecl1");
             cpsDecl2();
             cpsDecl1();
-        }
-        else if("DO".equals(name)) {
+        } else if("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("cpsDecl1 ::= <e>");
-        }
-        else if("PRE".equals(name)) {
-            LOG.debug("cpsDecl1 ::= <e>");
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -698,10 +658,10 @@ public class Parser implements IParser, IConcSyn{
     public void cpsDecl2() throws GrammarError {
         String name = terminal.getName();
         if("SEMI".equals(name)) {
-            LOG.debug("cpsDecl2 ::= decl");
+            LOG.debug("cpsDecl2 ::= SEMI decl");
+            consume(terminal);
             decl();
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -713,14 +673,9 @@ public class Parser implements IParser, IConcSyn{
             LOG.debug("cpsStoDecl1 ::= cpsStoDecl2 cpsStoDecl1");
             cpsStoDecl2();
             cpsStoDecl1();
-        }
-        else if("DO".equals(name)) {
+        } else if("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("cpsStoDecl1 ::= <e>");
-        }
-        else if("PRE".equals(name)) {
-            LOG.debug("cpsStoDecl1 ::= <e>");
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -789,17 +744,13 @@ public class Parser implements IParser, IConcSyn{
     @Override
     public void progParamList3() throws GrammarError {
         String name = terminal.getName();
-        if("COMMA".equals(name)
-           || "VAR".equals(name) || "CONST".equals(name)
-           || "OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
+        if("COMMA".equals(name)) {
             LOG.debug("progParamList3 ::= progParamList4 progParamList3");
             progParam();
             progParamList3();
-        }
-        else if("RPARENT".equals(name)) {
+        } else if("RPARENT".equals(name)) {
             LOG.debug("progParamList3 ::= <e>");
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -823,17 +774,11 @@ public class Parser implements IParser, IConcSyn{
         if("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
             LOG.debug("progParam1 ::= flowmode");
             flowmode();
-        }
-        else  if("IDENT".equals(name)) {
+        } else  if("IDENT".equals(name)
+                || "VAR".equals(name)
+                || "CONST".equals(name)) {
             LOG.debug("progParam1 ::= <e>");
-        }
-        else  if("VAR".equals(name)) {
-            LOG.debug("progParam1 ::= <e>");
-        }
-        else  if("CONST".equals(name)) {
-            LOG.debug("progParam1 ::= <e>");
-        }
-        else {
+        } else {
             handleInvalidToken();
         }
     }
@@ -1120,12 +1065,14 @@ public class Parser implements IParser, IConcSyn{
             LOG.debug("cmd ::= SKIP");
             consume(terminal);
         } else if("LPARENT".equals(name) 
+                || "OLD".equals(name)
+                || "MINUS".equals(name)
+                || "PLUS".equals(name)
+                || "NOT".equals(name)
                 || "IDENT".equals(name)
                 || "INTVAL32".equals(name)
-                || "TRUE".equals(name) || "FALSE".equals(name)
-                || "MINUS".equals(name) || "PLUS".equals(name)
-                || "NOT".equals(name)
-                || "OLD".equals(name)) {
+                || "TRUE".equals(name)
+                || "FALSE".equals(name)) {
             LOG.debug("cmd ::= <cmd1>");
             cmd1();
         }
@@ -1690,9 +1637,7 @@ public class Parser implements IParser, IConcSyn{
     @Override
     public void factor4() throws GrammarError {
         String name = terminal.getName();
-        if("OLD".equals(name)
-            || "PLUS".equals(name)
-            || "NOT".equals(name)) {
+        if("OLD".equals(name)) {
             LOG.debug("factor4 ::= OLD LPARENT expr RPARENT");
             consume(terminal);
             consume("LPARENT");
@@ -1818,17 +1763,18 @@ public class Parser implements IParser, IConcSyn{
     public void cmd1() throws GrammarError {
         String name = terminal.getName();
         if("LPARENT".equals(name) 
+                || "OLD".equals(name)   
+                || "MINUS".equals(name)
+                || "PLUS".equals(name)
+                || "NOT".equals(name)
                 || "IDENT".equals(name)
                 || "INTVAL32".equals(name)
-                || "TRUE".equals(name) || "FALSE".equals(name)
-                || "MINUS".equals(name) || "PLUS".equals(name)
-                || "NOT".equals(name)
-                || "OLD".equals(name)) {
+                || "TRUE".equals(name)
+                || "FALSE".equals(name)) {
             LOG.debug("cmd1 ::= expr BECOMES expr");
             expr();
             consume("BECOMES");
             expr();
-            cmd1();
         }
         else {
             handleInvalidToken();

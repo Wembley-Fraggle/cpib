@@ -20,11 +20,7 @@ public interface IConcSyn {
     void funDecl2() throws GrammarError;
     void funDecl21() throws GrammarError;
     void funDecl3() throws GrammarError;
-    void funDecl31() throws GrammarError;
     void funDecl4() throws GrammarError;
-    void funDecl41() throws GrammarError;
-    void funDecl5() throws GrammarError;
-    void funDecl51() throws GrammarError;
     void procDecl() throws GrammarError;
     void typedIdent() throws GrammarError;
     void changemode() throws GrammarError;
