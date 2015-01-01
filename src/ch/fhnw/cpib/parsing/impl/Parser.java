@@ -863,12 +863,11 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("REF".equals(name) || "COPY".equals(name)) {
             LOG.debug("param2 ::= mechmode");
-            mechmode();
-            return null; // TODO
+            return new Param2(mechmode());
         } else if ("IDENT".equals(name) || "VAR".equals(name)
                 || "CONST".equals(name)) {
             LOG.debug("param2 ::= <e>");
-            return null; // TODO
+            return new Param2Eps();
         } else {
             throw createError();
         }
