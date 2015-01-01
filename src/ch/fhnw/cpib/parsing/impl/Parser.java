@@ -11,10 +11,10 @@ import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IConcSyn;
 import ch.fhnw.cpib.parsing.IExpr;
-import ch.fhnw.cpib.parsing.IIdent;
 import ch.fhnw.cpib.parsing.IInvariant;
 import ch.fhnw.cpib.parsing.IParser;
 import ch.fhnw.cpib.parsing.IPostcondition;
+import ch.fhnw.cpib.parsing.IPrecondition;
 
 public class Parser implements IParser, IConcSyn {
 
@@ -1686,7 +1686,7 @@ public class Parser implements IParser, IConcSyn {
         if ("INV".equals(name)) {
             LOG.debug("invariant ::= INV IDENT COLON expr");
             consume(terminal);
-            IIdent ident = (IIdent)consume("IDENT");
+            String ident = consume("IDENT").getValue();
             consume("COLON");
             IExpr expr = (IExpr)expr();
             return new Invariant(ident, expr);
