@@ -846,13 +846,13 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
             LOG.debug("param1 ::= flowmode");
-            flowmode();
-            return null; // TODO
+            return new Param1(
+            flowmode());
         } else if ("IDENT".equals(name) || "VAR".equals(name)
                 || "CONST".equals(name) || "REF".equals(name)
                 || "COPY".equals(name)) {
             LOG.debug("param1 ::= <e>");
-            return null; // TODO
+            return new Param1Eps();
         } else {
             throw createError();
         }
