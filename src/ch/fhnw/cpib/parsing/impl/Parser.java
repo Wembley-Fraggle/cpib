@@ -731,9 +731,9 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("progParamList4 ::= COMMA progParam");
-            consume(terminal);
-            progParam();
-            return null; // TODO
+            return new ProgParamList4(
+            consume(terminal),
+            progParam());
         } else {
             throw createError();
         }
@@ -744,12 +744,12 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
             LOG.debug("progParam1 ::= flowmode");
-            flowmode();
-            return null; // TODO
+            return new ProgParam1(
+            flowmode());
         } else if ("IDENT".equals(name) || "VAR".equals(name)
                 || "CONST".equals(name)) {
             LOG.debug("progParam1 ::= <e>");
-            return null; // TODO
+            return new ProgParam1Eps();
         } else {
             throw createError();
         }
