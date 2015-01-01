@@ -967,9 +967,9 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("INIT".equals(name)) {
             LOG.debug("globInits ::= INIT idents");
-            consume(terminal);
-            idents();
-            return null; // TODO
+            return new GlobInits(
+            consume(terminal),
+            idents());
         } else {
             throw createError();
         }
@@ -980,15 +980,13 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsCmd1 ::= cpsCmd2 cpsCmd1");
-            cpsCmd2();
-            cpsCmd1();
-            return null; // TODO
+            return new CpsCmd1(cpsCmd2(), cpsCmd1());
         } else if ("ENDWHILE".equals(name) || "ENDIF".equals(name)
                 || "ELSE".equals(name) || "ENDPROC".equals(name)
                 || "ENDFUN".equals(name) || "ENDPROGRAM".equals(name)
                 || "POST".equals(name)) {
             LOG.debug("cpsCmd1 ::= <e>");
-            return null; // TODO
+            return new CpsCmd1Eps();
         } else {
             throw createError();
         }
