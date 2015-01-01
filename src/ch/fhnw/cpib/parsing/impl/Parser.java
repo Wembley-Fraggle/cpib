@@ -973,9 +973,9 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("IDENT".equals(name)) {
             LOG.debug("idents ::= IDENT idents1");
-            consume(terminal);
-            idents1();
-            return null; // TODO
+            return new Idents(
+            consume(terminal),
+            idents1());
         } else {
             throw createError();
         }
@@ -986,15 +986,13 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("idents1 ::= idents2 idents1");
-            idents2();
-            idents1();
-            return null; // TODO
+            return new Idents1(idents2(), idents1());
         } else if ("ENDWHILE".equals(name) || "ENDIF".equals(name)
                 || "ELSE".equals(name) || "ENDPROC".equals(name)
                 || "ENDFUN".equals(name) || "ENDPROGRAM".equals(name)
                 || "POST".equals(name) || "SEMI".equals(name)) {
             LOG.debug("idents1 ::= <e>");
-            return null; // TODO
+            return new Idents1Eps();
         } else {
             throw createError();
         }
