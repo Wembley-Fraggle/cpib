@@ -715,12 +715,12 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("progParamList3 ::= progParamList4 progParamList3");
-            progParam();
-            progParamList3();
-            return null; // TODO
+            return new ProgParamList3(
+            progParam(),
+            progParamList3());
         } else if ("RPARENT".equals(name)) {
             LOG.debug("progParamList3 ::= <e>");
-            return null; // TODO
+            return new ProgParamList3Eps();
         } else {
             throw createError();
         }
