@@ -1651,14 +1651,15 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void precondition() throws GrammarError {
+    public IPrecondition precondition() throws GrammarError {
         String name = terminal.getName();
         if ("PRE".equals(name)) {
             LOG.debug("precondition ::= PRE IDENT COLON expr");
             consume(terminal);
-            consume("IDENT");
+            String ident = consume("IDENT").getValue();
             consume("COLON");
-            expr();
+            IExpr expr =  expr();
+            return new Precondition(ident, expr);
         } else {
             throw createError();
         }

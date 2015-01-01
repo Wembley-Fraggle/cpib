@@ -109,7 +109,7 @@ public interface IConcSyn {
     void cmd6() throws GrammarError;
     void cmd7() throws GrammarError;
     void literal() throws GrammarError;
-    void precondition() throws GrammarError;
+    IPrecondition precondition() throws GrammarError;
     IPostcondition postcondition() throws GrammarError;
     IInvariant invariant() throws GrammarError;
 }
