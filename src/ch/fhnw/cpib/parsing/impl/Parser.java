@@ -1106,9 +1106,9 @@ public class Parser implements IParser, IConcSyn {
         if ("GT".equals(name) || "LT".equals(name) || "NE".equals(name)
                 || "EQ".equals(name)) {
             LOG.debug("term12 ::= relopr term2");
-            relopr();
-            term2();
-            return null; // TODO
+            return new Term12(
+            relopr(),
+            term2());
         } else {
             throw createError();
         }
