@@ -166,9 +166,7 @@ public class Parser implements IParser, IConcSyn {
                 || "INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name) || "SKIP".equals(name)) {
             LOG.debug("cpsCmd ::= cmd cpsCmd1");
-            cmd();
-            cpsCmd1();
-            return null; // TODO
+            return new CpsCmd(cmd(), cpsCmd1());
         } else {
             throw createError();
         }
