@@ -1185,9 +1185,9 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("MINUS".equals(name) || "PLUS".equals(name)) {
             LOG.debug("term21 ::= term211 term21");
-            term211();
-            term21();
-            return null; // TODO
+            return new Term21(
+                    term211(),
+                    term21());
         } else if ("PRE".equals(name) || "GLOBAL".equals(name)
                 || "COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
@@ -1200,7 +1200,7 @@ public class Parser implements IParser, IConcSyn {
                 || "OR".equals(name) || "AND".equals(name) || "GT".equals(name)
                 || "LT".equals(name) || "NE".equals(name) || "EQ".equals(name)) {
             LOG.debug("term21 ::= <e>");
-            return null; // TODO
+            return new Term21Eps();
         } else {
             throw createError();
         }
