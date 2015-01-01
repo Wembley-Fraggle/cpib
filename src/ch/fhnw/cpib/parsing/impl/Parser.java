@@ -178,9 +178,7 @@ public class Parser implements IParser, IConcSyn {
         if ("PROC".equals(name) || "FUN".equals(name) || "IDENT".equals(name)
                 || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("cpsDecl ::= decl cpsDecl1");
-            decl();
-            cpsDecl1();
-            return null; // TODO
+            return new CpsDecl(decl(), cpsDecl1());
         } else {
             throw createError();
         }
