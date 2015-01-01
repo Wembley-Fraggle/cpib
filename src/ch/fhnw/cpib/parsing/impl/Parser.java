@@ -1094,13 +1094,10 @@ public class Parser implements IParser, IConcSyn {
                 || "INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
             LOG.debug("term2 ::= term3 term21");
-            term3();
-            term21();
-            return null; // TODO
+            return new Term2(term3(), term21());
         } else {
             throw createError();
         }
-
     }
 
     @Override
