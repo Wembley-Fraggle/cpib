@@ -10,6 +10,7 @@ import ch.fhnw.cpib.errors.GrammarError;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IBoolVal;
+import ch.fhnw.cpib.parsing.ICmd5;
 import ch.fhnw.cpib.parsing.ICmd6;
 import ch.fhnw.cpib.parsing.ICmd7;
 import ch.fhnw.cpib.parsing.IConcSyn;
@@ -1609,12 +1610,13 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void cmd5() throws GrammarError {
+    public ICmd5 cmd5() throws GrammarError {
         String name = terminal.getName();
         if ("DEBUGIN".equals(name)) {
             LOG.debug("cmd5 ::= DEBUGIN expr");
             consume(terminal);
-            expr();
+            IExpr expr = expr();
+            return new Cmd5(expr);
         } else {
             throw createError();
         }
