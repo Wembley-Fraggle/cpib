@@ -688,9 +688,7 @@ public class Parser implements IParser, IConcSyn {
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("progParamList2 ::= progParam progParamList3");
-            progParam();
-            progParamList3();
-            return null; // TODO
+            return new ProgParamList2(progParam(), progParamList3());
         } else {
             throw createError();
         }
