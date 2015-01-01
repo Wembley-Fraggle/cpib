@@ -1274,16 +1274,16 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("TIMES".equals(name)) {
             LOG.debug("multopr ::= TIMES");
-            consume(terminal);
-            return null; // TODO
+            return new MultoprTimes(
+            consume(terminal));
         } else if ("DIV".equals(name)) {
             LOG.debug("multopr ::= DIV");
-            consume(terminal);
-            return null; // TODO
+            return new MultoprDiv(
+            consume(terminal));
         } else if ("MOD".equals(name)) {
             LOG.debug("multopr ::= MOD");
-            consume(terminal);
-            return null; // TODO
+            return new MultoprMod(
+            consume(terminal));
         } else {
             throw createError();
         }

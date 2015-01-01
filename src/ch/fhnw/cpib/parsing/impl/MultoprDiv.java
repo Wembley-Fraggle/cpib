@@ -1,0 +1,14 @@
+package ch.fhnw.cpib.parsing.impl;
+
+import ch.fhnw.cpib.lexing.IToken;
+import ch.fhnw.cpib.parsing.IMultopr;
+
+public class MultoprDiv implements IMultopr {
+
+    private IToken div;
+
+    public MultoprDiv(IToken div) {
+        this.div = div;
+    }
+
+}
