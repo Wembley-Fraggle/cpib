@@ -997,9 +997,9 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsCmd2 ::= SEMI cmd");
-            consume(terminal);
-            cmd();
-            return null; // TODO
+            return new CpsCmd2(
+            consume(terminal),
+            cmd());
         } else {
             throw createError();
         }
