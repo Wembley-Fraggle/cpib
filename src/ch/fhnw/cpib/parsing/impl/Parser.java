@@ -1053,9 +1053,9 @@ public class Parser implements IParser, IConcSyn {
         if ("COR".equals(name) || "CAND".equals(name) || "OR".equals(name)
                 || "AND".equals(name)) {
             LOG.debug("expr2 ::= boolopr term1");
-            boolopr();
-            term1();
-            return null; // TODO
+            return new Expr2(
+            boolopr(),
+            term1());
         } else {
             throw createError();
         }
