@@ -345,10 +345,8 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("IDENT".equals(name)) {
             LOG.debug("typedIdent ::= IDENT COLON atomtype");
-            consume(terminal);
-            consume("COLON");
-            atomtype();
-            return null; // TODO
+            return new TypedIdent(consume(terminal), consume("COLON"),
+                    atomtype());
         } else {
             throw createError();
         }
