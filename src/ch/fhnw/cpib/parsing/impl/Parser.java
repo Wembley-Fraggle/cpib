@@ -574,16 +574,16 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("IN".equals(name)) {
             LOG.debug("flowmode ::= IN");
-            consume(terminal);
-            return null; // TODO
+            return new FlowmodeIn(
+            consume(terminal));
         } else if ("INOUT".equals(name)) {
             LOG.debug("flowmode ::= INOUT");
-            consume(terminal);
-            return null; // TODO
+            return new FlowmodeInOut(
+            consume(terminal));
         } else if ("OUT".equals(name)) {
             LOG.debug("flowmode ::= OUT");
-            consume(terminal);
-            return null; // TODO
+            return new FlowmodeOut(
+            consume(terminal));
         } else {
             throw createError();
         }
