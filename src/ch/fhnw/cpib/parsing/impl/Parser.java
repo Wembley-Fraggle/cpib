@@ -9,18 +9,7 @@ import org.apache.log4j.Logger;
 import ch.fhnw.cpib.errors.GrammarError;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.parsing.IBoolVal;
-import ch.fhnw.cpib.parsing.ICmd5;
-import ch.fhnw.cpib.parsing.ICmd6;
-import ch.fhnw.cpib.parsing.ICmd7;
-import ch.fhnw.cpib.parsing.IConcSyn;
-import ch.fhnw.cpib.parsing.IExpr;
-import ch.fhnw.cpib.parsing.IFactor1;
-import ch.fhnw.cpib.parsing.IInvariant;
-import ch.fhnw.cpib.parsing.ILiteral;
-import ch.fhnw.cpib.parsing.IParser;
-import ch.fhnw.cpib.parsing.IPostcondition;
-import ch.fhnw.cpib.parsing.IPrecondition;
+import ch.fhnw.cpib.parsing.*;
 
 public class Parser implements IParser, IConcSyn {
 
@@ -69,7 +58,7 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void program() throws GrammarError {
+    public IProgram program() throws GrammarError {
         String name = terminal.getName();
         if ("PROGRAM".equals(name)) {
             LOG.debug("program ::= PROGRAM IDENT progParamList program1 program2 program3 DO cpsCmd program4 ENDPROGRAM");
@@ -83,20 +72,23 @@ public class Parser implements IParser, IConcSyn {
             cpsCmd();
             program4();
             consume("ENDPROGRAM");
+            return null; // TODO 
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void program1() throws GrammarError {
+    public IProgram1 program1() throws GrammarError {
         String name = terminal.getName();
         if ("INV".equals(name)) {
             LOG.debug("program1 ::= invariant");
             invariant();
+            return null; // TODO
         } else if ("DO".equals(name) || "PRE".equals(name)
                 || "GLOBAL".equals(name)) {
             LOG.debug("program1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
@@ -104,71 +96,79 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void program2() throws GrammarError {
+    public IProgram2 program2() throws GrammarError {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("program2 ::= program21");
             program21();
+            return null; // TODO
         } else if ("DO".equals(name) || "GLOBAL".equals(name)) {
             LOG.debug("program2 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void program21() throws GrammarError {
+    public IProgram21 program21() throws GrammarError {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("program21 ::= GLOBAL cpsDecl");
             consume(terminal);
             cpsDecl();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void program3() throws GrammarError {
+    public IProgram3 program3() throws GrammarError {
         String name = terminal.getName();
         if ("PRE".equals(name)) {
             LOG.debug("program3 ::= precondition");
             precondition();
+            return null; // TODO
         } else if ("DO".equals(name)) {
             LOG.debug("program3 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void program4() throws GrammarError {
+    public IProgram4 program4() throws GrammarError {
         String name = terminal.getName();
         if ("POST".equals(name)) {
             LOG.debug("program4 ::= postcondition");
             postcondition();
+            return null; // TODO
         } else if ("ENDPROGRAM".equals(name)) {
             LOG.debug("program4 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void progParamList() throws GrammarError {
+    public IProgParamList progParamList() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name)) {
             LOG.debug("progParamList ::= LPARENT progParamList1 RPARENT");
             consume(terminal);
             progParamList1();
             consume("RPARENT");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cpsCmd() throws GrammarError {
+    public ICpsCmd cpsCmd() throws GrammarError {
         String name = terminal.getName();
         if ("ASSERT".equals(name) || "DEBUGOUT".equals(name)
                 || "DEBUGIN".equals(name) || "CALL".equals(name)
@@ -181,51 +181,56 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("cpsCmd ::= cmd cpsCmd1");
             cmd();
             cpsCmd1();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cpsDecl() throws GrammarError {
+    public ICpsDecl cpsDecl() throws GrammarError {
         String name = terminal.getName();
         if ("PROC".equals(name) || "FUN".equals(name) || "IDENT".equals(name)
                 || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("cpsDecl ::= decl cpsDecl1");
             decl();
             cpsDecl1();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void stoDecl() throws GrammarError {
+    public IStoDecl stoDecl() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("stoDecl ::= stoDecl1 typedIdent");
             stoDecl1();
             typedIdent();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void stoDecl1() throws GrammarError {
+    public IStoDecl1 stoDecl1() throws GrammarError {
         String name = terminal.getName();
         if ("VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("stoDecl1 ::= changemode");
             changemode();
+            return null; // TODO
         } else if ("IDENT".equals(name)) {
             LOG.debug("stoDecl1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void funDecl() throws GrammarError {
+    public IFunDecl funDecl() throws GrammarError {
         String name = terminal.getName();
         if ("FUN".equals(name)) {
             LOG.debug("funDecl ::= FUN IDENT paramList RETURNS stoDecl funDecl1 funDecl2 funDecl3 DO cpsCmd funDecl4 ENDFUN");
@@ -241,90 +246,101 @@ public class Parser implements IParser, IConcSyn {
             cpsCmd();
             funDecl4();
             consume("ENDFUN");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void funDecl1() throws GrammarError {
+    public IFunDecl1 funDecl1() throws GrammarError {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("funDecl1 ::= funDecl11");
             funDecl11();
+            return null; // TODO
         } else if ("DO".equals(name) || "PRE".equals(name)
                 || "LOCAL".equals(name)) {
             LOG.debug("funDecl1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void funDecl11() throws GrammarError {
+    public IFunDecl11 funDecl11() throws GrammarError {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("funDecl11 ::= GLOBAL globImps");
             consume(terminal);
             globImps();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void funDecl2() throws GrammarError {
+    public IFunDecl2 funDecl2() throws GrammarError {
         String name = terminal.getName();
         if ("LOCAL".equals(name)) {
             LOG.debug("funDecl2 ::= funDecl21");
             funDecl21();
+            return null; // TODO
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("funDecl2 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void funDecl21() throws GrammarError {
+    public IFunDecl21 funDecl21() throws GrammarError {
         String name = terminal.getName();
         if ("LOCAL".equals(name)) {
             LOG.debug("funDecl21 ::= LOCAL cpsStoDecl");
             consume(terminal);
             cpsStoDecl();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void funDecl3() throws GrammarError {
+    public IFunDecl3 funDecl3() throws GrammarError {
         String name = terminal.getName();
         if ("PRE".equals(name)) {
             LOG.debug("funDecl3 ::= precondition");
             precondition();
+            return null; // TODO
         } else if ("DO".equals(name)) {
             LOG.debug("funDecl3 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void funDecl4() throws GrammarError {
+    public IFunDecl4 funDecl4() throws GrammarError {
         String name = terminal.getName();
         if ("POST".equals(name)) {
             LOG.debug("funDecl4 ::= postcondition");
             postcondition();
+            return null; // TODO
         } else if ("ENDFUN".equals(name)) {
             LOG.debug("funDecl4 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void procDecl() throws GrammarError {
+    public IProcDecl procDecl() throws GrammarError {
         String name = terminal.getName();
         if ("PROC".equals(name)) {
             LOG.debug("procDecl ::= PROC IDENT paramList procDecl1 procDecl2 procDecl3 DO cpsCmd procDecl4 ENDPROC");
@@ -338,53 +354,58 @@ public class Parser implements IParser, IConcSyn {
             cpsCmd();
             procDecl4();
             consume("ENDPROC");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void typedIdent() throws GrammarError {
+    public ITypedIdent typedIdent() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name)) {
             LOG.debug("typedIdent ::= IDENT COLON atomtype");
             consume(terminal);
             consume("COLON");
             atomtype();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void changemode() throws GrammarError {
+    public IChangemode changemode() throws GrammarError {
         String name = terminal.getName();
         if ("CONST".equals(name)) {
             LOG.debug("changemode ::= CONST");
             consume(terminal);
+            return null; // TODO
         } else if ("VAR".equals(name)) {
             LOG.debug("changemode ::= VAR");
             consume(terminal);
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void paramList() throws GrammarError {
+    public IParamList paramList() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name)) {
             LOG.debug("paramList1 ::= LPARENT paramList1 RPARENT");
             consume(terminal);
             paramList1();
             consume("RPARENT");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void globImps() throws GrammarError {
+    public IGlobImps globImps() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)
                 || "OUT".equals(name) || "INOUT".equals(name)
@@ -392,102 +413,114 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("globImps ::= globImp globImps1");
             globImp();
             globImps1();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cpsStoDecl() throws GrammarError {
+    public ICpsStoDecl cpsStoDecl() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("cpsStoDecl ::= stoDecl cpsStoDecl1");
             stoDecl();
             cpsStoDecl1();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void procDecl1() throws GrammarError {
+    public IProcDecl1 procDecl1() throws GrammarError {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("procDecl1 ::= procDecl11");
             procDecl11();
+            return null; // TODO
         } else if ("DO".equals(name) || "PRE".equals(name)
                 || "LOCAL".equals(name)) {
             LOG.debug("procDecl1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void procDecl11() throws GrammarError {
+    public IProcDecl11 procDecl11() throws GrammarError {
         String name = terminal.getName();
         if ("GLOBAL".equals(name)) {
             LOG.debug("procDecl11 ::= GLOBAL globImps");
             consume(terminal);
             globImps();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void procDecl2() throws GrammarError {
+    public IProcDecl2 procDecl2() throws GrammarError {
         String name = terminal.getName();
         if ("LOCAL".equals(name)) {
             LOG.debug("procDecl2 ::= procDecl21");
             procDecl21();
+            return null; // TODO
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("procDecl2 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void procDecl21() throws GrammarError {
+    public IProcDecl21 procDecl21() throws GrammarError {
         String name = terminal.getName();
         if ("LOCAL".equals(name)) {
             LOG.debug("procDecl21 ::= LOCAL cpsStoDecl");
             consume(terminal);
             cpsStoDecl();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void procDecl3() throws GrammarError {
+    public IProcDecl3 procDecl3() throws GrammarError {
         String name = terminal.getName();
         if ("PRE".equals(name)) {
             LOG.debug("procDecl3 ::= precondition");
             precondition();
+            return null; // TODO
         } else if ("DO".equals(name)) {
             LOG.debug("procDecl3 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void procDecl4() throws GrammarError {
+    public IProcDecl4 procDecl4() throws GrammarError {
         String name = terminal.getName();
         if ("POST".equals(name)) {
             LOG.debug("procDecl4 ::= postcondition");
             postcondition();
+            return null; // TODO
         } else if ("ENDPROC".equals(name)) {
             LOG.debug("procDecl4 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void globImp() throws GrammarError {
+    public IGlobImp globImp() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)
                 || "OUT".equals(name) || "INOUT".equals(name)
@@ -496,95 +529,109 @@ public class Parser implements IParser, IConcSyn {
             globImp1();
             globImp2();
             consume("IDENT");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void globImps1() throws GrammarError {
+    public IGlobImps1 globImps1() throws GrammarError {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("globImps1 ::= globImps2 globImps1");
             globImps2();
             globImps1();
+            return null; // TODO
         } else if ("DO".equals(name) || "PRE".equals(name)
                 || "LOCAL".equals(name)) {
             LOG.debug("globImps1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void globImps2() throws GrammarError {
+    public IGlobImps2 globImps2() throws GrammarError {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("globImps2 ::= COMMA globImp");
             consume(terminal);
             globImp();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void globImp1() throws GrammarError {
+    public IGlobImp1 globImp1() throws GrammarError {
         String name = terminal.getName();
         if ("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
             LOG.debug("globImp1 ::= flowmode");
             flowmode();
+            return null; // TODO
         } else if ("IDENT".equals("IDENT") || "VAR".equals("IDENT")
                 || "CONST".equals("IDENT")) {
             LOG.debug("globImp1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void globImp2() throws GrammarError {
+    public IGlobImp2 globImp2() throws GrammarError {
         String name = terminal.getName();
         if ("VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("globImp2 ::= changemode");
             changemode();
+            return null; // TODO
         }
-        if ("IDENT".equals(name)) {
+        else if ("IDENT".equals(name)) {
             LOG.debug("globImp2 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void flowmode() throws GrammarError {
+    public IFlowmode flowmode() throws GrammarError {
         String name = terminal.getName();
         if ("IN".equals(name)) {
             LOG.debug("flowmode ::= IN");
             consume(terminal);
+            return null; // TODO
         } else if ("INOUT".equals(name)) {
             LOG.debug("flowmode ::= INOUT");
             consume(terminal);
+            return null; // TODO
         } else if ("OUT".equals(name)) {
             LOG.debug("flowmode ::= OUT");
             consume(terminal);
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void decl() throws GrammarError {
+    public IDecl decl() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("decl ::= stoDecl");
             stoDecl();
+            return null; // TODO
         } else if ("FUN".equals(name)) {
             LOG.debug("decl ::= funDecl");
             funDecl();
+            return null; // TODO
         } else if ("PROC".equals(name)) {
             LOG.debug("decl ::= procDecl");
             procDecl();
+            return null; // TODO
         } else {
             throw createError();
         }
@@ -592,74 +639,82 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void cpsDecl1() throws GrammarError {
+    public ICpsDecl1 cpsDecl1() throws GrammarError {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsDecl1 ::= cpsDecl2 cpsDecl1");
             cpsDecl2();
             cpsDecl1();
+            return null; // TODO
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("cpsDecl1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cpsDecl2() throws GrammarError {
+    public ICpsDecl2 cpsDecl2() throws GrammarError {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsDecl2 ::= SEMI decl");
             consume(terminal);
             decl();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cpsStoDecl1() throws GrammarError {
+    public ICpsStoDecl1 cpsStoDecl1() throws GrammarError {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsStoDecl1 ::= cpsStoDecl2 cpsStoDecl1");
             cpsStoDecl2();
             cpsStoDecl1();
+            return null; // TODO
         } else if ("DO".equals(name) || "PRE".equals(name)) {
             LOG.debug("cpsStoDecl1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cpsStoDecl2() throws GrammarError {
+    public ICpsStoDecl2 cpsStoDecl2() throws GrammarError {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsStoDecl2 ::= SEMI stoDecl");
             consume(terminal);
             stoDecl();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void progParamList1() throws GrammarError {
+    public IProgParamList1 progParamList1() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)
                 || "OUT".equals(name) || "INOUT".equals(name)
                 || "IN".equals(name)) {
             LOG.debug("progParamList1 ::= progParamList2");
             progParamList2();
+            return null; // TODO
         } else if ("RPARENT".equals(name)) {
             LOG.debug("progParamList1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void progParamList2() throws GrammarError {
+    public IProgParamList2 progParamList2() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)
                 || "OUT".equals(name) || "INOUT".equals(name)
@@ -667,13 +722,14 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("progParamList2 ::= progParam progParamList3");
             progParam();
             progParamList3();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void progParam() throws GrammarError {
+    public IProgParam progParam() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)
                 || "OUT".equals(name) || "INOUT".equals(name)
@@ -682,66 +738,74 @@ public class Parser implements IParser, IConcSyn {
             progParam1();
             progParam2();
             typedIdent();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void progParamList3() throws GrammarError {
+    public IProgParamList3 progParamList3() throws GrammarError {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("progParamList3 ::= progParamList4 progParamList3");
             progParam();
             progParamList3();
+            return null; // TODO
         } else if ("RPARENT".equals(name)) {
             LOG.debug("progParamList3 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void progParamList4() throws GrammarError {
+    public IProgParamList4 progParamList4() throws GrammarError {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("progParamList4 ::= COMMA progParam");
             consume(terminal);
             progParam();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void progParam1() throws GrammarError {
+    public IProgParam1 progParam1() throws GrammarError {
         String name = terminal.getName();
         if ("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
             LOG.debug("progParam1 ::= flowmode");
             flowmode();
+            return null; // TODO
         } else if ("IDENT".equals(name) || "VAR".equals(name)
                 || "CONST".equals(name)) {
             LOG.debug("progParam1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void progParam2() throws GrammarError {
+    public IProgParam2 progParam2() throws GrammarError {
         String name = terminal.getName();
         if ("VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("progParam2 ::= changemode");
             changemode();
+            return null; // TODO
         } else if ("IDENT".equals(name)) {
             LOG.debug("progParam2 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void paramList1() throws GrammarError {
+    public IParamList1 paramList1() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)
                 || "REF".equals(name) || "COPY".equals(name)
@@ -749,15 +813,17 @@ public class Parser implements IParser, IConcSyn {
                 || "IN".equals(name)) {
             LOG.debug("paramList1 ::= paramList2");
             paramList2();
+            return null; // TODO
         } else if ("RPARENT".equals(name)) {
             LOG.debug("paramList1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void paramList2() throws GrammarError {
+    public IParamList2 paramList2() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)
                 || "REF".equals(name) || "COPY".equals(name)
@@ -766,27 +832,30 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("paramList2 ::= param paramList3");
             param();
             paramList3();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void paramList3() throws GrammarError {
+    public IParamList3 paramList3() throws GrammarError {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("paramList3 ::= paramList4 paramList3");
             paramList4();
             paramList3();
+            return null; // TODO
         } else if ("RPARENT".equals(name)) {
             LOG.debug("paramList3 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void param() throws GrammarError {
+    public IParam param() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)
                 || "REF".equals(name) || "COPY".equals(name)
@@ -797,88 +866,100 @@ public class Parser implements IParser, IConcSyn {
             param2();
             param3();
             typedIdent();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void paramList4() throws GrammarError {
+    public IParamList4 paramList4() throws GrammarError {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("paramList4 ::= COMMA param");
             consume(terminal);
             param();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void param1() throws GrammarError {
+    public IParam1 param1() throws GrammarError {
         String name = terminal.getName();
         if ("OUT".equals(name) || "INOUT".equals(name) || "IN".equals(name)) {
             LOG.debug("param1 ::= flowmode");
             flowmode();
+            return null; // TODO
         } else if ("IDENT".equals(name) || "VAR".equals(name)
                 || "CONST".equals(name) || "REF".equals(name)
                 || "COPY".equals(name)) {
             LOG.debug("param1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void param2() throws GrammarError {
+    public IParam2 param2() throws GrammarError {
         String name = terminal.getName();
         if ("REF".equals(name) || "COPY".equals(name)) {
             LOG.debug("param2 ::= mechmode");
             mechmode();
+            return null; // TODO
         } else if ("IDENT".equals(name) || "VAR".equals(name)
                 || "CONST".equals(name)) {
             LOG.debug("param2 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void param3() throws GrammarError {
+    public IParam3 param3() throws GrammarError {
         String name = terminal.getName();
         if ("VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("param3 ::= changemode");
             changemode();
+            return null; // TODO
         } else if ("IDENT".equals(name)) {
             LOG.debug("param3 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void mechmode() throws GrammarError {
+    public IMechmode mechmode() throws GrammarError {
         String name = terminal.getName();
         if ("COPY".equals(name)) {
             LOG.debug("mechmode ::= COPY");
             consume(terminal);
+            return null; // TODO
         } else if ("REF".equals(name)) {
             LOG.debug("mechmode ::= REF");
             consume(terminal);
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void atomtype() throws GrammarError {
+    public IAtomtype atomtype() throws GrammarError {
         String name = terminal.getName();
         if ("BOOL".equals(name)) {
             LOG.debug("atomtype ::= BOOL");
             consume(terminal);
+            return null; // TODO
         } else if ("INT32".equals(name)) {
             LOG.debug("atomtype ::= INT32");
             consume(terminal);
+            return null; // TODO
         } else {
             throw createError();
         }
@@ -895,88 +976,96 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("expr ::= term1 expr1");
             term1();
             expr1();
-            return null; // FIXME 
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void exprList() throws GrammarError {
+    public IExprList exprList() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name)) {
             LOG.debug("exprList ::= LPARENT exprList1 RPARENT");
             consume(terminal);
             exprList1();
             consume("RPARENT");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cmd41() throws GrammarError {
+    public ICmd41 cmd41() throws GrammarError {
         String name = terminal.getName();
         if ("INIT".equals(name) || "CONST".equals(name)) {
             LOG.debug("cmd41 ::= globInits");
             globInits();
+            return null; // TODO
         } else if ("ENDWHILE".equals(name) || "ENDIF".equals(name)
                 || "ELSE".equals(name) || "ENDPROC".equals(name)
                 || "ENDFUN".equals(name) || "ENDPROGRAM".equals(name)
                 || "POST".equals(name) || "SEMI".equals(name)) {
             LOG.debug("cmd41 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void globInits() throws GrammarError {
+    public IGlobInits globInits() throws GrammarError {
         String name = terminal.getName();
         if ("INIT".equals(name)) {
             LOG.debug("globInits ::= INIT idents");
             consume(terminal);
             idents();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cpsCmd1() throws GrammarError {
+    public ICpsCmd1 cpsCmd1() throws GrammarError {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsCmd1 ::= cpsCmd2 cpsCmd1");
             cpsCmd2();
             cpsCmd1();
+            return null; // TODO
         } else if ("ENDWHILE".equals(name) || "ENDIF".equals(name)
                 || "ELSE".equals(name) || "ENDPROC".equals(name)
                 || "ENDFUN".equals(name) || "ENDPROGRAM".equals(name)
                 || "POST".equals(name)) {
             LOG.debug("cpsCmd1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cpsCmd2() throws GrammarError {
+    public ICpsCmd2 cpsCmd2() throws GrammarError {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
             LOG.debug("cpsCmd2 ::= SEMI cmd");
             consume(terminal);
             cmd();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cmd() throws GrammarError {
+    public ICmd cmd() throws GrammarError {
         String name = terminal.getName();
         if ("SKIP".equals(name)) {
             LOG.debug("cmd ::= SKIP");
             consume(terminal);
+            return null; // TODO
         } else if ("LPARENT".equals(name) || "OLD".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)
                 || "NOT".equals(name) || "IDENT".equals(name)
@@ -984,72 +1073,83 @@ public class Parser implements IParser, IConcSyn {
                 || "FALSE".equals(name)) {
             LOG.debug("cmd ::= cmd1");
             cmd1();
+            return null; // TODO
         } else if ("IF".equals(name)) {
             LOG.debug("cmd ::= cmd2");
             cmd2();
+            return null; // TODO
         } else if ("WHILE".equals(name)) {
             LOG.debug("cmd ::= cmd3");
             cmd3();
+            return null; // TODO
         } else if ("CALL".equals(name)) {
             LOG.debug("cmd ::= cmd4");
             cmd4();
+            return null; // TODO
         } else if ("DEBUGIN".equals(name)) {
             LOG.debug("cmd ::= cmd5");
             cmd5();
+            return null; // TODO
         } else if ("DEBUGOUT".equals(name)) {
             LOG.debug("cmd ::= cmd6");
             cmd6();
+            return null; // TODO
         } else if ("ASSERT".equals(name)) {
             LOG.debug("cmd ::= cmd7");
             cmd7();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void idents() throws GrammarError {
+    public IIdents idents() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name)) {
             LOG.debug("idents ::= IDENT idents1");
             consume(terminal);
             idents1();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void idents1() throws GrammarError {
+    public IIdents1 idents1() throws GrammarError {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("idents1 ::= idents2 idents1");
             idents2();
             idents1();
+            return null; // TODO
         } else if ("ENDWHILE".equals(name) || "ENDIF".equals(name)
                 || "ELSE".equals(name) || "ENDPROC".equals(name)
                 || "ENDFUN".equals(name) || "ENDPROGRAM".equals(name)
                 || "POST".equals(name) || "SEMI".equals(name)) {
             LOG.debug("idents1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void idents2() throws GrammarError {
+    public IIdents2 idents2() throws GrammarError {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("idents2 ::= COMMA IDENT");
             consume(terminal);
             consume("IDENT");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void term1() throws GrammarError {
+    public ITerm1 term1() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name) || "OLD".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)
@@ -1059,19 +1159,21 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("term1 ::= term2 term11");
             term2();
             term11();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void expr1() throws GrammarError {
+    public IExpr1 expr1() throws GrammarError {
         String name = terminal.getName();
         if ("COR".equals(name) || "CAND".equals(name) || "OR".equals(name)
                 || "AND".equals(name)) {
             LOG.debug("expr1 ::= expr2 expr1");
             expr2();
             expr1();
+            return null; // TODO
         } else if ("PRE".equals(name) || "GLOBAL".equals(name)
                 || "COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
@@ -1081,47 +1183,53 @@ public class Parser implements IParser, IConcSyn {
                 || "ENDPROGRAM".equals(name) || "POST".equals(name)
                 || "SEMI".equals(name) || "BECOMES".equals(name)) {
             LOG.debug("expr1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void expr2() throws GrammarError {
+    public IExpr2 expr2() throws GrammarError {
         String name = terminal.getName();
         if ("COR".equals(name) || "CAND".equals(name) || "OR".equals(name)
                 || "AND".equals(name)) {
             LOG.debug("expr2 ::= boolopr term1");
             boolopr();
             term1();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void boolopr() throws GrammarError {
+    public IBoolopr boolopr() throws GrammarError {
         String name = terminal.getName();
         if ("AND".equals(name)) {
             LOG.debug("boolopr ::= AND");
             consume(terminal);
+            return null; // TODO
         } else if ("OR".equals(name)) {
             LOG.debug("boolopr ::= OR");
             consume(terminal);
+            return null; // TODO
         } else if ("CAND".equals(name)) {
             LOG.debug("boolopr ::= CAND");
             consume(terminal);
+            return null; // TODO
         }
         if ("COR".equals(name)) {
             LOG.debug("boolopr ::= COR");
             consume(terminal);
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void term2() throws GrammarError {
+    public ITerm2 term2() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name) || "OLD".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)
@@ -1131,6 +1239,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("term2 ::= term3 term21");
             term3();
             term21();
+            return null; // TODO
         } else {
             throw createError();
         }
@@ -1138,25 +1247,27 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void term12() throws GrammarError {
+    public ITerm12 term12() throws GrammarError {
         String name = terminal.getName();
         if ("GT".equals(name) || "LT".equals(name) || "NE".equals(name)
                 || "EQ".equals(name)) {
             LOG.debug("term12 ::= relopr term2");
             relopr();
             term2();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void term11() throws GrammarError {
+    public ITerm11 term11() throws GrammarError {
         String name = terminal.getName();
         if ("GT".equals(name) || "LT".equals(name) || "NE".equals(name)
                 || "EQ".equals(name)) {
             LOG.debug("term11 ::= term12");
             term12();
+            return null; // TODO
         } else if ("PRE".equals(name) || "GLOBAL".equals(name)
                 || "COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
@@ -1168,34 +1279,39 @@ public class Parser implements IParser, IConcSyn {
                 || "COR".equals(name) || "CAND".equals(name)
                 || "OR".equals(name) || "AND".equals(name)) {
             LOG.debug("term11 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void relopr() throws GrammarError {
+    public IRelopr relopr() throws GrammarError {
         String name = terminal.getName();
         if ("EQ".equals(name)) {
             LOG.debug("relopr ::= EQ");
             consume(terminal);
+            return null; // TODO
         } else if ("NE".equals(name)) {
             LOG.debug("relopr ::= NE");
             consume(terminal);
+            return null; // TODO
         } else if ("LT".equals(name)) {
             LOG.debug("relopr ::= LT");
             consume(terminal);
+            return null; // TODO
         }
         if ("GT".equals(name)) {
             LOG.debug("relopr ::= GT");
             consume(terminal);
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void term3() throws GrammarError {
+    public ITerm3 term3() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name) || "OLD".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)
@@ -1205,18 +1321,20 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("term3 ::= factor term31");
             factor();
             term31();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void term21() throws GrammarError {
+    public ITerm21 term21() throws GrammarError {
         String name = terminal.getName();
         if ("MINUS".equals(name) || "PLUS".equals(name)) {
             LOG.debug("term21 ::= term211 term21");
             term211();
             term21();
+            return null; // TODO
         } else if ("PRE".equals(name) || "GLOBAL".equals(name)
                 || "COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
@@ -1229,44 +1347,49 @@ public class Parser implements IParser, IConcSyn {
                 || "OR".equals(name) || "AND".equals(name) || "GT".equals(name)
                 || "LT".equals(name) || "NE".equals(name) || "EQ".equals(name)) {
             LOG.debug("term21 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void term211() throws GrammarError {
+    public ITerm211 term211() throws GrammarError {
         String name = terminal.getName();
         if ("MINUS".equals(name) || "PLUS".equals(name)) {
             LOG.debug("term211 ::= addopr term3");
             addopr();
             term3();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void addopr() throws GrammarError {
+    public IAddopr addopr() throws GrammarError {
         String name = terminal.getName();
         if ("PLUS".equals(name)) {
             LOG.debug("addopr ::= PLUS");
             consume(terminal);
+            return null; // TODO
         } else if ("MINUS".equals(name)) {
             LOG.debug("addopr ::= MINUS");
             consume(terminal);
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void term31() throws GrammarError {
+    public ITerm31 term31() throws GrammarError {
         String name = terminal.getName();
         if ("MOD".equals(name) || "DIV".equals(name) || "TIMES".equals(name)) {
             LOG.debug("term31 ::= term311 term31");
             term311();
             term31();
+            return null; // TODO
         } else if ("PRE".equals(name) || "GLOBAL".equals(name)
                 || "COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
@@ -1280,60 +1403,70 @@ public class Parser implements IParser, IConcSyn {
                 || "LT".equals(name) || "NE".equals(name) || "EQ".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)) {
             LOG.debug("term31 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void term311() throws GrammarError {
+    public ITerm311 term311() throws GrammarError {
         String name = terminal.getName();
         if ("MOD".equals(name) || "DIV".equals(name) || "TIMES".equals(name)) {
             LOG.debug("term311 ::= multopr factor");
             multopr();
             factor();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void multopr() throws GrammarError {
+    public IMultopr multopr() throws GrammarError {
         String name = terminal.getName();
         if ("TIMES".equals(name)) {
             LOG.debug("multopr ::= TIMES");
             consume(terminal);
+            return null; // TODO
         } else if ("DIV".equals(name)) {
             LOG.debug("multopr ::= DIV");
             consume(terminal);
+            return null; // TODO
         } else if ("MOD".equals(name)) {
             LOG.debug("multopr ::= MOD");
             consume(terminal);
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void factor() throws GrammarError {
+    public IFactor factor() throws GrammarError {
         String name = terminal.getName();
         if ("INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
             LOG.debug("factor ::= factor1");
             factor1();
+            return null; // TODO
         } else if ("IDENT".equals(name)) {
             LOG.debug("factor ::= factor2");
             factor2();
+            return null; // TODO
         } else if ("MINUS".equals(name) || "PLUS".equals(name)
                 || "NOT".equals(name)) {
             LOG.debug("factor ::= factor3");
             factor3();
+            return null; // TODO
         } else if ("OLD".equals(name)) {
             LOG.debug("factor ::= factor4");
             factor4();
+            return null; // TODO
         } else if ("LPARENT".equals(name)) {
             LOG.debug("factor ::= factor5");
             factor5();
+            return null; // TODO
         } else {
             throw createError();
         }
@@ -1353,23 +1486,25 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void factor2() throws GrammarError {
+    public IFactor2 factor2() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name)) {
             LOG.debug("factor2 ::= IDENT factor21");
             consume(terminal);
             factor21();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void factor21() throws GrammarError {
+    public IFactor21 factor21() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name) || "INIT".equals(name)) {
             LOG.debug("factor21 ::= factor211");
             factor211();
+            return null; // TODO
         } else if ("PRE".equals(name) || "GLOBAL".equals(name)
                 || "COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
@@ -1385,39 +1520,43 @@ public class Parser implements IParser, IConcSyn {
                 || "MOD".equals(name) || "DIV".equals(name)
                 || "TIMES".equals(name)) {
             LOG.debug("factor21 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void factor211() throws GrammarError {
+    public IFactor211 factor211() throws GrammarError {
         String name = terminal.getName();
         if ("INIT".equals(name)) {
             LOG.debug("factor211 ::= INIT");
             consume(terminal);
+            return null; // TODO
         } else if ("LPARENT".equals(name)) {
             LOG.debug("factor211 ::= exprList");
             exprList();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void factor3() throws GrammarError {
+    public IFactor3 factor3() throws GrammarError {
         String name = terminal.getName();
         if ("MINUS".equals(name) || "PLUS".equals(name) || "NOT".equals(name)) {
             LOG.debug("factor3 ::= monadicOpr factor");
             monadicOpr();
             factor();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void factor4() throws GrammarError {
+    public IFactor4 factor4() throws GrammarError {
         String name = terminal.getName();
         if ("OLD".equals(name)) {
             LOG.debug("factor4 ::= OLD LPARENT expr RPARENT");
@@ -1425,40 +1564,44 @@ public class Parser implements IParser, IConcSyn {
             consume("LPARENT");
             expr();
             consume("RPARENT");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void factor5() throws GrammarError {
+    public IFactor5 factor5() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name)) {
             LOG.debug("factor5 ::= LPARENT expr RPARENT");
             consume(terminal);
             expr();
             consume("RPARENT");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void monadicOpr() throws GrammarError {
+    public IMonadicOpr monadicOpr() throws GrammarError {
         String name = terminal.getName();
         if ("NOT".equals(name)) {
             LOG.debug("monadicOpr ::= NOT");
             consume(terminal);
+            return null; // TODO
         } else if ("MINUS".equals(name) || "PLUS".equals(name)) {
             LOG.debug("monadicOpr ::= addopr");
             addopr();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void exprList1() throws GrammarError {
+    public IExprList1 exprList1() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name) || "OLD".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)
@@ -1467,15 +1610,17 @@ public class Parser implements IParser, IConcSyn {
                 || "FALSE".equals(name)) {
             LOG.debug("exprList1 ::= exprList2");
             exprList2();
+            return null; // TODO
         } else if ("RPARENT".equals(name)) {
             LOG.debug("exprList1 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void exprList2() throws GrammarError {
+    public IExprList2 exprList2() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name) || "OLD".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)
@@ -1485,32 +1630,36 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("exprList2 ::= expr exprList3");
             expr();
             exprList3();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void exprList3() throws GrammarError {
+    public IExprList3 exprList3() throws GrammarError {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("exprList3 ::= exprList4 exprList3");
             exprList4();
             exprList3();
+            return null; // TODO
         } else if ("RPARENT".equals(name)) {
             LOG.debug("exprList3 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void exprList4() throws GrammarError {
+    public IExprList4 exprList4() throws GrammarError {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("exprList4 ::= COMMA expr");
             consume(terminal);
             expr();
+            return null; // TODO
         } else {
             throw createError();
         }
@@ -1533,7 +1682,7 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void cmd1() throws GrammarError {
+    public ICmd1 cmd1() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name) || "OLD".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)
@@ -1544,13 +1693,14 @@ public class Parser implements IParser, IConcSyn {
             expr();
             consume("BECOMES");
             expr();
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cmd2() throws GrammarError {
+    public ICmd2 cmd2() throws GrammarError {
         String name = terminal.getName();
         if ("IF".equals(name)) {
             LOG.debug("cmd2 ::= IF expr THEN cpsCmd ELSE cpsCmd ENDIF");
@@ -1561,13 +1711,14 @@ public class Parser implements IParser, IConcSyn {
             consume("ELSE");
             cpsCmd();
             consume("ENDIF");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cmd3() throws GrammarError {
+    public ICmd3 cmd3() throws GrammarError {
         String name = terminal.getName();
         if ("WHILE".equals(name)) {
             LOG.debug("cmd3 ::= WHILE expr cmd31 DO cpsCmd ENDWHILE");
@@ -1577,26 +1728,29 @@ public class Parser implements IParser, IConcSyn {
             consume("DO");
             cpsCmd();
             consume("ENDWHILE");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cmd31() throws GrammarError {
+    public ICmd31 cmd31() throws GrammarError {
         String name = terminal.getName();
         if ("INV".equals(name)) {
             LOG.debug("cmd31 ::= invariant");
             invariant();
+            return null; // TODO
         } else if ("DO".equals(name)) {
             LOG.debug("cmd31 ::= <e>");
+            return null; // TODO
         } else {
             throw createError();
         }
     }
 
     @Override
-    public void cmd4() throws GrammarError {
+    public ICmd4 cmd4() throws GrammarError {
         String name = terminal.getName();
         if ("CALL".equals(name)) {
             LOG.debug("cmd4 ::= CALL IDENT exprList cmd41");
@@ -1604,6 +1758,7 @@ public class Parser implements IParser, IConcSyn {
             consume("IDENT");
             exprList();
             cmd41();
+            return null; // TODO
         } else {
             throw createError();
         }
