@@ -189,9 +189,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("stoDecl ::= stoDecl1 typedIdent");
-            stoDecl1();
-            typedIdent();
-            return null; // TODO
+            return new StoDecl(stoDecl1(), typedIdent());
         } else {
             throw createError();
         }
