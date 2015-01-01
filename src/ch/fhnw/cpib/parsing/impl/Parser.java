@@ -1211,9 +1211,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("MINUS".equals(name) || "PLUS".equals(name)) {
             LOG.debug("term211 ::= addopr term3");
-            addopr();
-            term3();
-            return null; // TODO
+            return new Term211(addopr(), term3());
         } else {
             throw createError();
         }
@@ -1224,12 +1222,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("PLUS".equals(name)) {
             LOG.debug("addopr ::= PLUS");
-            consume(terminal);
-            return null; // TODO
+            return new AddoprPlus(consume(terminal));
         } else if ("MINUS".equals(name)) {
             LOG.debug("addopr ::= MINUS");
-            consume(terminal);
-            return null; // TODO
+            return new AddoprMinus(consume(terminal));
         } else {
             throw createError();
         }
