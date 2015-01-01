@@ -1320,8 +1320,7 @@ public class Parser implements IParser, IConcSyn {
         if ("INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
             LOG.debug("factor1 ::= literal");
-            ILiteral literal = literal();
-            return new Factor1(literal);
+            return new Factor1(literal());
         } else {
             throw createError();
         }
@@ -1332,9 +1331,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("IDENT".equals(name)) {
             LOG.debug("factor2 ::= IDENT factor21");
-            consume(terminal);
-            factor21();
-            return null; // TODO
+            return new Factor2(consume(terminal), factor21());
         } else {
             throw createError();
         }
