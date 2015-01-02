@@ -1574,11 +1574,11 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("INV".equals(name)) {
             LOG.debug("cmd31 ::= invariant");
-            invariant();
-            return null; // TODO
+            return new Cmd31(
+                    invariant());
         } else if ("DO".equals(name)) {
             LOG.debug("cmd31 ::= <e>");
-            return null; // TODO
+            return new Cmd31Eps();
         } else {
             throw createError();
         }
