@@ -1507,12 +1507,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("FALSE".equals(name)) {
             LOG.debug("boolval ::= FALSE");
-            consume(terminal);
-            return new BoolVal(false);
+            return new BoolValFalse(consume(terminal));
         } else if ("TRUE".equals(name)) {
             LOG.debug("boolval ::= TRUE");
-            consume(terminal);
-            return new BoolVal(true);
+            return new BoolValTrue(consume(terminal));
         } else {
             throw createError();
         }
