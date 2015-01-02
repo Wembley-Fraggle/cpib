@@ -2,6 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.ICpsStoDecl;
 import ch.fhnw.cpib.parsing.ICpsStoDecl1;
+import ch.fhnw.cpib.parsing.IFunDecl2;
 import ch.fhnw.cpib.parsing.IStoDecl;
 
 public class CpsStoDecl implements ICpsStoDecl {
@@ -12,5 +13,10 @@ public class CpsStoDecl implements ICpsStoDecl {
        this.stoDecl = stoDecl;
        this.cpsStoDecl1 = cpsStoDecl1;
     }
+		@Override
+		public IFunDecl2 toAbsSyn() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
 }

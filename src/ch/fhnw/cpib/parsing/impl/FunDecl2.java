@@ -13,7 +13,7 @@ public class FunDecl2 implements IFunDecl2 {
 		@Override
 		public IFunDecl2 toAbsSyn() {
 			// TODO Auto-generated method stub
-			return null;
+			return funDecl21.toAbsSyn();
 		}
 
 }
