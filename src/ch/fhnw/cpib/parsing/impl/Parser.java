@@ -19,19 +19,13 @@ public class Parser implements IParser, IConcSyn {
     private ITerminal terminal;
     Iterator<IToken> iter;
 
-    private IConcSyn concSyn; // discussed later
-
     public Parser(List<IToken> tokenList) {
         this.tokenList = tokenList;
-        iter = tokenList.iterator();
-        token = iter.next();
-        terminal = token.getType();
- /*       while (iter.hasNext()) {
-            token = iter.next();
+        this.iter = tokenList.iterator();
+        if(iter.hasNext()) {
+            this.token = iter.next();
             terminal = token.getType();
-        } */
-
-        // FIXME concSyn = new ConcSyn(); // discussed later
+        }
     }
 
     private IToken consume(ITerminal expectedTerminal) throws GrammarError {
@@ -39,7 +33,7 @@ public class Parser implements IParser, IConcSyn {
     }
 
     private IToken consume(String expectedTerminal) throws GrammarError {
-        if (terminal.getName().equals(expectedTerminal)) {
+        if (terminal != null && terminal.getName().equals(expectedTerminal)) {
             IToken consumedToken = token;
 
             if (iter.hasNext()) {
@@ -55,9 +49,8 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public void parse() throws GrammarError {
-        // TODO
-    	program();
+    public IProgram parse() throws GrammarError {
+    	return program();
     }
 
     @Override
