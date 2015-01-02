@@ -15,7 +15,10 @@ public class Param implements IParam {
     
     public Param(IParam1 param1, IParam2 param2, IParam3 param3,
             ITypedIdent typedIdent) {
-        // TODO Auto-generated constructor stub
+        this.param1 = param1;
+        this.param2 = param2;
+        this.param3 = param3;
+        this.typedIdent = typedIdent;
     }
-
+    
 }
