@@ -1589,11 +1589,12 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("CALL".equals(name)) {
             LOG.debug("cmd4 ::= CALL IDENT exprList cmd41");
-            consume(terminal);
-            consume("IDENT");
-            exprList();
-            cmd41();
-            return null; // TODO
+            return new Cmd4(
+            consume(terminal),
+            consume("IDENT"),
+            exprList(),
+            cmd41());
+            
         } else {
             throw createError();
         }
