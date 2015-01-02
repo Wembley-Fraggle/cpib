@@ -1557,13 +1557,13 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("WHILE".equals(name)) {
             LOG.debug("cmd3 ::= WHILE expr cmd31 DO cpsCmd ENDWHILE");
-            consume(terminal);
-            expr();
-            cmd31();
-            consume("DO");
-            cpsCmd();
-            consume("ENDWHILE");
-            return null; // TODO
+            return new Cmd3(
+            consume(terminal),
+            expr(),
+            cmd31(),
+            consume("DO"),
+            cpsCmd(),
+            consume("ENDWHILE"));
         } else {
             throw createError();
         }
