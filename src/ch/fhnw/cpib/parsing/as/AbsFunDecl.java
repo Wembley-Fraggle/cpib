@@ -10,8 +10,8 @@ import ch.fhnw.cpib.parsing.IStoDecl;
 
 public class AbsFunDecl implements IAbsDecl {
 
-	public AbsFunDecl(IToken fun, IToken ident, IParamList absSyn,
-			IToken returns, IStoDecl absSyn2, IFunDecl1 absSyn3, IFunDecl2 absSyn4,
+	public AbsFunDecl(IParamList absSyn,
+			IStoDecl absSyn2, IFunDecl1 absSyn3, IFunDecl2 absSyn4,
 			IFunDecl3 absSyn5, IAbsCpsCmd absSyn6, ICpsCmd absSyn7) {
 		// TODO Auto-generated constructor stub
 	}
