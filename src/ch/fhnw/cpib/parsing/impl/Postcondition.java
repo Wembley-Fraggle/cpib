@@ -1,15 +1,21 @@
 package ch.fhnw.cpib.parsing.impl;
 
+import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IExpr;
 import ch.fhnw.cpib.parsing.IPostcondition;
 
 
-//TODO Take a IToken
 public class Postcondition implements IPostcondition{
-    String ident;
-    IExpr expr;
-    public Postcondition(String ident, IExpr expr) {
-        this.ident = ident;
-        this.expr = expr;
+    private IToken consume;
+    private IToken consume2;
+    private IToken consume3;
+    private IExpr expr2;
+    
+    public Postcondition(IToken consume, IToken consume2, IToken consume3,
+            IExpr expr2) {
+        this.consume = consume;
+        this.consume2 = consume2;
+        this.consume3 = consume3;
+        this.expr2 = expr2;
     }
 }

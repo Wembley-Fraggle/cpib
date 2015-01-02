@@ -1665,11 +1665,11 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("POST".equals(name)) {
             LOG.debug("postcondition ::= POST IDENT COLON expr");
-            consume(terminal);
-            String ident = consume("IDENT").getValue();
-            consume("COLON");
-            IExpr expr = expr();
-            return new Postcondition(ident, expr);
+            return new Postcondition(
+            consume(terminal),
+            consume("IDENT"),
+            consume("COLON"),
+            expr());
         } else {
             throw createError();
         }
