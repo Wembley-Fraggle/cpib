@@ -4,6 +4,9 @@ import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICmd2;
 import ch.fhnw.cpib.parsing.ICpsCmd;
 import ch.fhnw.cpib.parsing.IExpr;
+import ch.fhnw.cpib.parsing.as.IAbsCmd;
+import ch.fhnw.cpib.parsing.as.IAbsCondCmd;
+import ch.fhnw.cpib.parsing.as.impl.AbsCondCmd;
 
 public class Cmd2 implements ICmd2 {
 
@@ -24,6 +27,10 @@ public class Cmd2 implements ICmd2 {
         this.elseif = elseif;
         this.cpsCmd2 = cpsCmd2;
         this.end = end;
+    }
+    
+    public IAbsCondCmd toAbsSyn(IAbsCmd cmd) {
+        return new AbsCondCmd(expr.toAbsSyn(), cpsCmd.toAbsSyn(), cpsCmd.toAbsSyn());
     }
     
 }
