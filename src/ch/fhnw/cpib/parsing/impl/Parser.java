@@ -1627,9 +1627,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("ASSERT".equals(name)) {
             LOG.debug("cmd7 ::= ASSERT expr");
-            consume(terminal);
-            IExpr expr = expr();
-            return new Cmd7(expr);
+            return new Cmd7(consume(terminal), expr());
         } else {
             throw createError();
         }
