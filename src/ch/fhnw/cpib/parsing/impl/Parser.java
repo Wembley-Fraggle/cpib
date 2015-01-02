@@ -1525,10 +1525,10 @@ public class Parser implements IParser, IConcSyn {
                 || "INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
             LOG.debug("cmd1 ::= expr BECOMES expr");
-            expr();
-            consume("BECOMES");
-            expr();
-            return null; // TODO
+            return new Cmd1(
+            expr(),
+            consume("BECOMES"),
+            expr());
         } else {
             throw createError();
         }
