@@ -15,7 +15,6 @@ import ch.fhnw.cpib.lexing.IEndMarker;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.lexing.IlmLexer;
-import ch.fhnw.cpib.lexing.LexerContext;
 import ch.fhnw.cpib.lexing.LexerException;
 import ch.fhnw.cpib.lexing.LexerRuleFactory;
 
@@ -57,10 +56,10 @@ public class TokenRecognitionTest {
         IToken t2 = tokenList.get(1);
         IToken t3 = tokenList.get(2);
         
-        Assert.assertEquals("IDENTIFIER", t1.getType().getName());
+        Assert.assertEquals("IDENT", t1.getType().getName());
         Assert.assertEquals("Liebe", t1.getValue());
         
-        Assert.assertEquals("IDENTIFIER", t2.getType().getName());
+        Assert.assertEquals("IDENT", t2.getType().getName());
         Assert.assertEquals("Grossmutter", t2.getValue());
         Assert.assertEquals(new EndMarker(), t3.getType());
         
