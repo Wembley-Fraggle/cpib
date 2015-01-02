@@ -1446,11 +1446,11 @@ public class Parser implements IParser, IConcSyn {
                 || "INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
             LOG.debug("exprList1 ::= exprList2");
-            exprList2();
-            return null; // TODO
+            return new ExprList1(
+            exprList2());
         } else if ("RPARENT".equals(name)) {
             LOG.debug("exprList1 ::= <e>");
-            return null; // TODO
+            return new ExprList1Eps();
         } else {
             throw createError();
         }
