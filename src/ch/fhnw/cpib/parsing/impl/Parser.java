@@ -1638,12 +1638,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("TRUE".equals(name) || "FALSE".equals(name)) {
             LOG.debug("literal ::= boolval");
-            IBoolVal boolVal = boolval();
-            return new LiteralBool(boolVal);
+            return new LiteralBool(boolval());
         } else if ("INTVAL32".equals(name)) {
             LOG.debug("literal ::= INTVAL32");
-            String intVal32 = consume(terminal).getValue();
-            return new LiteralInt32(Integer.valueOf(intVal32));
+            return new LiteralInt32( consume(terminal));
         } else {
             throw createError();
         }
