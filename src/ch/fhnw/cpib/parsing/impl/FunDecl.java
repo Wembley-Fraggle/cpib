@@ -9,8 +9,8 @@ import ch.fhnw.cpib.parsing.IFunDecl3;
 import ch.fhnw.cpib.parsing.IFunDecl4;
 import ch.fhnw.cpib.parsing.IParamList;
 import ch.fhnw.cpib.parsing.IStoDecl;
-import ch.fhnw.cpib.parsing.as.AbsFunDecl;
 import ch.fhnw.cpib.parsing.as.IAbsDecl;
+import ch.fhnw.cpib.parsing.as.impl.AbsFunDecl;
 
 public class FunDecl implements IFunDecl {
 

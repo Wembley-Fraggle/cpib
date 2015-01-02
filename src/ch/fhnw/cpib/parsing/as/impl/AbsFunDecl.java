@@ -1,9 +1,13 @@
-package ch.fhnw.cpib.parsing.as;
+package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.parsing.IFunDecl1;
 import ch.fhnw.cpib.parsing.IFunDecl2;
 import ch.fhnw.cpib.parsing.IParamList;
 import ch.fhnw.cpib.parsing.IStoDecl;
+import ch.fhnw.cpib.parsing.as.IAbsCpsCmd;
+import ch.fhnw.cpib.parsing.as.IAbsDecl;
+import ch.fhnw.cpib.parsing.as.IAbsPostcondition;
+import ch.fhnw.cpib.parsing.as.IAbsPrecondition;
 
 public class AbsFunDecl implements IAbsDecl {
 
