@@ -1540,7 +1540,7 @@ public class Parser implements IParser, IConcSyn {
         if ("IF".equals(name)) {
             LOG.debug("cmd2 ::= IF expr THEN cpsCmd ELSE cpsCmd ENDIF");
             return new Cmd2(
-            consume(terminal);
+            consume(terminal),
             expr(),
             consume("THEN"),
             cpsCmd(),
