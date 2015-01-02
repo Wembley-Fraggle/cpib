@@ -949,47 +949,6 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public IIdents idents() throws GrammarError {
-        String name = terminal.getName();
-        if ("IDENT".equals(name)) {
-            LOG.debug("idents ::= IDENT idents1");
-            return new Idents(
-            consume(terminal),
-            idents1());
-        } else {
-            throw createError();
-        }
-    }
-
-    @Override
-    public IIdents1 idents1() throws GrammarError {
-        String name = terminal.getName();
-        if ("COMMA".equals(name)) {
-            LOG.debug("idents1 ::= idents2 idents1");
-            return new Idents1(idents2(), idents1());
-        } else if ("ENDWHILE".equals(name) || "ENDIF".equals(name)
-                || "ELSE".equals(name) || "ENDPROC".equals(name)
-                || "ENDFUN".equals(name) || "ENDPROGRAM".equals(name)
-                || "POST".equals(name) || "SEMI".equals(name)) {
-            LOG.debug("idents1 ::= <e>");
-            return new Idents1Eps();
-        } else {
-            throw createError();
-        }
-    }
-
-    @Override
-    public IIdents2 idents2() throws GrammarError {
-        String name = terminal.getName();
-        if ("COMMA".equals(name)) {
-            LOG.debug("idents2 ::= COMMA IDENT");
-            return new Idents2(consume(terminal), consume("IDENT"));
-        } else {
-            throw createError();
-        }
-    }
-
-    @Override
     public ITerm1 term1() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name) || "OLD".equals(name)
@@ -1586,7 +1545,7 @@ public class Parser implements IParser, IConcSyn {
     public ICmd4 cmd4() throws GrammarError {
         String name = terminal.getName();
         if ("CALL".equals(name)) {
-            LOG.debug("cmd4 ::= CALL IDENT exprList cmd41");
+            LOG.debug("cmd4 ::= CALL IDENT exprList");
             return new Cmd4(
             consume(terminal),
             consume("IDENT"),
