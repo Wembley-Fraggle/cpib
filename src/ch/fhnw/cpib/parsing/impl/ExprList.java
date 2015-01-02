@@ -3,6 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IExprList;
 import ch.fhnw.cpib.parsing.IExprList1;
+import ch.fhnw.cpib.parsing.as.IAbsExprList;
 
 public class ExprList implements IExprList {
 
@@ -14,6 +15,12 @@ public class ExprList implements IExprList {
         this.lParent = lParent;
         this.exprList1 = exprList1;
         this.rParent = rParent;
+    }
+
+    @Override
+    public IAbsExprList toAbsSyn() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

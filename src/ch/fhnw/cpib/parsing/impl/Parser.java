@@ -874,23 +874,6 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public ICmd41 cmd41() throws GrammarError {
-        String name = terminal.getName();
-        if ("INIT".equals(name) || "CONST".equals(name)) {
-            LOG.debug("cmd41 ::= globInits");
-            return new Cmd41(globInits());
-        } else if ("ENDWHILE".equals(name) || "ENDIF".equals(name)
-                || "ELSE".equals(name) || "ENDPROC".equals(name)
-                || "ENDFUN".equals(name) || "ENDPROGRAM".equals(name)
-                || "POST".equals(name) || "SEMI".equals(name)) {
-            LOG.debug("cmd41 ::= <e>");
-            return new Cmd41Eps();
-        } else {
-            throw createError();
-        }
-    }
-
-    @Override
     public IGlobInits globInits() throws GrammarError {
         String name = terminal.getName();
         if ("INIT".equals(name)) {
@@ -1607,8 +1590,7 @@ public class Parser implements IParser, IConcSyn {
             return new Cmd4(
             consume(terminal),
             consume("IDENT"),
-            exprList(),
-            cmd41());
+            exprList());
             
         } else {
             throw createError();

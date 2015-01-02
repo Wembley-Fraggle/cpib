@@ -63,7 +63,6 @@ public interface IConcSyn {
     IAtomtype atomtype() throws GrammarError;
     IExpr expr() throws GrammarError;
     IExprList exprList() throws GrammarError;
-    ICmd41 cmd41() throws GrammarError;
     IGlobInits globInits() throws GrammarError;
     ICpsCmd1 cpsCmd1() throws GrammarError;
     ICpsCmd2 cpsCmd2() throws GrammarError;
