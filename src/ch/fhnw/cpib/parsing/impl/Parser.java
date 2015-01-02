@@ -1539,14 +1539,14 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("IF".equals(name)) {
             LOG.debug("cmd2 ::= IF expr THEN cpsCmd ELSE cpsCmd ENDIF");
+            return new Cmd2(
             consume(terminal);
-            expr();
-            consume("THEN");
-            cpsCmd();
-            consume("ELSE");
-            cpsCmd();
-            consume("ENDIF");
-            return null; // TODO
+            expr(),
+            consume("THEN"),
+            cpsCmd(),
+            consume("ELSE"),
+            cpsCmd(),
+            consume("ENDIF"));
         } else {
             throw createError();
         }
