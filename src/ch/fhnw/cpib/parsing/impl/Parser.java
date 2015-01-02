@@ -1483,7 +1483,7 @@ public class Parser implements IParser, IConcSyn {
             exprList3());
         } else if ("RPARENT".equals(name)) {
             LOG.debug("exprList3 ::= <e>");
-            return null; // TODO
+            return new ExprList3Eps();
         } else {
             throw createError();
         }
