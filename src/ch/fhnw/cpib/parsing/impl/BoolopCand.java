@@ -4,7 +4,7 @@ import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IBoolopr;
 import ch.fhnw.cpib.parsing.as.IAbsDyad;
 import ch.fhnw.cpib.parsing.as.IAbsExpr2;
-import ch.fhnw.cpib.parsing.as.impl.Dyad;
+import ch.fhnw.cpib.parsing.as.impl.AbsDyad;
 
 public class BoolopCand implements IBoolopr {
 
