@@ -3,6 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.ICmd31;
 import ch.fhnw.cpib.parsing.IInvariant;
 import ch.fhnw.cpib.parsing.as.IAbsInvariant;
+import ch.fhnw.cpib.parsing.as.impl.AbsInvariant;
 
 public class Cmd31 implements ICmd31 {
 
@@ -12,8 +13,7 @@ public class Cmd31 implements ICmd31 {
     }
     @Override
     public IAbsInvariant toAbsSyn() {
-        // TODO return invariant.toAbsSyn();
-        return null;
+        return new AbsInvariant();
     }
 
 }
