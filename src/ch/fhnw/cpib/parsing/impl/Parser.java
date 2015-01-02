@@ -1411,10 +1411,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("LPARENT".equals(name)) {
             LOG.debug("factor5 ::= LPARENT expr RPARENT");
-            consume(terminal);
-            expr();
-            consume("RPARENT");
-            return null; // TODO
+            return new Factor5(
+            consume(terminal),
+            expr(),
+            consume("RPARENT"));
         } else {
             throw createError();
         }
@@ -1425,12 +1425,13 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("NOT".equals(name)) {
             LOG.debug("monadicOpr ::= NOT");
-            consume(terminal);
-            return null; // TODO
+            return new MonadicOprNot(
+                    consume(terminal));
         } else if ("MINUS".equals(name) || "PLUS".equals(name)) {
             LOG.debug("monadicOpr ::= addopr");
-            addopr();
-            return null; // TODO
+            return new MonadicOprAdd(
+            addopr());
+            
         } else {
             throw createError();
         }
