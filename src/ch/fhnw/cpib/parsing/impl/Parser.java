@@ -19,15 +19,17 @@ public class Parser implements IParser, IConcSyn {
     private ITerminal terminal;
     Iterator<IToken> iter;
 
-    // private IConcSyn concSyn; // discussed later
+    private IConcSyn concSyn; // discussed later
 
     public Parser(List<IToken> tokenList) {
         this.tokenList = tokenList;
         iter = tokenList.iterator();
-        while (iter.hasNext()) {
+        token = iter.next();
+        terminal = token.getType();
+ /*       while (iter.hasNext()) {
             token = iter.next();
             terminal = token.getType();
-        }
+        } */
 
         // FIXME concSyn = new ConcSyn(); // discussed later
     }
@@ -55,6 +57,7 @@ public class Parser implements IParser, IConcSyn {
     @Override
     public void parse() throws GrammarError {
         // TODO
+    	program();
     }
 
     @Override
@@ -656,6 +659,7 @@ public class Parser implements IParser, IConcSyn {
     public IProgParamList3 progParamList3() throws GrammarError {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
+        		terminal = iter.next().getType();
             LOG.debug("progParamList3 ::= progParamList4 progParamList3");
             return new ProgParamList3(progParam(), progParamList3());
         } else if ("RPARENT".equals(name)) {
@@ -1197,7 +1201,7 @@ public class Parser implements IParser, IConcSyn {
                 || "ENDPROGRAM".equals(name) || "POST".equals(name)
                 || "SEMI".equals(name) || "BECOMES".equals(name)
                 || "COR".equals(name) || "CAND".equals(name)
-                || "OR".equals(name) || "AND".equals(name) || "GT".equals(name)
+                || "OR".equals(name) || "AND".equals(name) || "GT".equals(name) || "GE".equals(name)
                 || "LT".equals(name) || "NE".equals(name) || "EQ".equals(name)) {
             LOG.debug("term21 ::= <e>");
             return new Term21Eps();
@@ -1248,7 +1252,7 @@ public class Parser implements IParser, IConcSyn {
                 || "ENDPROGRAM".equals(name) || "POST".equals(name)
                 || "SEMI".equals(name) || "BECOMES".equals(name)
                 || "COR".equals(name) || "CAND".equals(name)
-                || "OR".equals(name) || "AND".equals(name) || "GT".equals(name)
+                || "OR".equals(name) || "AND".equals(name) || "GT".equals(name) || "GE".equals(name)
                 || "LT".equals(name) || "NE".equals(name) || "EQ".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)) {
             LOG.debug("term31 ::= <e>");
@@ -1353,7 +1357,7 @@ public class Parser implements IParser, IConcSyn {
                 || "ENDPROGRAM".equals(name) || "POST".equals(name)
                 || "SEMI".equals(name) || "BECOMES".equals(name)
                 || "COR".equals(name) || "CAND".equals(name)
-                || "OR".equals(name) || "AND".equals(name) || "GT".equals(name)
+                || "OR".equals(name) || "AND".equals(name) || "GT".equals(name) || "GE".equals(name)
                 || "LT".equals(name) || "NE".equals(name) || "EQ".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)
                 || "MOD".equals(name) || "DIV".equals(name)
