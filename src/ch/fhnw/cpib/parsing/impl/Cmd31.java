@@ -13,7 +13,7 @@ public class Cmd31 implements ICmd31 {
     }
     @Override
     public IAbsInvariant toAbsSyn() {
-        return new AbsInvariant();
+        return invariant.toAbsSyn();
     }
 
 }
