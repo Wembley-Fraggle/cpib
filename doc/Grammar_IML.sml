@@ -188,14 +188,9 @@ datatype nonterm
   | atomtype
   | expr
   | exprList
-  | cmd41
-  | globInits
   | cpsCmd1
   | cpsCmd2
   | cmd
-  | idents
-  | idents1
-  | idents2
   | term1
   | expr1
   | expr2
@@ -302,13 +297,8 @@ val string_of_nonterm =
   | atomtype       => "atomtype"
   | expr           => "expr"
   | exprList       => "exprList"
-  | cmd41          => "cmd41"
-  | globInits      => "globInits"
   | cpsCmd1        => "cpsCmd1"
   | cpsCmd2        => "cpsCmd2"
-  | idents         => "idents"
-  | idents1        => "idents1"
-  | idents2        => "idents2"
   | term1          => "term1"
   | expr1          => "expr1"
   | expr2          => "expr2"
@@ -534,20 +524,18 @@ val productions =
  *                | expr BECOMES expr
  *                | IF expr THEN cpsCmd ELSE cpsCmd ENDIF
  *                | WHILE expr [invariant] DO cpsCmd ENDWHILE
- *                | CALL IDENT exprList [globInits]
+ *                | CALL IDENT exprList
  *                | DEBUGIN expr
  *                | DEBUGOUT expr
  *                | ASSERT expr
  * cpsCmd       ::= cmd {SEMICOLON cmd}
- * globInits    ::= INIT idents
- * idents       ::= IDENT {COMMA IDENT}
  *---------------------------------------------------------------
  *)
  (cmd,[[T SKIP],
       [N cmd1], (* expr BECOMES expr *)
       [N cmd2], (* IF expr THEN cpsCmd ELSE cpsCmd ENDIF *)
       [N cmd3], (* WHILE expr [invariant] DO cpsCmd ENDWHILE *)
-      [N cmd4], (* CALL IDENT exprList [globInits] *)
+      [N cmd4], (* CALL IDENT exprList*)
       [N cmd5], (* DEBUGIN expr *)
       [N cmd6], (* DEBUGOUT expr *) 
       [N cmd7]] (* ASSERT expr *)
@@ -563,9 +551,8 @@ val productions =
  (cmd3,[[T WHILE, N expr,N cmd31, T DO,N cpsCmd, T ENDWHILE]]), 
  (cmd31,[[N invariant],[]]), (* [invariant] *)
  
- (* CALL IDENT exprList [globInits] *)
- (cmd4,[[T CALL, T IDENT, N exprList, N cmd41]]), 
- (cmd41,[[N globInits],[]]),    (* [globInits] *)
+ (* CALL IDENT exprList*)
+ (cmd4,[[T CALL, T IDENT, N exprList]]), 
  (cmd5,[[T DEBUGIN, N expr]]),  (* DEBUGIN expr *)
  (cmd6,[[T DEBUGOUT, N expr]]), (* DEBUGOUT expr *)
  (cmd7,[[T ASSERT, N expr]]),   (* ASSERT expr *)
@@ -573,12 +560,6 @@ val productions =
  (cpsCmd,[[N cmd, N cpsCmd1]]), (* cmd {SEMICOLON cmd} *)
  (cpsCmd1,[[N cpsCmd2, N cpsCmd1],[]]), (* {SEMICOLON cmd} *)
  (cpsCmd2,[[T SEMICOLON, N cmd]]), (* SEMICOLON cmd *)
- 
- (globInits,[[T INIT, N idents]]), (* INIT idents *)
- 
- (idents,[[T IDENT, N idents1]]),  (* IDENT {COMMA IDENT} *)
- (idents1,[[N idents2, N idents1],[]]), (* IDENT {COMMA IDENT} *)
- (idents2,[[T COMMA, T IDENT]]), (* IDENT {COMMA IDENT} *)
 
 (*---------------------------------------------------------------
  * Expressions
