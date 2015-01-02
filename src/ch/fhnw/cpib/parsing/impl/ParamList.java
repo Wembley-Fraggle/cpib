@@ -16,4 +16,9 @@ public class ParamList implements IParamList {
         this.rParent = rParent;
     }
 
+		@Override
+		public IParamList toAbsSyn() {
+			return paramList1.toAbsSyn();
+		}
+
 }

@@ -10,4 +10,10 @@ public class FunDecl2 implements IFunDecl2 {
         this.funDecl21 = funDecl21;
     }
 
+		@Override
+		public IFunDecl2 toAbsSyn() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 }

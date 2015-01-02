@@ -12,4 +12,10 @@ public class StoDecl implements IStoDecl{
         this.stoDecl1 = stoDecl1;
         this.typedIdent = typedIdent;
     }
+
+		@Override
+		public IStoDecl toAbsSyn() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

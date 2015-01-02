@@ -11,4 +11,10 @@ public class FunDecl3 implements IFunDecl3 {
         this.precondition = precondition;
     }
 
+		@Override
+		public IFunDecl3 toAbsSyn() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 }
