@@ -1652,12 +1652,9 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("PRE".equals(name)) {
             LOG.debug("precondition ::= PRE IDENT COLON expr");
-            consume(terminal);
-            return new Precondition(
-            consume("IDENT").getValue(),
-            consume("COLON"),
-            expr());
-            
+            return new Precondition(consume(terminal), consume("IDENT"),
+                    consume("COLON"), expr());
+
         } else {
             throw createError();
         }
