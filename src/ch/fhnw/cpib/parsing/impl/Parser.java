@@ -1605,9 +1605,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("DEBUGIN".equals(name)) {
             LOG.debug("cmd5 ::= DEBUGIN expr");
-            return new Cmd5(
-                    consume(terminal);
-                    expr());
+            return new Cmd5(consume(terminal), expr());
         } else {
             throw createError();
         }
