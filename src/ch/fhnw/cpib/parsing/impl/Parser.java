@@ -1384,9 +1384,8 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("MINUS".equals(name) || "PLUS".equals(name) || "NOT".equals(name)) {
             LOG.debug("factor3 ::= monadicOpr factor");
-            monadicOpr();
-            factor();
-            return null; // TODO
+            return new Factor3(monadicOpr(),
+            factor());
         } else {
             throw createError();
         }
