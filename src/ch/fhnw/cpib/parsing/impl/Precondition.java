@@ -3,6 +3,8 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IExpr;
 import ch.fhnw.cpib.parsing.IPrecondition;
+import ch.fhnw.cpib.parsing.as.IAbsPrecondition;
+import ch.fhnw.cpib.parsing.as.impl.AbsPrecondition;
 
 
 public class Precondition implements IPrecondition{
@@ -16,5 +18,9 @@ public class Precondition implements IPrecondition{
         this.ident = ident;
         this.colon = colon;
         this.expr = expr;
+    }
+    
+    public IAbsPrecondition toAbsSyn(){
+    	return new AbsPrecondition(expr.toAbsSyn());
     }
 }

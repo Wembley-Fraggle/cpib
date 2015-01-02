@@ -1,14 +1,15 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.parsing.ICpsCmd;
 import ch.fhnw.cpib.parsing.IFunDecl4;
+import ch.fhnw.cpib.parsing.as.IAbsPostcondition;
+import ch.fhnw.cpib.parsing.as.impl.AbsPostcondition;
 
 public class FunDecl4Eps implements IFunDecl4 {
 
 	@Override
-	public ICpsCmd toAbsSyn() {
+	public IAbsPostcondition toAbsSyn() {
 		// TODO Auto-generated method stub
-		return null;
+		return new AbsPostcondition();
 	}
 
 }
