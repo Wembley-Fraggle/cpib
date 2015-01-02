@@ -874,17 +874,6 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public IGlobInits globInits() throws GrammarError {
-        String name = terminal.getName();
-        if ("INIT".equals(name)) {
-            LOG.debug("globInits ::= INIT idents");
-            return new GlobInits(consume(terminal), idents());
-        } else {
-            throw createError();
-        }
-    }
-
-    @Override
     public ICpsCmd1 cpsCmd1() throws GrammarError {
         String name = terminal.getName();
         if ("SEMI".equals(name)) {
