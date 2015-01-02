@@ -1100,7 +1100,8 @@ public class Parser implements IParser, IConcSyn {
     @Override
     public ITerm12 term12() throws GrammarError {
         String name = terminal.getName();
-        if ("GT".equals(name) || "LT".equals(name) || "NE".equals(name)
+        if ("GE".equals(name) || "LE".equals(name)
+                || "GT".equals(name) || "LT".equals(name) || "NE".equals(name)
                 || "EQ".equals(name)) {
             LOG.debug("term12 ::= relopr term2");
             return new Term12(
@@ -1114,7 +1115,8 @@ public class Parser implements IParser, IConcSyn {
     @Override
     public ITerm11 term11() throws GrammarError {
         String name = terminal.getName();
-        if ("GT".equals(name) || "LT".equals(name) || "NE".equals(name)
+        if ("GE".equals(name) || "LE".equals(name) || "GT".equals(name)
+                || "LT".equals(name) || "NE".equals(name)
                 || "EQ".equals(name)) {
             LOG.debug("term11 ::= term12");
             return new Term11(term12());
@@ -1150,12 +1152,22 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("relopr ::= LT");
             return new ReloprLt(
                     consume(terminal));
-        }
-        if ("GT".equals(name)) {
+        } else if ("GT".equals(name)) {
             LOG.debug("relopr ::= GT");
             return new ReloprGt(
             consume(terminal));
-        } else {
+        }  else if ("LE".equals(name)) {
+            LOG.debug("relopr ::= LE");
+            return new ReloprLe(
+            consume(terminal));
+        }  else if ("GE".equals(name)) {
+            LOG.debug("relopr ::= GE");
+            return new ReloprGe(
+            consume(terminal));
+        } 
+        
+        
+        else {
             throw createError();
         }
     }
@@ -1194,8 +1206,10 @@ public class Parser implements IParser, IConcSyn {
                 || "ENDPROGRAM".equals(name) || "POST".equals(name)
                 || "SEMI".equals(name) || "BECOMES".equals(name)
                 || "COR".equals(name) || "CAND".equals(name)
-                || "OR".equals(name) || "AND".equals(name) || "GT".equals(name) || "GE".equals(name)
-                || "LT".equals(name) || "NE".equals(name) || "EQ".equals(name)) {
+                || "OR".equals(name) || "AND".equals(name)
+                || "GE".equals(name) || "LE".equals(name)
+                || "GT".equals(name) || "LT".equals(name)
+                || "NE".equals(name) || "EQ".equals(name)) {
             LOG.debug("term21 ::= <e>");
             return new Term21Eps();
         } else {
@@ -1245,8 +1259,10 @@ public class Parser implements IParser, IConcSyn {
                 || "ENDPROGRAM".equals(name) || "POST".equals(name)
                 || "SEMI".equals(name) || "BECOMES".equals(name)
                 || "COR".equals(name) || "CAND".equals(name)
-                || "OR".equals(name) || "AND".equals(name) || "GT".equals(name) || "GE".equals(name)
-                || "LT".equals(name) || "NE".equals(name) || "EQ".equals(name)
+                || "OR".equals(name) || "AND".equals(name)
+                || "GE".equals(name) || "LE".equals(name)
+                || "GT".equals(name) || "LT".equals(name)
+                || "NE".equals(name) || "EQ".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)) {
             LOG.debug("term31 ::= <e>");
             return new Term31Eps();
@@ -1350,8 +1366,10 @@ public class Parser implements IParser, IConcSyn {
                 || "ENDPROGRAM".equals(name) || "POST".equals(name)
                 || "SEMI".equals(name) || "BECOMES".equals(name)
                 || "COR".equals(name) || "CAND".equals(name)
-                || "OR".equals(name) || "AND".equals(name) || "GT".equals(name) || "GE".equals(name)
-                || "LT".equals(name) || "NE".equals(name) || "EQ".equals(name)
+                || "OR".equals(name) || "AND".equals(name)
+                || "GE".equals(name) || "LE".equals(name)
+                || "GT".equals(name) || "LT".equals(name)
+                || "NE".equals(name) || "EQ".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)
                 || "MOD".equals(name) || "DIV".equals(name)
                 || "TIMES".equals(name)) {
