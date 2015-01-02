@@ -1680,11 +1680,11 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("INV".equals(name)) {
             LOG.debug("invariant ::= INV IDENT COLON expr");
-            consume(terminal);
-            String ident = consume("IDENT").getValue();
-            consume("COLON");
-            IExpr expr = (IExpr) expr();
-            return new Invariant(ident, expr);
+            return new Invariant(
+            consume(terminal),
+            consume("IDENT"),
+            consume("COLON"),
+            (IExpr) expr());
         } else {
             throw createError();
         }
