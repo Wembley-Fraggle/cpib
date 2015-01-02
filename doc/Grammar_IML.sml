@@ -671,7 +671,7 @@ val productions =
 (addopr,[[T ADDOPR_PLUS],[T ADDOPR_MINUS]]),
 (multopr,[[T MULTOPR_TIMES],[T MULTOPR_DIV],[T MULTOPR_MOD]]),
 (relopr,[[T RELOPR_EQ],[T RELOPR_NE],[T RELOPR_LT],
-         [T RELOPR_GT]]),
+         [T RELOPR_GT],[T RELOPR_LE],[T RELOPR_GE]]),
 (boolopr,[[T BOOLOPR_AND], [T BOOLOPR_OR], [T BOOLOPR_CAND],
           [T BOOLOPR_COR] ]),
 (atomtype,[[T TYPE_BOOL],[T TYPE_INT32]]),
