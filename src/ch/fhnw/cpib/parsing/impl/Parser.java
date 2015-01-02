@@ -1396,11 +1396,11 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("OLD".equals(name)) {
             LOG.debug("factor4 ::= OLD LPARENT expr RPARENT");
-            consume(terminal);
-            consume("LPARENT");
-            expr();
-            consume("RPARENT");
-            return null; // TODO
+            return new Factor4(
+            consume(terminal),
+            consume("LPARENT"),
+            expr(),
+            consume("RPARENT"));
         } else {
             throw createError();
         }
