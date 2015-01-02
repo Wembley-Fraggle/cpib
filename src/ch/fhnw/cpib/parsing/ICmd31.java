@@ -1,6 +1,10 @@
 package ch.fhnw.cpib.parsing;
 
-//TODO Auto-generated stub
+import ch.fhnw.cpib.parsing.as.IAbsInvariant;
+import ch.fhnw.cpib.parsing.as.IAbsWhileCmd;
+
 public interface ICmd31 extends IConcSynNode {
+
+    IAbsInvariant toAbsSyn();
 
 }

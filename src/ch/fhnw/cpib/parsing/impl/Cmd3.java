@@ -5,6 +5,8 @@ import ch.fhnw.cpib.parsing.ICmd3;
 import ch.fhnw.cpib.parsing.ICmd31;
 import ch.fhnw.cpib.parsing.ICpsCmd;
 import ch.fhnw.cpib.parsing.IExpr;
+import ch.fhnw.cpib.parsing.as.IAbsWhileCmd;
+import ch.fhnw.cpib.parsing.as.impl.AbsWhileCmd;
 
 public class Cmd3 implements ICmd3 {
 
@@ -25,5 +27,7 @@ public class Cmd3 implements ICmd3 {
         this.endWhileToken = endWhileToken;
     }
    
-    
+    public IAbsWhileCmd toAbsSyn() {
+       return new AbsWhileCmd(expr.toAbsSyn(), cmd31.toAbsSyn(), cpsCmd.toAbsSyn()) ;
+    }
 }
