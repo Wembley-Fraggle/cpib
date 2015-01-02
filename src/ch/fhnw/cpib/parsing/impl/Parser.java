@@ -1494,9 +1494,9 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("exprList4 ::= COMMA expr");
-            consume(terminal);
-            expr();
-            return null; // TODO
+            return new ExprList4(
+            consume(terminal),
+            expr());
         } else {
             throw createError();
         }
