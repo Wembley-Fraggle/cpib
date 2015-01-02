@@ -1616,9 +1616,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("DEBUGOUT".equals(name)) {
             LOG.debug("cmd6 ::= DEBUGOUT expr");
-            consume(terminal);
-            IExpr expr = expr();
-            return new Cmd6(expr);
+            return new Cmd6(consume(terminal), expr());
         } else {
             throw createError();
         }
