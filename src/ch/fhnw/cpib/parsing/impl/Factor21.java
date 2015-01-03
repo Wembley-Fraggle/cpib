@@ -1,7 +1,9 @@
 package ch.fhnw.cpib.parsing.impl;
 
+import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IFactor21;
 import ch.fhnw.cpib.parsing.IFactor211;
+import ch.fhnw.cpib.parsing.as.IAbsExpr;
 
 public class Factor21 implements IFactor21 {
 
@@ -10,5 +12,11 @@ public class Factor21 implements IFactor21 {
     public Factor21(IFactor211 factor211) {
         this.factor211 = factor211;
     }
+
+		@Override
+		public IAbsExpr toAbsSyn(IToken ident) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
 }

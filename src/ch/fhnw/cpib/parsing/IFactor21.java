@@ -1,5 +1,10 @@
 package ch.fhnw.cpib.parsing;
 
-public interface IFactor21 {
+import ch.fhnw.cpib.lexing.IToken;
+import ch.fhnw.cpib.parsing.as.IAbsExpr;
+
+public interface IFactor21 extends IConcSynNode, IFactor {
+
+	IAbsExpr toAbsSyn(IToken ident);
 
 }

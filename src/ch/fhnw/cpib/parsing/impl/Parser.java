@@ -1239,20 +1239,20 @@ public class Parser implements IParser, IConcSyn {
         if ("INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
             LOG.debug("factor ::= factor1");
-            return new FactorIntval32(factor1());
+            return factor1();
         } else if ("IDENT".equals(name)) {
             LOG.debug("factor ::= factor2");
-            return new FactorIdent(factor2());
+            return factor2();
         } else if ("MINUS".equals(name) || "PLUS".equals(name)
                 || "NOT".equals(name)) {
             LOG.debug("factor ::= factor3");
-            return new FactorAdd(factor3());
+            return factor3();
         } else if ("OLD".equals(name)) {
             LOG.debug("factor ::= factor4");
-            return new FactorOld(factor4());
+            return factor4();
         } else if ("LPARENT".equals(name)) {
             LOG.debug("factor ::= factor5");
-            return new FactorAtom(factor5());
+            return factor5();
         } else {
             throw createError();
         }
