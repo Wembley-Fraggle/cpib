@@ -1,8 +1,5 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
-import ch.fhnw.cpib.parsing.as.IAbsCpsCmd;
-import ch.fhnw.cpib.parsing.as.IAbsInvariant;
-import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 import ch.fhnw.cpib.parsing.as.IAbsWhileCmd;
 
 public class AbsWhileCmd implements IAbsWhileCmd {
@@ -17,4 +14,10 @@ public class AbsWhileCmd implements IAbsWhileCmd {
         this.invariant = invariant;
         this.blockCmd = blockCmd;
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

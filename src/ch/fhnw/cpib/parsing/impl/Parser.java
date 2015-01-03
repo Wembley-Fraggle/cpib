@@ -115,11 +115,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("PRE".equals(name)) {
             LOG.debug("program3 ::= precondition");
-            precondition();
-            return null; // TODO
+            return precondition(); // TODO
         } else if ("DO".equals(name)) {
             LOG.debug("program3 ::= <e>");
-            return null; // TODO
+            return new Program3Eps(); // TODO
         } else {
             throw createError();
         }
@@ -130,11 +129,11 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("POST".equals(name)) {
             LOG.debug("program4 ::= postcondition");
-            postcondition();
-            return null; // TODO
+            return postcondition();
+//            return null; // TODO
         } else if ("ENDPROGRAM".equals(name)) {
             LOG.debug("program4 ::= <e>");
-            return null; // TODO
+            return new Program4Eps(); // TODO
         } else {
             throw createError();
         }
@@ -146,9 +145,9 @@ public class Parser implements IParser, IConcSyn {
         if ("LPARENT".equals(name)) {
             LOG.debug("progParamList ::= LPARENT progParamList1 RPARENT");
             consume(terminal);
-            progParamList1();
+            IProgParamList prog = progParamList1();
             consume("RPARENT");
-            return null; // TODO
+            return prog; // TODO
         } else {
             throw createError();
         }
@@ -658,7 +657,7 @@ public class Parser implements IParser, IConcSyn {
         if ("COMMA".equals(name)) {
         		terminal = iter.next().getType();
             LOG.debug("progParamList3 ::= progParamList4 progParamList3");
-            return new ProgParamList3(progParam(), progParamList3());
+            return new ProgParamList3(progParam(), progParamList4());
         } else if ("RPARENT".equals(name)) {
             LOG.debug("progParamList3 ::= <e>");
             return new ProgParamList3Eps();

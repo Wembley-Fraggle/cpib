@@ -1,9 +1,9 @@
 package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IParam;
-import ch.fhnw.cpib.parsing.IParamList;
 import ch.fhnw.cpib.parsing.IParamList2;
 import ch.fhnw.cpib.parsing.IParamList3;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsParam;
 
 public class ParamList2 implements IParamList2 {
 
@@ -14,9 +14,9 @@ public class ParamList2 implements IParamList2 {
         this.paramList3 = paramList3;
     }
 		@Override
-		public IParamList toAbsSyn() {
+		public IAbsParam toAbsSyn() {
 			// TODO Auto-generated method stub
-			return null;
+			return paramList3.toAbsSyn();
 		}
 
 }

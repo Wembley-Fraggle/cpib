@@ -1,7 +1,7 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
-import ch.fhnw.cpib.parsing.as.IAbsCmd;
-import ch.fhnw.cpib.parsing.as.IAbsCpsCmd;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsCmd;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsCpsCmd;
 
 public class AbsCpsCmd implements IAbsCpsCmd {
 
@@ -16,4 +16,10 @@ public class AbsCpsCmd implements IAbsCpsCmd {
         this.cmd = cmd;
         this.absSyn = absSyn;
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

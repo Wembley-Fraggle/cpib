@@ -1,10 +1,10 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.parsing.IFunDecl3;
+import ch.fhnw.cpib.parsing.IProgram3;
 import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsPrecondition;
 import ch.fhnw.cpib.parsing.as.impl.AbsPrecondition;
 
-public class FunDecl3Eps implements IFunDecl3 {
+public class Program3Eps implements IProgram3 {
 
 	@Override
 	public IAbsPrecondition toAbsSyn() {

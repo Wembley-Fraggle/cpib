@@ -15,7 +15,6 @@ public class Factor21 implements IFactor21 {
 
 		@Override
 		public IAbsExpr toAbsSyn(IToken ident) {
-			// TODO Auto-generated method stub
 			return factor211.toAbsSyn();
 		}
 

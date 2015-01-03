@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.ICmd;
 import ch.fhnw.cpib.parsing.ICpsCmd;
 import ch.fhnw.cpib.parsing.ICpsCmd1;
-import ch.fhnw.cpib.parsing.as.IAbsCpsCmd;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsCpsCmd;
 import ch.fhnw.cpib.parsing.as.impl.AbsCpsCmd;
 
 public class CpsCmd implements ICpsCmd{

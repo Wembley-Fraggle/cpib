@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IExpr;
 import ch.fhnw.cpib.parsing.IPostcondition;
-import ch.fhnw.cpib.parsing.as.IAbsPostcondition;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsPostcondition;
 import ch.fhnw.cpib.parsing.as.impl.AbsPostcondition;
 
 

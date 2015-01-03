@@ -4,7 +4,7 @@ import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICmd2;
 import ch.fhnw.cpib.parsing.ICpsCmd;
 import ch.fhnw.cpib.parsing.IExpr;
-import ch.fhnw.cpib.parsing.as.IAbsCmd;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsCmd;
 import ch.fhnw.cpib.parsing.as.impl.AbsCondCmd;
 
 public class Cmd2 implements ICmd2 {

@@ -1,8 +1,8 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.parsing.as.IAbsInvariant;
 import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsInvariant;
 
 public class AbsInvariant implements IAbsInvariant{
 
@@ -17,5 +17,11 @@ public class AbsInvariant implements IAbsInvariant{
         this.ident = ident;
         this.expr = expr;
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return "Invar";
+		}
 
 }

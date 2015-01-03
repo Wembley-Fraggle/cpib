@@ -1,7 +1,7 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
-import ch.fhnw.cpib.parsing.as.IAbsPostcondition;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsPostcondition;
 
 public class AbsPostcondition implements IAbsPostcondition {
 
@@ -13,6 +13,12 @@ public class AbsPostcondition implements IAbsPostcondition {
 
 	public AbsPostcondition(IAbsExpr absSyn) {
 		this.expr = absSyn;
+	}
+
+	@Override
+	public String toString(String indent) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

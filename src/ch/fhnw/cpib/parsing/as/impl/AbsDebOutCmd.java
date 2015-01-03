@@ -1,7 +1,6 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.parsing.as.IAbsDebOutCmd;
-import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 
 public class AbsDebOutCmd implements IAbsDebOutCmd {
 
@@ -10,5 +9,11 @@ public class AbsDebOutCmd implements IAbsDebOutCmd {
     public AbsDebOutCmd(IAbsExpr expr) {
         this.expr = expr;
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
 }

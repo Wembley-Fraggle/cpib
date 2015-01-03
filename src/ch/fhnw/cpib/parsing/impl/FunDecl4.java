@@ -2,7 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IFunDecl4;
 import ch.fhnw.cpib.parsing.IPostcondition;
-import ch.fhnw.cpib.parsing.as.IAbsPostcondition;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsPostcondition;
 
 public class FunDecl4 implements IFunDecl4 {
 

@@ -1,5 +1,9 @@
 package ch.fhnw.cpib.parsing;
 
-public class IParamList4 {
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsParam;
+
+public interface IParamList4 {
+
+	public IAbsParam toAbsSyn();
 
 }

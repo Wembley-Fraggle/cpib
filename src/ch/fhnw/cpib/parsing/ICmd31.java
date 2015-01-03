@@ -1,7 +1,6 @@
 package ch.fhnw.cpib.parsing;
 
-import ch.fhnw.cpib.parsing.as.IAbsInvariant;
-import ch.fhnw.cpib.parsing.as.IAbsWhileCmd;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsInvariant;
 
 public interface ICmd31 extends IConcSynNode {
 

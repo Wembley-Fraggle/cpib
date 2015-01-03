@@ -8,6 +8,10 @@ import ch.fhnw.cpib.parsing.IProgram1;
 import ch.fhnw.cpib.parsing.IProgram2;
 import ch.fhnw.cpib.parsing.IProgram3;
 import ch.fhnw.cpib.parsing.IProgram4;
+import ch.fhnw.cpib.parsing.as.IAbsMother;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsMotherCopy;
+import ch.fhnw.cpib.parsing.as.impl.AbsMother;
+import ch.fhnw.cpib.parsing.as.impl.AbsMotherCopy;
 
 public class Program implements IProgram {
     private IToken program;
@@ -30,7 +34,21 @@ public class Program implements IProgram {
         this.program1 = program1;
         this.program2 = program2;
         this.program3 = program3;
+        this.program4 = program4;
         this.doToken = doToken;
         this.cpsCmd = cpsCmd;
     }
+
+		@Override
+		public IAbsMother toAbsSyn() {
+			System.out.println("ParamList: " + progParamList.toAbsSyn());
+			System.out.println("Program1: " + program1);
+			IAbsMotherCopy prog = new AbsMotherCopy(ident, progParamList.toAbsSyn(), program1.toAbsSyn());
+			System.out.println("program2: " + program2);
+			System.out.println("program3: " + program3);
+			System.out.println("cpsCmd: " + cpsCmd);
+			System.out.println("program4: " + program4);
+			IAbsMother prog2 = new AbsMother(prog, program2.toAbsSyn(prog), program3.toAbsSyn(), cpsCmd.toAbsSyn(), program4.toAbsSyn());
+			return prog2;
+		}
 }

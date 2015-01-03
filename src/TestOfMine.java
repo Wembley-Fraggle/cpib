@@ -12,6 +12,9 @@ import ch.fhnw.cpib.lexing.LexerContext;
 import ch.fhnw.cpib.lexing.LexerException;
 import ch.fhnw.cpib.lexing.LexerRuleFactory;
 import ch.fhnw.cpib.parsing.IParser;
+import ch.fhnw.cpib.parsing.IProgram;
+import ch.fhnw.cpib.parsing.as.IAbsMother;
+import ch.fhnw.cpib.parsing.as.impl.AbsMother;
 import ch.fhnw.cpib.parsing.impl.Parser;
 
 public class TestOfMine {
@@ -38,8 +41,12 @@ public class TestOfMine {
 			for (IToken t : ctx.getTokens()) {
 				System.out.println(t);
 			}
+			System.out.println("*************************CONCRETE SYNTAX*************************");
 			IParser parser = new Parser(ctx.getTokens());
-			parser.parse();
+			IProgram prog = parser.parse();
+			System.out.println("*************************ABSTRACT SYNTAX*************************");
+			IAbsMother mother = prog.toAbsSyn();
+			mother.toString("");
 		} catch (IOException | LexerException e) {
 			e.printStackTrace();
 		} catch (GrammarError e) {

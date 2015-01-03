@@ -2,8 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.ICmd31;
 import ch.fhnw.cpib.parsing.IInvariant;
-import ch.fhnw.cpib.parsing.as.IAbsInvariant;
-import ch.fhnw.cpib.parsing.as.impl.AbsInvariant;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsInvariant;
 
 public class Cmd31 implements ICmd31 {
 

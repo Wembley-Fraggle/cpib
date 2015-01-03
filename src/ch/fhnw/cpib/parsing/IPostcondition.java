@@ -1,5 +1,5 @@
 package ch.fhnw.cpib.parsing;
 
-public interface IPostcondition extends IConcSynNode {
+public interface IPostcondition extends IConcSynNode, IProgram4 {
 
 }

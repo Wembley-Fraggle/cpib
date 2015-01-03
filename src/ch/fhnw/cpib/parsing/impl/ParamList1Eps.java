@@ -1,14 +1,15 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.parsing.IParamList;
 import ch.fhnw.cpib.parsing.IParamList1;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsParam;
+import ch.fhnw.cpib.parsing.as.impl.AbsParam;
 
 public class ParamList1Eps implements IParamList1 {
 
 	@Override
-	public IParamList toAbsSyn() {
+	public IAbsParam toAbsSyn() {
 		// TODO Auto-generated method stub
-		return null;
+		return new AbsParam();
 	}
 
 }

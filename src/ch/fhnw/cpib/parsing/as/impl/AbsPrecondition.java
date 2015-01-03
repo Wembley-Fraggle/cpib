@@ -1,7 +1,7 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
-import ch.fhnw.cpib.parsing.as.IAbsPrecondition;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsPrecondition;
 
 public class AbsPrecondition implements IAbsPrecondition {
 	
@@ -13,6 +13,12 @@ public class AbsPrecondition implements IAbsPrecondition {
 	
 	public AbsPrecondition(IAbsExpr absSyn) {
 		this.expr = absSyn;
+	}
+
+	@Override
+	public String toString(String indent) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

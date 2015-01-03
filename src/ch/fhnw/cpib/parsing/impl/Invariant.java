@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IExpr;
 import ch.fhnw.cpib.parsing.IInvariant;
-import ch.fhnw.cpib.parsing.as.IAbsInvariant;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsInvariant;
 import ch.fhnw.cpib.parsing.as.impl.AbsInvariant;
 
 public class Invariant implements IInvariant {

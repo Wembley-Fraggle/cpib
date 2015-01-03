@@ -1,7 +1,6 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.parsing.as.IAbsAssiCmd;
-import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 
 public class AbsAssiCmd implements IAbsAssiCmd{
     private IAbsExpr left;
@@ -11,4 +10,10 @@ public class AbsAssiCmd implements IAbsAssiCmd{
         this.left = left;
         this.right = right;
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }
