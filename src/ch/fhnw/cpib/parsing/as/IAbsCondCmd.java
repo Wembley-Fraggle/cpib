@@ -1,5 +1,5 @@
 package ch.fhnw.cpib.parsing.as;
 
-public interface IAbsCondCmd {
+public interface IAbsCondCmd extends IAbsCmd{
 
 }

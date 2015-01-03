@@ -1,5 +1,5 @@
 package ch.fhnw.cpib.parsing.as;
 
-public interface IAbsAssertCmd {
+public interface IAbsAssertCmd extends IAbsCmd{
 
 }

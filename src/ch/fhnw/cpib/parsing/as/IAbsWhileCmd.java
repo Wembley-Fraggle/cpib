@@ -1,5 +1,5 @@
 package ch.fhnw.cpib.parsing.as;
 
-public interface IAbsWhileCmd extends IAbsSynNode {
+public interface IAbsWhileCmd extends IAbsCmd {
 
 }

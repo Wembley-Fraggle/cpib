@@ -28,7 +28,6 @@ public class Cmd3 implements ICmd3 {
     }
    
     public IAbsWhileCmd toAbsSyn() {
-        // FIXME??
        return new AbsWhileCmd(expr.toAbsSyn(), cmd31.toAbsSyn(), cpsCmd.toAbsSyn()) ;
     }
 }

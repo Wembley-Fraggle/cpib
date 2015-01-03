@@ -1,5 +1,5 @@
 package ch.fhnw.cpib.parsing.as;
 
-public interface IAbsDebOutCmd {
+public interface IAbsDebOutCmd extends IAbsCmd{
 
 }
