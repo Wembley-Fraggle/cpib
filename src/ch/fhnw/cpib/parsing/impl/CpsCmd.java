@@ -4,6 +4,7 @@ import ch.fhnw.cpib.parsing.ICmd;
 import ch.fhnw.cpib.parsing.ICpsCmd;
 import ch.fhnw.cpib.parsing.ICpsCmd1;
 import ch.fhnw.cpib.parsing.as.IAbsCpsCmd;
+import ch.fhnw.cpib.parsing.as.impl.AbsCpsCmd;
 
 public class CpsCmd implements ICpsCmd{
     private ICmd cmd;
@@ -16,7 +17,6 @@ public class CpsCmd implements ICpsCmd{
 
     @Override
     public IAbsCpsCmd toAbsSyn() {
-        // TODO Auto-generated method stub
-        return null;
+        return cpsCmd1.toAbsSyn( new AbsCpsCmd(cmd.toAbsSyn()));
     }
 }

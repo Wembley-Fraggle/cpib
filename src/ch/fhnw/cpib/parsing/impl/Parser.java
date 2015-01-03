@@ -913,25 +913,25 @@ public class Parser implements IParser, IConcSyn {
                 || "INTVAL32".equals(name) || "TRUE".equals(name)
                 || "FALSE".equals(name)) {
             LOG.debug("cmd ::= cmd1");
-            return new CmdCmd1(cmd1());
+            return cmd1();
         } else if ("IF".equals(name)) {
             LOG.debug("cmd ::= cmd2");
-            return new CmdIf(cmd2());
+            return cmd2();
         } else if ("WHILE".equals(name)) {
             LOG.debug("cmd ::= cmd3");
-            return new CmdWhile(cmd3());
+            return cmd3();
         } else if ("CALL".equals(name)) {
             LOG.debug("cmd ::= cmd4");
-            return new CmdCall(cmd4());
+            return cmd4();
         } else if ("DEBUGIN".equals(name)) {
             LOG.debug("cmd ::= cmd5");
-            return new CmdDebugIn(cmd5());
+            return cmd5();
         } else if ("DEBUGOUT".equals(name)) {
             LOG.debug("cmd ::= cmd6");
-            return new CmdDebougOut(cmd6());
+            return cmd6();
         } else if ("ASSERT".equals(name)) {
             LOG.debug("cmd ::= cmd7");
-            return new CmdAssert(cmd7());
+            return cmd7();
         } else {
             throw createError();
         }

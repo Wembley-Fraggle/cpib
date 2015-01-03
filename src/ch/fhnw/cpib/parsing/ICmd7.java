@@ -1,8 +1,9 @@
 package ch.fhnw.cpib.parsing;
 
-import ch.fhnw.cpib.parsing.as.IAbsAssertCmd;
+import ch.fhnw.cpib.parsing.as.IAbsCmd;
+
 
 //TODO Auto-generated stub
-public interface ICmd7 extends IConcSynNode {
-    public IAbsAssertCmd toAbsSyn();
+public interface ICmd7 extends ICmd,IConcSynNode {
+    public IAbsCmd toAbsSyn();
 }
