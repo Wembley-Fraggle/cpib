@@ -12,7 +12,7 @@ public class BooloprAnd implements IBoolopr {
         this.boolAnd = boolAnd;
     }
     
-    public IAbsExpr2 toAbsSyn(IAbsExpr2 e) {
-        return e;
+    public IToken toAbsSyn() {
+        return boolAnd;
     }
 }

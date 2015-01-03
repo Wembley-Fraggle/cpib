@@ -11,8 +11,8 @@ public class BooloprOr implements IBoolopr {
         this.booloprOr = booloprOr;
     }
     
-    public IAbsExpr2 toAbsSyn(IAbsExpr2 e) {
-        return e;
+    public IToken toAbsSyn() {
+        return booloprOr;
     }
 
 }

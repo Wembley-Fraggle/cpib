@@ -10,7 +10,7 @@ public class BoolValFalse implements IBoolVal{
         this.value = value;
     }
     
-    public IAbsExpr2 toAbsSyn(IAbsExpr2 e) {
-      return e;
+    public IToken toAbsSyn() {
+      return value;
   }
 }
