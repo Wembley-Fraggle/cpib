@@ -4,6 +4,8 @@ import ch.fhnw.cpib.parsing.IExpr;
 import ch.fhnw.cpib.parsing.IExpr1;
 import ch.fhnw.cpib.parsing.ITerm1;
 import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsExprList;
+import ch.fhnw.cpib.parsing.as.impl.AbsExpr;
 
 public class Expr implements IExpr {
 
@@ -17,8 +19,7 @@ public class Expr implements IExpr {
 
     @Override
     public IAbsExpr toAbsSyn() {
-        // TODO Auto-generated method stub
-        return null;
+        return expr1.toAbsSyn(term1.toAbsSyn());
     }
 
 }

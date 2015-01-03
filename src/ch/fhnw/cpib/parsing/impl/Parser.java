@@ -52,6 +52,10 @@ public class Parser implements IParser, IConcSyn {
     public IProgram parse() throws GrammarError {
     	return program();
     }
+    
+    public IExprList parseExprList() throws GrammarError {
+        return exprList();
+    }
 
     @Override
     public IProgram program() throws GrammarError {

@@ -19,8 +19,7 @@ public class ExprList implements IExprList {
 
     @Override
     public IAbsExprList toAbsSyn() {
-        // TODO Auto-generated method stub
-        return null;
+        return exprList1.toAbsSyn();
     }
 
 }
