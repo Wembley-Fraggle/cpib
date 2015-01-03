@@ -17,10 +17,14 @@ public class AbsFunDecl implements IAbsDecl {
 		// TODO Auto-generated constructor stub
 	}
 
+	public AbsFunDecl() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString(String indent) {
 		// TODO Auto-generated method stub
-		return null;
+		return "AbsFunDecl";
 	}
 
 }

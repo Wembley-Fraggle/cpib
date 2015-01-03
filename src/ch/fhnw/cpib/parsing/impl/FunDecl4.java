@@ -2,6 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IFunDecl4;
 import ch.fhnw.cpib.parsing.IPostcondition;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsPostcondition;
 
 public class FunDecl4 implements IFunDecl4 {
@@ -13,9 +14,9 @@ public class FunDecl4 implements IFunDecl4 {
     }
 
 		@Override
-		public IAbsPostcondition toAbsSyn() {
+		public IAbsPostcondition toAbsSyn(IAbsExpr expr) {
 			// TODO Auto-generated method stub
-			return null;
+			return postcondition.toAbsSyn();
 		}
 
 }

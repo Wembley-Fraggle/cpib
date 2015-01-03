@@ -9,7 +9,7 @@ public class Program4Eps implements IProgram4 {
 	@Override
 	public IAbsPostcondition toAbsSyn() {
 		// TODO Auto-generated method stub
-		return new AbsPostcondition();
+		return new AbsPostcondition(null);
 	}
 
 }

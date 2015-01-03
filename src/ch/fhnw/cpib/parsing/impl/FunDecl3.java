@@ -15,7 +15,7 @@ public class FunDecl3 implements IFunDecl3 {
 		@Override
 		public IAbsPrecondition toAbsSyn() {
 			// TODO Auto-generated method stub
-			return null;
+			return precondition.toAbsSyn();
 		}
 
 }

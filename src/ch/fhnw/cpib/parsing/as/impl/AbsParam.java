@@ -7,7 +7,7 @@ public class AbsParam implements IAbsParam {
 	@Override
 	public String toString(String indent) {
 		// TODO Auto-generated method stub
-		return "AbsParam";
+		return indent + "<Param>FIXME</Param>\n";
 	}
 
 }

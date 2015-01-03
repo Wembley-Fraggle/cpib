@@ -17,6 +17,6 @@ public class CpsDecl implements ICpsDecl{
 		@Override
 		public IAbsDecl toAbsSyn() {
 			// TODO Auto-generated method stub
-			return null;
+			return cpsDecl1.toAbsSyn(decl.toAbsSyn());
 		}
 }

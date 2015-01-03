@@ -47,6 +47,6 @@ public class FunDecl implements IFunDecl {
 
 	public IAbsDecl toAbsSyn() {
 		return new AbsFunDecl(paramList.toAbsSyn(), stoDecl.toAbsSyn(), funDecl1.toAbsSyn(),
-				funDecl2.toAbsSyn(), funDecl3.toAbsSyn(), cpsCmd.toAbsSyn(), funDecl4.toAbsSyn());
+				funDecl2.toAbsSyn(), funDecl3.toAbsSyn(), cpsCmd.toAbsSyn(), funDecl4.toAbsSyn(null));
 	}
 }

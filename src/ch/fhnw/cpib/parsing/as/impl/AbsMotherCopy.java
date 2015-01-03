@@ -10,10 +10,6 @@ public class AbsMotherCopy implements IAbsMotherCopy {
 	private IAbsInvariant invariant;
 
 	public AbsMotherCopy(IToken ident, IAbsParam params, IAbsInvariant invariant) {
-		System.out.println("AbsMotherCopy");
-		System.out.println("ident " + ident);
-		System.out.println("params " + params);
-		System.out.println("invariant" + invariant);
 		this.ident = ident;
 		this.params = params;
 		this.invariant = invariant;

@@ -28,15 +28,6 @@ public class AbsMother implements IAbsMother {
 	@Override
 	public String toString(String indent) {
 		// TODO Auto-generated method stub
-		System.out.println("ToString AbsMother");
-		System.out.println("indent: " + indent);
-		System.out.println("ident: " + ident);
-		System.out.println("params: " + params);
-		System.out.println("invariant: " + invariant);
-		System.out.println("cpsDecl: " + cpsDecl);
-		System.out.println("precondition: " + precondition);
-		System.out.println("cpsCmd: " + cpsCmd);
-		System.out.println("postcondition: " + postcondition);
 		return indent + "<Program>\n" + ident.toString(indent + '\t')
 				+ params.toString(indent + '\t') + invariant.toString(indent + '\t')
 				+ cpsDecl.toString(indent + '\t')

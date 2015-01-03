@@ -14,7 +14,6 @@ public class ProgParamList1 implements IProgParamList1 {
 
 		@Override
 		public IAbsParam toAbsSyn() {
-			System.out.println("ProgParamList1");
 			// TODO Auto-generated method stub
 			return progParamList2.toAbsSyn();
 		}

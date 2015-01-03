@@ -46,7 +46,7 @@ public class TestOfMine {
 			IProgram prog = parser.parse();
 			System.out.println("*************************ABSTRACT SYNTAX*************************");
 			IAbsMother mother = prog.toAbsSyn();
-			mother.toString("");
+			System.out.println(mother.toString(""));
 		} catch (IOException | LexerException e) {
 			e.printStackTrace();
 		} catch (GrammarError e) {

@@ -9,7 +9,7 @@ public class FunDecl3Eps implements IFunDecl3 {
 	@Override
 	public IAbsPrecondition toAbsSyn() {
 		// TODO Auto-generated method stub
-		return new AbsPrecondition();
+		return new AbsPrecondition(null);
 	}
 
 }

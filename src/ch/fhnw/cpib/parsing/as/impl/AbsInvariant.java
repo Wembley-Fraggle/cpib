@@ -20,8 +20,11 @@ public class AbsInvariant implements IAbsInvariant{
 
 		@Override
 		public String toString(String indent) {
-			// TODO Auto-generated method stub
-			return "Invar";
+			if (expr != null)
+				return indent + "<Invariant>" + expr.toString(indent)
+						+ "</Invariant>\n";
+			else
+				return indent + "<Invariant>true</Invariant>\n";
 		}
 
 }

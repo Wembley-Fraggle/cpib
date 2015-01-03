@@ -146,6 +146,12 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("progParamList ::= LPARENT progParamList1 RPARENT");
             consume(terminal);
             IProgParamList prog = progParamList1();
+            consume("COMMA"); //FIXME
+            consume("OUT");//FIXME
+            consume("CONST");//FIXME
+            consume("IDENT");//FIXME
+            consume("COLON");//FIXME
+            consume("INT32");//FIXME
             consume("RPARENT");
             return prog; // TODO
         } else {
