@@ -73,7 +73,7 @@ public class LexerRuleFactory {
         types.add(new Terminal("INTVAL32", "[0-9]+"));
         types.add(new Terminal("COMMENT"));
         types.add(new Terminal("BLOCKCOMMENT","/\\*.*?\\*/",true));
-        types.add(new Terminal("LINECOMMENT","//.*\n",true));
+        types.add(new Terminal("LINECOMMENT","//.*?\n",true));
         
         return types;
     }
