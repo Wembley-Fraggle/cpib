@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.IBoolopr;
 import ch.fhnw.cpib.parsing.IExpr2;
 import ch.fhnw.cpib.parsing.ITerm1;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 import ch.fhnw.cpib.parsing.as.impl.AbsExpr;
 
 public class Expr2 implements IExpr2 {

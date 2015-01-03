@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IExpr;
 import ch.fhnw.cpib.parsing.IExprList4;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 
 public class ExprList4 implements IExprList4 {
 

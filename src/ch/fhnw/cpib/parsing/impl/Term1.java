@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.ITerm1;
 import ch.fhnw.cpib.parsing.ITerm11;
 import ch.fhnw.cpib.parsing.ITerm2;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 
 public class Term1 implements ITerm1 {
 

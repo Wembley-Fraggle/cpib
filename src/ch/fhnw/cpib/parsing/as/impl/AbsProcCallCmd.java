@@ -1,7 +1,7 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.parsing.as.IAbsExprList;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExprList;
 import ch.fhnw.cpib.parsing.as.IAbsProcCallCmd;
 
 public class AbsProcCallCmd implements IAbsProcCallCmd{

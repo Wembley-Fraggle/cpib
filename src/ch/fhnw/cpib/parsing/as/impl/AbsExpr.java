@@ -1,7 +1,7 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 
 public class AbsExpr implements IAbsExpr{
     
@@ -13,4 +13,9 @@ public class AbsExpr implements IAbsExpr{
         this.left = left;
         this.right = right;
     }
+		@Override
+		public String toString(String ident) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

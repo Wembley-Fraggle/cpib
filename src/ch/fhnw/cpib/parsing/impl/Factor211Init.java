@@ -2,7 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IFactor211;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 
 public class Factor211Init implements IFactor211 {
 

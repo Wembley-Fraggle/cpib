@@ -1,8 +1,8 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.parsing.as.IAbsCpsCmd;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
 import ch.fhnw.cpib.parsing.as.IAbsInvariant;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 import ch.fhnw.cpib.parsing.as.IAbsWhileCmd;
 
 public class AbsWhileCmd implements IAbsWhileCmd {

@@ -2,7 +2,7 @@ package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.parsing.as.IAbsCondCmd;
 import ch.fhnw.cpib.parsing.as.IAbsCpsCmd;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 
 public class AbsCondCmd implements IAbsCondCmd{
     private IAbsExpr expr;

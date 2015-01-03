@@ -3,9 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.IExpr;
 import ch.fhnw.cpib.parsing.IExpr1;
 import ch.fhnw.cpib.parsing.ITerm1;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
-import ch.fhnw.cpib.parsing.as.IAbsExprList;
-import ch.fhnw.cpib.parsing.as.impl.AbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 
 public class Expr implements IExpr {
 

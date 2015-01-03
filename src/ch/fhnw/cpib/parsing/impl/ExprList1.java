@@ -2,7 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IExprList1;
 import ch.fhnw.cpib.parsing.IExprList2;
-import ch.fhnw.cpib.parsing.as.IAbsExprList;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExprList;
 
 public class ExprList1 implements IExprList1 {
 

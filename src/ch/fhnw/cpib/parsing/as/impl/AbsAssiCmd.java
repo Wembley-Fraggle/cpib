@@ -1,7 +1,7 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.parsing.as.IAbsAssiCmd;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 
 public class AbsAssiCmd implements IAbsAssiCmd{
     private IAbsExpr left;

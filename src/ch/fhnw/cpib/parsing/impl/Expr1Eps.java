@@ -1,7 +1,7 @@
 package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IExpr1;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 
 public class Expr1Eps implements IExpr1 {
 

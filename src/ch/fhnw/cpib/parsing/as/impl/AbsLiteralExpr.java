@@ -1,7 +1,7 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.parsing.ILiteral;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 
 public class AbsLiteralExpr implements IAbsExpr {
 
@@ -9,6 +9,12 @@ public class AbsLiteralExpr implements IAbsExpr {
 	
 	public AbsLiteralExpr(ILiteral literal) {
 		this.literal = literal;
+	}
+
+	@Override
+	public String toString(String ident) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

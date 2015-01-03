@@ -2,7 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IFactor1;
 import ch.fhnw.cpib.parsing.ILiteral;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 import ch.fhnw.cpib.parsing.as.impl.AbsLiteralExpr;
 
 

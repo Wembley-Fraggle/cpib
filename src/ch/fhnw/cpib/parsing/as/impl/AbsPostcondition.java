@@ -1,6 +1,6 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.as.IAbsMother.IAbsExpr;
 import ch.fhnw.cpib.parsing.as.IAbsPostcondition;
 
 public class AbsPostcondition implements IAbsPostcondition {
