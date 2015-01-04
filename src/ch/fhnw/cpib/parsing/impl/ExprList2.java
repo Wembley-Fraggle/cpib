@@ -3,8 +3,8 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.IConcExpr;
 import ch.fhnw.cpib.parsing.IExprList2;
 import ch.fhnw.cpib.parsing.IExprList3;
-import ch.fhnw.cpib.parsing.as.IAbsExprList;
-import ch.fhnw.cpib.parsing.as.impl.AbsExprList;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExprList;
+import ch.fhnw.cpib.parsing.abs.impl.ExprList;
 
 public class ExprList2 implements IExprList2 {
 
@@ -15,8 +15,10 @@ public class ExprList2 implements IExprList2 {
         this.exprList3 = exprList3;
     }
     
-    public IAbsExprList toAbsSyn() {
-        return exprList3.toAbsSyn(expr.toAbsSyn());
+    @Override
+    public IExprList toAbsSyn() {
+        return new ExprList(expr.toAbsSyn(), exprList3.toAbsSyn());
     }
-
+    
+    
 }

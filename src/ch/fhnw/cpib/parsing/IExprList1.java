@@ -1,8 +1,7 @@
 package ch.fhnw.cpib.parsing;
 
-import ch.fhnw.cpib.parsing.as.IAbsExprList;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExprList;
 
-//TODO Auto-generated stub
 public interface IExprList1 extends IConcSynNode {
-    public IAbsExprList toAbsSyn();
+    public IExprList toAbsSyn();
 }
