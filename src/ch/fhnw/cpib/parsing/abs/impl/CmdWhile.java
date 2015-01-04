@@ -7,14 +7,14 @@ import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 public final class CmdWhile implements ICmd {
 	private final IExpr expr;
 	private final ICmd cmd;
-	private final ICmd repCmd;
+	private final ICmd dbcInvCmd;
 	
 	public CmdWhile(final IExpr expr, 
 	        final ICmd cmd, 
-	        final ICmd repCmd) {
+	        final ICmd dbcInvCmd) {
 		this.expr = expr;
 		this.cmd = cmd;
-		this.repCmd = repCmd;
+		this.dbcInvCmd = dbcInvCmd;
 	}
 	
 	@Override
@@ -23,7 +23,6 @@ public final class CmdWhile implements ICmd {
 				+ "<CmdWhile>\n"
 				+ expr.toString(indent + '\t')
 				+ cmd.toString(indent + '\t')
-				+ repCmd.toString(indent + '\t')
 				+ indent
 				+ "</CmdWhile>\n";
 	}
@@ -42,15 +41,17 @@ public final class CmdWhile implements ICmd {
         }
         
         cmd.check(true);
-        repCmd.check(canInit);
     }
 
     @Override
     public int code(final int loc) throws CodeTooSmallError {
-        int loc1 = expr.code(loc);
-        int loc2 = cmd.code(loc1 + 1);
-        IMLCompiler.getVM().CondJump(loc1, loc2 + 1);
-        IMLCompiler.getVM().UncondJump(loc2, loc);
-        return repCmd.code(loc2 + 1);
+        int loc1=dbcInvCmd.code(loc);
+        int loc2=expr.code(loc1);
+        int loc3=loc2+1;
+        int loc4=cmd.code(loc3);
+        int loc5=loc4+1;
+        IMLCompiler.getVM().CondJump(loc2,loc5);
+        IMLCompiler.getVM().UncondJump(loc4,loc);
+        return loc5;
     }
 }
