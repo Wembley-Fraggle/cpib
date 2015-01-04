@@ -19,6 +19,13 @@ public class Term1 implements ITerm1 {
     public IExpr toAbsSyn() {
         return term11.toAbsSyn(term2.toAbsSyn());
     }
+
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
     
 
 }

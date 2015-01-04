@@ -13,8 +13,8 @@ public class Param2 implements IParam2 {
 
 	@Override
 	public String toString(String indent) {
-		return indent + "<Param2>\n" + mechmode.toString(indent + '\t') + indent
-				+ "</Param2>\n";
+		return indent + "<Mechmode>\n" + mechmode.toString(indent + '\t') + indent
+				+ "</Mechmode>\n";
 	}
 
 }

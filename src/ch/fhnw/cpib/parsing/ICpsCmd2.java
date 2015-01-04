@@ -7,4 +7,6 @@ public interface ICpsCmd2 extends IConcSynNode {
 
     IAbsCpsCmd toAbsSyn();
 
+		String toString(String indent);
+
 }

@@ -16,7 +16,8 @@ public class ParamList4 implements IParamList4 {
 
 	@Override
 	public String toString(String indent) {
-		return indent + comma.getValue() + param.toString(indent);
+		return indent + "<ParamList4>\n" + param.toString(indent + '\t') + indent
+				+ "</ParamList4>\n";
 	}
 
 }

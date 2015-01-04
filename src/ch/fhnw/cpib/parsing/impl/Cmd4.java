@@ -22,4 +22,10 @@ public class Cmd4 implements ICmd4 {
         return new AbsProcCallCmd(ident, exprList.toAbsSyn());
     }
 
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 }

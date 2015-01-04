@@ -7,17 +7,23 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
 public class Expr implements IConcExpr {
 
-    private ITerm1 term1;
-    private IExpr1 expr1;
-    
-    public Expr(ITerm1 term1, IExpr1 expr1) {
-        this.term1 = term1;
-        this.expr1 = expr1;
-    }
+	private ITerm1 term1;
+	private IExpr1 expr1;
 
-    @Override
-    public IExpr toAbsSyn() {
-        return expr1.toAbsSyn(term1.toAbsSyn());
-    }
+	public Expr(ITerm1 term1, IExpr1 expr1) {
+		this.term1 = term1;
+		this.expr1 = expr1;
+	}
+
+	@Override
+	public IExpr toAbsSyn() {
+		return expr1.toAbsSyn(term1.toAbsSyn());
+	}
+
+	@Override
+	public String toString(String indent) {
+		return indent + "<Expr>\n" + term1.toString(indent + '\t')
+				+ expr1.toString(indent + '\t') + indent + "</Expr>\n";
+	}
 
 }

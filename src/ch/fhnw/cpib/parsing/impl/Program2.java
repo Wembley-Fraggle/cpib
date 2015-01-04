@@ -13,6 +13,6 @@ public class Program2 implements IProgram2{
 		@Override
 		public String toString(String indent) {
 			// TODO Auto-generated method stub
-			return indent + "<global>\n" + program21.toString(indent) + indent + "</global>\n";
+			return indent + "<Program2>\n" + program21.toString(indent) + indent + "</Program2>\n";
 		}
 }

@@ -15,4 +15,10 @@ public class BooloprAnd implements IBoolopr {
     public IToken toAbsSyn() {
        return boolAnd;
     }
+
+		@Override
+		public String toString(String indent) {
+			return indent + "<BOOLOPR>\n" + boolAnd.toString(indent + '\t')
+			+ indent + "</BOOLOPR>\n";
+		}
 }

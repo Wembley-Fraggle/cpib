@@ -18,4 +18,10 @@ public class Cmd6 implements ICmd6 {
     public IAbsDebOutCmd toAbsSyn() {
         return new AbsDebOutCmd(expr.toAbsSyn());
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

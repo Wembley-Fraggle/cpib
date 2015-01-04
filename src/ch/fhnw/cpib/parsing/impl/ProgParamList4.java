@@ -16,8 +16,8 @@ public class ProgParamList4 implements IProgParamList4 {
 
 	@Override
 	public String toString(String indent) {
-		return indent + "<ProgParamList4>\n" + comma.getValue()
-				+ progParam.toString(indent + '\t') + indent + "</ProgParamList4>/n";
+		return indent + "<ProgParamList4>\n"
+				+ progParam.toString(indent + '\t') + indent + "</ProgParamList4>\n";
 	}
 
 }

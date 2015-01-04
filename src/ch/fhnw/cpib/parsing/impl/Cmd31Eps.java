@@ -11,4 +11,9 @@ public class Cmd31Eps implements ICmd31 {
        return new AbsInvariant();
     }
 
+		@Override
+		public String toString(String indent) {
+			return indent + "<invariant>TRUE</invariant>\n";
+		}
+
 }

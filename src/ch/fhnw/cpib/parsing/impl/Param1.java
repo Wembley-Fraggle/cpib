@@ -13,8 +13,8 @@ public class Param1 implements IParam1 {
 
 	@Override
 	public String toString(String indent) {
-		return indent + "<Param1>\n" + flowmode.toString(indent) + indent
-				+ "</Param1>\n";
+		return indent + "<Flowmode>\n" + flowmode.toString(indent + '\t') + indent
+				+ "</Flowmode>\n";
 	}
 
 }

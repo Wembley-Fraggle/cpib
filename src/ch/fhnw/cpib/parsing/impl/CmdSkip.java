@@ -18,4 +18,10 @@ public class CmdSkip implements ICCmd {
         return new AbsSkipCmd();
     }
 
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 }

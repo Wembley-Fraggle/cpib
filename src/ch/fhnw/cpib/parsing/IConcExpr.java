@@ -5,4 +5,6 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
 public interface IConcExpr extends IConcSynNode {
     public IExpr toAbsSyn();
+
+		public String toString(String indent);
 }

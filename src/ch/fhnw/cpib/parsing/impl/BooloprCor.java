@@ -15,4 +15,10 @@ public class BooloprCor implements IBoolopr {
         return boolOprCor;
     }
 
+		@Override
+		public String toString(String indent) {
+			return indent + "<BOOLOPR>\n" + boolOprCor.toString(indent + '\t')
+					+ indent + "</BOOLOPR>\n";
+		}
+
 }

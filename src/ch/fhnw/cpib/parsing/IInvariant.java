@@ -7,4 +7,6 @@ public interface IInvariant extends IConcSynNode{
 
     IAbsInvariant toAbsSyn();
 
+		String toString(String indent);
+
 }

@@ -5,4 +5,6 @@ public interface ITerm1 extends IConcSynNode {
 
     IExpr toAbsSyn();
 
+		String toString(String indent);
+
 }

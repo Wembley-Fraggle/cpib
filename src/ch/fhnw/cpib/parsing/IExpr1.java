@@ -7,4 +7,6 @@ public interface IExpr1 extends IConcSynNode {
 
     IExpr toAbsSyn(IExpr absSyn);
 
+		String toString(String indent);
+
 }

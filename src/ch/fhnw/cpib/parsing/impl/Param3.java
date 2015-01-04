@@ -13,8 +13,8 @@ public class Param3 implements IParam3 {
 
 	@Override
 	public String toString(String indent) {
-		return indent + "<Param3>\n" + changemode.toString(indent + '\t') + indent
-				+ "</Param3>\n";
+		return indent + "<Changemode>\n" + changemode.toString(indent + '\t') + indent
+				+ "</Changemode>\n";
 	}
 
 }

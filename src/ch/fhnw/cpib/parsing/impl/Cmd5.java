@@ -19,4 +19,10 @@ public class Cmd5 implements ICmd5 {
         return new AbsDebIntCmd(expr.toAbsSyn());
     }
 
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 }

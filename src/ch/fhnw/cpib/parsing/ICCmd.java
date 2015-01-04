@@ -7,4 +7,6 @@ public interface ICCmd extends IConcSynNode {
 
     IAbsCmd toAbsSyn();
 
+		String toString(String indent);
+
 }

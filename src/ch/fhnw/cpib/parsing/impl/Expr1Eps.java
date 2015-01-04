@@ -9,4 +9,9 @@ public class Expr1Eps implements IExpr1 {
     public IExpr toAbsSyn(IExpr e) {
         return e;
     }
+
+		@Override
+		public String toString(String indent) {
+			return indent + "<Expr1Eps/>\n";
+		}
 }

@@ -17,4 +17,10 @@ public class Cmd7 implements ICmd7{
     public IAbsAssertCmd toAbsSyn() {
         return new AbsAssertCmd(expr.toAbsSyn());
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

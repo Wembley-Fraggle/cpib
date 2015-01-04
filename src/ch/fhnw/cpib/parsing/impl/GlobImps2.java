@@ -16,7 +16,7 @@ public class GlobImps2 implements IGlobImps2 {
 	
 	@Override
 	public String toString(String indent) {
-		return indent + comma.getValue() + globImp.toString(indent) + "\n";
+		return indent + globImp.toString(indent) + "\n";
 	}
 
 }
