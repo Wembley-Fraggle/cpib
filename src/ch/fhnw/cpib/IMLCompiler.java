@@ -40,6 +40,10 @@ public final class IMLCompiler {
 		return routineTable;
 	}
 
+	public static void setVm(IVirtualMachine vm) {
+		IMLCompiler.vm = vm;
+	}
+
 	public static StoreTable getGlobalStoreTable() {
 		return globalStoreTable;
 	}
