@@ -6,17 +6,23 @@ import ch.fhnw.cpib.parsing.IFunDecl2;
 import ch.fhnw.cpib.parsing.IFunDecl21;
 
 public class FunDecl21 implements IFunDecl21 {
-    IToken local;
-    ICpsStoDecl cpsStoDecl;
+	IToken local;
+	ICpsStoDecl cpsStoDecl;
 
-    public FunDecl21(IToken local, ICpsStoDecl cpsStoDecl) {
-        this.local = local;
-        this.cpsStoDecl = cpsStoDecl;
-    }
+	public FunDecl21(IToken local, ICpsStoDecl cpsStoDecl) {
+		this.local = local;
+		this.cpsStoDecl = cpsStoDecl;
+	}
 
-		@Override
-		public IFunDecl2 toAbsSyn() {
-			return cpsStoDecl.toAbsSyn();
-		}
+	@Override
+	public IFunDecl2 toAbsSyn() {
+		return cpsStoDecl.toAbsSyn();
+	}
+
+	@Override
+	public String toString(String indent) {
+		return indent + "<FunDecl21>\n" + local.toString(indent + '\t')
+				+ cpsStoDecl.toString(indent + '\t') + indent + "</FunDecl21>\n";
+	}
 
 }

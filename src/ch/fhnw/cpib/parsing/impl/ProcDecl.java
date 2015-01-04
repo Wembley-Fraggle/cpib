@@ -37,4 +37,18 @@ public class ProcDecl implements IProcDecl {
         this.endProc = endProc;
     }
 
+    @Override
+  	public String toString(final String indent) {
+  		return indent
+  				+ "<ProcDecl>\n"
+  				+ ident.toString(indent + '\t')
+  				+ paramList.toString(indent + '\t')
+  				+ procDecl1.toString(indent + '\t')
+  				+ procDecl2.toString(indent + '\t')
+  				+ procDecl3.toString(indent + '\t')
+  				+ cpsCmd.toString(indent + '\t')
+  				+ procDecl4.toString(indent + '\t')
+  				+ indent
+  				+ "</ProcDecl>\n";
+  	}
 }

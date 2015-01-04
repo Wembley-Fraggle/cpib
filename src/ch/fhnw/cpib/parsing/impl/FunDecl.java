@@ -49,4 +49,20 @@ public class FunDecl implements IFunDecl {
 		return new AbsFunDecl(paramList.toAbsSyn(), stoDecl.toAbsSyn(), funDecl1.toAbsSyn(),
 				funDecl2.toAbsSyn(), funDecl3.toAbsSyn(), cpsCmd.toAbsSyn(), funDecl4.toAbsSyn());
 	}
+	
+	@Override
+	public String toString(String indent) {
+		return indent
+				+ "<FunDecl>\n"
+				+ ident.toString(indent + '\t')
+				+ paramList.toString(indent + '\t')
+				+ stoDecl.toString(indent + '\t')
+				+ funDecl1.toString(indent + '\t')
+				+ funDecl2.toString(indent + '\t')
+				+ funDecl3.toString(indent + '\t')
+				+ cpsCmd.toString(indent + '\t')
+				+ funDecl4.toString(indent + '\t')
+				+ indent
+				+ "</FunDecl>\n";
+	}
 }

@@ -20,5 +20,17 @@ public class Param implements IParam {
         this.param3 = param3;
         this.typedIdent = typedIdent;
     }
+
+		@Override
+		public String toString(String indent) {
+			return indent
+					+ "<Param>\n"
+					+ param1.toString(indent + '\t')
+					+ param2.toString(indent + '\t')
+					+ param3.toString(indent + '\t')
+					+ typedIdent.toString(indent + '\t')
+					+ indent
+					+ "</Param>\n";
+		}
     
 }

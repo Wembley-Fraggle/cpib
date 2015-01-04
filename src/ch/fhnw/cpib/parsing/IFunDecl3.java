@@ -7,4 +7,6 @@ public interface IFunDecl3 extends IConcSynNode {
 
 	IAbsPrecondition toAbsSyn();
 
+	String toString(String indent);
+
 }

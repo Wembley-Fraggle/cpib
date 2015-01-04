@@ -18,4 +18,9 @@ public class FunDecl3 implements IFunDecl3 {
 			return null;
 		}
 
+		@Override
+		public String toString(String indent) {
+			return "<Precondition>" + precondition.toString(indent) + "</Precondition>\n";
+		}
+
 }

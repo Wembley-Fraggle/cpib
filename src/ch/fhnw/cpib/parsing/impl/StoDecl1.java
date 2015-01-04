@@ -8,4 +8,12 @@ public class StoDecl1 implements IStoDecl1{
     public StoDecl1(IChangemode changemode) {
         this.changemode = changemode;
     }
+		@Override
+		public String toString(String indent) {
+			return indent
+					+ "<StoDecl1>\n"
+					+ changemode.toString(indent + '\t')
+					+ indent
+					+ "</StoDecl1>\n";
+		}
 }

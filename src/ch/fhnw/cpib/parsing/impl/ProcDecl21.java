@@ -14,4 +14,9 @@ public class ProcDecl21 implements IProcDecl21 {
         this.cpsStoDecl = cpsStoDecl;
     }
 
+		@Override
+		public String toString(String indent) {
+		return indent + "<" + local + ">" + cpsStoDecl.toString(indent) + "</" + local + ">\n";
+		}
+
 }
