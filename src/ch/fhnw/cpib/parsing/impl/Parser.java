@@ -132,11 +132,10 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("LPARENT".equals(name)) {
             LOG.debug("progParamList ::= LPARENT progParamList1 RPARENT");
-            consume(terminal);
-//            progParamList1();
-            IProgParamList1 prog = progParamList1();
-            consume("RPARENT");
-            return prog; // TODO
+            return new ProgramParamList(
+                    consume(terminal),
+                    progParamList1(),
+                    consume("RPARENT"));
         } else {
             throw createError();
         }
