@@ -2,8 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IExpr1;
 import ch.fhnw.cpib.parsing.IExpr2;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
-import ch.fhnw.cpib.parsing.as.impl.AbsExpr;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
 public class Expr1 implements IExpr1 {
 
@@ -16,7 +15,7 @@ public class Expr1 implements IExpr1 {
     }
 
     @Override
-    public IAbsExpr toAbsSyn(IAbsExpr expr) {
+    public IExpr toAbsSyn(IExpr expr) {
         return expr1.toAbsSyn(expr2.toAbsSyn(expr));
     }
 

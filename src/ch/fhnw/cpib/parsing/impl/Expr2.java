@@ -3,6 +3,8 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.IBoolopr;
 import ch.fhnw.cpib.parsing.IExpr2;
 import ch.fhnw.cpib.parsing.ITerm1;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
+import ch.fhnw.cpib.parsing.abs.impl.ExprDyadic;
 import ch.fhnw.cpib.parsing.as.IAbsExpr;
 
 public class Expr2 implements IExpr2 {
@@ -13,10 +15,11 @@ public class Expr2 implements IExpr2 {
         this.boolopr = boolopr;
         this.term1 = term1;
     }
+    
     @Override
-    public IAbsExpr toAbsSyn(IAbsExpr expr) {
-        // TODO return new AbsExpr(boolopr.toAbsSyn(), expr,term1.toAbsSyn());
-        return null;
+    public IExpr toAbsSyn(IExpr expr) {
+        return new ExprDyadic(boolopr.toAbsSyn(), expr, term1.toAbsSyn());
     }
-
+   
+    
 }
