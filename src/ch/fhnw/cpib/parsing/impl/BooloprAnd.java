@@ -10,4 +10,9 @@ public class BooloprAnd implements IBoolopr {
     public BooloprAnd(IToken boolAnd) {
         this.boolAnd = boolAnd;
     }
+
+    @Override
+    public IToken toAbsSyn() {
+       return boolAnd;
+    }
 }

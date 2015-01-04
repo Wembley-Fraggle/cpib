@@ -9,5 +9,10 @@ public class BooloprCor implements IBoolopr {
     public BooloprCor(IToken boolOprCor) {
        this.boolOprCor = boolOprCor;
     }
+    
+    @Override
+    public IToken toAbsSyn() {
+        return boolOprCor;
+    }
 
 }

@@ -9,4 +9,9 @@ public class BooloprOr implements IBoolopr {
     public BooloprOr(IToken booloprOr) {
         this.booloprOr = booloprOr;
     }
+    
+    @Override
+    public IToken toAbsSyn() {
+       return booloprOr;
+    }
 }
