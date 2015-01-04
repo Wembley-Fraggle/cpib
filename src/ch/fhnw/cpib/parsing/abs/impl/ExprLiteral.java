@@ -1,8 +1,7 @@
 package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
-import ch.fhnw.cpib.enums.Types;
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.ContextError;
+import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
@@ -28,12 +27,12 @@ private final Literal literal;
     }
 
     @Override
-    public Types checkR() throws ContextError {
+    public ITerminal checkR() throws ContextError {
         return literal.getType();
     }
     
     @Override
-    public Types checkL(final boolean canInit) throws ContextError {
+    public ITerminal checkL(final boolean canInit) throws ContextError {
         throw new ContextError(
                 "Found literal " 
                 + literal.getLiteral() 

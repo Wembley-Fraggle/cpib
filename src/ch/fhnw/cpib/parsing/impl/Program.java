@@ -33,4 +33,30 @@ public class Program implements IProgram {
         this.doToken = doToken;
         this.cpsCmd = cpsCmd;
     }
+
+		@Override
+		public String toString(String indent) {
+			return indent
+					+ "<Program>\n"
+					+ ident.toString(indent + '\t')
+					+ progParamList.toString(indent + '\t')
+					+ program1.toString(indent + '\t')
+					+ program2.toString(indent + '\t')
+					+ program3.toString(indent + '\t')
+					+ cpsCmd.toString(indent + '\t')
+					+ program4.toString(indent + '\t')
+					+ indent
+					+ "</Program>\n";
+		}
+
+		@Override
+		public ch.fhnw.cpib.parsing.abs.IAbstSyn.IProgram toAbstrSyntax() {
+			return null; //TODO
+/*			return new ch.fhnw.cpib.parsing.abs.impl.Program(
+	        ident, 
+	        progParamList.toAbsSyn(), 
+	        cpsCmd.toAbsSyn(),
+	        program3.toAbsSyn(),
+	        program4.toAbsSyn());  */
+		} 
 }
