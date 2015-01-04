@@ -4,8 +4,6 @@ import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IGlobImp;
 import ch.fhnw.cpib.parsing.IGlobImp1;
 import ch.fhnw.cpib.parsing.IGlobImp2;
-import ch.fhnw.cpib.parsing.as.IAbsGlobImp;
-import ch.fhnw.cpib.parsing.as.impl.AbsGlobImp;
 
 public class GlobImp implements IGlobImp {
 
@@ -17,9 +15,5 @@ public class GlobImp implements IGlobImp {
 		this.globImp1 = globImp1;
 		this.globImp2 = globImp2;
 		this.ident = ident;
-	}
-
-	public IAbsGlobImp toAbsSyn() {
-		return new AbsGlobImp(globImp1.toAbsSyn(), globImp2.toAbsSyn());
 	}
 }
