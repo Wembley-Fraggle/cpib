@@ -11,4 +11,9 @@ public class ReloprLe implements IRelopr {
         this.le = le;
     }
 
+    @Override
+    public IToken toAbsSyn() {
+       return le;
+    }
+
 }

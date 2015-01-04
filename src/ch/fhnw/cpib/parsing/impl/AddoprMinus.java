@@ -9,4 +9,9 @@ public class AddoprMinus implements IAddopr {
     public AddoprMinus(IToken minusOpr) {
         this.minusOpr = minusOpr;
     }
+    
+    @Override
+    public IToken toAbsSyn() {
+       return minusOpr;
+    }
 }

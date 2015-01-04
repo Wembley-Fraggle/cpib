@@ -11,4 +11,9 @@ public class ReloprGt implements IRelopr {
         this.gt = gt;
     }
 
+    @Override
+    public IToken toAbsSyn() {
+        return gt;
+    }
+
 }

@@ -9,5 +9,10 @@ public class ReloprGe implements IRelopr {
     public ReloprGe(IToken ge) {
         this.ge = ge;
     }
+    
+    @Override
+    public IToken toAbsSyn() {
+       return ge;
+    }
 
 }

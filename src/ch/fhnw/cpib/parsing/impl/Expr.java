@@ -3,6 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.IConcExpr;
 import ch.fhnw.cpib.parsing.IExpr1;
 import ch.fhnw.cpib.parsing.ITerm1;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
 public class Expr implements IConcExpr {
 
@@ -15,7 +16,7 @@ public class Expr implements IConcExpr {
     }
 
     @Override
-    public ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr toAbsSyn() {
+    public IExpr toAbsSyn() {
         return expr1.toAbsSyn(term1.toAbsSyn());
     }
 

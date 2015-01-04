@@ -1079,7 +1079,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("EQ".equals(name)) {
             LOG.debug("relopr ::= EQ");
-            return new ReloprEq(
+            return new Relopr(
             consume(terminal));
         } else if ("NE".equals(name)) {
             LOG.debug("relopr ::= NE");

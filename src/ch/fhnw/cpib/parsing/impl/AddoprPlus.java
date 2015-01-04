@@ -9,5 +9,10 @@ public class AddoprPlus implements IAddopr {
     public AddoprPlus(IToken plusOpr) {
         this.plusOpr = plusOpr;
     }
+    
+    @Override
+    public IToken toAbsSyn() {
+        return plusOpr;
+    }
 
 }

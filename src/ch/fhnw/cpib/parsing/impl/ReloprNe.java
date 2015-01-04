@@ -9,5 +9,9 @@ public class ReloprNe implements IRelopr {
     public ReloprNe(IToken ne) {
         this.ne = ne;
     }
+    @Override
+    public IToken toAbsSyn() {
+       return ne;
+    }
 
 }
