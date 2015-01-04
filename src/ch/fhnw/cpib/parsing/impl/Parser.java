@@ -64,7 +64,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("PROGRAM".equals(name)) {
             LOG.debug("program ::= PROGRAM IDENT progParamList program2 program3 DO cpsCmd program4 ENDPROGRAM");
-            return new Program(consume(terminal), consume("IDENT"),
+            return new CProgram(consume(terminal), consume("IDENT"),
                     progParamList(), program2(), program3(),
                     consume("DO"), cpsCmd(), program4(), consume("ENDPROGRAM"));
         } else {

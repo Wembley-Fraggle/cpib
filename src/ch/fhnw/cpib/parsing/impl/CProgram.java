@@ -1,14 +1,16 @@
 package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
+import ch.fhnw.cpib.parsing.ICProgram;
 import ch.fhnw.cpib.parsing.ICpsCmd;
 import ch.fhnw.cpib.parsing.IProgParamList;
-import ch.fhnw.cpib.parsing.ICProgram;
 import ch.fhnw.cpib.parsing.IProgram2;
 import ch.fhnw.cpib.parsing.IProgram3;
 import ch.fhnw.cpib.parsing.IProgram4;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IProgram;
+import ch.fhnw.cpib.parsing.abs.impl.Program;
 
-public class Program implements ICProgram {
+public class CProgram implements ICProgram {
     private IToken program;
     private IToken ident;
     private IProgParamList progParamList;
@@ -19,7 +21,7 @@ public class Program implements ICProgram {
     private IProgram4 program4;
     private IToken endProgram;
 
-    public Program(IToken program, IToken ident, IProgParamList progParamList, IProgram2 program2, IProgram3 program3,
+    public CProgram(IToken program, IToken ident, IProgParamList progParamList, IProgram2 program2, IProgram3 program3,
             IToken doToken, ICpsCmd cpsCmd,IProgram4 program4, IToken endProgram) {
         this.program = program;
         this.ident = ident;
@@ -46,8 +48,8 @@ public class Program implements ICProgram {
 		}
 
 		@Override
-		public ch.fhnw.cpib.parsing.abs.IAbstSyn.IProgram toAbstrSyntax() {		    
-			return new ch.fhnw.cpib.parsing.abs.impl.Program(
+		public IProgram toAbstrSyntax() {		    
+			return new Program(
 	        ident, 
 	        progParamList.toAbsSyn(), 
 	        cpsCmd.toAbsSyn(),
