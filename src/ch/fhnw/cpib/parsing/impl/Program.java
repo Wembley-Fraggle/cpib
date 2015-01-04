@@ -47,7 +47,7 @@ public class Program implements IProgram {
 			return indent
 					+ "<Program>\n"
 					+ ident.toString(indent + '\t')
-//					+ progParamList.toString(indent + '\t')
+					+ progParamList.toString(indent + '\t')
 					+ program1.toString(indent + '\t')
 					+ program2.toString(indent + '\t')
 					+ program3.toString(indent + '\t')

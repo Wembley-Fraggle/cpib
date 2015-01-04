@@ -148,9 +148,10 @@ public class Parser implements IParser, IConcSyn {
         if ("LPARENT".equals(name)) {
             LOG.debug("progParamList ::= LPARENT progParamList1 RPARENT");
             consume(terminal);
-            progParamList1();
+//            progParamList1();
+            IProgParamList1 prog = progParamList1();
             consume("RPARENT");
-            return null; // TODO
+            return prog; // TODO
         } else {
             throw createError();
         }
@@ -658,9 +659,9 @@ public class Parser implements IParser, IConcSyn {
     public IProgParamList3 progParamList3() throws GrammarError {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
-        		terminal = iter.next().getType();
+//        		terminal = iter.next().getType();
             LOG.debug("progParamList3 ::= progParamList4 progParamList3");
-            return new ProgParamList3(progParam(), progParamList3());
+            return new ProgParamList3(progParamList4(), progParamList3());
         } else if ("RPARENT".equals(name)) {
             LOG.debug("progParamList3 ::= <e>");
             return new ProgParamList3Eps();
