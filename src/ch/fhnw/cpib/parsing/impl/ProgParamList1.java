@@ -2,6 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IProgParamList1;
 import ch.fhnw.cpib.parsing.IProgParamList2;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsDecl;
 
 public class ProgParamList1 implements IProgParamList1 {
 
@@ -17,6 +18,12 @@ public class ProgParamList1 implements IProgParamList1 {
 		return indent + "<ProgParamList1>\n"
 				+ progParamList2.toString(indent + '\t') + indent
 				+ "</ProgParamList1>\n";
+	}
+
+	@Override
+	public ICpsDecl toAbsSyn(ICpsDecl decl) {
+		// TODO Auto-generated method stub
+		return new ch.fhnw.cpib.parsing.abs.impl.CpsDecl(null, null);
 	}
 
 }
