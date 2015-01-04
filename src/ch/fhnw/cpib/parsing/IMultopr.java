@@ -6,4 +6,6 @@ public interface IMultopr extends IConcSynNode {
 
     IToken toAbsSyn();
 
+		String toString(String indent);
+
 }

@@ -14,4 +14,9 @@ public class MultoprMod implements IMultopr {
     public IToken toAbsSyn() {
        return mod;
     }
+
+		@Override
+		public String toString(String indent) {
+			return indent + "<MULTOPR>" + mod.getValue() + "</MULTOPR>\n";
+		}
 }

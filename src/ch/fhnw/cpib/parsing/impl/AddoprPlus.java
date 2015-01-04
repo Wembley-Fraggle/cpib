@@ -15,4 +15,10 @@ public class AddoprPlus implements IAddopr {
         return plusOpr;
     }
 
+		@Override
+		public String toString(String indent) {
+			return indent + "<ADDOPR>\n" + plusOpr.toString(indent + '\t')
+					+ indent + "</ADDOPR>\n";
+		}
+
 }

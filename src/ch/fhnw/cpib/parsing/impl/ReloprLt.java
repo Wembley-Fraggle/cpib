@@ -16,4 +16,9 @@ public class ReloprLt implements IRelopr {
        return lt;
     }
 
+		@Override
+		public String toString(String indent) {
+			return indent + "<RELOPR>" + lt.getValue() + "</RELOPR>\n";
+		}
+
 }

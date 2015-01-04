@@ -15,4 +15,9 @@ public class ReloprGe implements IRelopr {
        return ge;
     }
 
+		@Override
+		public String toString(String indent) {
+			return indent + "<RELOPR>" + ge.getValue() + "</RELOPR>\n";
+		}
+
 }

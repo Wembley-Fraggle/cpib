@@ -4,4 +4,6 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
 public interface ITerm2 extends IConcSynNode {
     IExpr toAbsSyn();
+
+		String toString(String indent);
 }

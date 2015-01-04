@@ -2,6 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ILiteral;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
 
 public class LiteralInt32 implements ILiteral {
@@ -9,4 +10,9 @@ public class LiteralInt32 implements ILiteral {
     public LiteralInt32(IToken intVal) {
         this.intVal = intVal;
     }
+		@Override
+		public IExpr toAbsSyn() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

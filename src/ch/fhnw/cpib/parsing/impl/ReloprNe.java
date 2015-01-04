@@ -13,5 +13,9 @@ public class ReloprNe implements IRelopr {
     public IToken toAbsSyn() {
        return ne;
     }
+		@Override
+		public String toString(String indent) {
+			return indent + "<RELOPR>" + ne.getValue() + "</RELOPR>\n";
+		}
 
 }

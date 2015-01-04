@@ -16,4 +16,9 @@ public class MultoprDiv implements IMultopr {
        return div;
     }
 
+		@Override
+		public String toString(String indent) {
+			return indent + "<MULTOPR>" + div.getValue() + "</MULTOPR>\n";
+		}
+
 }

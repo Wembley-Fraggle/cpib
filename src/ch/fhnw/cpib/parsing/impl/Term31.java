@@ -6,16 +6,22 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
 public class Term31 implements ITerm31 {
 
-    private ITerm311 term311;
-    private ITerm31 term31;
+	private ITerm311 term311;
+	private ITerm31 term31;
 
-    public Term31(ITerm311 term311, ITerm31 term31) {
-        this.term311 = term311;
-        this.term31 = term31;
-    }
+	public Term31(ITerm311 term311, ITerm31 term31) {
+		this.term311 = term311;
+		this.term31 = term31;
+	}
 
-    @Override
-    public IExpr toAbsSyn(IExpr left) {
-        return term31.toAbsSyn(term311.toAbsSyn(left));
-    }
+	@Override
+	public IExpr toAbsSyn(IExpr left) {
+		return term31.toAbsSyn(term311.toAbsSyn(left));
+	}
+
+	@Override
+	public String toString(String indent) {
+		return indent + "<Term31>\n" + term311.toString(indent + '\t')
+				+ term31.toString(indent + '\t') + indent + "</Term31>\n";
+	}
 }

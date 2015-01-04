@@ -8,20 +8,27 @@ import ch.fhnw.cpib.parsing.as.impl.AbsInvariant;
 
 public class Invariant implements IInvariant {
 
-    private IToken inv;
-    private IToken ident;
-    private IToken colon;
-    private IConcExpr expr;
+	private IToken inv;
+	private IToken ident;
+	private IToken colon;
+	private IConcExpr expr;
 
-    public Invariant(IToken inv, IToken ident, IToken colon, IConcExpr expr) {
-        this.inv = inv;
-        this.ident = ident;
-        this.colon = colon;
-        this.expr = expr;
-    }
+	public Invariant(IToken inv, IToken ident, IToken colon, IConcExpr expr) {
+		this.inv = inv;
+		this.ident = ident;
+		this.colon = colon;
+		this.expr = expr;
+	}
 
-    @Override
-    public IAbsInvariant toAbsSyn() {
-        return new AbsInvariant(ident, expr.toAbsSyn());
-    }
+	@Override
+	public IAbsInvariant toAbsSyn() {
+		return new AbsInvariant(ident, expr.toAbsSyn());
+	}
+
+	@Override
+	public String toString(String indent) {
+		return indent + "<" + inv.getValue() + ">\n"
+				+ ident.toString(indent + '\t') + expr.toString(indent + '\t') + indent
+				+ "</" + inv.getValue() + ">\n";
+	}
 }

@@ -15,4 +15,9 @@ public class Relopr implements IRelopr {
         return eq;
     }
 
+		@Override
+		public String toString(String indent) {
+			return indent + "<RELOPR>" + eq.getValue() + "</RELOPR>\n";
+		}
+
 }

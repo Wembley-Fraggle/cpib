@@ -14,4 +14,10 @@ public class AddoprMinus implements IAddopr {
     public IToken toAbsSyn() {
        return minusOpr;
     }
+
+		@Override
+		public String toString(String indent) {
+			return indent + "<ADDOPR>\n" + minusOpr.toString(indent + '\t')
+					+ indent + "</ADDOPR>\n";
+		}
 }

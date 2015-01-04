@@ -3,25 +3,39 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IConcExpr;
 import ch.fhnw.cpib.parsing.IPostcondition;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDbcCmd;
 import ch.fhnw.cpib.parsing.as.IAbsPostcondition;
 import ch.fhnw.cpib.parsing.as.impl.AbsPostcondition;
 
 
 public class Postcondition implements IPostcondition{
-    private IToken consume;
-    private IToken consume2;
-    private IToken consume3;
-    private IConcExpr expr2;
+    private IToken post;
+  	private IToken ident;
+  	private IToken colon;
+    private IConcExpr expr;
     
-    public Postcondition(IToken consume, IToken consume2, IToken consume3,
-            IConcExpr expr2) {
-        this.consume = consume;
-        this.consume2 = consume2;
-        this.consume3 = consume3;
-        this.expr2 = expr2;
+    public Postcondition(IToken post, IToken ident, IToken colon,
+            IConcExpr expr) {
+        this.post = post;
+        this.ident = ident;
+        this.colon = colon;
+        this.expr = expr;
     }
     
     public IAbsPostcondition toAbsSyn(){
-    	return new AbsPostcondition(expr2.toAbsSyn());
+    	return new AbsPostcondition(expr.toAbsSyn());
     }
+
+		@Override
+		public String toString(String indent) {
+			return indent + "<" + post.getValue() + ">\n"
+					+ ident.toString(indent + '\t') + expr.toString(indent + '\t') + indent
+					+ "</" + post.getValue() + ">\n";
+		}
+
+		@Override
+		public IDbcCmd toAbsSyn() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

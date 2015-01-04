@@ -15,4 +15,9 @@ public class MultoprTimes implements IMultopr {
         return times;
     }
 
+		@Override
+		public String toString(String indent) {
+			return indent + "<MULTOPR>" + times.getValue() + "</MULTOPR>\n";
+		}
+
 }
