@@ -1,0 +1,56 @@
+Alloc 0, 4
+IntLoad 1, 0
+IntInput 2, "m"
+IntLoad 3, 1
+IntInput 4, "n"
+Alloc 5, 0
+IntLoad 6, 0
+Deref 7
+IntLoad 8, 1
+Deref 9
+IntLoad 10, 2
+IntLoad 11, 3
+Call 12, 20
+IntLoad 13, 2
+Deref 14
+IntOutput 15, "q"
+IntLoad 16, 3
+Deref 17
+IntOutput 18, "r"
+Stop 19
+Enter 20, 0, 0
+IntLoad 21, 0
+LoadRel 22, -2
+Deref 23
+Store 24
+LoadRel 25, -4
+Deref 26
+LoadRel 27, -1
+Deref 28
+Store 29
+LoadRel 30, -1
+Deref 31
+Deref 32
+LoadRel 33, -3
+Deref 34
+IntGE 35
+CondJump 36, 55
+LoadRel 37, -2
+Deref 38
+Deref 39
+IntLoad 40, 1
+IntAdd 41
+LoadRel 42, -2
+Deref 43
+Store 44
+LoadRel 45, -1
+Deref 46
+Deref 47
+LoadRel 48, -3
+Deref 49
+IntSub 50
+LoadRel 51, -1
+Deref 52
+Store 53
+UncondJump 54, 30
+Return 55, 4
