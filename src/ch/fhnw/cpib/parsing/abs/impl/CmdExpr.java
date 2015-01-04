@@ -8,14 +8,11 @@ import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 public final class CmdExpr implements ICmd {
 	private final IExpr targetExpr;
 	private final IExpr sourceExpr;
-	private final ICmd repCmd;
 	
 	public CmdExpr(final IExpr targetExpr, 
-	        final IExpr sourceExpr, 
-	        final ICmd repCmd) {
+	        final IExpr sourceExpr) {
 		this.targetExpr = targetExpr;
 		this.sourceExpr = sourceExpr;
-		this.repCmd = repCmd;
 	}
 	
 	@Override
@@ -24,7 +21,6 @@ public final class CmdExpr implements ICmd {
 				+ "<CmdExpr>\n"
 				+ targetExpr.toString(indent + '\t')
 				+ sourceExpr.toString(indent + '\t')
-				+ repCmd.toString(indent + '\t')
 				+ indent
 				+ "</CmdExpr>\n";
 	}
@@ -51,18 +47,18 @@ public final class CmdExpr implements ICmd {
                         , targetExpr.getLine());
             }
         }
-        repCmd.check(canInit);
     }
 
     @Override
     public int code(final int loc) throws CodeTooSmallError {
         int loc1 = sourceExpr.code(loc);
+        int loc2;
         if (!(targetExpr instanceof ExprStore)) {
-            loc1 = targetExpr.code(loc1);
+            loc2 = targetExpr.code(loc1);
         } else {
-            loc1 = ((ExprStore) targetExpr).codeRef(loc1);
-            IMLCompiler.getVM().Store(loc1++);
+            loc2 = ((ExprStore) targetExpr).codeRef(loc1);
+            IMLCompiler.getVM().Store(loc1);
         }
-        return repCmd.code(loc1);
+        return loc2;
     }
 }
