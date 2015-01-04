@@ -65,23 +65,8 @@ public class Parser implements IParser, IConcSyn {
         if ("PROGRAM".equals(name)) {
             LOG.debug("program ::= PROGRAM IDENT progParamList program1 program2 program3 DO cpsCmd program4 ENDPROGRAM");
             return new Program(consume(terminal), consume("IDENT"),
-                    progParamList(), program1(), program2(), program3(),
+                    progParamList(), program2(), program3(),
                     consume("DO"), cpsCmd(), program4(), consume("ENDPROGRAM"));
-        } else {
-            throw createError();
-        }
-    }
-
-    @Override
-    public IProgram1 program1() throws GrammarError {
-        String name = terminal.getName();
-        if ("INV".equals(name)) {
-            LOG.debug("program1 ::= invariant");
-            return new Program1(invariant());
-        } else if ("DO".equals(name) || "PRE".equals(name)
-                || "GLOBAL".equals(name)) {
-            LOG.debug("program1 ::= <e>");
-            return new Program1Eps();
         } else {
             throw createError();
         }
@@ -967,8 +952,7 @@ public class Parser implements IParser, IConcSyn {
                 || "AND".equals(name)) {
             LOG.debug("expr1 ::= expr2 expr1");
             return new Expr1(expr2(), expr1());
-        } else if ("PRE".equals(name) || "GLOBAL".equals(name)
-                || "COMMA".equals(name) || "RPARENT".equals(name)
+        } else if ("COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
                 || "THEN".equals(name) || "ENDWHILE".equals(name)
                 || "ENDIF".equals(name) || "ELSE".equals(name)
@@ -1058,8 +1042,7 @@ public class Parser implements IParser, IConcSyn {
                 || "EQ".equals(name)) {
             LOG.debug("term11 ::= term12");
             return new Term11(term12());
-        } else if ("PRE".equals(name) || "GLOBAL".equals(name)
-                || "COMMA".equals(name) || "RPARENT".equals(name)
+        } else if ("COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
                 || "THEN".equals(name) || "ENDWHILE".equals(name)
                 || "ENDIF".equals(name) || "ELSE".equals(name)
@@ -1135,8 +1118,7 @@ public class Parser implements IParser, IConcSyn {
             return new Term21(
                     term211(),
                     term21());
-        } else if ("PRE".equals(name) || "GLOBAL".equals(name)
-                || "COMMA".equals(name) || "RPARENT".equals(name)
+        } else if ("COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
                 || "THEN".equals(name) || "ENDWHILE".equals(name)
                 || "ENDIF".equals(name) || "ELSE".equals(name)
@@ -1188,8 +1170,7 @@ public class Parser implements IParser, IConcSyn {
             return new Term31(
             term311(),
             term31());
-        } else if ("PRE".equals(name) || "GLOBAL".equals(name)
-                || "COMMA".equals(name) || "RPARENT".equals(name)
+        } else if ("COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
                 || "THEN".equals(name) || "ENDWHILE".equals(name)
                 || "ENDIF".equals(name) || "ELSE".equals(name)
@@ -1295,8 +1276,7 @@ public class Parser implements IParser, IConcSyn {
             LOG.debug("factor21 ::= factor211");
             return new Factor21(
             factor211());
-        } else if ("PRE".equals(name) || "GLOBAL".equals(name)
-                || "COMMA".equals(name) || "RPARENT".equals(name)
+        } else if ("COMMA".equals(name) || "RPARENT".equals(name)
                 || "DO".equals(name) || "INV".equals(name)
                 || "THEN".equals(name) || "ENDWHILE".equals(name)
                 || "ENDIF".equals(name) || "ELSE".equals(name)
