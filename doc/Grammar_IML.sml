@@ -126,7 +126,6 @@ val string_of_term =
 
 datatype nonterm
   = program
-  | program1
   | program2
   | program21
   | program3
@@ -235,7 +234,6 @@ datatype nonterm
   
 val string_of_nonterm =
   fn program       => "program"
-  | program1       => "program1"
   | program2       => "program2"
   | program21      => "program21"
   | program3       => "program3"
@@ -354,7 +352,6 @@ val productions =
  * Programs:
  * ---------
  * program ::= PROGRAM IDENT progParamList
- *             [invariant]
  *             [GLOBAL cpsDecl]
  *             [precondition]
  *             DO
@@ -364,7 +361,6 @@ val productions =
  *---------------------------------------------------------------
  *)
 (program,[[T PROGRAM, T IDENT, N progParamList,
-          N program1,                      (* [invariant] *)
           N program2,                      (* [GLOBAL cpsDecl] *)
           N program3,                      (* [precondition] *)
           T DO,
@@ -372,7 +368,6 @@ val productions =
           N program4,                      (* [postcondition] *)
           T ENDPROGRAM]
          ]),
-(program1,[[N invariant],[]]), (* [invariant] *)
 (program2,[[N program21],[]]), (* [GLOBAL cpsDecl] *)
 (program21,[[T GLOBAL, N cpsDecl]]), (* GLOBAL cpsDecl *)
 (program3,[[N precondition],[]]), (* [precondition] *)
