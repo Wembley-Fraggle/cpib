@@ -2,8 +2,8 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICpsStoDecl;
-import ch.fhnw.cpib.parsing.IFunDecl2;
 import ch.fhnw.cpib.parsing.IFunDecl21;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsDecl;
 
 public class FunDecl21 implements IFunDecl21 {
 	IToken local;
@@ -15,7 +15,7 @@ public class FunDecl21 implements IFunDecl21 {
 	}
 
 	@Override
-	public IFunDecl2 toAbsSyn() {
+	public ICpsDecl toAbsSyn() {
 		return cpsStoDecl.toAbsSyn();
 	}
 
