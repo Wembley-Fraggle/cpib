@@ -1,9 +1,15 @@
 package ch.fhnw.cpib.parsing;
 
-//TODO Auto-generated stub
+import ch.fhnw.cpib.parsing.abs.IAbstSyn;
+
+
+/**
+ * 
+ * [LOCAL cpsStoDecl]
+ */
 public interface IFunDecl2 extends IConcSynNode {
 
-	IFunDecl2 toAbsSyn();
+	IAbstSyn.ICpsDecl toAbsSyn();
 
 	String toString(String indent);
 

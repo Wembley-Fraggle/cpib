@@ -1,9 +1,14 @@
 package ch.fhnw.cpib.parsing;
 
-//TODO Auto-generated stub
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IGlobImp;
+
+/**
+ * 
+ *	
+ */
 public interface IFunDecl11 extends IConcSynNode {
 
-	IFunDecl1 toAbsSyn();
+	IGlobImp toAbsSyn();
 
 	String toString(String indent);
 

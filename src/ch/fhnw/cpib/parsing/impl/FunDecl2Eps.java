@@ -1,13 +1,13 @@
 package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IFunDecl2;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsDecl;
 
 public class FunDecl2Eps implements IFunDecl2 {
 
 	@Override
-	public IFunDecl2 toAbsSyn() {
-		// TODO Auto-generated method stub
-		return null;
+	public ICpsDecl toAbsSyn() {
+		return new ch.fhnw.cpib.parsing.abs.impl.CpsDeclEps();
 	}
 
 	@Override

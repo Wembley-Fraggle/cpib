@@ -19,4 +19,10 @@ public class GlobImps2 implements IGlobImps2 {
 		return indent + globImp.toString(indent) + "\n";
 	}
 
+	@Override
+	public ch.fhnw.cpib.parsing.abs.IAbstSyn.IGlobImp toAbsSyn(
+			ch.fhnw.cpib.parsing.abs.IAbstSyn.IGlobImp absSyn) {
+		return globImp.toAbsSyn();
+	}
+
 }

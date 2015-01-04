@@ -1,11 +1,14 @@
 package ch.fhnw.cpib.parsing;
 
-import ch.fhnw.cpib.parsing.as.IAbsPostcondition;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDbcCmd;
 
-//TODO Auto-generated stub
+/**
+ * 
+ * [postcondition]
+ */
 public interface IFunDecl4 extends IConcSynNode {
 
-	IAbsPostcondition toAbsSyn();
+	IDbcCmd toAbsSyn();
 
 	String toString(String indent);
 
