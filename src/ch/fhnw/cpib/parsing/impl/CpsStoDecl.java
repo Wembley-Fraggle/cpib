@@ -2,8 +2,8 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.ICpsStoDecl;
 import ch.fhnw.cpib.parsing.ICpsStoDecl1;
-import ch.fhnw.cpib.parsing.IFunDecl2;
 import ch.fhnw.cpib.parsing.IStoDecl;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsDecl;
 
 public class CpsStoDecl implements ICpsStoDecl {
 
@@ -16,9 +16,8 @@ public class CpsStoDecl implements ICpsStoDecl {
 	}
 
 	@Override
-	public IFunDecl2 toAbsSyn() {
-		// TODO Auto-generated method stub
-		return null;
+	public ICpsDecl toAbsSyn() {
+		return cpsStoDecl1.toAbsSyn(stoDecl.toAbsSyn());
 	}
 
 	@Override

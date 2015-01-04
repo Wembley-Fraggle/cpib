@@ -2,6 +2,8 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.ICpsStoDecl1;
 import ch.fhnw.cpib.parsing.ICpsStoDecl2;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsDecl;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IStoreDecl;
 
 public class CpsStoDecl1 implements ICpsStoDecl1 {
 
@@ -17,6 +19,12 @@ public class CpsStoDecl1 implements ICpsStoDecl1 {
 	public String toString(String indent) {
 		return indent + "<CpsStoDecl1>\n" + cpsStoDecl2.toString(indent + '\t')
 				+ cpsStoDecl1.toString(indent + '\t') + indent + "</CpsStoDecl1>\n";
+	}
+
+	@Override
+	public ICpsDecl toAbsSyn(IStoreDecl absSyn) {
+		// TODO Auto-generated method stub
+		return cpsStoDecl1.toAbsSyn(cpsStoDecl2.toAbsSyn());
 	}
 
 }
