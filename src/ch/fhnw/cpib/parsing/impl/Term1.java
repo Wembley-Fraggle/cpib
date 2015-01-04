@@ -15,7 +15,7 @@ public class Term1 implements ITerm1 {
     }
     @Override
     public IAbsExpr toAbsSyn() {
-        // TODO Auto-generated method stub
+        // TODO 
         return null;
     }
     
