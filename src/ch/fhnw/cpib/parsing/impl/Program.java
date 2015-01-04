@@ -3,12 +3,12 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICpsCmd;
 import ch.fhnw.cpib.parsing.IProgParamList;
-import ch.fhnw.cpib.parsing.IProgram;
+import ch.fhnw.cpib.parsing.ICProgram;
 import ch.fhnw.cpib.parsing.IProgram2;
 import ch.fhnw.cpib.parsing.IProgram3;
 import ch.fhnw.cpib.parsing.IProgram4;
 
-public class Program implements IProgram {
+public class Program implements ICProgram {
     private IToken program;
     private IToken ident;
     private IProgParamList progParamList;

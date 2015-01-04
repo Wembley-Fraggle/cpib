@@ -51,7 +51,7 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public IProgram parse() throws GrammarError {
+    public ICProgram parse() throws GrammarError {
     	return program();
     }
     
@@ -60,7 +60,7 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public IProgram program() throws GrammarError {
+    public ICProgram program() throws GrammarError {
         String name = terminal.getName();
         if ("PROGRAM".equals(name)) {
             LOG.debug("program ::= PROGRAM IDENT progParamList program2 program3 DO cpsCmd program4 ENDPROGRAM");

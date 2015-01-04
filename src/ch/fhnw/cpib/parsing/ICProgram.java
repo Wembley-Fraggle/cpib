@@ -1,7 +1,7 @@
 package ch.fhnw.cpib.parsing;
 
 //TODO Auto-generated stub
-public interface IProgram extends IConcSynNode {
+public interface ICProgram extends IConcSynNode {
 
 	String toString(String indent);
 

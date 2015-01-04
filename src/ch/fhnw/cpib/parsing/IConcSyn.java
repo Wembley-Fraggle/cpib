@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing;
 import ch.fhnw.cpib.errors.GrammarError;
 
 public interface IConcSyn {
-    IProgram program() throws GrammarError;
+    ICProgram program() throws GrammarError;
     IProgram2 program2() throws GrammarError;
     IProgram21 program21() throws GrammarError;
     IProgram3 program3() throws GrammarError;

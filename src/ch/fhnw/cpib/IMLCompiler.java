@@ -17,7 +17,7 @@ import ch.fhnw.cpib.lexing.IlmLexer;
 import ch.fhnw.cpib.lexing.LexerContext;
 import ch.fhnw.cpib.lexing.LexerException;
 import ch.fhnw.cpib.lexing.LexerRuleFactory;
-import ch.fhnw.cpib.parsing.IProgram;
+import ch.fhnw.cpib.parsing.ICProgram;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.ContextError;
 import ch.fhnw.cpib.parsing.impl.Parser;
@@ -91,7 +91,7 @@ public final class IMLCompiler {
 			}
 			System.out.println("\nParsing:");
 			final Parser parser = new Parser(tokenList);
-			final IProgram concSyn = parser.parse();
+			final ICProgram concSyn = parser.parse();
 			System.out.println("\nSuccess!");
 			System.out.println("\nConcrete syntax tree:");
 			System.out.println(concSyn.toString(""));
