@@ -132,9 +132,9 @@ public final class ExprCall implements IExpr {
             for (ch.fhnw.cpib.context.GlobImp globImp 
                     : routine.getGlobImpList()) {
                 
-                switch (globImp.getFlowMode().getMode().getType().getName()) {
-                    case "IN":
-                    case "INOUT":
+                switch (globImp.getFlowMode().getMode()) {
+                    case IN:
+                    case INOUT:
                         if (!IMLCompiler.getScope().getStoreTable().getStore(
                                 globImp.getIdent()).isInitialized()) {
                             throw new ContextError(
@@ -143,7 +143,7 @@ public final class ExprCall implements IExpr {
                                     ident.getStart().getCurrentLine());
                         }
                         break;
-                    case "OUT":
+                    case OUT:
                         if (globInits.contains(globImp.getIdent())) {
                             IMLCompiler.getScope().getStoreTable().getStore(
                                     globImp.getIdent()).initialize();

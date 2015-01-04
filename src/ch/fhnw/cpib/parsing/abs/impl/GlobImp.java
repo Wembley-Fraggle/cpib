@@ -1,6 +1,7 @@
 package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
+import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.context.Routine;
 import ch.fhnw.cpib.context.Routine.RoutineTypes;
 import ch.fhnw.cpib.context.Store;
@@ -45,14 +46,14 @@ public final class GlobImp implements IGlobImp {
 					+ ident.getValue(), ident.getStart().getCurrentLine());
 		}
 
-		if (globalStore.isConst() && changeMode.getMode().getType().isType("CONST")) {
+		if (globalStore.isConst() && changeMode.getMode() == Modes.CONST) {
 			throw new ContextError(
 					"Cannot import global constant as variable! Ident: "
 							+ ident.getValue(), ident.getStart().getCurrentLine());
 		}
 
 		Store localStore = new Store(globalStore.getIdent(), globalStore.getType(),
-				changeMode.getMode().getType().isType("CONST"));
+				changeMode.getMode() == Modes.CONST);
 
 		localStore.setAddress(globalStore.getAddress());
 		localStore.setReference(false);
@@ -63,23 +64,23 @@ public final class GlobImp implements IGlobImp {
 					+ ident.getValue(), ident.getStart().getCurrentLine());
 		}
 
-		switch (flowMode.getMode().getType().getName()) {
-		case "IN":
+		switch (flowMode.getMode()) {
+		case IN:
 			localStore.initialize();
 			break;
-		case "INOUT":
+		case INOUT:
 			if (routine.getRoutineType() != RoutineTypes.PROCEDURE) {
 				throw new ContextError("FlowMode INOUT is not allowed for functions! "
 						+ "Ident: " + ident.getValue(), ident.getStart().getCurrentLine());
 			}
-			if (changeMode.getMode().getType().isType("CONST")) {
+			if (changeMode.getMode() == Modes.CONST) {
 				throw new ContextError(
 						"ChangeMode CONST is not allowed for FlowMode INOUT! " + "Ident: "
 								+ ident.getValue(), ident.getStart().getCurrentLine());
 			}
 			localStore.initialize();
 			break;
-		case "OUT":
+		case OUT:
 			if (routine.getRoutineType() != RoutineTypes.PROCEDURE) {
 				throw new ContextError(
 						"FlowMode OUT is not allowed for functions! Ident: "
@@ -98,7 +99,7 @@ public final class GlobImp implements IGlobImp {
 
 	@Override
 	public void checkInit() throws ContextError {
-		if (flowMode.getMode().getType().isType("OUT")) {
+		if (flowMode.getMode() == Modes.OUT) {
 			if (!IMLCompiler.getScope().getStoreTable()
 					.getStore(ident.getValue().toString()).isInitialized()) {
 				throw new ContextError(
