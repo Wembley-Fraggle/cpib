@@ -3,6 +3,7 @@ package ch.fhnw.cpib.parsing.abs.impl;
 import java.util.List;
 import java.util.Set;
 
+import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.context.Parameter;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExprList;
@@ -50,9 +51,9 @@ public final class ExprList implements IExprList {
         
         ITerminal type;
         
-        switch(param.getFlowMode().getMode().getType().getName()) {
-            case "IN":
-                if (param.getMechMode().getMode().getType().isType("COPY")){
+        switch(param.getFlowMode().getMode()) {
+            case IN:
+                if (param.getMechMode().getMode() == Modes.COPY){
                     type = expr.checkR();
                 } else {
                     type = expr.checkL(false);
@@ -73,10 +74,10 @@ public final class ExprList implements IExprList {
                     aliasList.add(((ExprStore) expr).getStore().getIdent());
                 }
                 break;
-            case "INOUT":
+            case INOUT:
                 type = checkINOUTstore(false, aliasList);
                 break;
-            case "OUT":
+            case OUT:
                 type = checkINOUTstore(canInit, aliasList);
                 break;
             default:
@@ -124,8 +125,8 @@ public final class ExprList implements IExprList {
     @Override
     public int code(final int loc) throws CodeTooSmallError {
         int loc1;
-        if (param.getFlowMode().getMode().getType().isType("IN")
-                && param.getMechMode().getMode().getType().isType("COPY")) {
+        if (param.getFlowMode().getMode() == Modes.IN
+                && param.getMechMode().getMode() == Modes.COPY) {
             loc1 = expr.code(loc);
         } else {
             loc1 = ((ExprStore) expr).codeRef(loc);
