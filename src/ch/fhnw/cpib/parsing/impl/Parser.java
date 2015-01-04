@@ -55,7 +55,7 @@ public class Parser implements IParser, IConcSyn {
     	return program();
     }
     
-    public IExprList parseExprList() throws GrammarError {
+    public ICExprList parseExprList() throws GrammarError {
         return exprList();
     }
 
@@ -868,7 +868,7 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public IExprList exprList() throws GrammarError {
+    public ICExprList exprList() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name)) {
             LOG.debug("exprList ::= LPARENT exprList1 RPARENT");

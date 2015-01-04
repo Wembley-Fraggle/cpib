@@ -1,5 +1,7 @@
 package ch.fhnw.cpib.parsing;
 
-public interface ILiteral extends IConcSynNode{
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
+public interface ILiteral extends IConcSynNode{
+    public IExpr toAbsSyn();
 }

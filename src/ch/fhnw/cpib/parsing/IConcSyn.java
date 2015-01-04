@@ -62,7 +62,7 @@ public interface IConcSyn {
     IMechmode mechmode() throws GrammarError;
     IAtomtype atomtype() throws GrammarError;
     IConcExpr expr() throws GrammarError;
-    IExprList exprList() throws GrammarError;
+    ICExprList exprList() throws GrammarError;
     ICpsCmd1 cpsCmd1() throws GrammarError;
     ICpsCmd2 cpsCmd2() throws GrammarError;
     ICmd cmd() throws GrammarError;

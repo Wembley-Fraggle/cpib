@@ -3,6 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IFactor2;
 import ch.fhnw.cpib.parsing.IFactor21;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.cpib.parsing.as.IAbsExpr;
 
 public class Factor2 implements IFactor2 {
@@ -15,7 +16,7 @@ public class Factor2 implements IFactor2 {
         this.factor21 = factor21;
     }
     
-    public IAbsExpr toAbsSyn(){
-    	return factor21.toAbsSyn(ident);
+    public IExpr toAbsSyn(){
+        return factor21.toAbsSyn(ident);
     }
 }

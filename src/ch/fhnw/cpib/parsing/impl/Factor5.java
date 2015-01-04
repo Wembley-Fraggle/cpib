@@ -3,7 +3,9 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IConcExpr;
 import ch.fhnw.cpib.parsing.IFactor5;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
+// TODO Rename to factor 4
 public class Factor5 implements IFactor5 {
 
     private IToken lParent;
@@ -13,6 +15,11 @@ public class Factor5 implements IFactor5 {
         this.lParent = lParent;
         this.expr = expr;
         this.rParent = rParent;
+    }
+    
+    @Override
+    public IExpr toAbsSyn() {
+       return expr.toAbsSyn();
     }
 
 }

@@ -2,11 +2,8 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IFactor1;
 import ch.fhnw.cpib.parsing.ILiteral;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
-import ch.fhnw.cpib.parsing.as.impl.AbsLiteralExpr;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
-
-//TODO Take a IToken
 public class Factor1 implements IFactor1{
     ILiteral literal;
     
@@ -14,7 +11,7 @@ public class Factor1 implements IFactor1{
         this.literal = literal;
     }
     
-    public IAbsExpr toAbsSyn(){
-    	return new AbsLiteralExpr(literal);
+    public IExpr toAbsSyn(){
+        return literal.toAbsSyn();
     }
 }
