@@ -1,9 +1,8 @@
 package ch.fhnw.cpib.parsing;
 
-import ch.fhnw.cpib.lexing.IToken;
+import ch.fhnw.cpib.context.Modes;
 
-//TODO Auto-generated stub
 public interface IMechmode extends IConcSynNode {
 	String toString(String indent);
-	IToken getMode();
+	Modes getMode();
 }

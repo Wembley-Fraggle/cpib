@@ -1,5 +1,6 @@
 package ch.fhnw.cpib.parsing.impl;
 
+import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IMechmode;
 
@@ -9,15 +10,15 @@ public class MechmodeCopy implements IMechmode {
     public MechmodeCopy(IToken copy) {
         this.copy = copy;
     }
-		@Override
-		public String toString(String indent) {
-			// TODO Auto-generated method stub
-			return indent + copy.getValue() + '\n';
-		}
-		
-		@Override
-		public IToken getMode() {
-			return copy;
-		}
+	@Override
+	public String toString(String indent) {
+		// TODO Auto-generated method stub
+		return indent + copy.getValue() + '\n';
+	}
+	
+	@Override
+	public Modes getMode() {
+		return Modes.COPY;
+	}
 
 }

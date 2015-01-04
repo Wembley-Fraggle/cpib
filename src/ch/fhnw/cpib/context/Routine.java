@@ -52,8 +52,8 @@ public abstract class Routine extends Symbol {
 	public final int getInOutCopyCount() {
 		int count = 0;
 		for (Parameter param : paramList) {
-			if (param.getMechMode().getMode().getType().isType("COPY")
-					&& param.getFlowMode().getMode().getType().isType("IN")) {
+			if (param.getMechMode().getMode() == Modes.COPY
+					&& param.getFlowMode().getMode() == Modes.IN) {
 				count++;
 			}
 		}

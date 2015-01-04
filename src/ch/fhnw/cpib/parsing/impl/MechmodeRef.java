@@ -1,5 +1,6 @@
 package ch.fhnw.cpib.parsing.impl;
 
+import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IMechmode;
 
@@ -18,7 +19,7 @@ public class MechmodeRef implements IMechmode {
 	}
 
 	@Override
-	public IToken getMode() {
-		return mechmodeRef;
+	public Modes getMode() {
+		return Modes.REF;
 	}
 }

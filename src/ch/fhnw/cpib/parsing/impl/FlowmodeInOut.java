@@ -1,5 +1,6 @@
 package ch.fhnw.cpib.parsing.impl;
 
+import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IFlowmode;
 
@@ -11,15 +12,15 @@ public class FlowmodeInOut implements IFlowmode {
         this.inOutMode = inOutMode;
     }
 
-		@Override
-		public String toString(String indent) {
-			// TODO Auto-generated method stub
-			return indent + inOutMode.getValue() + '\n';
-		}
+	@Override
+	public String toString(String indent) {
+		// TODO Auto-generated method stub
+		return indent + inOutMode.getValue() + '\n';
+	}
 
-		@Override
-		public IToken getMode() {
-			return inOutMode;
-		}
+	@Override
+	public Modes getMode() {
+		return return Modes.INOUT;
+	}
 
 }

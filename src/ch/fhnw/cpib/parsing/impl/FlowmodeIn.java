@@ -18,7 +18,7 @@ public class FlowmodeIn implements IFlowmode {
 	}
 
 	@Override
-	public IToken getMode() {
+	public Mod getMode() {
 		return inMode;
 	}
 
