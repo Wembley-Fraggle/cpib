@@ -1,15 +1,15 @@
 package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.parsing.IParam;
+import ch.fhnw.cpib.parsing.ICParam;
 import ch.fhnw.cpib.parsing.IParamList4;
 
 public class ParamList4 implements IParamList4 {
 
 	private IToken comma;
-	private IParam param;
+	private ICParam param;
 
-	public ParamList4(IToken comma, IParam param) {
+	public ParamList4(IToken comma, ICParam param) {
 		this.comma = comma;
 		this.param = param;
 	}

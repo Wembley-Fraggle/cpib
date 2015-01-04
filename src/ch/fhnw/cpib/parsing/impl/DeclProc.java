@@ -1,9 +1,9 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.parsing.IDecl;
+import ch.fhnw.cpib.parsing.ICDecl;
 import ch.fhnw.cpib.parsing.IProcDecl;
 
-public class DeclProc implements IDecl {
+public class DeclProc implements ICDecl {
 
 	private IProcDecl procDecl;
 

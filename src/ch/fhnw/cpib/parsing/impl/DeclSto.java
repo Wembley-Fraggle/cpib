@@ -1,9 +1,9 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.parsing.IDecl;
+import ch.fhnw.cpib.parsing.ICDecl;
 import ch.fhnw.cpib.parsing.IStoDecl;
 
-public class DeclSto implements IDecl {
+public class DeclSto implements ICDecl {
 
 	private IStoDecl stoDecl;
 

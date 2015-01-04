@@ -160,12 +160,12 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public ICpsDecl cpsDecl() throws GrammarError {
+    public ICCpsDecl cpsDecl() throws GrammarError {
         String name = terminal.getName();
         if ("PROC".equals(name) || "FUN".equals(name) || "IDENT".equals(name)
                 || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("cpsDecl ::= decl cpsDecl1");
-            return new CpsDecl(decl(), cpsDecl1());
+            return new CCpsDecl(decl(), cpsDecl1());
         } else {
             throw createError();
         }
@@ -531,7 +531,7 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public IDecl decl() throws GrammarError {
+    public ICDecl decl() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)) {
             LOG.debug("decl ::= stoDecl");
@@ -740,7 +740,7 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public IParam param() throws GrammarError {
+    public ICParam param() throws GrammarError {
         String name = terminal.getName();
         if ("IDENT".equals(name) || "VAR".equals(name) || "CONST".equals(name)
                 || "REF".equals(name) || "COPY".equals(name)

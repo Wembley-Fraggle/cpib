@@ -3,6 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IProgParam;
 import ch.fhnw.cpib.parsing.IProgParamList4;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDecl;
 
 public class ProgParamList4 implements IProgParamList4 {
 
@@ -19,5 +20,10 @@ public class ProgParamList4 implements IProgParamList4 {
 		return indent + "<ProgParamList4>\n"
 				+ progParam.toString(indent + '\t') + indent + "</ProgParamList4>\n";
 	}
+
+    @Override
+    public IDecl toAbsSyn() {
+        return progParam.toAbsSyn();
+    }
 
 }

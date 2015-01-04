@@ -3,6 +3,9 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.IProgParam;
 import ch.fhnw.cpib.parsing.IProgParamList2;
 import ch.fhnw.cpib.parsing.IProgParamList3;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsDecl;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDecl;
+import ch.fhnw.cpib.parsing.abs.impl.CpsDecl;
 
 public class ProgParamList2 implements IProgParamList2 {
 
@@ -16,10 +19,15 @@ public class ProgParamList2 implements IProgParamList2 {
 
 	@Override
 	public String toString(String indent) {
-		// TODO Auto-generated method stub
 		return indent + "<ProgParamList2>\n" + progParam.toString(indent + '\t')
 				+ progParamList3.toString(indent + '\t') + indent
 				+ "</ProgParamList2>\n";
 	}
+
+    @Override
+    public ICpsDecl toAbsSyn() {
+        
+        return new CpsDecl(progParam.toAbsSyn(), progParamList3.toAbsSyn());
+    }
 
 }

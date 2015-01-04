@@ -15,19 +15,24 @@ public final class Program implements IProgram {
 	private final IDbcCmd dbcPreCmd;
 	private final IDbcCmd dbcPostCmd;
 
-	public Program(final IToken ident, final ICpsDecl cpsDecl, final ICmd cmd,
-			final IDbcCmd dbcPreCmd, final IDbcCmd dbcPostCmd) {
+	public Program(final IToken ident, final ICpsDecl cpsDecl,
+	        final IDbcCmd dbcPreCmd, 
+	        final ICmd cmd,
+			final IDbcCmd dbcPostCmd) {
 		this.ident = ident;
 		this.cpsDecl = cpsDecl;
-		this.cmd = cmd;
 		this.dbcPreCmd = dbcPreCmd;
+		this.cmd = cmd;
 		this.dbcPostCmd = dbcPostCmd;
 	}
 
 	@Override
 	public String toString(final String indent) {
 		return indent + "<Program>\n" + ident.toString(indent + '\t')
-				+ cpsDecl.toString(indent + '\t') + cmd.toString(indent + '\t')
+				+ cpsDecl.toString(indent + '\t')
+				+ dbcPreCmd.toString(indent + '\t')
+				+ cmd.toString(indent + '\t')
+				+ dbcPostCmd.toString(indent + '\t')
 				+ indent + "</Program>\n";
 	}
 

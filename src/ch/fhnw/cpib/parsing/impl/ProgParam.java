@@ -4,6 +4,8 @@ import ch.fhnw.cpib.parsing.IProgParam;
 import ch.fhnw.cpib.parsing.IProgParam1;
 import ch.fhnw.cpib.parsing.IProgParam2;
 import ch.fhnw.cpib.parsing.ITypedIdent;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDecl;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 
 public class ProgParam implements IProgParam {
 
@@ -24,4 +26,11 @@ public class ProgParam implements IProgParam {
 				+ progParam2.toString(indent + '\t')
 				+ typedIdent.toString(indent + '\t') + indent + "</ProgParam>\n";
 	}
+
+    @Override
+    public IParam toAbsSyn() {
+        return new FunDe()
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

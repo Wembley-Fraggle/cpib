@@ -10,7 +10,7 @@ public interface IConcSyn {
     IProgram4 program4() throws GrammarError;
     IProgParamList progParamList() throws GrammarError;
     ICpsCmd cpsCmd() throws GrammarError;
-    ICpsDecl cpsDecl() throws GrammarError;
+    ICCpsDecl cpsDecl() throws GrammarError;
     IStoDecl stoDecl() throws GrammarError;
     IStoDecl1 stoDecl1() throws GrammarError;
     IFunDecl funDecl() throws GrammarError;
@@ -38,7 +38,7 @@ public interface IConcSyn {
     IGlobImp1 globImp1() throws GrammarError;
     IGlobImp2 globImp2() throws GrammarError;
     IFlowmode flowmode() throws GrammarError;
-    IDecl decl() throws GrammarError;
+    ICDecl decl() throws GrammarError;
     ICpsDecl1 cpsDecl1() throws GrammarError;
     ICpsDecl2 cpsDecl2() throws GrammarError;
     ICpsStoDecl1 cpsStoDecl1() throws GrammarError;
@@ -53,7 +53,7 @@ public interface IConcSyn {
     IParamList1 paramList1() throws GrammarError;
     IParamList2 paramList2() throws GrammarError;
     IParamList3 paramList3() throws GrammarError;
-    IParam param() throws GrammarError;
+    ICParam param() throws GrammarError;
     IParamList4 paramList4() throws GrammarError;
     IParam1 param1() throws GrammarError;
     IParam2 param2() throws GrammarError;

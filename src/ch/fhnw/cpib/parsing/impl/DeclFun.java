@@ -1,9 +1,9 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.parsing.IDecl;
+import ch.fhnw.cpib.parsing.ICDecl;
 import ch.fhnw.cpib.parsing.IFunDecl;
 
-public class DeclFun implements IDecl {
+public class DeclFun implements ICDecl {
 
 	private IFunDecl funDecl;
 

@@ -1,12 +1,12 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.parsing.IParam;
+import ch.fhnw.cpib.parsing.ICParam;
 import ch.fhnw.cpib.parsing.IParam1;
 import ch.fhnw.cpib.parsing.IParam2;
 import ch.fhnw.cpib.parsing.IParam3;
 import ch.fhnw.cpib.parsing.ITypedIdent;
 
-public class Param implements IParam {
+public class Param implements ICParam {
 
     private IParam1 param1;
     private IParam2 param2;

@@ -7,7 +7,10 @@ import ch.fhnw.cpib.parsing.IProgParamList;
 import ch.fhnw.cpib.parsing.IProgram2;
 import ch.fhnw.cpib.parsing.IProgram3;
 import ch.fhnw.cpib.parsing.IProgram4;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDecl;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IProgram;
+import ch.fhnw.cpib.parsing.abs.impl.CpsDecl;
+import ch.fhnw.cpib.parsing.abs.impl.ProcDecl;
 import ch.fhnw.cpib.parsing.abs.impl.Program;
 
 public class CProgram implements ICProgram {
@@ -48,12 +51,14 @@ public class CProgram implements ICProgram {
 		}
 
 		@Override
-		public IProgram toAbstrSyntax() {		    
+		public IProgram toAbstrSyntax() {
+		    IDecl mainProc = new ProcDecl(ident,
+		            progParamList.toAbsSyn(), globImp, cpsDecl, cmd)
 			return new Program(
 	        ident, 
 	        progParamList.toAbsSyn(), 
+	        program3.toAbsSyn()
 	        cpsCmd.toAbsSyn(),
-	        program3.toAbsSyn(),
 	        program4.toAbsSyn()); 
 		} 
 }

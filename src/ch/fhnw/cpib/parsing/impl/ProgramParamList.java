@@ -20,8 +20,7 @@ public class ProgramParamList implements IProgParamList {
 
     @Override
     public ICpsDecl toAbsSyn() {
-        // TODO Auto-generated method stub
-        return null;
+        return progParamList1.toAbsSyn();
     }
 
     @Override

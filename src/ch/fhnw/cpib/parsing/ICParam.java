@@ -1,6 +1,6 @@
 package ch.fhnw.cpib.parsing;
 
-public interface IParam extends IConcSynNode{
+public interface ICParam extends IConcSynNode{
 
 	String toString(String indent);
 

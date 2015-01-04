@@ -14,16 +14,15 @@ public class ProgParamList1 implements IProgParamList1 {
 
 	@Override
 	public String toString(String indent) {
-		// TODO Auto-generated method stub
 		return indent + "<ProgParamList1>\n"
 				+ progParamList2.toString(indent + '\t') + indent
 				+ "</ProgParamList1>\n";
 	}
 
-	@Override
-	public ICpsDecl toAbsSyn(ICpsDecl decl) {
-		// TODO Auto-generated method stub
-		return new ch.fhnw.cpib.parsing.abs.impl.CpsDecl(null, null);
-	}
+    @Override
+    public ICpsDecl toAbsSyn() {
+        return progParamList2.toAbsSyn();
+    }
+
 
 }
