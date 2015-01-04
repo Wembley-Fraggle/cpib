@@ -1,12 +1,11 @@
 package ch.fhnw.cpib.parsing;
 
-import ch.fhnw.cpib.parsing.as.IAbsCmd;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
 
-//TODO Auto-generated stub
 public interface ICCmd extends IConcSynNode {
 
-    IAbsCmd toAbsSyn();
+    ICmd toAbsSyn();
 
-		String toString(String indent);
+	String toString(String indent);
 
 }
