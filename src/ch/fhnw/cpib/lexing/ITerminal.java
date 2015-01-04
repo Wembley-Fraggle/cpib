@@ -8,5 +8,5 @@ public interface ITerminal {
     boolean isType(String name);
     String getName();
     String getPattern();
-    
+    String toString(String indent);
 }

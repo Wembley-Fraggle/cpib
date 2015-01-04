@@ -10,4 +10,15 @@ public class MechmodeRef implements IMechmode {
     public MechmodeRef(IToken mechmodeRef) {
         this.mechmodeRef = mechmodeRef;
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public IToken getMode() {
+			return mechmodeRef;
+		}
 }

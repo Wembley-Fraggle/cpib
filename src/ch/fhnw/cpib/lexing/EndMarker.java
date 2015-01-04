@@ -54,4 +54,10 @@ public class EndMarker implements IEndMarker, ITerminal {
     public String toString() {
         return getName();
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

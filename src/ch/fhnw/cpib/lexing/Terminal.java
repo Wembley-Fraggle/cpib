@@ -94,4 +94,10 @@ public class Terminal implements ITerminal {
     public String getPattern() {
        return patternStr;
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }
