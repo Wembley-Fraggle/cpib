@@ -4,7 +4,6 @@ import ch.fhnw.cpib.errors.GrammarError;
 
 public interface IConcSyn {
     IProgram program() throws GrammarError;
-    IProgram1 program1() throws GrammarError;
     IProgram2 program2() throws GrammarError;
     IProgram21 program21() throws GrammarError;
     IProgram3 program3() throws GrammarError;

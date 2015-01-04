@@ -4,7 +4,6 @@ import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICpsCmd;
 import ch.fhnw.cpib.parsing.IProgParamList;
 import ch.fhnw.cpib.parsing.IProgram;
-import ch.fhnw.cpib.parsing.IProgram1;
 import ch.fhnw.cpib.parsing.IProgram2;
 import ch.fhnw.cpib.parsing.IProgram3;
 import ch.fhnw.cpib.parsing.IProgram4;
@@ -13,7 +12,6 @@ public class Program implements IProgram {
     private IToken program;
     private IToken ident;
     private IProgParamList progParamList;
-    private IProgram1 program1;
     private IProgram2 program2;
     private IProgram3 program3;
     private IToken doToken;
@@ -21,13 +19,11 @@ public class Program implements IProgram {
     private IProgram4 program4;
     private IToken endProgram;
 
-    public Program(IToken program, IToken ident, IProgParamList progParamList,
-            IProgram1 program1, IProgram2 program2, IProgram3 program3,
+    public Program(IToken program, IToken ident, IProgParamList progParamList, IProgram2 program2, IProgram3 program3,
             IToken doToken, ICpsCmd cpsCmd,IProgram4 program4, IToken endProgram) {
         this.program = program;
         this.ident = ident;
         this.progParamList = progParamList;
-        this.program1 = program1;
         this.program2 = program2;
         this.program3 = program3;
         this.program4 = program4;
@@ -37,11 +33,14 @@ public class Program implements IProgram {
 
 		@Override
 		public String toString(String indent) {
+			System.out.println("program2: " + program2);
+			System.out.println("program3: " + program3);
+			System.out.println("cpsCmd: " + cpsCmd);
+			System.out.println("program4: " + program4);
 			return indent
 					+ "<Program>\n"
 					+ ident.toString(indent + '\t')
 					+ progParamList.toString(indent + '\t')
-					+ program1.toString(indent + '\t')
 					+ program2.toString(indent + '\t')
 					+ program3.toString(indent + '\t')
 					+ cpsCmd.toString(indent + '\t')
@@ -51,13 +50,12 @@ public class Program implements IProgram {
 		}
 
 		@Override
-		public ch.fhnw.cpib.parsing.abs.IAbstSyn.IProgram toAbstrSyntax() {
-			return null; //TODO
-/*			return new ch.fhnw.cpib.parsing.abs.impl.Program(
+		public ch.fhnw.cpib.parsing.abs.IAbstSyn.IProgram toAbstrSyntax() {		    
+			return new ch.fhnw.cpib.parsing.abs.impl.Program(
 	        ident, 
 	        progParamList.toAbsSyn(), 
 	        cpsCmd.toAbsSyn(),
 	        program3.toAbsSyn(),
-	        program4.toAbsSyn());  */
+	        program4.toAbsSyn()); 
 		} 
 }
