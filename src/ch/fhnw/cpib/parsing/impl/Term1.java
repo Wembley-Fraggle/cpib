@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.ITerm1;
 import ch.fhnw.cpib.parsing.ITerm11;
 import ch.fhnw.cpib.parsing.ITerm2;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
 public class Term1 implements ITerm1 {
 
@@ -13,8 +13,10 @@ public class Term1 implements ITerm1 {
         this.term2 = term2;
         this.term11 = term11;
     }
+    
+    
     @Override
-    public IAbsExpr toAbsSyn() {
+    public IExpr toAbsSyn() {
         return term11.toAbsSyn(term2.toAbsSyn());
     }
     

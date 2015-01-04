@@ -11,10 +11,6 @@ public class ChangemodeConst implements IChangemode {
 		this.constMode = constMode;
 	}
 
-	public IAbsExpr2 toAbsSyn(IAbsExpr2 e) {
-		return e;
-	}
-
 	@Override
 	public String toString(String indent) {
 		// TODO Auto-generated method stub

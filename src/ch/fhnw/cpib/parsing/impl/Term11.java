@@ -2,7 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.ITerm11;
 import ch.fhnw.cpib.parsing.ITerm12;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
 public class Term11 implements ITerm11 {
 
@@ -13,7 +13,7 @@ public class Term11 implements ITerm11 {
     }
 
     @Override
-    public IAbsExpr toAbsSyn(IAbsExpr left) {
+    public IExpr toAbsSyn(IExpr left) {
         // TODO Auto-generated method stub
         return null;
     }

@@ -1,13 +1,10 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.parsing.IExpr;
+import ch.fhnw.cpib.parsing.IConcExpr;
 import ch.fhnw.cpib.parsing.IExpr1;
 import ch.fhnw.cpib.parsing.ITerm1;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
-import ch.fhnw.cpib.parsing.as.IAbsExprList;
-import ch.fhnw.cpib.parsing.as.impl.AbsExpr;
 
-public class Expr implements IExpr {
+public class Expr implements IConcExpr {
 
     private ITerm1 term1;
     private IExpr1 expr1;
@@ -18,7 +15,7 @@ public class Expr implements IExpr {
     }
 
     @Override
-    public IAbsExpr toAbsSyn() {
+    public ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr toAbsSyn() {
         return expr1.toAbsSyn(term1.toAbsSyn());
     }
 

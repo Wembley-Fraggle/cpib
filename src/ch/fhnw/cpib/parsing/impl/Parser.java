@@ -853,7 +853,7 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public IExpr expr() throws GrammarError {
+    public IConcExpr expr() throws GrammarError {
         String name = terminal.getName();
         if ("LPARENT".equals(name) || "OLD".equals(name)
                 || "MINUS".equals(name) || "PLUS".equals(name)
@@ -1635,7 +1635,7 @@ public class Parser implements IParser, IConcSyn {
             consume(terminal),
             consume("IDENT"),
             consume("COLON"),
-            (IExpr) expr());
+            (IConcExpr) expr());
         } else {
             throw createError();
         }

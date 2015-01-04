@@ -2,22 +2,20 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICmd1;
-import ch.fhnw.cpib.parsing.IExpr;
-import ch.fhnw.cpib.parsing.as.IAbsAssiCmd;
-import ch.fhnw.cpib.parsing.as.impl.AbsAssiCmd;
+import ch.fhnw.cpib.parsing.IConcExpr;
 
 public class Cmd1 implements ICmd1 {
 
-    private IExpr leftExpr;
+    private IConcExpr leftExpr;
     private IToken becomes;
-    private IExpr rightExpr;
-    public Cmd1(IExpr leftExpr, IToken becomes, IExpr rightExpr) {
+    private IConcExpr rightExpr;
+    public Cmd1(IConcExpr leftExpr, IToken becomes, IConcExpr rightExpr) {
         this.leftExpr = leftExpr;
         this.becomes = becomes;
         this.rightExpr = rightExpr;
     }
     
-    public IAbsAssiCmd toAbsSyn() {
-        return new AbsAssiCmd(leftExpr.toAbsSyn(), rightExpr.toAbsSyn());
-    }
+//    public IAbsAssiCmd toAbsSyn() {
+//        return new AbsAssiCmd(leftExpr.toAbsSyn(), rightExpr.toAbsSyn());
+//    }
 }

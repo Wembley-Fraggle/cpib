@@ -1,7 +1,7 @@
 package ch.fhnw.cpib.parsing.as.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.parsing.IExpr;
+import ch.fhnw.cpib.parsing.IConcExpr;
 import ch.fhnw.cpib.parsing.as.IAbsExpr;
 import ch.fhnw.cpib.parsing.as.IAbsInvariant;
 
