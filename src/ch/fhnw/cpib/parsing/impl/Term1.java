@@ -15,8 +15,7 @@ public class Term1 implements ITerm1 {
     }
     @Override
     public IAbsExpr toAbsSyn() {
-        // TODO 
-        return null;
+        return term11.toAbsSyn(term2.toAbsSyn());
     }
     
 
