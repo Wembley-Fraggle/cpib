@@ -2,7 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IFunDecl3;
 import ch.fhnw.cpib.parsing.IPrecondition;
-import ch.fhnw.cpib.parsing.as.IAbsPrecondition;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDbcCmd;
 
 public class FunDecl3 implements IFunDecl3 {
 
@@ -13,9 +13,8 @@ public class FunDecl3 implements IFunDecl3 {
     }
 
 		@Override
-		public IAbsPrecondition toAbsSyn() {
-			// TODO Auto-generated method stub
-			return null;
+		public IDbcCmd toAbsSyn() {
+			return precondition.toAbsSyn();
 		}
 
 		@Override
