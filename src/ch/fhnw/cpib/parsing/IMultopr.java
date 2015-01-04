@@ -1,6 +1,9 @@
 package ch.fhnw.cpib.parsing;
 
-//TODO Auto-generated stub
+import ch.fhnw.cpib.lexing.IToken;
+
 public interface IMultopr extends IConcSynNode {
+
+    IToken toAbsSyn();
 
 }

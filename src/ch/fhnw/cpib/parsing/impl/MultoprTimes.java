@@ -9,5 +9,10 @@ public class MultoprTimes implements IMultopr {
     public MultoprTimes(IToken times) {
         this.times = times;
     }
+    
+    @Override
+    public IToken toAbsSyn() {
+        return times;
+    }
 
 }

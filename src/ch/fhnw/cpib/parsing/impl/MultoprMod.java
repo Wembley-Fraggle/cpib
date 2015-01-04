@@ -9,4 +9,9 @@ public class MultoprMod implements IMultopr {
     public MultoprMod(IToken mod) {
         this.mod = mod;
     }
+
+    @Override
+    public IToken toAbsSyn() {
+       return mod;
+    }
 }

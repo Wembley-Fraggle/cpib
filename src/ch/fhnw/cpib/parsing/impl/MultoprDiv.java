@@ -11,4 +11,9 @@ public class MultoprDiv implements IMultopr {
         this.div = div;
     }
 
+    @Override
+    public IToken toAbsSyn() {
+       return div;
+    }
+
 }
