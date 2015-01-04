@@ -29,13 +29,16 @@ public final class ExprCall implements IExpr {
 	
 	@Override
 	public String toString(final String indent) {
-		return indent
-				+ "<ExprCall>\n"
-				+ ident.toString(indent + '\t')
-				+ exprList.toString(indent + '\t')
-				+ globInit.toString(indent + '\t')
-				+ indent
-				+ "</ExprCall>\n";
+	    StringBuffer out = new StringBuffer();
+	        out.append("<ExprCall>\n")
+	           .append(ident.toString(indent + '\t'))
+	           .append(exprList.toString(indent + '\t'));
+	        if(globInit != null) {
+	            out.append(globInit.toString(indent + '\t'));
+	        }
+	        out.append(indent)
+	           .append("</ExprCall>\n");
+		return out.toString();
 	}
 	
 	@Override
@@ -59,7 +62,7 @@ public final class ExprCall implements IExpr {
                     ident.getStart().getCurrentLine());
         }
         
-        if (globInit instanceof GlobInit) {
+        if (globInit != null && globInit instanceof GlobInit) {
             throw new ContextError(
                     "GlobInitList is only allowed for procedure calls", 
                     globInit.getLine());
@@ -123,46 +126,48 @@ public final class ExprCall implements IExpr {
         
         exprList.check(paramList, aliasList, canInit);
         
-        Set<String> globInits = globInit.check(new HashSet<String>());
+        if(globInit != null) {
+            Set<String> globInits = globInit.check(new HashSet<String>());
         
-        for (ch.fhnw.cpib.context.GlobImp globImp 
-                : routine.getGlobImpList()) {
-            
-            switch (globImp.getFlowMode().getMode().getType().getName()) {
-                case "IN":
-                case "INOUT":
-                    if (!IMLCompiler.getScope().getStoreTable().getStore(
-                            globImp.getIdent()).isInitialized()) {
-                        throw new ContextError(
-                                "Global import of function not initialized!" 
-                                    + " Ident: " + globImp.getIdent(), 
-                                ident.getStart().getCurrentLine());
-                    }
-                    break;
-                case "OUT":
-                    if (globInits.contains(globImp.getIdent())) {
-                        IMLCompiler.getScope().getStoreTable().getStore(
-                                globImp.getIdent()).initialize();
-                        globInits.remove(globImp.getIdent());
-                    }
-                    break;
-                default:
-                    throw new RuntimeException();
+            for (ch.fhnw.cpib.context.GlobImp globImp 
+                    : routine.getGlobImpList()) {
+                
+                switch (globImp.getFlowMode().getMode().getType().getName()) {
+                    case "IN":
+                    case "INOUT":
+                        if (!IMLCompiler.getScope().getStoreTable().getStore(
+                                globImp.getIdent()).isInitialized()) {
+                            throw new ContextError(
+                                    "Global import of function not initialized!" 
+                                        + " Ident: " + globImp.getIdent(), 
+                                    ident.getStart().getCurrentLine());
+                        }
+                        break;
+                    case "OUT":
+                        if (globInits.contains(globImp.getIdent())) {
+                            IMLCompiler.getScope().getStoreTable().getStore(
+                                    globImp.getIdent()).initialize();
+                            globInits.remove(globImp.getIdent());
+                        }
+                        break;
+                    default:
+                        throw new RuntimeException();
+                }
+                
+                if (aliasList.contains(globImp.getIdent())) {
+                    throw new ContextError(
+                            "Global import is already used as a parameter! Ident: "
+                                + globImp.getIdent(), 
+                            ident.getStart().getCurrentLine());
+                }
             }
             
-            if (aliasList.contains(globImp.getIdent())) {
+            if (globInits.size() > 0) {
                 throw new ContextError(
-                        "Global import is already used as a parameter! Ident: "
-                            + globImp.getIdent(), 
+                        "Global init is not importet! Ident: "
+                            + globInits.iterator().next(), 
                         ident.getStart().getCurrentLine());
             }
-        }
-        
-        if (globInits.size() > 0) {
-            throw new ContextError(
-                    "Global init is not importet! Ident: "
-                        + globInits.iterator().next(), 
-                    ident.getStart().getCurrentLine());
         }
         
         return type;
