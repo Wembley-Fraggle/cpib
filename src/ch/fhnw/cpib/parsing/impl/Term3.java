@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.IFactor;
 import ch.fhnw.cpib.parsing.ITerm3;
 import ch.fhnw.cpib.parsing.ITerm31;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
 public class Term3 implements ITerm3 {
 
@@ -16,8 +16,7 @@ public class Term3 implements ITerm3 {
     }
 
     @Override
-    public IAbsExpr toAbsSyn() {
-        // TODO Auto-generated method stub
-        return null;
+    public IExpr toAbsSyn() {
+        return term31.toAbsSyn(factor.toAbsSyn());
     }
 }
