@@ -16,7 +16,7 @@ public class CpsDecl implements ICpsDecl {
 	@Override
 	public String toString(String indent) {
 		// TODO Auto-generated method stub
-		return indent + "<" + decl.toString() + ">" + cpsDecl1.toString(indent)
+		return indent + "<" + decl.toString(indent) + ">" + cpsDecl1.toString(indent)
 				+ "</" + decl.toString() + ">\n";
 	}
 }
