@@ -11,8 +11,10 @@ public class AtomtypeInt32 implements IAtomtype {
         this.int32 = int32;
     }
     
-    public IAbsExprLiteral toAbsSyn(IAbsExprLiteral ident) {
-        return ident;
+    @Override
+    public IToken toAbsSyn() {
+      return int32;
     }
+   
 
 }

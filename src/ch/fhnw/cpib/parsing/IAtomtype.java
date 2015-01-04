@@ -1,6 +1,7 @@
 package ch.fhnw.cpib.parsing;
 
-//TODO Auto-generated stub
-public interface IAtomtype extends IConcSynNode {
+import ch.fhnw.cpib.lexing.IToken;
 
+public interface IAtomtype extends IConcSynNode {
+    public IToken toAbsSyn();
 }

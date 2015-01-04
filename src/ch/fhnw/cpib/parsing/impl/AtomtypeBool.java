@@ -12,8 +12,8 @@ public class AtomtypeBool implements IAtomtype {
         this.bool = bool;
     }
     
-    public IAbsExprLiteral toAbsSyn(IAbsExprLiteral ident) {
-        return ident;
+    @Override
+    public IToken toAbsSyn() {
+       return bool;
     }
-
 }
