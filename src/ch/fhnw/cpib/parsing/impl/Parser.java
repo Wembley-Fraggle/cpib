@@ -117,11 +117,11 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("PRE".equals(name)) {
             LOG.debug("program3 ::= precondition");
-            precondition();
-            return null; // TODO
+//            precondition();
+            return precondition(); // TODO
         } else if ("DO".equals(name)) {
             LOG.debug("program3 ::= <e>");
-            return null; // TODO
+            return new Program3Eps(); // TODO
         } else {
             throw createError();
         }
@@ -132,11 +132,11 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("POST".equals(name)) {
             LOG.debug("program4 ::= postcondition");
-            postcondition();
-            return null; // TODO
+//            postcondition();
+            return postcondition(); // TODO
         } else if ("ENDPROGRAM".equals(name)) {
             LOG.debug("program4 ::= <e>");
-            return null; // TODO
+            return new Program4Eps(); // TODO
         } else {
             throw createError();
         }
