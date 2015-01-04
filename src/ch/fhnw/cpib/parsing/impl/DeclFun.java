@@ -12,11 +12,6 @@ public class DeclFun implements IDecl {
 	}
 
 	@Override
-	public String toString() {
-		return funDecl.toString();
-	}
-
-	@Override
 	public String toString(String indent) {
 		return indent + "<DeclFun>\n" + funDecl.toString(indent + '\t') + indent
 				+ "</DeclFun>\n";

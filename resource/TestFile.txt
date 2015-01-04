@@ -1,16 +1,41 @@
-program intDiv(in const m:int32, in const n:int32,
- out const q:int32, out const r:int32)
+program modulocalc(in const b:int32, in const c:int32)
 global
- proc divide(in copy const m:int32, in copy const n:int32,
- out ref var q:int32, out ref var r:int32)
+ /*
+  * Calculates the modulo of two integers
+  * -------------------------------------------------------------
+  * @Param b  : Dividend
+  * @Param c  : Divisor
+  * @Return r : a modulo b.
+  *         	E.g. 3 modulo 2 = 1
+  * @Pre  	: b >= 0 and c > 0
+  * @Post 	: r >= 0 and r = mod(b,c)
+  */
+ fun modulo(
+	in copy const b:int32,
+	in copy const c:int32 )
+ returns const r:int32
+ local
+   var q:int32;
+   var r:int32
+ pre  Q : b >= 0 && c > 0
+ 
  do
- q init := 0;
- r init := m;
- while r >= n do
- q := q + 1;
- r := r - n
- endwhile
- endproc
+  q init := 0;
+  r init := b;
+ 
+  while r >= c
+  inv P : b = q * c + r && 0 <= r
+  do
+   q := q + 1;
+   r := r - c
+  endwhile
+ 
+ post R : b = q * c + r && 0 <= r && r < c
+ endfun
+
+// The main program
 do
- call divide(m, n, q init, r init)
+ r init := 0;
+ r := modulo(b, c);
+ debugout r
 endprogram

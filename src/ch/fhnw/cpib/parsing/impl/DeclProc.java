@@ -12,11 +12,6 @@ public class DeclProc implements IDecl {
 	}
 
 	@Override
-	public String toString() {
-		return procDecl.toString();
-	}
-
-	@Override
 	public String toString(String indent) {
 		return indent + "<DeclProc>\n" + procDecl.toString(indent + '\t') + indent
 				+ "</DeclProc>\n";

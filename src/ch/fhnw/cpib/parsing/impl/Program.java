@@ -37,13 +37,6 @@ public class Program implements IProgram {
 
 		@Override
 		public String toString(String indent) {
-			System.out.println("ident: " + ident);
-			System.out.println("progParamList: " + progParamList);
-			System.out.println("program1: " + program1);
-			System.out.println("program2: " + program2);
-			System.out.println("program3: " + program3);
-			System.out.println("cpsCmd: " + cpsCmd);
-			System.out.println("program4: " + program4);
 			return indent
 					+ "<Program>\n"
 					+ ident.toString(indent + '\t')

@@ -12,11 +12,6 @@ public class DeclSto implements IDecl {
 	}
 
 	@Override
-	public String toString() {
-		return stoDecl.toString();
-	}
-
-	@Override
 	public String toString(String indent) {
 		return indent + "<DeclSto>\n" + stoDecl.toString(indent + '\t') + indent
 				+ "</DeclSto>\n";

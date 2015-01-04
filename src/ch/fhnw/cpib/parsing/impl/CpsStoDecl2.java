@@ -16,7 +16,7 @@ public class CpsStoDecl2 implements ICpsStoDecl2 {
 
 	@Override
 	public String toString(String indent) {
-		return indent + semi.getValue() + stoDecl.toString(indent);
+		return indent + stoDecl.toString(indent);
 	}
 
 }
