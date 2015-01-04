@@ -2,7 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.ICmd31;
 import ch.fhnw.cpib.parsing.IInvariant;
-import ch.fhnw.cpib.parsing.as.IAbsInvariant;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDbcCmd;
 
 public class Cmd31 implements ICmd31 {
 
@@ -13,14 +13,14 @@ public class Cmd31 implements ICmd31 {
 	}
 
 	@Override
-	public IAbsInvariant toAbsSyn() {
-		return invariant.toAbsSyn();
-	}
-
-	@Override
 	public String toString(String indent) {
 		return indent + "<invariant>\n" + invariant.toString(indent + '\t')
 				+ indent + "</invariant>\n";
 	}
+
+    @Override
+    public IDbcCmd toAbsSyn() {
+        return invariant.toAbsSyn();
+    }
 
 }
