@@ -5,10 +5,21 @@ import ch.fhnw.cpib.parsing.IFlowmode;
 
 public class FlowmodeIn implements IFlowmode {
 
-    private IToken inMode;
+	private IToken inMode;
 
-    public FlowmodeIn(IToken inMode) {
-        this.inMode = inMode;
-    }
+	public FlowmodeIn(IToken inMode) {
+		this.inMode = inMode;
+	}
+
+	@Override
+	public String toString(String indent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IToken getMode() {
+		return inMode;
+	}
 
 }

@@ -48,4 +48,10 @@ public class Token implements IToken{
     public ITerminal getType() {
         return type;
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

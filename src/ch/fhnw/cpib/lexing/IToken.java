@@ -36,4 +36,6 @@ public interface IToken {
 	// TODO 
 	ITerminal getType();
 	
+	String toString(String indent);
+	
 }
