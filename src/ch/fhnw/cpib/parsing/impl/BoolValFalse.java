@@ -8,4 +8,8 @@ public class BoolValFalse implements IBoolVal{
     public BoolValFalse(IToken boolVal) {
         this.value = value;
     }
+    
+    public IToken toAbsSyn() {
+        return value;
+    }
 }

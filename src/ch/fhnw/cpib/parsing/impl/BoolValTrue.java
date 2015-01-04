@@ -5,8 +5,12 @@ import ch.fhnw.cpib.parsing.IBoolVal;
 
 public class BoolValTrue implements IBoolVal {
 
-    private IToken boolVal;
-    public BoolValTrue(IToken boolVal) {
-        this.boolVal = boolVal;
+    private IToken value;
+    public BoolValTrue(IToken value) {
+        this.value = value;
+    }
+    
+    public IToken toAbsSyn() {
+        return value;
     }
 }
