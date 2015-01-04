@@ -35,8 +35,12 @@ public class DbcCmd implements IDbcCmd {
 
 	@Override
 	public String toString(String indent) {
-		return ident + "<" + ident.getValue() + ">" + expr.toString(indent) + "</"
-				+ ident.getValue() + ">";
+	    return indent
+	      + "<DbcCmd>\n"
+	      + ident.toString(indent + '\t')
+	      + expr.toString(indent + '\t')
+          + indent
+          + "</DbcCmd>\n";
 	}
 
 	@Override
