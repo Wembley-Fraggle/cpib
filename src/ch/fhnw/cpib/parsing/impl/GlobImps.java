@@ -1,6 +1,5 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.parsing.IFunDecl1;
 import ch.fhnw.cpib.parsing.IGlobImp;
 import ch.fhnw.cpib.parsing.IGlobImps;
 import ch.fhnw.cpib.parsing.IGlobImps1;
@@ -16,9 +15,9 @@ public class GlobImps implements IGlobImps {
 	}
 
 	@Override
-	public IFunDecl1 toAbsSyn() {
+	public ch.fhnw.cpib.parsing.abs.IAbstSyn.IGlobImp toAbsSyn() {
 		// TODO Auto-generated method stub
-		return null;
+		return globImps1.toAbsSyn(globImp.toAbsSyn());
 	}
 
 	@Override

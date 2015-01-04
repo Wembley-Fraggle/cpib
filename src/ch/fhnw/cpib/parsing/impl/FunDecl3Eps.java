@@ -1,15 +1,14 @@
 package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IFunDecl3;
-import ch.fhnw.cpib.parsing.as.IAbsPrecondition;
-import ch.fhnw.cpib.parsing.as.impl.AbsPrecondition;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDbcCmd;
+import ch.fhnw.cpib.parsing.abs.impl.DbcCmdEps;
 
 public class FunDecl3Eps implements IFunDecl3 {
 
 	@Override
-	public IAbsPrecondition toAbsSyn() {
-		// TODO Auto-generated method stub
-		return new AbsPrecondition();
+	public IDbcCmd toAbsSyn() {
+		return new DbcCmdEps();
 	}
 
 	@Override

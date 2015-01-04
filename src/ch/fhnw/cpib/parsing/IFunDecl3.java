@@ -1,11 +1,14 @@
 package ch.fhnw.cpib.parsing;
 
-import ch.fhnw.cpib.parsing.as.IAbsPrecondition;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDbcCmd;
 
-//TODO Auto-generated stub
+/**
+ * 
+ * [precondition]
+ */
 public interface IFunDecl3 extends IConcSynNode {
 
-	IAbsPrecondition toAbsSyn();
+	IDbcCmd toAbsSyn();
 
 	String toString(String indent);
 

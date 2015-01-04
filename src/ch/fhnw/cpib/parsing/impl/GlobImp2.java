@@ -16,4 +16,9 @@ public class GlobImp2 implements IGlobImp2 {
 		return indent + "<GlobImp2>\n" + changemode.toString(indent + '\t')
 				+ indent + "</GlobImp2>\n";
 	}
+
+	@Override
+	public IChangemode toAbsSyn() {
+		return changemode;
+	}
 }

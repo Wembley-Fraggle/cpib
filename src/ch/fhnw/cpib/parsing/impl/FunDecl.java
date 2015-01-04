@@ -9,8 +9,7 @@ import ch.fhnw.cpib.parsing.IFunDecl3;
 import ch.fhnw.cpib.parsing.IFunDecl4;
 import ch.fhnw.cpib.parsing.IParamList;
 import ch.fhnw.cpib.parsing.IStoDecl;
-import ch.fhnw.cpib.parsing.as.IAbsDecl;
-import ch.fhnw.cpib.parsing.as.impl.AbsFunDecl;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn;
 
 public class FunDecl implements IFunDecl {
 
@@ -45,8 +44,8 @@ public class FunDecl implements IFunDecl {
 		this.endFun = endFun;
 	}
 
-	public IAbsDecl toAbsSyn() {
-		return new AbsFunDecl(paramList.toAbsSyn(), stoDecl.toAbsSyn(), funDecl1.toAbsSyn(),
+	public IAbstSyn.IDecl toAbsSyn() {
+		return new ch.fhnw.cpib.parsing.abs.impl.FunDecl(ident, paramList.toAbsSyn(), stoDecl.toAbsSyn(), funDecl1.toAbsSyn(),
 				funDecl2.toAbsSyn(), funDecl3.toAbsSyn(), cpsCmd.toAbsSyn(), funDecl4.toAbsSyn());
 	}
 	

@@ -13,21 +13,19 @@ public final class GlobImp implements IGlobImp {
 	private final IFlowmode flowMode;
 	private final IChangemode changeMode;
 	private final IToken ident;
-	private final IGlobImp globImp;
 
 	public GlobImp(final IFlowmode flowMode, final IChangemode changeMode,
-			final IToken ident, final IGlobImp globImp) {
+			final IToken ident) {
 		this.flowMode = flowMode;
 		this.changeMode = changeMode;
 		this.ident = ident;
-		this.globImp = globImp;
 	}
 
 	@Override
 	public String toString(final String indent) {
 		return indent + "<GlobImp>\n" + flowMode.toString(indent + '\t')
 				+ changeMode.toString(indent + '\t') + ident.toString(indent + '\t')
-				+ globImp.toString(indent + '\t') + indent + "</GlobImp>\n";
+				+ indent + "</GlobImp>\n";
 	}
 
 	@Override
@@ -93,7 +91,6 @@ public final class GlobImp implements IGlobImp {
 		routine.addGlobImp(new ch.fhnw.cpib.context.GlobImp(flowMode,
 				changeMode, ident.getValue().toString()));
 
-		globImp.check(routine);
 	}
 
 	@Override
@@ -107,6 +104,5 @@ public final class GlobImp implements IGlobImp {
 			}
 		}
 
-		globImp.checkInit();
 	}
 }

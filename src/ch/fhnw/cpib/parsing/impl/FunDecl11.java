@@ -1,9 +1,9 @@
 package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.parsing.IFunDecl1;
 import ch.fhnw.cpib.parsing.IFunDecl11;
 import ch.fhnw.cpib.parsing.IGlobImps;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IGlobImp;
 
 public class FunDecl11 implements IFunDecl11 {
 
@@ -16,7 +16,7 @@ public class FunDecl11 implements IFunDecl11 {
 	}
 
 	@Override
-	public IFunDecl1 toAbsSyn() {
+	public IGlobImp toAbsSyn() {
 		// TODO Auto-generated method stub
 		return globImps.toAbsSyn();
 	}

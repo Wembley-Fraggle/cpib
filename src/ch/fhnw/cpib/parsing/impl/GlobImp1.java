@@ -16,4 +16,9 @@ public class GlobImp1 implements IGlobImp1 {
 		return indent + "<GlobImp1>\n" + flowmode.toString(indent + '\t') + indent
 				+ "</GlobImp1>\n";
 	}
+
+	@Override
+	public IFlowmode toAbsSyn() {
+		return flowmode;
+	}
 }
