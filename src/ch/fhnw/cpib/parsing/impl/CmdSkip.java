@@ -1,12 +1,12 @@
 package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.parsing.ICmd;
+import ch.fhnw.cpib.parsing.ICCmd;
 import ch.fhnw.cpib.parsing.as.IAbsCmd;
 import ch.fhnw.cpib.parsing.as.IAbsSkipCmd;
 import ch.fhnw.cpib.parsing.as.impl.AbsSkipCmd;
 
-public class CmdSkip implements ICmd {
+public class CmdSkip implements ICCmd {
 
     private IToken skip;
 

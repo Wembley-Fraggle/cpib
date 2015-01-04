@@ -909,7 +909,7 @@ public class Parser implements IParser, IConcSyn {
     }
 
     @Override
-    public ICmd cmd() throws GrammarError {
+    public ICCmd cmd() throws GrammarError {
         String name = terminal.getName();
         if ("SKIP".equals(name)) {
             LOG.debug("cmd ::= SKIP");

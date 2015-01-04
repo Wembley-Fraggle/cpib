@@ -1,6 +1,6 @@
 package ch.fhnw.cpib.parsing;
 
 //TODO Auto-generated stub
-public interface ICmd6 extends IConcSynNode,ICmd{
+public interface ICmd6 extends IConcSynNode,ICCmd{
 
 }

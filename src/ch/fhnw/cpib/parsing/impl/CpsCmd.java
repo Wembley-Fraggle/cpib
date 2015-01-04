@@ -1,16 +1,16 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.parsing.ICmd;
+import ch.fhnw.cpib.parsing.ICCmd;
 import ch.fhnw.cpib.parsing.ICpsCmd;
 import ch.fhnw.cpib.parsing.ICpsCmd1;
 import ch.fhnw.cpib.parsing.as.IAbsCpsCmd;
 import ch.fhnw.cpib.parsing.as.impl.AbsCpsCmd;
 
 public class CpsCmd implements ICpsCmd{
-    private ICmd cmd;
+    private ICCmd cmd;
     private ICpsCmd1 cpsCmd1;
     
-    public CpsCmd(ICmd cmd, ICpsCmd1 cpsCmd1) {
+    public CpsCmd(ICCmd cmd, ICpsCmd1 cpsCmd1) {
         this.cmd = cmd;
         this.cpsCmd1 = cpsCmd1;
     }

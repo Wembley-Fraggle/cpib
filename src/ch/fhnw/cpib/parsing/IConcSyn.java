@@ -65,7 +65,7 @@ public interface IConcSyn {
     ICExprList exprList() throws GrammarError;
     ICpsCmd1 cpsCmd1() throws GrammarError;
     ICpsCmd2 cpsCmd2() throws GrammarError;
-    ICmd cmd() throws GrammarError;
+    ICCmd cmd() throws GrammarError;
     ITerm1 term1() throws GrammarError;
     IExpr1 expr1() throws GrammarError;
     IExpr2 expr2() throws GrammarError;

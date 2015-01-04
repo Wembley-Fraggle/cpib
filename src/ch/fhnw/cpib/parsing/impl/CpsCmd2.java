@@ -1,7 +1,7 @@
 package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.parsing.ICmd;
+import ch.fhnw.cpib.parsing.ICCmd;
 import ch.fhnw.cpib.parsing.ICpsCmd2;
 import ch.fhnw.cpib.parsing.as.IAbsCmd;
 import ch.fhnw.cpib.parsing.as.IAbsCpsCmd;
@@ -9,9 +9,9 @@ import ch.fhnw.cpib.parsing.as.impl.AbsCpsCmd;
 
 public class CpsCmd2 implements ICpsCmd2 {
     private IToken semi;
-    private ICmd cmd;
+    private ICCmd cmd;
 
-    public CpsCmd2(IToken semi, ICmd cmd) {
+    public CpsCmd2(IToken semi, ICCmd cmd) {
         this.semi = semi;
         this.cmd = cmd;
     }
