@@ -6,4 +6,6 @@ public interface ICExprList extends IConcSynNode {
 
     IExprList toAbsSyn();
 
+		String toString(String indent);
+
 }

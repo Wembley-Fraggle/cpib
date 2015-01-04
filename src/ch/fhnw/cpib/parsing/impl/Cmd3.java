@@ -37,7 +37,6 @@ public class Cmd3 implements ICmd3 {
 
 	@Override
 	public String toString(String indent) {
-		// TODO Auto-generated method stub
 		return indent + "<" + whileToken.getValue() + ">\n" + expr.toString(indent + '\t')
 				+ optInvariant.toString(indent + '\t') + cpsCmd.toString(indent + '\t')
 				+ indent + "<"+ endWhileToken.getValue() + ">\n";

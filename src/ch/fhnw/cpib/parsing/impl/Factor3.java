@@ -8,17 +8,23 @@ import ch.fhnw.cpib.parsing.abs.impl.ExprMonadic;
 
 public class Factor3 implements IFactor3 {
 
-    private IMonadicOpr monadicOpr;
-    private IFactor factor;
-    
-    public Factor3(IMonadicOpr monadicOpr, IFactor factor) {
-        this.monadicOpr = monadicOpr;
-        this.factor = factor;
-    }
+	private IMonadicOpr monadicOpr;
+	private IFactor factor;
 
-    @Override
-    public IExpr toAbsSyn() {
-        return new ExprMonadic(monadicOpr.toAbsSyn(), factor.toAbsSyn());
-    }
+	public Factor3(IMonadicOpr monadicOpr, IFactor factor) {
+		this.monadicOpr = monadicOpr;
+		this.factor = factor;
+	}
+
+	@Override
+	public IExpr toAbsSyn() {
+		return new ExprMonadic(monadicOpr.toAbsSyn(), factor.toAbsSyn());
+	}
+
+	@Override
+	public String toString(String indent) {
+		return indent + "<Factor3>\n" + monadicOpr.toString(indent + '\t')
+				+ factor.toString(indent + '\t') + indent + "</Factor3>\n";
+	}
 
 }

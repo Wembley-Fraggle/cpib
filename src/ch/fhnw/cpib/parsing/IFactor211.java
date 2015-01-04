@@ -7,4 +7,6 @@ public interface IFactor211 extends IConcSynNode {
 
 	IExpr toAbsSyn(IToken ident);
 
+	String toString(String indent);
+
 }

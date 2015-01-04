@@ -26,4 +26,10 @@ public class Factor4 implements IFactor4 {
         return null;
     }
 
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 }

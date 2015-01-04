@@ -7,9 +7,14 @@ import ch.fhnw.cpib.parsing.abs.impl.ExprEps;
 
 public class Factor21Eps implements IFactor21 {
 
-    @Override
-    public IExpr toAbsSyn(IToken ident) {
-        return new ExprEps();
-    }
-    
+	@Override
+	public IExpr toAbsSyn(IToken ident) {
+		return new ExprEps();
+	}
+
+	@Override
+	public String toString(String indent) {
+		return indent + "<Factor21Eps/>\n";
+	}
+
 }

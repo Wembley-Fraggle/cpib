@@ -6,21 +6,22 @@ import ch.fhnw.cpib.parsing.IConcExpr;
 import ch.fhnw.cpib.parsing.as.IAbsAssertCmd;
 import ch.fhnw.cpib.parsing.as.impl.AbsAssertCmd;
 
-public class Cmd7 implements ICmd7{
-    IToken assertToken;
-    IConcExpr expr;
-    public Cmd7(IToken assertToken, IConcExpr expr) {
-        this.assertToken = assertToken;
-        this.expr = expr;
-    }
-    
-    public IAbsAssertCmd toAbsSyn() {
-        return new AbsAssertCmd(expr.toAbsSyn());
-    }
+public class Cmd7 implements ICmd7 {
+	IToken assertToken;
+	IConcExpr expr;
 
-		@Override
-		public String toString(String indent) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+	public Cmd7(IToken assertToken, IConcExpr expr) {
+		this.assertToken = assertToken;
+		this.expr = expr;
+	}
+
+	public IAbsAssertCmd toAbsSyn() {
+		return new AbsAssertCmd(expr.toAbsSyn());
+	}
+
+	@Override
+	public String toString(String indent) {
+		return indent + "<Cmd7>\n" + assertToken.toString(indent + '\t')
+				+ expr.toString(indent + '\t') + indent + "</Cmd7>\n";
+	}
 }

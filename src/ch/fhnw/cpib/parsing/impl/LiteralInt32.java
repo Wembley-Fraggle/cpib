@@ -15,4 +15,8 @@ public class LiteralInt32 implements ILiteral {
 			// TODO Auto-generated method stub
 			return null;
 		}
+		@Override
+		public String toString(String indent) {
+			return indent + "<LITERAL>" + intVal.getValue() + "</LITERAL>\n";
+		}
 }

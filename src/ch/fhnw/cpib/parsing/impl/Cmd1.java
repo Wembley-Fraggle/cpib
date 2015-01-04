@@ -8,22 +8,25 @@ import ch.fhnw.cpib.parsing.abs.impl.CmdExpr;
 
 public class Cmd1 implements ICmd1 {
 
-    private IConcExpr leftExpr;
-    private IToken becomes;
-    private IConcExpr rightExpr;
-    public Cmd1(IConcExpr leftExpr, IToken becomes, IConcExpr rightExpr) {
-        this.leftExpr = leftExpr;
-        this.becomes = becomes;
-        this.rightExpr = rightExpr;
-    }
-		@Override
+	private IConcExpr leftExpr;
+	private IToken becomes;
+	private IConcExpr rightExpr;
+
+	public Cmd1(IConcExpr leftExpr, IToken becomes, IConcExpr rightExpr) {
+		this.leftExpr = leftExpr;
+		this.becomes = becomes;
+		this.rightExpr = rightExpr;
+	}
+
+	@Override
 		public ICmd toAbsSyn() {
 		    return new CmdExpr(leftExpr.toAbsSyn(), rightExpr.toAbsSyn());
-		}
-		
-		@Override
-		public String toString(String indent) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+	}
+
+	@Override
+	public String toString(String indent) {
+		return indent + "<Cmd1>\n" + leftExpr.toString(indent + '\t') + indent
+				+ '\t' + "<" + becomes.getValue() + ">\n"
+				+ rightExpr.toString(indent + '\t') + indent + "</Cmd1>\n";
+	}
 }
