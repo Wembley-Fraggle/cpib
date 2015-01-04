@@ -1,5 +1,5 @@
 package ch.fhnw.cpib.parsing.as;
 
-public interface IAbsDyad {
+public interface IAbsDyad extends IAbsExpr{
 
 }
