@@ -522,7 +522,7 @@ val productions =
  *                | CALL IDENT exprList
  *                | DEBUGIN expr
  *                | DEBUGOUT expr
- *                | ASSERT expr
+ *                | ASSERT IDENT COLON expr
  * cpsCmd       ::= cmd {SEMICOLON cmd}
  *---------------------------------------------------------------
  *)
@@ -533,7 +533,7 @@ val productions =
       [N cmd4], (* CALL IDENT exprList*)
       [N cmd5], (* DEBUGIN expr *)
       [N cmd6], (* DEBUGOUT expr *) 
-      [N cmd7]] (* ASSERT expr *)
+      [N cmd7]] (* ASSERT IDENT COLON expr *)
  ),
       
  (cmd1,[[N expr, T BECOMES, N expr]]), (* expr BECOMES expr *)
@@ -550,7 +550,9 @@ val productions =
  (cmd4,[[T CALL, T IDENT, N exprList]]), 
  (cmd5,[[T DEBUGIN, N expr]]),  (* DEBUGIN expr *)
  (cmd6,[[T DEBUGOUT, N expr]]), (* DEBUGOUT expr *)
- (cmd7,[[T ASSERT, N expr]]),   (* ASSERT expr *)
+ 
+ (* ASSERT IDENT COLON expr *)
+ (cmd7,[[T ASSERT, T IDENT, T COLON, N expr]]),
  
  (cpsCmd,[[N cmd, N cpsCmd1]]), (* cmd {SEMICOLON cmd} *)
  (cpsCmd1,[[N cpsCmd2, N cpsCmd1],[]]), (* {SEMICOLON cmd} *)

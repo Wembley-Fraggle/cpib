@@ -63,7 +63,7 @@ public class Parser implements IParser, IConcSyn {
     public IProgram program() throws GrammarError {
         String name = terminal.getName();
         if ("PROGRAM".equals(name)) {
-            LOG.debug("program ::= PROGRAM IDENT progParamList program1 program2 program3 DO cpsCmd program4 ENDPROGRAM");
+            LOG.debug("program ::= PROGRAM IDENT progParamList program2 program3 DO cpsCmd program4 ENDPROGRAM");
             return new Program(consume(terminal), consume("IDENT"),
                     progParamList(), program2(), program3(),
                     consume("DO"), cpsCmd(), program4(), consume("ENDPROGRAM"));
@@ -1558,8 +1558,12 @@ public class Parser implements IParser, IConcSyn {
     public ICmd7 cmd7() throws GrammarError {
         String name = terminal.getName();
         if ("ASSERT".equals(name)) {
-            LOG.debug("cmd7 ::= ASSERT expr");
-            return new Cmd7(consume(terminal), expr());
+            LOG.debug("cmd7 ::= ASSERT IDENT COLON expr");
+            return new Cmd7(
+                    consume(terminal), 
+                    consume("IDENT"),
+                    consume("COLON"),
+                    expr());
         } else {
             throw createError();
         }
