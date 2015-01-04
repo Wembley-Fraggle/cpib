@@ -2,7 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IAtomtype;
-import ch.fhnw.cpib.parsing.as.IAbsTypedIdent;
+import ch.fhnw.cpib.parsing.as.IAbsExprLiteral;
 
 public class AtomtypeInt32 implements IAtomtype {
 
@@ -11,7 +11,7 @@ public class AtomtypeInt32 implements IAtomtype {
         this.int32 = int32;
     }
     
-    public IAbsTypedIdent toAbsSyn(IAbsTypedIdent ident) {
+    public IAbsExprLiteral toAbsSyn(IAbsExprLiteral ident) {
         return ident;
     }
 

@@ -2,7 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IAtomtype;
-import ch.fhnw.cpib.parsing.as.IAbsTypedIdent;
+import ch.fhnw.cpib.parsing.as.IAbsExprLiteral;
 
 public class AtomtypeBool implements IAtomtype {
 
@@ -12,7 +12,7 @@ public class AtomtypeBool implements IAtomtype {
         this.bool = bool;
     }
     
-    public IAbsTypedIdent toAbsSyn(IAbsTypedIdent ident) {
+    public IAbsExprLiteral toAbsSyn(IAbsExprLiteral ident) {
         return ident;
     }
 

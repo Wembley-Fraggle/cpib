@@ -1,5 +1,5 @@
 package ch.fhnw.cpib.parsing.as;
 
-public interface IAbsTerm211 {
+public interface IAbsGlobIInitEps {
 
 }

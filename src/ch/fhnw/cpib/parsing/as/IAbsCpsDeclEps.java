@@ -1,5 +1,5 @@
 package ch.fhnw.cpib.parsing.as;
 
-public interface IAbsExpr2 {
+public interface IAbsCpsDeclEps {
 
 }

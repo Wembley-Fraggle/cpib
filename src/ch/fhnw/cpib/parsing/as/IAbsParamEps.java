@@ -1,5 +1,5 @@
 package ch.fhnw.cpib.parsing.as;
 
-public interface IAbsChangemode {
+public interface IAbsParamEps {
 
 }
