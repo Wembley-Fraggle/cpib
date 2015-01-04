@@ -8,11 +8,11 @@ import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 public class DbcCmd implements IDbcCmd {
 
 	private final IToken ident;
-	private final ICmd expr;
+	private final IExpr expr;
 
-	public DbcCmd(IToken ident, ICmd cmd) {
+	public DbcCmd(IToken ident, IExpr expr) {
 		this.ident = ident;
-		this.expr = cmd;
+		this.expr = expr;
 	}
 
 	@Override
