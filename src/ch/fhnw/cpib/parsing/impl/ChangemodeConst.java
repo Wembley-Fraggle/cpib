@@ -2,7 +2,6 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IChangemode;
-import ch.fhnw.cpib.parsing.as.IAbsExpr;
 
 public class ChangemodeConst implements IChangemode {
 
@@ -15,7 +14,7 @@ public class ChangemodeConst implements IChangemode {
 	@Override
 	public String toString(String indent) {
 		// TODO Auto-generated method stub
-		return null;
+		return indent + constMode.getValue() + '\n';
 	}
 
 	@Override

@@ -7,14 +7,21 @@ import ch.fhnw.cpib.parsing.ITypedIdent;
 
 public class ProgParam implements IProgParam {
 
-    private IProgParam1 progParam1;
-    private IProgParam2 progParam2;
-    private ITypedIdent typedIdent;
+	private IProgParam1 progParam1;
+	private IProgParam2 progParam2;
+	private ITypedIdent typedIdent;
 
-    public ProgParam(IProgParam1 progParam1, IProgParam2 progParam2,
-            ITypedIdent typedIdent) {
-        this.progParam1 = progParam1;
-        this.progParam2 = progParam2;
-        this.typedIdent = this.typedIdent;
-    }
+	public ProgParam(IProgParam1 progParam1, IProgParam2 progParam2,
+			ITypedIdent typedIdent) {
+		this.progParam1 = progParam1;
+		this.progParam2 = progParam2;
+		this.typedIdent = typedIdent;
+	}
+
+	@Override
+	public String toString(String indent) {
+		return indent + "<ProgParam>\n" + progParam1.toString(indent + '\t')
+				+ progParam2.toString(indent + '\t')
+				+ typedIdent.toString(indent + '\t') + indent + "</ProgParam>\n";
+	}
 }
