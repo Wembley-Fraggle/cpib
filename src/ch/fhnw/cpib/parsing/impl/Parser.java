@@ -43,8 +43,10 @@ public class Parser implements IParser, IConcSyn {
             }
             return consumedToken;
         } else {
-            throw new GrammarError("terminal expected: " + expectedTerminal
-                    + ", terminal found: " + terminal);
+            String errorMsg = "terminal expected: " + expectedTerminal;
+            errorMsg += ", terminal found: "+token.getType().getName();
+            errorMsg += ": Position "+token.getStart();
+            throw new GrammarError(errorMsg);
         }
     }
 
