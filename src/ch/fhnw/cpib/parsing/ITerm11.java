@@ -1,6 +1,7 @@
 package ch.fhnw.cpib.parsing;
 
-//TODO Auto-generated stub
-public interface ITerm11 extends IConcSynNode {
+import ch.fhnw.cpib.parsing.as.IAbsExpr;
 
+public interface ITerm11 extends IConcSynNode {
+    IAbsExpr toAbsSyn(IAbsExpr left);
 }
