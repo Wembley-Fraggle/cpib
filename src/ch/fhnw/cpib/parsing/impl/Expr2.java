@@ -4,7 +4,6 @@ import ch.fhnw.cpib.parsing.IBoolopr;
 import ch.fhnw.cpib.parsing.IExpr2;
 import ch.fhnw.cpib.parsing.ITerm1;
 import ch.fhnw.cpib.parsing.as.IAbsExpr;
-import ch.fhnw.cpib.parsing.as.impl.AbsExpr;
 
 public class Expr2 implements IExpr2 {
 
@@ -16,7 +15,8 @@ public class Expr2 implements IExpr2 {
     }
     @Override
     public IAbsExpr toAbsSyn(IAbsExpr expr) {
-        return new AbsExpr(boolopr.toAbsSyn(), expr,term1.toAbsSyn());
+        // TODO return new AbsExpr(boolopr.toAbsSyn(), expr,term1.toAbsSyn());
+        return null;
     }
 
 }
