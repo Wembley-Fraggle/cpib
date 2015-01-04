@@ -11,4 +11,9 @@ public class MonadicOprNot implements IMonadicOpr {
         this.not = not;
     }
 
+    @Override
+    public IToken toAbsSyn() {
+        return not;
+    }
+
 }

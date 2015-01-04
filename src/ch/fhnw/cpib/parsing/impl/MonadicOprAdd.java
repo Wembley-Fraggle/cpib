@@ -13,9 +13,7 @@ public class MonadicOprAdd implements IMonadicOpr {
     }
     
     public IToken toAbsSyn() {
-        // TODO return addopr.toAbsSyn();
-        return null;
-        
+      return addopr.toAbsSyn();
     }
 
 }
