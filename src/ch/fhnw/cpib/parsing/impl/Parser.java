@@ -476,9 +476,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("COMMA".equals(name)) {
             LOG.debug("globImps2 ::= COMMA globImp");
-            consume(terminal);
-            globImp();
-            return null; // TODO
+            return new GlobImps2(consume(terminal), globImp());
         } else {
             throw createError();
         }
