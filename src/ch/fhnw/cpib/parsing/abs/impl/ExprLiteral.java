@@ -2,13 +2,14 @@ package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.lexing.ITerminal;
+import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
 public final class ExprLiteral implements IExpr {
-private final Literal literal;
+    private final IToken literal;
 	
-	public ExprLiteral(final Literal literal) {
+	public ExprLiteral(final IToken literal) {
 		this.literal = literal;
 	}
 	
@@ -23,7 +24,7 @@ private final Literal literal;
 	
 	@Override
     public int getLine() {
-        return literal.getLine();
+        return literal.getStart().getCurrentLine();
     }
 
     @Override
@@ -35,13 +36,13 @@ private final Literal literal;
     public ITerminal checkL(final boolean canInit) throws ContextError {
         throw new ContextError(
                 "Found literal " 
-                + literal.getLiteral() 
-                + "in the left part of an assignement",
-                literal.getLine());
+                + literal.getValue()
+                + "in the left part of an assignement",getLine());
     }
 
     @Override
     public int code(final int loc) throws CodeTooSmallError {
+        // FIXME Can be either a int or bool
         IMLCompiler.getVM().IntLoad(loc, literal.getLiteral());
         return loc + 1;
     }
