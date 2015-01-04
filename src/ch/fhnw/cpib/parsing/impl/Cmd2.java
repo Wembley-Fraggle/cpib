@@ -2,19 +2,19 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICmd2;
-import ch.fhnw.cpib.parsing.ICpsCmd;
 import ch.fhnw.cpib.parsing.IConcExpr;
-import ch.fhnw.cpib.parsing.as.IAbsCmd;
-import ch.fhnw.cpib.parsing.as.impl.AbsCondCmd;
+import ch.fhnw.cpib.parsing.ICpsCmd;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
+import ch.fhnw.cpib.parsing.abs.impl.CmdIf;
 
 public class Cmd2 implements ICmd2 {
 
 	private IToken ifToken;
 	private IConcExpr expr;
 	private IToken then;
-	private ICpsCmd cpsCmd;
+	private ICpsCmd ifBlock;
 	private IToken elseif;
-	private ICpsCmd cpsCmd2;
+	private ICpsCmd elseBlock;
 	private IToken end;
 
 	public Cmd2(IToken ifToken, IConcExpr expr, IToken then, ICpsCmd cpsCmd,
@@ -22,14 +22,14 @@ public class Cmd2 implements ICmd2 {
 		this.ifToken = ifToken;
 		this.expr = expr;
 		this.then = then;
-		this.cpsCmd = cpsCmd;
+		this.ifBlock = cpsCmd;
 		this.elseif = elseif;
-		this.cpsCmd2 = cpsCmd2;
+		this.elseBlock = cpsCmd2;
 		this.end = end;
 	}
 
-	public IAbsCmd toAbsSyn() {
-		return new AbsCondCmd(expr.toAbsSyn(), cpsCmd.toAbsSyn(), cpsCmd.toAbsSyn());
+	public ICmd toAbsSyn() {
+	    return new CmdIf(expr.toAbsSyn(), ifBlock.toAbsSyn(), elseBlock.toAbsSyn());
 	}
 
 	@Override
@@ -37,9 +37,9 @@ public class Cmd2 implements ICmd2 {
 		return indent + "<" + ifToken.getValue() + ">\n"
 				+ expr.toString(indent + '\t') 
 				+ indent + '\t' + "<" + then.getValue() + ">\n"
-				+ cpsCmd.toString(indent+"\t\t")
+				+ ifBlock.toString(indent+"\t\t")
 				+ indent + '\t' + "<" + elseif.getValue() + ">\n"
-				+ cpsCmd2.toString(indent+"\t\t")
+				+ elseBlock.toString(indent+"\t\t")
 				+ indent + "</" + end.getValue()
 				+ ">\n";
 	}
