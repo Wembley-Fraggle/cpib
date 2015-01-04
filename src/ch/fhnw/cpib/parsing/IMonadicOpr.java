@@ -1,6 +1,7 @@
 package ch.fhnw.cpib.parsing;
 
-//TODO Auto-generated stub
-public interface IMonadicOpr extends IConcSynNode {
+import ch.fhnw.cpib.lexing.IToken;
 
+public interface IMonadicOpr extends IConcSynNode {
+    public IToken toAbsSyn();
 }
