@@ -3,7 +3,8 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICmd1;
 import ch.fhnw.cpib.parsing.IConcExpr;
-import ch.fhnw.cpib.parsing.as.IAbsCmd;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
+import ch.fhnw.cpib.parsing.abs.impl.CmdExpr;
 
 public class Cmd1 implements ICmd1 {
 
@@ -16,9 +17,8 @@ public class Cmd1 implements ICmd1 {
         this.rightExpr = rightExpr;
     }
 		@Override
-		public IAbsCmd toAbsSyn() {
-			// TODO Auto-generated method stub
-			return null;
+		public ICmd toAbsSyn() {
+		    return new CmdExpr(leftExpr.toAbsSyn(), rightExpr.toAbsSyn());
 		}
 		
 		@Override
@@ -26,8 +26,4 @@ public class Cmd1 implements ICmd1 {
 			// TODO Auto-generated method stub
 			return null;
 		}
-    
-//    public IAbsAssiCmd toAbsSyn() {
-//        return new AbsAssiCmd(leftExpr.toAbsSyn(), rightExpr.toAbsSyn());
-//    }
 }
