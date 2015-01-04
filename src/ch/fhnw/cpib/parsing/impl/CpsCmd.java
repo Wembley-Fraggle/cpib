@@ -19,4 +19,10 @@ public class CpsCmd implements ICpsCmd{
     public IAbsCpsCmd toAbsSyn() {
         return cpsCmd1.toAbsSyn( new AbsCpsCmd(cmd.toAbsSyn()));
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

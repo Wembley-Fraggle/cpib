@@ -9,4 +9,10 @@ public class Program2 implements IProgram2{
     public Program2(IProgram21 program21) {
         this.program21 = program21;
     }
+
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

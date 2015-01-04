@@ -16,6 +16,10 @@ public interface IAbstSyn {
         int code(int loc) throws CodeTooSmallError;
 	}
 	
+	public interface IDbcCmd extends ICmd{
+		
+	}
+	
 	public interface ICpsDecl extends IAbstSyn {
 	    void checkDeclaration() throws ContextError, HeapTooSmallError;
 	    void check(int locals) throws ContextError, HeapTooSmallError;

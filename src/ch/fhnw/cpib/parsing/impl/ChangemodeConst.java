@@ -2,6 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IChangemode;
+import ch.fhnw.cpib.parsing.as.IAbsExpr;
 
 public class ChangemodeConst implements IChangemode {
 

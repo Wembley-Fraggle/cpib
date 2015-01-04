@@ -6,4 +6,6 @@ import ch.fhnw.cpib.parsing.as.IAbsCpsCmd;
 public interface ICpsCmd extends IConcSynNode {
 
     IAbsCpsCmd toAbsSyn();
+
+		String toString(String indent);
 }

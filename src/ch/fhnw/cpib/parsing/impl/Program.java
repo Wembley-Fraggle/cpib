@@ -30,7 +30,41 @@ public class Program implements IProgram {
         this.program1 = program1;
         this.program2 = program2;
         this.program3 = program3;
+        this.program4 = program4;
         this.doToken = doToken;
         this.cpsCmd = cpsCmd;
     }
+
+		@Override
+		public String toString(String indent) {
+			System.out.println("ident: " + ident);
+			System.out.println("progParamList: " + progParamList);
+			System.out.println("program1: " + program1);
+			System.out.println("program2: " + program2);
+			System.out.println("program3: " + program3);
+			System.out.println("cpsCmd: " + cpsCmd);
+			System.out.println("program4: " + program4);
+			return indent
+					+ "<Program>\n"
+					+ ident.toString(indent + '\t')
+//					+ progParamList.toString(indent + '\t')
+					+ program1.toString(indent + '\t')
+					+ program2.toString(indent + '\t')
+//					+ program3.toString(indent + '\t')
+					+ cpsCmd.toString(indent + '\t')
+//					+ program4.toString(indent + '\t')
+					+ indent
+					+ "</Program>\n";
+		}
+
+		@Override
+		public ch.fhnw.cpib.parsing.abs.IAbstSyn.IProgram toAbstrSyntax() {
+			return null; //TODO
+/*			return new ch.fhnw.cpib.parsing.abs.impl.Program(
+	        ident, 
+	        progParamList.toAbsSyn(), 
+	        cpsCmd.toAbsSyn(),
+	        program3.toAbsSyn(),
+	        program4.toAbsSyn());  */
+		} 
 }

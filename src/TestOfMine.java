@@ -4,7 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.errors.GrammarError;
+import ch.fhnw.cpib.errors.LexicalError;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.lexing.IlmLexer;
@@ -12,13 +14,24 @@ import ch.fhnw.cpib.lexing.LexerContext;
 import ch.fhnw.cpib.lexing.LexerException;
 import ch.fhnw.cpib.lexing.LexerRuleFactory;
 import ch.fhnw.cpib.parsing.IParser;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ContextError;
 import ch.fhnw.cpib.parsing.impl.Parser;
+import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
+import ch.fhnw.lederer.virtualmachine.IVirtualMachine.ExecutionError;
+import ch.fhnw.lederer.virtualmachine.IVirtualMachine.HeapTooSmallError;
 
 public class TestOfMine {
 
 	public TestOfMine() {
-		File f = new File(
-				"C:\\FHNW\\7-Semester\\cpib\\workspace\\cpib\\TestFile.txt");
+		try {
+			IMLCompiler.compile("");
+		} catch (LexicalError | GrammarError | ContextError | HeapTooSmallError
+				| CodeTooSmallError | ExecutionError e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	/*	File f = new File(
+				"resource/TestFile.txt");
 		FileInputStream fis = null;
 		FileInputStream fis2 = null;
 		try {
@@ -45,7 +58,7 @@ public class TestOfMine {
 		} catch (GrammarError e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} */
 	}
 
 	public static void main(String[] args) {
