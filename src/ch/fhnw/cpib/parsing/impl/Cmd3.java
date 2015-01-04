@@ -3,39 +3,43 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICmd3;
 import ch.fhnw.cpib.parsing.ICmd31;
-import ch.fhnw.cpib.parsing.ICpsCmd;
 import ch.fhnw.cpib.parsing.IConcExpr;
-import ch.fhnw.cpib.parsing.as.IAbsWhileCmd;
-import ch.fhnw.cpib.parsing.as.impl.AbsWhileCmd;
+import ch.fhnw.cpib.parsing.ICpsCmd;
+import ch.fhnw.cpib.parsing.IInvariant;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDbcCmd;
+import ch.fhnw.cpib.parsing.abs.impl.CmdWhile;
 
 public class Cmd3 implements ICmd3 {
 
 	private IToken whileToken;
 	private IConcExpr expr;
-	private ICmd31 cmd31;
+	private ICmd31 optInvariant;
 	private IToken doToken;
 	private ICpsCmd cpsCmd;
 	private IToken endWhileToken;
+
 
 	public Cmd3(IToken whileToken, IConcExpr expr, ICmd31 cmd31, IToken doToken,
 			ICpsCmd cpsCmd, IToken endWhileToken) {
 		this.whileToken = whileToken;
 		this.expr = expr;
-		this.cmd31 = cmd31;
+		this.optInvariant = cmd31;
 		this.doToken = doToken;
 		this.cpsCmd = cpsCmd;
 		this.endWhileToken = endWhileToken;
 	}
 
-	public IAbsWhileCmd toAbsSyn() {
-		return new AbsWhileCmd(expr.toAbsSyn(), cmd31.toAbsSyn(), cpsCmd.toAbsSyn());
+	public ICmd toAbsSyn() {
+	    ICmd dbcCmd = optInvariant.toAbsSyn();
+	    return new CmdWhile(expr.toAbsSyn(), cpsCmd.toAbsSyn(), dbcCmd);
 	}
 
 	@Override
 	public String toString(String indent) {
 		// TODO Auto-generated method stub
 		return indent + "<" + whileToken.getValue() + ">\n" + expr.toString(indent + '\t')
-				+ cmd31.toString(indent + '\t') + cpsCmd.toString(indent + '\t')
+				+ optInvariant.toString(indent + '\t') + cpsCmd.toString(indent + '\t')
 				+ indent + "<"+ endWhileToken.getValue() + ">\n";
 	}
 }
