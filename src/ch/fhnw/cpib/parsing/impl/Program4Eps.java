@@ -7,8 +7,7 @@ public class Program4Eps implements IProgram4 {
 
 	@Override
 	public String toString(String indent) {
-		// TODO Auto-generated method stub
-		return null;
+		return indent + "<postcondition>TRUE</postcondition>\n";
 	}
 
 	@Override

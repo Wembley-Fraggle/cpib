@@ -1,5 +1,7 @@
 package ch.fhnw.cpib.parsing;
 
-public class IParamList4 {
+public interface IParamList4 {
+
+	public String toString(String indent);
 
 }

@@ -5,10 +5,16 @@ import ch.fhnw.cpib.parsing.IParam3;
 
 public class Param3 implements IParam3 {
 
-    private IChangemode changemode;
-    
-    public Param3(IChangemode changemode) {
-        this.changemode = changemode;
-    }
+	private IChangemode changemode;
+
+	public Param3(IChangemode changemode) {
+		this.changemode = changemode;
+	}
+
+	@Override
+	public String toString(String indent) {
+		return indent + "<Param3>\n" + changemode.toString(indent + '\t') + indent
+				+ "</Param3>\n";
+	}
 
 }

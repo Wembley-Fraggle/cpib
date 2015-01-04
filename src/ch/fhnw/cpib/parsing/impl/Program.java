@@ -50,9 +50,9 @@ public class Program implements IProgram {
 //					+ progParamList.toString(indent + '\t')
 					+ program1.toString(indent + '\t')
 					+ program2.toString(indent + '\t')
-//					+ program3.toString(indent + '\t')
+					+ program3.toString(indent + '\t')
 					+ cpsCmd.toString(indent + '\t')
-//					+ program4.toString(indent + '\t')
+					+ program4.toString(indent + '\t')
 					+ indent
 					+ "</Program>\n";
 		}

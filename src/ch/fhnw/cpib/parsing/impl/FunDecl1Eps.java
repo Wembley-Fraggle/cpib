@@ -10,4 +10,9 @@ public class FunDecl1Eps implements IFunDecl1 {
 		return null;
 	}
 
+	@Override
+	public String toString(String indent) {
+		return indent + "<FunDecl1Eps/>\n";
+	}
+
 }

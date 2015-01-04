@@ -6,12 +6,17 @@ import ch.fhnw.cpib.parsing.IStoDecl;
 
 public class CpsStoDecl2 implements ICpsStoDecl2 {
 
-    private IToken semi;
-    private IStoDecl stoDecl;
+	private IToken semi;
+	private IStoDecl stoDecl;
 
-    public CpsStoDecl2(IToken semi, IStoDecl stoDecl) {
-        this.semi = semi;
-        this.stoDecl = stoDecl;
-    }
+	public CpsStoDecl2(IToken semi, IStoDecl stoDecl) {
+		this.semi = semi;
+		this.stoDecl = stoDecl;
+	}
+
+	@Override
+	public String toString(String indent) {
+		return indent + semi.getValue() + stoDecl.toString(indent);
+	}
 
 }

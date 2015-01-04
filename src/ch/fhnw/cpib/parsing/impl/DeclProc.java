@@ -9,5 +9,9 @@ public class DeclProc implements IDecl {
     public DeclProc(IProcDecl procDecl) {
         this.procDecl = procDecl;
     }
+		@Override
+		public String toString() {
+			return procDecl.toString();
+		}
 
 }

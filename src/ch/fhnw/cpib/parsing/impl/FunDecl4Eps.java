@@ -12,4 +12,9 @@ public class FunDecl4Eps implements IFunDecl4 {
 		return new AbsPostcondition();
 	}
 
+	@Override
+	public String toString(String indent) {
+		return indent + "<Postcondition>TRUE</Postcondition>\n";
+	}
+
 }

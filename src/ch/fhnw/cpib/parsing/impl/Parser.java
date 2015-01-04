@@ -449,7 +449,7 @@ public class Parser implements IParser, IConcSyn {
         String name = terminal.getName();
         if ("POST".equals(name)) {
             LOG.debug("procDecl4 ::= postcondition");
-            return new ProcDelc4(postcondition());
+            return new ProcDecl4(postcondition());
         } else if ("ENDPROC".equals(name)) {
             LOG.debug("procDecl4 ::= <e>");
             return new ProcDecl4Eps();

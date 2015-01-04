@@ -21,4 +21,14 @@ public class ParamList implements IParamList {
 			return paramList1.toAbsSyn();
 		}
 
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return indent
+					+ "<ParamList>\n"
+					+ paramList1.toString(indent + '\t')
+					+ indent
+					+ "</ParamList>\n";
+		}
+
 }

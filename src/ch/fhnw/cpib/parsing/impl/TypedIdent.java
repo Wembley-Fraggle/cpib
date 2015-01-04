@@ -16,4 +16,10 @@ public class TypedIdent implements ITypedIdent {
         this.atomtype = atomtype;
     }
 
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 }

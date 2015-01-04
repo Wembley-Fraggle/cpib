@@ -9,5 +9,9 @@ public class DeclSto implements IDecl {
     public DeclSto(IStoDecl stoDecl) {
         this.stoDecl = stoDecl;
     }
+		@Override
+		public String toString() {
+			return stoDecl.toString();
+		}
 
 }

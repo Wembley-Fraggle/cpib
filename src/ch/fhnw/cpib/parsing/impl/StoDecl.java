@@ -18,4 +18,15 @@ public class StoDecl implements IStoDecl{
 			// TODO Auto-generated method stub
 			return null;
 		}
+
+		@Override
+		public String toString(final String indent) {
+			return indent
+					+ "<StoDecl>\n"
+					+ stoDecl1.toString(indent + '\t')
+					+ typedIdent.toString(indent + '\t')
+					+ indent
+					+ "</StoDecl>\n";
+		}
+		
 }

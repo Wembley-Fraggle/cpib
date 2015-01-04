@@ -6,7 +6,6 @@ public class Program1Eps implements IProgram1{
 
 	@Override
 	public String toString(String indent) {
-		// TODO Auto-generated method stub
-		return null;
+		return indent + "<invariant>TRUE</invariant>\n";
 	}
 }

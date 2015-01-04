@@ -13,4 +13,10 @@ public class CpsDecl1 implements ICpsDecl1 {
         this.cpsDecl1 = cpsDecl1;
     }
 
+		@Override
+		public String toString(String indent) {
+			// TODO Auto-generated method stub
+			return indent + "<cpsdecl1>FIXME</cpsdecl1>\n";
+		}
+
 }

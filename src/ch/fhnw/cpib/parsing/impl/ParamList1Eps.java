@@ -11,4 +11,9 @@ public class ParamList1Eps implements IParamList1 {
 		return null;
 	}
 
+	@Override
+	public String toString(String indent) {
+		return indent + "<ParamList1Eps/>\n";
+	}
+
 }

@@ -5,4 +5,6 @@ public interface IGlobImps extends IConcSynNode {
 
 	IFunDecl1 toAbsSyn();
 
+	String toString(String indent);
+
 }

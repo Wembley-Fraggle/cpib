@@ -5,4 +5,6 @@ public interface IStoDecl extends IConcSynNode {
 
 	IStoDecl toAbsSyn();
 
+	String toString(String indent);
+
 }

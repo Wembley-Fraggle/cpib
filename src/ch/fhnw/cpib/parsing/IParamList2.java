@@ -5,4 +5,6 @@ public interface IParamList2 extends IConcSynNode {
 
 	IParamList toAbsSyn();
 
+	String toString(String indent);
+
 }

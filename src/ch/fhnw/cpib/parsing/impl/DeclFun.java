@@ -9,5 +9,9 @@ public class DeclFun implements IDecl {
     public DeclFun(IFunDecl funDecl) {
         this.funDecl = funDecl;
     }
+		@Override
+		public String toString() {
+			return funDecl.toString();
+		}
 
 }

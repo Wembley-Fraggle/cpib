@@ -12,4 +12,9 @@ public class FunDecl3Eps implements IFunDecl3 {
 		return new AbsPrecondition();
 	}
 
+	@Override
+	public String toString(String indent) {
+		return indent + "<Precondition>TRUE</Precondition>\n";
+	}
+
 }
