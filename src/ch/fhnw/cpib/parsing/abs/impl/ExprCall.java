@@ -9,7 +9,6 @@ import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.context.Parameter;
 import ch.fhnw.cpib.context.Routine;
 import ch.fhnw.cpib.context.Routine.RoutineTypes;
-import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;

@@ -6,6 +6,7 @@ import ch.fhnw.cpib.parsing.ICpsCmd2;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
 
 public class CpsCmd2 implements ICpsCmd2 {
+	@SuppressWarnings("unused")
 	private IToken semi;
 	private ICCmd cmd;
 

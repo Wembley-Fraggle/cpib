@@ -9,6 +9,7 @@ import ch.fhnw.cpib.parsing.abs.impl.DbcCmd;
 public class Precondition implements IPrecondition {
 	private IToken pre;
 	private IToken ident;
+	@SuppressWarnings("unused")
 	private IToken colon;
 	private IConcExpr expr;
 

@@ -7,6 +7,7 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IStoreDecl;
 
 public class CpsStoDecl2 implements ICpsStoDecl2 {
 
+	@SuppressWarnings("unused")
 	private IToken semi;
 	private IStoDecl stoDecl;
 

@@ -20,7 +20,6 @@ public class DeclProc implements ICDecl {
 
 	@Override
 	public IDecl toAbsSyn() {
-		// TODO Auto-generated method stub
 		return procDecl.toAbsSyn();
 	}
 

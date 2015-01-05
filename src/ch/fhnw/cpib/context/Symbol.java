@@ -1,6 +1,5 @@
 package ch.fhnw.cpib.context;
 
-import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.parsing.ILiteralVal;
 
 public abstract class Symbol {

@@ -8,8 +8,10 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 // TODO Rename to factor 4
 public class Factor5 implements IFactor5 {
 
+	@SuppressWarnings("unused")
 	private IToken lParent;
 	private IConcExpr expr;
+	@SuppressWarnings("unused")
 	private IToken rParent;
 
 	public Factor5(IToken lParent, IConcExpr expr, IToken rParent) {

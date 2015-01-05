@@ -1,7 +1,6 @@
 package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
-import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;

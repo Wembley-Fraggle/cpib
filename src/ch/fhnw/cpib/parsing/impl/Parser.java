@@ -9,14 +9,13 @@ import org.apache.log4j.Logger;
 import ch.fhnw.cpib.errors.GrammarError;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.lexing.Terminal;
-import ch.fhnw.cpib.lexing.Token;
 import ch.fhnw.cpib.parsing.*;
 import ch.fhnw.cpib.parsing.ILiteralVal.Type;
 
 public class Parser implements IParser, IConcSyn {
 
 	private static final Logger LOG = LogManager.getLogger(Parser.class);
+	@SuppressWarnings("unused")
 	private List<IToken> tokenList;
 	private IToken token;
 	private ITerminal terminal;
@@ -105,7 +104,7 @@ public class Parser implements IParser, IConcSyn {
 		String name = terminal.getName();
 		if ("PRE".equals(name)) {
 			LOG.debug("program3 ::= precondition");
-			return precondition(); // TODO
+			return precondition();
 		} else if ("DO".equals(name)) {
 			LOG.debug("program3 ::= <e>");
 			return new Program3Eps();
@@ -119,7 +118,7 @@ public class Parser implements IParser, IConcSyn {
 		String name = terminal.getName();
 		if ("POST".equals(name)) {
 			LOG.debug("program4 ::= postcondition");
-			return postcondition(); // TODO
+			return postcondition();
 		} else if ("ENDPROGRAM".equals(name)) {
 			LOG.debug("program4 ::= <e>");
 			return new Program4Eps();
@@ -1257,6 +1256,7 @@ public class Parser implements IParser, IConcSyn {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IFactor4 factor4() throws GrammarError {
 		String name = terminal.getName();

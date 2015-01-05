@@ -3,7 +3,6 @@ package ch.fhnw.cpib.parsing.abs.impl;
 import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.context.Store;
-import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IChangemode;
 import ch.fhnw.cpib.parsing.ILiteralVal;

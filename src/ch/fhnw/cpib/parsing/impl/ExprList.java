@@ -7,8 +7,10 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExprList;
 
 public class ExprList implements ICExprList {
 
+	@SuppressWarnings("unused")
 	private IToken lParent;
 	private IExprList1 exprList1;
+	@SuppressWarnings("unused")
 	private IToken rParent;
 
 	public ExprList(IToken lParent, IExprList1 exprList1, IToken rParent) {

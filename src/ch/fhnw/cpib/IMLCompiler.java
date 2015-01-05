@@ -114,7 +114,6 @@ public final class IMLCompiler {
 			System.out.println("\nExecuting:");
 			vm.execute();
 		} catch (IOException | LexerException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

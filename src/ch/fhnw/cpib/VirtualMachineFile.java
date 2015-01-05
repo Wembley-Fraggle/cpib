@@ -26,7 +26,6 @@ public class VirtualMachineFile implements IVirtualMachine {
 
 	@Override
 	public int BoolInitHeapCell() throws HeapTooSmallError {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -124,7 +123,6 @@ public class VirtualMachineFile implements IVirtualMachine {
 
 	@Override
 	public int FloatInitHeapCell() throws HeapTooSmallError {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -200,7 +198,6 @@ public class VirtualMachineFile implements IVirtualMachine {
 
 	@Override
 	public int IntInitHeapCell() throws HeapTooSmallError {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -356,13 +353,11 @@ public class VirtualMachineFile implements IVirtualMachine {
 
 	@Override
 	public void execute() throws ExecutionError {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public boolean readYesNo() throws ExecutionError {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

@@ -16,7 +16,6 @@ public class GlobImps implements IGlobImps {
 
 	@Override
 	public ch.fhnw.cpib.parsing.abs.IAbstSyn.IGlobImp toAbsSyn() {
-		// TODO Auto-generated method stub
 		return globImps1.toAbsSyn(globImp.toAbsSyn());
 	}
 

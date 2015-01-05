@@ -13,17 +13,21 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn;
 
 public class FunDecl implements IFunDecl {
 
+	 @SuppressWarnings("unused")
 	private IToken fun;
 	private IToken ident;
 	private IParamList paramList;
+	 @SuppressWarnings("unused")
 	private IToken returns;
 	private IStoDecl stoDecl;
 	private IFunDecl1 funDecl1;
 	private IFunDecl2 funDecl2;
 	private IFunDecl3 funDecl3;
+	 @SuppressWarnings("unused")
 	private IToken consume4;
 	private ICpsCmd cpsCmd;
 	private IFunDecl4 funDecl4;
+	 @SuppressWarnings("unused")
 	private IToken endFun;
 
 	public FunDecl(IToken fun, IToken ident, IParamList paramList,

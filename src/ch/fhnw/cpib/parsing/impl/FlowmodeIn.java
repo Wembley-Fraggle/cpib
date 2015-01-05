@@ -14,7 +14,6 @@ public class FlowmodeIn implements IFlowmode {
 
 	@Override
 	public String toString(String indent) {
-		// TODO Auto-generated method stub
 		return indent + inMode.getValue() + '\n';
 	}
 

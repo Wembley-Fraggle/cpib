@@ -1,5 +1,6 @@
 package ch.fhnw.cpib.lexing;
 
+@SuppressWarnings("serial")
 public class LexerException extends Exception{
 
     public LexerException() {

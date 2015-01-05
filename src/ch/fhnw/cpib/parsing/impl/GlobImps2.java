@@ -6,6 +6,7 @@ import ch.fhnw.cpib.parsing.IGlobImps2;
 
 public class GlobImps2 implements IGlobImps2 {
 	
+	 @SuppressWarnings("unused")
 	private IToken comma;
 	private IGlobImp globImp;
 

@@ -12,7 +12,6 @@ public class MechmodeCopy implements IMechmode {
     }
 	@Override
 	public String toString(String indent) {
-		// TODO Auto-generated method stub
 		return indent + copy.getValue() + '\n';
 	}
 	

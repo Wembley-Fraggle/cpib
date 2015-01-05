@@ -16,13 +16,11 @@ public class TestOfMine {
 			try {
 				IMLCompiler.setVm(new VirtualMachineFile("resource/Sample.iml"));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			IMLCompiler.compile("");
 		} catch (LexicalError | GrammarError | ContextError | HeapTooSmallError
 				| CodeTooSmallError | ExecutionError e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	/*	File f = new File(
@@ -51,7 +49,6 @@ public class TestOfMine {
 		} catch (IOException | LexerException e) {
 			e.printStackTrace();
 		} catch (GrammarError e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} */
 	}

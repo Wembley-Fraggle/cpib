@@ -10,8 +10,6 @@ import java.util.List;
  */
 public interface ILexerContext {
     /**
-     * TODO
-     * 
      * @return
      */
     IPosition getCurrentPosition();
@@ -50,7 +48,6 @@ public interface ILexerContext {
      */
     CharSequence getText();
     
-    // TODO
     CharSequence getTextFromCurrentPosition();
     
     boolean isFinished();

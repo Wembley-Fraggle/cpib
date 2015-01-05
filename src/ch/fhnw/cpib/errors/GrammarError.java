@@ -1,5 +1,6 @@
 package ch.fhnw.cpib.errors;
 
+@SuppressWarnings("serial")
 public class GrammarError extends Exception{
 
     public GrammarError() {

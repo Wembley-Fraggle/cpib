@@ -9,7 +9,8 @@ public class PositionTest {
 
     @Test
     public void testNegativeValuesAllowed() {
-        Position position = new Position(-1, -2, -3);
+        @SuppressWarnings("unused")
+				Position position = new Position(-1, -2, -3);
     }
 
     @Test

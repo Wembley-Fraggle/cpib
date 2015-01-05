@@ -21,6 +21,7 @@ public class TokenTypeTest {
     private ILexerContext context;
     private Terminal wsIgnored;
     private Terminal ws;
+    @SuppressWarnings("unused")
     private Terminal intval;
 
     @Before

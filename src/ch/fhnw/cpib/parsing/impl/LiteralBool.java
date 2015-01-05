@@ -1,6 +1,5 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ILiteral;
 import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;

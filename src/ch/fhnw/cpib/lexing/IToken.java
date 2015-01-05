@@ -33,7 +33,6 @@ public interface IToken {
 	 */
 	String getValue();
 	
-	// TODO 
 	ITerminal getType();
 	
 	String toString(String indent);

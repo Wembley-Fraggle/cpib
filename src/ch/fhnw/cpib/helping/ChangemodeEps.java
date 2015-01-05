@@ -13,7 +13,6 @@ public class ChangemodeEps implements IChangemode, IAbstSyn {
 
 	@Override
 	public Modes getMode() {
-		// TODO Auto-generated method stub
 		return Modes.CONST;
 	}
 

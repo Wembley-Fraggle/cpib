@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ch.fhnw.cpib.IMLCompiler;
-import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 

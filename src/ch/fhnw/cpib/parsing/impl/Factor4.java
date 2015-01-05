@@ -7,8 +7,9 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
 @Deprecated()
 // TODO Remove this
+@SuppressWarnings("unused")
 public class Factor4 implements IFactor4 {
-    private IToken old;
+		private IToken old;
     private IToken lParent;
     private IConcExpr expr;
     private IToken rParent;
@@ -22,13 +23,11 @@ public class Factor4 implements IFactor4 {
 
     @Override
     public IExpr toAbsSyn() {
-        // TODO Auto-generated method stub
         return null;
     }
 
 		@Override
 		public String toString(String indent) {
-			// TODO Auto-generated method stub
 			return null;
 		}
 

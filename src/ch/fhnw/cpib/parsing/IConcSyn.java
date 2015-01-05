@@ -1,7 +1,6 @@
 package ch.fhnw.cpib.parsing;
 
 import ch.fhnw.cpib.errors.GrammarError;
-import ch.fhnw.cpib.lexing.IToken;
 
 public interface IConcSyn {
     ICProgram program() throws GrammarError;
@@ -87,7 +86,8 @@ public interface IConcSyn {
     IFactor21 factor21() throws GrammarError;
     IFactor211 factor211() throws GrammarError;
     IFactor3 factor3() throws GrammarError;
-    IFactor4 factor4() throws GrammarError;
+    @SuppressWarnings("deprecation")
+		IFactor4 factor4() throws GrammarError;
     IFactor5 factor5() throws GrammarError;
     IMonadicOpr monadicOpr() throws GrammarError;
     IExprList1 exprList1() throws GrammarError;

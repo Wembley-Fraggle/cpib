@@ -7,6 +7,7 @@ import ch.fhnw.cpib.parsing.ITypedIdent;
 public class TypedIdent implements ITypedIdent {
 
 	private IToken ident;
+	@SuppressWarnings("unused")
 	private IToken colon;
 	private IAtomtype atomtype;
 
@@ -18,9 +19,8 @@ public class TypedIdent implements ITypedIdent {
 
 	@Override
 	public String toString(String indent) {
-		return indent + "<TypedIdent>\n" + ident.toString(indent+'\t')
- + atomtype.toString(indent+'\t')
-				+ indent + "</TypedIdent>\n";
+		return indent + "<TypedIdent>\n" + ident.toString(indent + '\t')
+				+ atomtype.toString(indent + '\t') + indent + "</TypedIdent>\n";
 	}
 
 	@Override

@@ -15,7 +15,7 @@ public class LiteralInt32 implements ILiteral {
 		@Override
 		public IExpr toAbsSyn() {
 		    int val = Integer.parseInt(intVal.getValue());
-			return new ExprLiteral(new LiteralVal(Type.INT32.INT32, val));
+			return new ExprLiteral(new LiteralVal(Type.INT32, val));
 		}
 		@Override
 		public String toString(String indent) {

@@ -13,7 +13,6 @@ public class CpsDeclEps implements ICpsDecl1 {
 
 	@Override
 	public ICpsDecl toAbsSyn(IDecl iDecl) {
-		// TODO Auto-generated method stub
 		return new ch.fhnw.cpib.parsing.abs.impl.CpsDecl(iDecl,
 				new ch.fhnw.cpib.parsing.abs.impl.CpsDeclEps());
 	}

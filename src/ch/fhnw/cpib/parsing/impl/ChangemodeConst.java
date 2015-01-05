@@ -14,7 +14,6 @@ public class ChangemodeConst implements IChangemode {
 
 	@Override
 	public String toString(String indent) {
-		// TODO Auto-generated method stub
 		return indent + constMode.getValue() + '\n';
 	}
 

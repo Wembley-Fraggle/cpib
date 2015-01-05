@@ -8,6 +8,7 @@ import ch.fhnw.cpib.parsing.abs.impl.ExprList;
 
 public class ExprList4 implements IExprList4 {
 
+	@SuppressWarnings("unused")
 	private IToken comma;
 	private IConcExpr expr;
 

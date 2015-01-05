@@ -2,7 +2,6 @@ package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.context.Store;
-import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
@@ -35,13 +34,13 @@ public final class ExprStore implements IExpr {
 	
 	public Store getStore() {
 	    return IMLCompiler.getScope().getStoreTable().getStore(
-	            ident.getValue().toString());
+	            ident.getValue());
 	}
 
     @Override
     public ILiteralVal.Type checkR() throws ContextError {
         ILiteralVal.Type type = IMLCompiler.getScope().getType(
-                ident.getValue().toString());
+                ident.getValue());
         
         if (type == null) {
             throw new ContextError(
@@ -58,7 +57,7 @@ public final class ExprStore implements IExpr {
         }
         
         if (!IMLCompiler.getScope().getStoreTable().getStore(
-                ident.getValue().toString()).isInitialized()) {
+                ident.getValue()).isInitialized()) {
             throw new ContextError(
                     "Store "
                             + ident.getValue() 
@@ -118,17 +117,18 @@ public final class ExprStore implements IExpr {
     @Override
     public int code(final int loc) throws CodeTooSmallError {
         Store store = IMLCompiler.getScope().getStoreTable().getStore(
-                ident.getValue().toString());
+                ident.getValue());
         return store.codeLoad(loc);
     }
     
     public int codeRef(final int loc) throws CodeTooSmallError {
+    	System.out.println("ident: " + ident.getValue());
         Store store = IMLCompiler.getScope().getStoreTable().getStore(
-                ident.getValue().toString());
+                ident.getValue());
         return store.codeRef(loc);
     }
 
     public String getIdent() {
-        return ident.getValue().toString();
+        return ident.getValue();
     }
 }

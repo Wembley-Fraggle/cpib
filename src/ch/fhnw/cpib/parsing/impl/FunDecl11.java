@@ -17,7 +17,6 @@ public class FunDecl11 implements IFunDecl11 {
 
 	@Override
 	public IGlobImp toAbsSyn() {
-		// TODO Auto-generated method stub
 		return globImps.toAbsSyn();
 	}
 

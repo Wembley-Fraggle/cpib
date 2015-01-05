@@ -10,6 +10,7 @@ public class Invariant implements IInvariant {
 
 	private IToken inv;
 	private IToken ident;
+	@SuppressWarnings("unused")
 	private IToken colon;
 	private IConcExpr expr;
 

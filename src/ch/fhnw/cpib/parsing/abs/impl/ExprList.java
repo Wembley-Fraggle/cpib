@@ -5,7 +5,6 @@ import java.util.Set;
 
 import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.context.Parameter;
-import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExprList;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;

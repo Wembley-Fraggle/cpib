@@ -5,9 +5,7 @@ import ch.fhnw.cpib.parsing.ICmd3;
 import ch.fhnw.cpib.parsing.ICmd31;
 import ch.fhnw.cpib.parsing.IConcExpr;
 import ch.fhnw.cpib.parsing.ICpsCmd;
-import ch.fhnw.cpib.parsing.IInvariant;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDbcCmd;
 import ch.fhnw.cpib.parsing.abs.impl.CmdWhile;
 
 public class Cmd3 implements ICmd3 {
@@ -15,6 +13,7 @@ public class Cmd3 implements ICmd3 {
 	private IToken whileToken;
 	private IConcExpr expr;
 	private ICmd31 optInvariant;
+	@SuppressWarnings("unused")
 	private IToken doToken;
 	private ICpsCmd cpsCmd;
 	private IToken endWhileToken;

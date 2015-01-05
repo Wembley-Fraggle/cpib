@@ -3,7 +3,6 @@ package ch.fhnw.cpib.context;
 import java.util.Map;
 import java.util.TreeMap;
 
-import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.parsing.ILiteralVal;
 
 public final class RoutineTable {

@@ -13,7 +13,6 @@ public class FlowmodeEps implements IFlowmode, IAbstSyn {
 
 	@Override
 	public Modes getMode() {
-		// TODO Auto-generated method stub
 		return Modes.IN;
 	}
 

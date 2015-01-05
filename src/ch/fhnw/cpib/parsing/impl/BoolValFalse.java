@@ -6,7 +6,7 @@ import ch.fhnw.cpib.parsing.IBoolVal;
 public class BoolValFalse implements IBoolVal{
     private IToken value;
     public BoolValFalse(IToken boolVal) {
-        this.value = value;
+        this.value = boolVal;
     }
     
     public IToken toAbsSyn() {
