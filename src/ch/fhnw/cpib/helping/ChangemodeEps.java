@@ -1,6 +1,6 @@
 package ch.fhnw.cpib.helping;
 
-import ch.fhnw.cpib.lexing.IToken;
+import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.parsing.IChangemode;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn;
 
@@ -12,7 +12,7 @@ public class ChangemodeEps implements IChangemode, IAbstSyn {
 	}
 
 	@Override
-	public IToken getMode() {
+	public Modes getMode() {
 		// TODO Auto-generated method stub
 		return null;
 	}

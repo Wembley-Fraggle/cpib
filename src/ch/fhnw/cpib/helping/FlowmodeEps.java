@@ -1,6 +1,6 @@
 package ch.fhnw.cpib.helping;
 
-import ch.fhnw.cpib.lexing.IToken;
+import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.parsing.IFlowmode;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn;
 
@@ -12,7 +12,7 @@ public class FlowmodeEps implements IFlowmode, IAbstSyn {
 	}
 
 	@Override
-	public IToken getMode() {
+	public Modes getMode() {
 		// TODO Auto-generated method stub
 		return null;
 	}
