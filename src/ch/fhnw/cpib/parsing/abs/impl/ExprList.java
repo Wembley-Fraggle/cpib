@@ -83,7 +83,7 @@ public final class ExprList implements IExprList {
             default:
                 throw new RuntimeException();
         }
-        if (type == param.getType()) {
+        if (type != param.getType()) {
             throw new ContextError(
                     "Wrong paramter type!",
                     expr.getLine());
