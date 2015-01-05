@@ -1,5 +1,9 @@
 package ch.fhnw.cpib.parsing;
 
-public interface IFactor1 extends IConcSynNode, IFactor{
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 
+public interface IFactor1 extends IConcSynNode {
+	String toString(String indent);
+
+	IExpr toAbsSyn();
 }

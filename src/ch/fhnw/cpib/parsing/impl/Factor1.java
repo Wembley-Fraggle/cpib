@@ -11,6 +11,7 @@ public class Factor1 implements IFactor1 {
 		this.literal = literal;
 	}
 
+	@Override
 	public IExpr toAbsSyn() {
 		return literal.toAbsSyn();
 	}

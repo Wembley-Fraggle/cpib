@@ -1166,7 +1166,7 @@ public class Parser implements IParser, IConcSyn {
 		String name = terminal.getName();
 		if ("INTVAL32".equals(name) || "TRUE".equals(name) || "FALSE".equals(name)) {
 			LOG.debug("factor ::= factor1");
-			return factor1();
+			return new Factor(factor1());
 		} else if ("IDENT".equals(name)) {
 			LOG.debug("factor ::= factor2");
 			return factor2();
