@@ -16,4 +16,8 @@ public class StoDecl1 implements IStoDecl1{
 					+ indent
 					+ "</StoDecl1>\n";
 		}
+		@Override
+		public IChangemode toAbsSyn() {
+			return changemode;
+		}
 }

@@ -4,8 +4,7 @@ import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IConcExpr;
 import ch.fhnw.cpib.parsing.IPrecondition;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDbcCmd;
-import ch.fhnw.cpib.parsing.as.IAbsPrecondition;
-import ch.fhnw.cpib.parsing.as.impl.AbsPrecondition;
+import ch.fhnw.cpib.parsing.abs.impl.DbcCmd;
 
 public class Precondition implements IPrecondition {
 	private IToken pre;
@@ -20,10 +19,6 @@ public class Precondition implements IPrecondition {
 		this.expr = expr;
 	}
 
-	public IAbsPrecondition toAbsSyn() {
-		return new AbsPrecondition(expr.toAbsSyn());
-	}
-
 	@Override
 	public String toString(String indent) {
 		return indent + "<" + pre.getValue() + ">\n"
@@ -33,7 +28,6 @@ public class Precondition implements IPrecondition {
 
 	@Override
 	public IDbcCmd toAbsSyn() {
-		// TODO Auto-generated method stub
-		return null;
+		return new DbcCmd(ident, expr.toAbsSyn());
 	}
 }

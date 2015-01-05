@@ -4,8 +4,7 @@ import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IConcExpr;
 import ch.fhnw.cpib.parsing.IPostcondition;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDbcCmd;
-import ch.fhnw.cpib.parsing.as.IAbsPostcondition;
-import ch.fhnw.cpib.parsing.as.impl.AbsPostcondition;
+import ch.fhnw.cpib.parsing.abs.impl.DbcCmd;
 
 
 public class Postcondition implements IPostcondition{
@@ -22,8 +21,9 @@ public class Postcondition implements IPostcondition{
         this.expr = expr;
     }
     
-    public IAbsPostcondition toAbsSyn(){
-    	return new AbsPostcondition(expr.toAbsSyn());
+    @Override
+    public IDbcCmd toAbsSyn(){
+    	return new DbcCmd(ident, expr.toAbsSyn());
     }
 
 		@Override
@@ -33,9 +33,4 @@ public class Postcondition implements IPostcondition{
 					+ "</" + post.getValue() + ">\n";
 		}
 
-		@Override
-		public IDbcCmd toAbsSyn() {
-			// TODO Auto-generated method stub
-			return null;
-		}
 }

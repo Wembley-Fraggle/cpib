@@ -18,10 +18,19 @@ public class TypedIdent implements ITypedIdent {
 
 	@Override
 	public String toString(String indent) {
-		// TODO Auto-generated method stub
 		return indent + "<TypedIdent>\n" + ident.toString(indent+'\t')
  + atomtype.toString(indent+'\t')
 				+ indent + "</TypedIdent>\n";
+	}
+
+	@Override
+	public IAtomtype getAtomtype() {
+		return atomtype;
+	}
+
+	@Override
+	public IToken getIdent() {
+		return ident;
 	}
 
 }

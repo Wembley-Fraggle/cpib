@@ -3,8 +3,8 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IConcExpr;
 import ch.fhnw.cpib.parsing.IInvariant;
-import ch.fhnw.cpib.parsing.as.IAbsInvariant;
-import ch.fhnw.cpib.parsing.as.impl.AbsInvariant;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDbcCmd;
+import ch.fhnw.cpib.parsing.abs.impl.DbcCmd;
 
 public class Invariant implements IInvariant {
 
@@ -21,8 +21,8 @@ public class Invariant implements IInvariant {
 	}
 
 	@Override
-	public IAbsInvariant toAbsSyn() {
-		return new AbsInvariant(ident, expr.toAbsSyn());
+	public IDbcCmd toAbsSyn() {
+		return new DbcCmd(ident, expr.toAbsSyn());
 	}
 
 	@Override
