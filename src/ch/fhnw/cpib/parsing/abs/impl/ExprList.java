@@ -51,9 +51,9 @@ public final class ExprList implements IExprList {
         
         ITerminal type;
         
-        switch(param.getFlowMode().getMode()) {
+        switch(param.getFlowMode()) {
             case IN:
-                if (param.getMechMode().getMode() == Modes.COPY){
+                if (param.getMechMode() == Modes.COPY){
                     type = expr.checkR();
                 } else {
                     type = expr.checkL(false);
@@ -125,8 +125,8 @@ public final class ExprList implements IExprList {
     @Override
     public int code(final int loc) throws CodeTooSmallError {
         int loc1;
-        if (param.getFlowMode().getMode() == Modes.IN
-                && param.getMechMode().getMode() == Modes.COPY) {
+        if (param.getFlowMode() == Modes.IN
+                && param.getMechMode() == Modes.COPY) {
             loc1 = expr.code(loc);
         } else {
             loc1 = ((ExprStore) expr).codeRef(loc);
