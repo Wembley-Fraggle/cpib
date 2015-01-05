@@ -21,7 +21,11 @@ public class Factor2 implements IFactor2 {
 
 	@Override
 	public String toString(String indent) {
-		return indent + "<Factor2>\n" + ident.toString(indent + '\t')
-				+ factor21.toString(indent + '\t') + indent + "</Factor2>\n";
+		return indent 
+		        + "<Factor2>\n" 
+		        + ident.toString(indent + '\t')
+				+ factor21.toString(indent + '\t') 
+				+ indent
+				+ "</Factor2>\n";
 	}
 }

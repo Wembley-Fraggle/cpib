@@ -4,6 +4,7 @@ import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IFactor211;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.cpib.parsing.abs.impl.ExprLiteral;
+import ch.fhnw.cpib.parsing.abs.impl.ExprStore;
 
 public class Factor211Init implements IFactor211 {
 
@@ -15,7 +16,7 @@ public class Factor211Init implements IFactor211 {
 
 	@Override
 	public IExpr toAbsSyn(IToken ident) {
-		return new ExprLiteral(ident);
+		return new ExprStore(ident, true);
 	}
 
 	@Override
