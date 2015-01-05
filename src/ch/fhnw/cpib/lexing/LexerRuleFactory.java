@@ -28,7 +28,7 @@ public class LexerRuleFactory {
         types.add(new Terminal("GE", ">="));
         types.add(new Terminal("AND", "&&"));
         types.add(new Terminal("OR", "||"));
-        types.add(new Terminal("CAND", "&?"));
+        types.add(new Terminal("CAND", "&\\?"));
         types.add(new Terminal("COR", "|\\?"));
         types.add(new Terminal("BOOLTYPE", "bool"));
         types.add(new Terminal("INT32", "int32"));
