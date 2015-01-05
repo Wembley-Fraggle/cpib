@@ -20,16 +20,17 @@ public final class FunDecl implements IDecl {
 	private final ICmd cmd;
 
 	public FunDecl(final IToken ident, final IParam param,
-			final IStoreDecl returnDecl, final IGlobImp globImp, final ICpsDecl cpsDecl,
-			final IDbcCmd dbcPreCmd, final ICmd cmd, final IDbcCmd dbcPostCmd) {
+			final IStoreDecl returnDecl, final IGlobImp globImp,
+			final ICpsDecl cpsDecl, final IDbcCmd dbcPreCmd, final ICmd cmd,
+			final IDbcCmd dbcPostCmd) {
 		this.ident = ident;
 		this.param = param;
 		this.returnDecl = returnDecl;
 		this.globImp = globImp;
-		this.dbcPreCmd = dbcPreCmd;
 		this.cpsDecl = cpsDecl;
-		this.dbcPostCmd = dbcPostCmd;
+		this.dbcPreCmd = dbcPreCmd;
 		this.cmd = cmd;
+		this.dbcPostCmd = dbcPostCmd;
 	}
 
 	@Override
@@ -37,7 +38,9 @@ public final class FunDecl implements IDecl {
 		return indent + "<FunDecl>\n" + ident.toString(indent + '\t')
 				+ param.toString(indent + '\t') + returnDecl.toString(indent + '\t')
 				+ globImp.toString(indent + '\t') + cpsDecl.toString(indent + '\t')
-				+ cmd.toString(indent + '\t') + indent + "</FunDecl>\n";
+				+ dbcPreCmd.toString(indent + '\t') + cmd.toString(indent + '\t')
+				+ dbcPostCmd.toString(indent + '\t')
+				+ indent + "</FunDecl>\n";
 	}
 
 	@Override
