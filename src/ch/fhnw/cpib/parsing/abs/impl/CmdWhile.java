@@ -22,6 +22,7 @@ public final class CmdWhile implements ICmd {
 		return indent
 				+ "<CmdWhile>\n"
 				+ expr.toString(indent + '\t')
+				+ dbcInvCmd.toString(indent + '\t')
 				+ cmd.toString(indent + '\t')
 				+ indent
 				+ "</CmdWhile>\n";
