@@ -5,25 +5,22 @@ import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
 public class DbcCmdEps implements IDbcCmd {
 
-    @Override
-    public void check(boolean canInit) throws ContextError {
-    }
+	@Override
+	public void check(boolean canInit) throws ContextError {
+	}
 
-    @Override
-    public int code(int loc) throws CodeTooSmallError {
-        return loc;
-    }
+	@Override
+	public int code(int loc) throws CodeTooSmallError {
+		return loc;
+	}
 
-    @Override
-    public String toString(String indent) {
-        return indent
-                + "<DbcCmdEps>\n"
-                + indent
-                + "</DbcCmdEps>\n";
-    }
+	@Override
+	public String toString(String indent) {
+		return indent + "<DbcCmdEps/>\n";
+	}
 
-    @Override
-    public int getLine() {
-        return -1;
-    }
+	@Override
+	public int getLine() {
+		return -1;
+	}
 }
