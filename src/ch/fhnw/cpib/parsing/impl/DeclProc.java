@@ -2,6 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.ICDecl;
 import ch.fhnw.cpib.parsing.IProcDecl;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDecl;
 
 public class DeclProc implements ICDecl {
 
@@ -15,6 +16,12 @@ public class DeclProc implements ICDecl {
 	public String toString(String indent) {
 		return indent + "<DeclProc>\n" + procDecl.toString(indent + '\t') + indent
 				+ "</DeclProc>\n";
+	}
+
+	@Override
+	public IDecl toAbsSyn() {
+		// TODO Auto-generated method stub
+		return procDecl.toAbsSyn();
 	}
 
 }

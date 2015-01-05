@@ -2,6 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IProcDecl2;
 import ch.fhnw.cpib.parsing.IProcDecl21;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsDecl;
 
 public class ProcDecl2 implements IProcDecl2 {
 
@@ -15,6 +16,11 @@ public class ProcDecl2 implements IProcDecl2 {
 	public String toString(String indent) {
 		return indent + "<ProcDecl2>\n" + procDecl21.toString(indent + '\t')
 				+ indent + "</ProcDecl2>\n";
+	}
+
+	@Override
+	public ICpsDecl toAbsSyn() {
+		return procDecl21.toAbsSyn();
 	}
 
 }

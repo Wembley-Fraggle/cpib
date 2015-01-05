@@ -8,18 +8,20 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IProgram;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.HeapTooSmallError;
 
+//TODO add progParams to code 
 public final class Program implements IProgram {
 	private final IToken ident;
+	private final IParam progParams;
 	private final ICpsDecl cpsDecl;
 	private final ICmd cmd;
 	private final IDbcCmd dbcPreCmd;
 	private final IDbcCmd dbcPostCmd;
 
-	public Program(final IToken ident, final ICpsDecl cpsDecl,
-	        final IDbcCmd dbcPreCmd, 
-	        final ICmd cmd,
+	public Program(final IToken ident, final IParam progParams,
+			final ICpsDecl cpsDecl, final IDbcCmd dbcPreCmd, final ICmd cmd,
 			final IDbcCmd dbcPostCmd) {
 		this.ident = ident;
+		this.progParams = progParams;
 		this.cpsDecl = cpsDecl;
 		this.dbcPreCmd = dbcPreCmd;
 		this.cmd = cmd;
@@ -29,11 +31,9 @@ public final class Program implements IProgram {
 	@Override
 	public String toString(final String indent) {
 		return indent + "<Program>\n" + ident.toString(indent + '\t')
-				+ cpsDecl.toString(indent + '\t')
-				+ dbcPreCmd.toString(indent + '\t')
-				+ cmd.toString(indent + '\t')
-				+ dbcPostCmd.toString(indent + '\t')
-				+ indent + "</Program>\n";
+				+ progParams.toString(indent + '\t') + cpsDecl.toString(indent + '\t')
+				+ dbcPreCmd.toString(indent + '\t') + cmd.toString(indent + '\t')
+				+ dbcPostCmd.toString(indent + '\t') + indent + "</Program>\n";
 	}
 
 	@Override

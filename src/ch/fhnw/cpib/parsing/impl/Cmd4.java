@@ -1,11 +1,9 @@
 package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.parsing.ICmd4;
 import ch.fhnw.cpib.parsing.ICExprList;
+import ch.fhnw.cpib.parsing.ICmd4;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
-import ch.fhnw.cpib.parsing.as.IAbsProcCallCmd;
-import ch.fhnw.cpib.parsing.as.impl.AbsProcCallCmd;
 
 public class Cmd4 implements ICmd4 {
 
@@ -19,8 +17,11 @@ public class Cmd4 implements ICmd4 {
 		this.exprList = exprList;
 	}
 
+	//TODO implement
 	public ICmd toAbsSyn() {
-		return new AbsProcCallCmd(ident, exprList.toAbsSyn());
+//		new ch.fhnw.cpib.parsing.abs.impl.ProcDecl(ident,);
+		return null; //new ch.fhnw.cpib.parsing.abs.impl.ExprList(new ExprEps(),exprList.toAbsSyn());
+//		return new AbsProcCallCmd(ident, exprList.toAbsSyn());
 	}
 
 	@Override

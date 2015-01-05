@@ -7,22 +7,22 @@ import ch.fhnw.cpib.parsing.IProgParamList;
 import ch.fhnw.cpib.parsing.IProgram2;
 import ch.fhnw.cpib.parsing.IProgram3;
 import ch.fhnw.cpib.parsing.IProgram4;
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDecl;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IProgram;
-import ch.fhnw.cpib.parsing.abs.impl.CpsDecl;
-import ch.fhnw.cpib.parsing.abs.impl.ProcDecl;
 import ch.fhnw.cpib.parsing.abs.impl.Program;
 
 public class CProgram implements ICProgram {
-    private IToken program;
+    @SuppressWarnings("unused")
+		private IToken program;
     private IToken ident;
     private IProgParamList progParamList;
     private IProgram2 program2;
     private IProgram3 program3;
-    private IToken doToken;
+    @SuppressWarnings("unused")
+		private IToken doToken;
     private ICpsCmd cpsCmd;
     private IProgram4 program4;
-    private IToken endProgram;
+    @SuppressWarnings("unused")
+		private IToken endProgram;
 
     public CProgram(IToken program, IToken ident, IProgParamList progParamList, IProgram2 program2, IProgram3 program3,
             IToken doToken, ICpsCmd cpsCmd,IProgram4 program4, IToken endProgram) {
@@ -52,12 +52,13 @@ public class CProgram implements ICProgram {
 
 		@Override
 		public IProgram toAbstrSyntax() {
-		    IDecl mainProc = new ProcDecl(ident,
-		            progParamList.toAbsSyn(), globImp, cpsDecl, cmd)
+	/*	    IDecl mainProc = new ProcDecl(ident,
+		            progParamList.toAbsSyn(), globImp, cpsDecl, cmd) */
 			return new Program(
 	        ident, 
-	        progParamList.toAbsSyn(), 
-	        program3.toAbsSyn()
+	        progParamList.toAbsSyn(),
+	        program2.toAbsSyn(),
+	        program3.toAbsSyn(),
 	        cpsCmd.toAbsSyn(),
 	        program4.toAbsSyn()); 
 		} 

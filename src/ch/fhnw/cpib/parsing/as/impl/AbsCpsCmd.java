@@ -12,7 +12,7 @@ public class AbsCpsCmd implements IAbsCpsCmd {
         this.cmd = cmd;
     }
     
-    public AbsCpsCmd(IAbsCpsCmd cmd, IAbsCpsCmd cpsCmd) {
+    public AbsCpsCmd(IAbsCpsCmd cmd, IAbsCpsCmd absSyn) {
         this.cmd = cmd;
         this.absSyn = absSyn;
     }
