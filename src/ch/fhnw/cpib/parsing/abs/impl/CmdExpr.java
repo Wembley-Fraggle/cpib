@@ -59,7 +59,7 @@ public final class CmdExpr implements ICmd {
             loc2 = targetExpr.code(loc1);
         } else {
             loc2 = ((ExprStore) targetExpr).codeRef(loc1);
-            IMLCompiler.getVM().Store(loc1);
+            IMLCompiler.getVM().Store(loc2++);
         }
         return loc2;
     }
