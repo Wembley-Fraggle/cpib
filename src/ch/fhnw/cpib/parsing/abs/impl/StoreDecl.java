@@ -1,7 +1,6 @@
 package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
-import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.context.Store;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
@@ -42,7 +41,7 @@ public final class StoreDecl implements IStoreDecl {
         return new Store(
                 ident.getValue(),
                 type,
-                changeMode.getMode() == Modes.CONST);
+                changeMode.getMode().getType().isType("CONST"));
     }
 
 	@Override
