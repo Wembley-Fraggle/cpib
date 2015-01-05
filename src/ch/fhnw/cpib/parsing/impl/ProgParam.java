@@ -31,7 +31,7 @@ public class ProgParam implements IProgParam {
 	@Override
 	public IParam toAbsSyn(IParam iParam) {
 		IStoreDecl stoDecl = new StoreDecl(progParam2.toAbsSyn(),
-				typedIdent.getIdent(), typedIdent.getAtomtype().toAbsSyn().getType());
+				typedIdent.getIdent(), typedIdent.getAtomtype().getType());
 		return new ch.fhnw.cpib.parsing.abs.impl.ProgParam(progParam1.toAbsSyn(),
 				progParam2.toAbsSyn(), stoDecl, iParam);
 	}

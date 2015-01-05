@@ -1,8 +1,8 @@
 package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
-import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
@@ -27,14 +27,14 @@ public final class ExprMonadic implements IExpr {
 	}
 
 	@Override
-	public ITerminal checkR() throws ContextError {
-		ITerminal type = expr.checkR();
+	public ILiteralVal.Type checkR() throws ContextError {
+	    ILiteralVal.Type type = expr.checkR();
 
 		if (operator.getType().isType("PLUS") || operator.getType().isType("MINUS")) {
 			switch (operator.getType().getName()) {
 			case "PLUS":
 			case "MINUS":
-				if (type.isType("INT32")) {
+				if (type == ILiteralVal.Type.INT32) {
 					return type;
 				} else {
 					throw new ContextError(
@@ -46,7 +46,7 @@ public final class ExprMonadic implements IExpr {
 
 			}
 		} else if (operator.getType().isType("NOT")) {
-			if (type.isType("BOOL")) {
+			if (type == ILiteralVal.Type.BOOL) {
 				return type;
 			} else {
 				throw new ContextError("Type error in Operator " + operator.getType(),
@@ -58,7 +58,7 @@ public final class ExprMonadic implements IExpr {
 	}
 
 	@Override
-	public ITerminal checkL(final boolean canInit) throws ContextError {
+	public ILiteralVal.Type checkL(final boolean canInit) throws ContextError {
 		throw new ContextError("Found operator " + operator.getType()
 				+ "in the left part of an assignement", operator.getStart()
 				.getCurrentLine());

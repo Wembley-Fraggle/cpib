@@ -2,6 +2,7 @@ package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.lexing.ITerminal;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
@@ -32,15 +33,15 @@ public final class CmdExpr implements ICmd {
 
     @Override
     public void check(final boolean canInit) throws ContextError {
-        ITerminal typeL = targetExpr.checkL(canInit);
-        if (typeL.isType("PROC")) {
+        ILiteralVal.Type typeL = targetExpr.checkL(canInit);
+        if (typeL == ILiteralVal.Type.PROC) {
             if (!(sourceExpr instanceof ExprEps)) {
                 throw new ContextError(
                         "Procedure call can not be in an assignement!: "
                         , targetExpr.getLine());
             }
         } else {
-            ITerminal typeR = sourceExpr.checkR();
+            ILiteralVal.Type typeR = sourceExpr.checkR();
             if (typeR != typeL) {
                 throw new ContextError(
                         "Types in assignemt don't match!: "

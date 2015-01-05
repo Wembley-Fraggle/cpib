@@ -7,6 +7,7 @@ import ch.fhnw.cpib.context.Parameter;
 import ch.fhnw.cpib.context.Routine;
 import ch.fhnw.cpib.context.Store;
 import ch.fhnw.cpib.lexing.ITerminal;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.HeapTooSmallError;
 
@@ -32,7 +33,7 @@ public interface IAbstSyn {
 	    int code(int loc) throws CodeTooSmallError;
 	}
 	public interface IStoreDecl extends IDecl {
-        ITerminal getType();
+        ILiteralVal.Type getType();
         String getIdent();
         Store check() throws ContextError;
     }
@@ -58,8 +59,8 @@ public interface IAbstSyn {
 	    void checkInit() throws ContextError;
 	}
 	public interface IExpr extends IAbstSyn {
-	    ITerminal checkR() throws ContextError;
-	    ITerminal checkL(boolean canInit) throws ContextError;
+	    ILiteralVal.Type checkR() throws ContextError;
+	    ILiteralVal.Type checkL(boolean canInit) throws ContextError;
         int code(int loc) throws CodeTooSmallError;
 	}
 	public interface IExprList extends IAbstSyn {

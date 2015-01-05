@@ -2,13 +2,14 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ILiteral;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.cpib.parsing.abs.impl.ExprLiteral;
 
 public class LiteralBool implements ILiteral{
     
-    private IToken value;
-    public LiteralBool(IToken value) {
+    private ILiteralVal value;
+    public LiteralBool(ILiteralVal value) {
         this.value = value;
     }
 		@Override

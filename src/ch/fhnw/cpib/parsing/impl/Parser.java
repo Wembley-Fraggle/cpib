@@ -12,6 +12,7 @@ import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.lexing.Terminal;
 import ch.fhnw.cpib.lexing.Token;
 import ch.fhnw.cpib.parsing.*;
+import ch.fhnw.cpib.parsing.ILiteralVal.Type;
 
 public class Parser implements IParser, IConcSyn {
 
@@ -1351,17 +1352,16 @@ public class Parser implements IParser, IConcSyn {
 	}
 
 	@Override
-	public IToken boolval() throws GrammarError {
+	public ILiteralVal boolval() throws GrammarError {
 		String name = terminal.getName();
 		if ("FALSE".equals(name)) {
 			LOG.debug("boolval ::= FALSE");
-			return new Token(new Terminal("FALSE", "false"), consume(terminal)
-					.getValue());
-			// new BoolValFalse(consume(terminal));
+			consume(terminal);
+			return new LiteralVal(Type.BOOL, 0);
 		} else if ("TRUE".equals(name)) {
 			LOG.debug("boolval ::= TRUE");
-			return new Token(new Terminal("TRUE", "true"), consume(terminal)
-					.getValue()); // BoolValTrue(consume(terminal));
+			consume(terminal);
+			return new LiteralVal(Type.BOOL, 1);
 		} else {
 			throw createError();
 		}

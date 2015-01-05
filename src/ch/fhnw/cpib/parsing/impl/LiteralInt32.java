@@ -2,6 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ILiteral;
+import ch.fhnw.cpib.parsing.ILiteralVal.Type;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.cpib.parsing.abs.impl.ExprLiteral;
 
@@ -13,7 +14,8 @@ public class LiteralInt32 implements ILiteral {
     }
 		@Override
 		public IExpr toAbsSyn() {
-			return new ExprLiteral(intVal);
+		    int val = Integer.parseInt(intVal.getValue());
+			return new ExprLiteral(new LiteralVal(Type.INT32.INT32, val));
 		}
 		@Override
 		public String toString(String indent) {

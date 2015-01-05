@@ -2,14 +2,14 @@ package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.lexing.ITerminal;
-import ch.fhnw.cpib.lexing.IToken;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
 public final class ExprLiteral implements IExpr {
-    private final IToken literal;
+    private final ILiteralVal literal;
 	
-	public ExprLiteral(final IToken literal) {
+	public ExprLiteral(final ILiteralVal literal) {
 		this.literal = literal;
 	}
 	
@@ -24,16 +24,16 @@ public final class ExprLiteral implements IExpr {
 	
 	@Override
     public int getLine() {
-        return literal.getStart().getCurrentLine();
+        return -1;
     }
 
     @Override
-    public ITerminal checkR() throws ContextError {
+    public ILiteralVal.Type checkR() throws ContextError {
         return literal.getType();
     }
     
     @Override
-    public ITerminal checkL(final boolean canInit) throws ContextError {
+    public ILiteralVal.Type checkL(final boolean canInit) throws ContextError {
         throw new ContextError(
                 "Found literal " 
                 + literal.getValue()
@@ -42,17 +42,7 @@ public final class ExprLiteral implements IExpr {
 
     @Override
     public int code(final int loc) throws CodeTooSmallError {
-        if(literal.getType().isType("TRUE")) {
-            IMLCompiler.getVM().IntLoad(loc, 1);
-        }
-        else if(literal.getType().isType("FALSE")) {
-            IMLCompiler.getVM().IntLoad(loc, 0);
-        }
-        else {
-            // Must be an integer
-            int val = Integer.parseInt(literal.getValue());
-            IMLCompiler.getVM().IntLoad(loc, val);
-        }
+        IMLCompiler.getVM().IntLoad(loc, literal.getValue());
         return loc + 1;
     }
 }

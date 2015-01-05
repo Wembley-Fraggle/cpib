@@ -6,6 +6,7 @@ import java.util.Set;
 import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.context.Parameter;
 import ch.fhnw.cpib.lexing.ITerminal;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExprList;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
@@ -49,7 +50,7 @@ public final class ExprList implements IExprList {
         param = paramList.get(0);
         paramList.remove(0);
         
-        ITerminal type;
+        ILiteralVal.Type type;
         
         switch(param.getFlowMode()) {
             case IN:
@@ -83,7 +84,7 @@ public final class ExprList implements IExprList {
             default:
                 throw new RuntimeException();
         }
-        if (type.isType(param.getType().getName())) {
+        if (type == param.getType()) {
             throw new ContextError(
                     "Wrong paramter type!",
                     expr.getLine());
@@ -92,11 +93,11 @@ public final class ExprList implements IExprList {
         exprList.check(paramList, aliasList, canInit);
     }
     
-    private ITerminal checkINOUTstore(
+    private ILiteralVal.Type checkINOUTstore(
             final boolean canInit, 
             final Set<String> aliasList) throws ContextError {
         
-        ITerminal type = expr.checkL(canInit);
+        ILiteralVal.Type type = expr.checkL(canInit);
         
         if (!(expr instanceof ExprStore)) {
             throw new ContextError(

@@ -4,6 +4,7 @@ import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.lexing.Terminal;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
@@ -38,13 +39,13 @@ public final class ExprDyadic implements IExpr {
 	}
 	
 	@Override
-	public ITerminal checkR() throws ContextError {
+	public ILiteralVal.Type checkR() throws ContextError {
 	    if (error != null) {
 	        throw error;
 	    }
 	    
-	    ITerminal type1 = expr1.checkR();
-	    ITerminal type2 = expr2.checkR();
+	    ILiteralVal.Type type1 = expr1.checkR();
+	    ILiteralVal.Type type2 = expr2.checkR();
 	    
 	    switch(operator.getType().getName()) {
 	        case "PLUS":
@@ -52,8 +53,8 @@ public final class ExprDyadic implements IExpr {
 	        case "TIMES":
 	        case "DIV":
 	        case "MOD":
-	            if (type1.isType("INT32") 
-	                && type2.isType("INT32")) {
+	            if (type1 == ILiteralVal.Type.INT32
+	                && type2 == ILiteralVal.Type.INT32) {
 	                return type1;
 	            } else {
 	                throw new ContextError(
@@ -63,17 +64,17 @@ public final class ExprDyadic implements IExpr {
 	            }
 	        case "EQ":
 	        case "NE":
-	            if (type1.isType("BOOL") 
-	                && type2.isType("BOOL")) {
+	            if (type1 == ILiteralVal.Type.BOOL
+	                && type2 == ILiteralVal.Type.BOOL) {
 	                return type1;
 	            }
 	        case "GT":
 	        case "LT":
 	        case "GE":
 	        case "LE":
-	            if (type1.isType("INT32")  
-                    && type1.isType("INT32")) {
-                    return new Terminal("BOOL");
+	            if (type1 == ILiteralVal.Type.INT32
+                    && type1 == ILiteralVal.Type.INT32) {
+	                return ILiteralVal.Type.BOOL;
                 } else {
                     throw new ContextError(
                             "Type error in Operator "
@@ -82,8 +83,8 @@ public final class ExprDyadic implements IExpr {
                 }
 	        case "CAND":
 	        case "COR":
-	            if (type1.isType("BOOL")
-                    && type2.isType("BOOL")) {
+	            if (type1 == ILiteralVal.Type.BOOL
+                    && type2 == ILiteralVal.Type.BOOL) {
                     return type1;
                 } else {
                     throw new ContextError(
@@ -97,7 +98,7 @@ public final class ExprDyadic implements IExpr {
 	}
 
     @Override
-    public ITerminal checkL(final boolean canInit) throws ContextError {
+    public ILiteralVal.Type checkL(final boolean canInit) throws ContextError {
         throw new ContextError(
                 "Found operator " 
                 + operator.getValue()

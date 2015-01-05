@@ -18,7 +18,7 @@ public class StoDecl implements IStoDecl {
 	@Override
 	public IStoreDecl toAbsSyn() {
 		return new StoreDecl(stoDecl1.toAbsSyn(), typedIdent.getIdent(), typedIdent
-				.getAtomtype().toAbsSyn().getType());
+				.getAtomtype().getType());
 	}
 
 	@Override

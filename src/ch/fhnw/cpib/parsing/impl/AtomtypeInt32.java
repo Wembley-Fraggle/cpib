@@ -2,6 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IAtomtype;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 
 public class AtomtypeInt32 implements IAtomtype {
 
@@ -12,8 +13,8 @@ public class AtomtypeInt32 implements IAtomtype {
 	}
 
 	@Override
-	public IToken toAbsSyn() {
-		return int32;
+	public ILiteralVal.Type getType() {
+		return ILiteralVal.Type.INT32;
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import ch.fhnw.cpib.lexing.ITerminal;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 
 public final class RoutineTable {
     private Map<String, Routine> routineMap;
@@ -21,7 +22,7 @@ public final class RoutineTable {
         }
     }
 
-    public ITerminal getType(final String ident) {
+    public ILiteralVal.Type getType(final String ident) {
         if (routineMap.containsKey(ident)) {
             return routineMap.get(ident).getType();
         } else {

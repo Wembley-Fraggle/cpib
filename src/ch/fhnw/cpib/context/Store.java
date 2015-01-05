@@ -2,6 +2,7 @@ package ch.fhnw.cpib.context;
 
 import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.lexing.ITerminal;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
 public final class Store extends Symbol {
@@ -14,7 +15,7 @@ public final class Store extends Symbol {
     
     public Store(
             final String ident, 
-            final ITerminal type, 
+            final ILiteralVal.Type type, 
             final boolean isConst) {
         super(ident, type);
         this.writeable = true;

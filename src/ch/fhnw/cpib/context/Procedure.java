@@ -1,12 +1,11 @@
 package ch.fhnw.cpib.context;
 
-import ch.fhnw.cpib.lexing.Terminal;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 
 public class Procedure extends Routine {
 
 	public Procedure(final String ident) {
-		// FIXME
-		super(ident, new Terminal("PROC"), RoutineTypes.PROCEDURE);
+		super(ident,ILiteralVal.Type.PROC, RoutineTypes.PROCEDURE);
 	}
 
 }

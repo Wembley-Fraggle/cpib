@@ -1,13 +1,13 @@
 package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
-import ch.fhnw.cpib.lexing.ITerminal;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
 public final class CmdIn implements ICmd {
 	private final IExpr expr;
-	private ITerminal type;
+	private ILiteralVal.Type type;
 	
 	public CmdIn(final IExpr expr) {
 		this.expr = expr;
@@ -40,7 +40,7 @@ public final class CmdIn implements ICmd {
     @Override
     public int code(final int loc) throws CodeTooSmallError {
         int loc1 = ((ExprStore) expr).codeRef(loc);
-        if (type.isType("BOOL")) {
+        if (type == ILiteralVal.Type.BOOL) {
             IMLCompiler.getVM().BoolInput(
                     loc1++, ((ExprStore) expr).getIdent());
         } else {

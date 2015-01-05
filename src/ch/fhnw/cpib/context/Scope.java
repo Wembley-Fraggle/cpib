@@ -1,6 +1,6 @@
 package ch.fhnw.cpib.context;
 
-import ch.fhnw.cpib.lexing.ITerminal;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 
 public final class Scope {
     private final StoreTable storeTable;
@@ -17,7 +17,7 @@ public final class Scope {
         return storeTable;
     }
     
-    public ITerminal getType(final String ident) {
+    public ILiteralVal.Type getType(final String ident) {
         return storeTable.getType(ident);
     }
     

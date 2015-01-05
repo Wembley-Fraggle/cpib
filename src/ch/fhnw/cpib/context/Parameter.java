@@ -2,18 +2,19 @@ package ch.fhnw.cpib.context;
 
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 
 public final class Parameter {
     private final Modes flowMode;
     private final Modes mechMode;
     private final Modes changeMode;
-    private final ITerminal type;
+    private final ILiteralVal.Type type;
     
     public Parameter(
             final Modes flowMode, 
             final Modes mechMode, 
             final Modes changeMode,
-            final ITerminal type) {
+            final ILiteralVal.Type type) {
         this.flowMode = flowMode;
         this.mechMode = mechMode;
         this.changeMode = changeMode;
@@ -32,7 +33,7 @@ public final class Parameter {
         return changeMode;
     }
     
-    public ITerminal getType() {
+    public ILiteralVal.Type getType() {
         return type;
     }
 }

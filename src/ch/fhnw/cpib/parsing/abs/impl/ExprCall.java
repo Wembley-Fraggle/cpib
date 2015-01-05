@@ -11,6 +11,7 @@ import ch.fhnw.cpib.context.Routine;
 import ch.fhnw.cpib.context.Routine.RoutineTypes;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
@@ -47,15 +48,15 @@ public final class ExprCall implements IExpr {
 	}
 
     @Override
-    public ITerminal checkR() throws ContextError {
-        ITerminal type = IMLCompiler.getRoutineTable().getType(
+    public ILiteralVal.Type checkR() throws ContextError {
+        ILiteralVal.Type type = IMLCompiler.getRoutineTable().getType(
                 ident.getValue());
         
         if (type == null) {
             throw new ContextError(
                     "Ident " + ident.getValue() + " not declared",
                     ident.getStart().getCurrentLine());
-        } else if (type.isType("PROC")) {
+        } else if (type == ILiteralVal.Type.PROC) {
             throw new ContextError(
                     "Procedure call found in an expression: "
                             + ident.getValue() + "",
@@ -100,15 +101,15 @@ public final class ExprCall implements IExpr {
     }
 
     @Override
-    public ITerminal checkL(final boolean canInit) throws ContextError {
-        ITerminal type = IMLCompiler.getRoutineTable().getType(
+    public ILiteralVal.Type checkL(final boolean canInit) throws ContextError {
+        ILiteralVal.Type type = IMLCompiler.getRoutineTable().getType(
                 ident.getValue());
         
         if (type == null) {
             throw new ContextError(
                     "Ident " + ident.getValue() + " not declared",
                     ident.getStart().getCurrentLine());
-        } else if (type.isType("PROC")) {
+        } else if (type == ILiteralVal.Type.PROC) {
             throw new ContextError(
                     "Function call "
                             + ident.getValue() 

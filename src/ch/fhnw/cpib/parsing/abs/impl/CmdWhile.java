@@ -1,6 +1,7 @@
 package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
@@ -35,7 +36,7 @@ public final class CmdWhile implements ICmd {
 
     @Override
     public void check(final boolean canInit) throws ContextError {
-        if (!expr.checkR().isType("BOOL")) {
+        if (!(expr.checkR() == ILiteralVal.Type.BOOL)) {
             throw new ContextError(
                     "WHILE condition must be a boolean! ",
                      expr.getLine());

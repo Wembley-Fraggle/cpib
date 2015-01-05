@@ -6,6 +6,7 @@ import ch.fhnw.cpib.context.Store;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IChangemode;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IStoreDecl;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.HeapTooSmallError;
@@ -13,14 +14,14 @@ import ch.fhnw.lederer.virtualmachine.IVirtualMachine.HeapTooSmallError;
 public final class StoreDecl implements IStoreDecl {
 	private final IChangemode changeMode;
 	private final IToken ident;
-	private final ITerminal type;
+	private final ILiteralVal.Type type;
 
 	public String getIdent() {
 		return ident.getValue();
 	}
 
 	public StoreDecl(final IChangemode changeMode, final IToken ident,
-			final ITerminal type) {
+			final ILiteralVal.Type type) {
 		this.changeMode = changeMode;
 		this.ident = ident;
 		this.type = type;
@@ -29,7 +30,9 @@ public final class StoreDecl implements IStoreDecl {
 	@Override
 	public String toString(final String indent) {
 		return indent + "<StoreDecl>\n" + changeMode.toString(indent + '\t')
-				+ ident.toString(indent + '\t') + type.toString(indent + '\t') + indent
+				+ ident.toString(indent + '\t')
+				+ indent + type + '\t'
+				+ indent
 				+ "</StoreDecl>\n";
 	}
 
@@ -46,7 +49,7 @@ public final class StoreDecl implements IStoreDecl {
     }
 
 	@Override
-	public ITerminal getType() {
+	public ILiteralVal.Type getType() {
 		return type;
 	}
 
@@ -71,7 +74,7 @@ public final class StoreDecl implements IStoreDecl {
 			throw new ContextError("Store already declared: " + ident.getValue(),
 					ident.getStart().getCurrentLine());
 		}
-		if (type.isType("BOOL")) {
+		if (type == ILiteralVal.Type.BOOL) {
 			store.setAddress(IMLCompiler.getVM().BoolInitHeapCell());
 			store.setRelative(false);
 		} else {

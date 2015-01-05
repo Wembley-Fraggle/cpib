@@ -4,6 +4,7 @@ import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.context.Store;
 import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
@@ -38,8 +39,8 @@ public final class ExprStore implements IExpr {
 	}
 
     @Override
-    public ITerminal checkR() throws ContextError {
-    	ITerminal type = IMLCompiler.getScope().getType(
+    public ILiteralVal.Type checkR() throws ContextError {
+        ILiteralVal.Type type = IMLCompiler.getScope().getType(
                 ident.getValue().toString());
         
         if (type == null) {
@@ -69,9 +70,9 @@ public final class ExprStore implements IExpr {
     }
 
     @Override
-    public ITerminal checkL(final boolean canInit) throws ContextError {
-    	ITerminal type = IMLCompiler.getScope().getType(
-                ident.getValue().toString());
+    public ILiteralVal.Type checkL(final boolean canInit) throws ContextError {
+        ILiteralVal.Type type = IMLCompiler.getScope().getType(
+                ident.getValue());
         
         if (type == null) {
             throw new ContextError(
@@ -80,7 +81,7 @@ public final class ExprStore implements IExpr {
         } 
         
         Store store = IMLCompiler.getScope().getStoreTable().getStore(
-                ident.getValue().toString());
+                ident.getValue());
         
         if (isInit) {
             if (canInit) {

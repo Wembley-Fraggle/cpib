@@ -3,6 +3,7 @@ package ch.fhnw.cpib.parsing.abs.impl;
 import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.context.Scope;
 import ch.fhnw.cpib.context.Store;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
@@ -31,7 +32,7 @@ public final class CmdIf implements ICmd {
 
 	@Override
 	public void check(final boolean canInit) throws ContextError {
-		if (!expr.checkR().isType("BOOL")) {
+		if (!(expr.checkR()  == ILiteralVal.Type.BOOL)) {
 			throw new ContextError("IF condition must be a boolean! ", expr.getLine());
 		}
 

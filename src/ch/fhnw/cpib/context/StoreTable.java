@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import ch.fhnw.cpib.lexing.ITerminal;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 
 public final class StoreTable {
     private Map<String, Store> storeMap;
@@ -21,7 +22,7 @@ public final class StoreTable {
         }
     }
 
-    public ITerminal getType(final String ident) {
+    public ILiteralVal.Type getType(final String ident) {
         if (storeMap.containsKey(ident)) {
             return storeMap.get(ident).getType();
         } else {

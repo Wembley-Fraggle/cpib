@@ -5,6 +5,7 @@ import java.util.List;
 
 import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.lexing.ITerminal;
+import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
 public abstract class Routine extends Symbol {
@@ -16,7 +17,7 @@ public abstract class Routine extends Symbol {
 	private List<Integer> calls = new ArrayList<Integer>();
 	private int address;
 
-	protected Routine(final String ident, final ITerminal type,
+	protected Routine(final String ident, final ILiteralVal.Type type,
 			final RoutineTypes routineType) {
 		super(ident, type);
 		this.routineType = routineType;
