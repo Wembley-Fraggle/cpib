@@ -1,15 +1,10 @@
-program modulocalc(in const b:int32, in const c:int32)
+program modulocalc()
 global
- /*
-  * Calculates the modulo of two integers
-  * -------------------------------------------------------------
-  * @Param b  : Dividend
-  * @Param c  : Divisor
-  * @Return r : a modulo b.
-  *         	E.g. 3 modulo 2 = 1
-  * @Pre  	: b >= 0 and c > 0
-  * @Post 	: r >= 0 and r = mod(b,c)
-  */
+ 
+ var r:int32;
+ var b:int32;
+ var c:int32;
+ 
  fun modulo(
 	in copy const b:int32,
 	in copy const c:int32 )
@@ -18,25 +13,32 @@ global
    var q:int32;
    var x:int32;
    var y:int32
- pre  Q : b >= 0 && c > 0
+ pre  Q : b >= 0 &? c > 0
  
  do
+  
+   debugout b;
+   debugout c;
+ 
   q init := 0;
   r init := b;
  
   while r >= c
-  inv P : b = q * c + r && 0 <= r
+  inv P : b = q * c + r &? 0 <= r
   do
+
    q := q + 1;
-   r := r - c
+   r := r - r
   endwhile
  
- post R : b = q * c + r && 0 <= r && r < c
+ post R : b = q * c + r &? 0 <= r &? r < c
  endfun
 
 // The main program
 do
- r init := 0;
+ r init := 11;
+ b init := 0;
+ c init := 10;
  r := modulo(b, c);
  debugout r
 endprogram

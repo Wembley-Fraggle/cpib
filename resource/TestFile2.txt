@@ -1,0 +1,14 @@
+program modulocalc()
+global
+  var r:int32
+do
+ r init := 10;
+
+ while r >= 1
+ inv invariante : r >= 0
+ do
+   r := r - 1
+ endwhile
+ 
+ post perfect : r = 0
+endprogram

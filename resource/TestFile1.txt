@@ -1,0 +1,8 @@
+program modulocalc()
+global
+  f:int32
+do
+ f init := 10;
+ debugout f
+ post r : f > 10
+endprogram
