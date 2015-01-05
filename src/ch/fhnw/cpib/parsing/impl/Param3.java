@@ -17,4 +17,9 @@ public class Param3 implements IParam3 {
 				+ "</Changemode>\n";
 	}
 
+	@Override
+	public IChangemode toAbsSyn() {
+		return changemode;
+	}
+
 }

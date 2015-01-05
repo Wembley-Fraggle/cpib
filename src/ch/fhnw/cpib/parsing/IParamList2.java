@@ -1,9 +1,11 @@
 package ch.fhnw.cpib.parsing;
 
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
+
 //TODO Auto-generated stub
 public interface IParamList2 extends IConcSynNode {
 
-	IParamList toAbsSyn();
+	IParam toAbsSyn();
 
 	String toString(String indent);
 

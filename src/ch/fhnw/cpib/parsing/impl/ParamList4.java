@@ -3,6 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICParam;
 import ch.fhnw.cpib.parsing.IParamList4;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 
 public class ParamList4 implements IParamList4 {
 
@@ -18,6 +19,11 @@ public class ParamList4 implements IParamList4 {
 	public String toString(String indent) {
 		return indent + "<ParamList4>\n" + param.toString(indent + '\t') + indent
 				+ "</ParamList4>\n";
+	}
+
+	@Override
+	public IParam toAbsSyn() {
+		return param.toAbsSyn();
 	}
 
 }

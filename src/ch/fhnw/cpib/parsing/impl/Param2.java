@@ -17,4 +17,9 @@ public class Param2 implements IParam2 {
 				+ "</Mechmode>\n";
 	}
 
+	@Override
+	public IMechmode toAbsSyn() {
+		return mechmode;
+	}
+
 }

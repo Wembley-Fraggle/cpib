@@ -3,6 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IParamList;
 import ch.fhnw.cpib.parsing.IParamList1;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 
 public class ParamList implements IParamList {
 
@@ -17,7 +18,7 @@ public class ParamList implements IParamList {
     }
 
 		@Override
-		public IParamList toAbsSyn() {
+		public IParam toAbsSyn() {
 			return paramList1.toAbsSyn();
 		}
 

@@ -2,6 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IParamList3;
 import ch.fhnw.cpib.parsing.IParamList4;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 
 public class ParamList3 implements IParamList3 {
 
@@ -17,6 +18,11 @@ public class ParamList3 implements IParamList3 {
 	public String toString(String indent) {
 		return indent + "<ParamList3>\n" + paramList4.toString(indent + '\t')
 				+ paramList3.toString(indent + '\t') + indent + "<ParamList3/>\n";
+	}
+
+	@Override
+	public IParam toAbsSyn(IParam absSyn) {
+		return paramList3.toAbsSyn(paramList4.toAbsSyn());
 	}
 
 }

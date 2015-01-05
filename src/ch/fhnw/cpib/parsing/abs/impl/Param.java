@@ -3,31 +3,33 @@ package ch.fhnw.cpib.parsing.abs.impl;
 import ch.fhnw.cpib.IMLCompiler;
 import ch.fhnw.cpib.context.Routine;
 import ch.fhnw.cpib.context.Store;
+import ch.fhnw.cpib.parsing.IChangemode;
 import ch.fhnw.cpib.parsing.IFlowmode;
 import ch.fhnw.cpib.parsing.IMechmode;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
+//TODO changeMode verwenden...
 public final class Param implements IParam {
 	private final IFlowmode flowMode;
 	private final IMechmode mechMode;
+	private final IChangemode changeMode;
 	private final IStoreDecl storeDecl;
-	private final IParam param;
 	private Store store;
 
-	public Param(final IFlowmode flowMode, final IMechmode mechMode,
-			final IStoreDecl storeDecl, final IParam param) {
+	public Param(final IFlowmode flowMode, final IMechmode mechMode, final IChangemode changeMode,
+			final IStoreDecl storeDecl) {
 		this.flowMode = flowMode;
 		this.mechMode = mechMode;
+		this.changeMode = changeMode;
 		this.storeDecl = storeDecl;
-		this.param = param;
 	}
 
 	@Override
 	public String toString(final String indent) {
 		return indent + "<Param>\n" + flowMode.toString(indent + '\t')
 				+ mechMode.toString(indent + '\t') + storeDecl.toString(indent + '\t')
-				+ param.toString(indent + '\t') + indent + "</Param>\n";
+				+ indent + "</Param>\n";
 	}
 
 	@Override
@@ -45,7 +47,6 @@ public final class Param implements IParam {
 			}
 		}
 
-		param.checkInit();
 	}
 
 	@Override
@@ -66,7 +67,7 @@ public final class Param implements IParam {
 			store.setRelative(true);
 			store.setReference(false);
 		}
-		return param.calculateAddress(count - 1, locals1);
+		return locals1;//FIXME param.calculateAddress(count - 1, locals1);
 	}
 
 	@Override
@@ -81,7 +82,7 @@ public final class Param implements IParam {
 			}
 			locals1++;
 		}
-		return param.codeIn(loc1, count - 1, locals1);
+		return locals1; //FIXME param.codeIn(loc1, count - 1, locals1);
 	}
 
 	@Override
@@ -93,7 +94,7 @@ public final class Param implements IParam {
 				&& mechMode.getMode().getType().isType("COPY")) {
 			IMLCompiler.getVM().CopyOut(loc1++, 2 + ++locals1, -count);
 		}
-		return param.codeOut(loc1, count - 1, locals1);
+		return locals1; // FIXME param.codeOut(loc1, count - 1, locals1);
 	}
 
 	@Override
