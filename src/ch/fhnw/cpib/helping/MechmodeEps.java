@@ -14,7 +14,7 @@ public class MechmodeEps implements IMechmode, IAbstSyn {
 	@Override
 	public Modes getMode() {
 		// TODO Auto-generated method stub
-		return null;
+		return Modes.COPY;
 	}
 
 	@Override

@@ -14,8 +14,7 @@ public class Term11 implements ITerm11 {
 
 	@Override
 	public IExpr toAbsSyn(IExpr left) {
-		// TODO Auto-generated method stub
-		return null;
+		return term12.toAbsSyn(left);
 	}
 
 	@Override

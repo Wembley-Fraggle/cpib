@@ -1,6 +1,7 @@
 package ch.fhnw.cpib.parsing;
 
 import ch.fhnw.cpib.errors.GrammarError;
+import ch.fhnw.cpib.lexing.IToken;
 
 public interface IConcSyn {
     ICProgram program() throws GrammarError;
@@ -93,7 +94,7 @@ public interface IConcSyn {
     IExprList2 exprList2() throws GrammarError;
     IExprList3 exprList3() throws GrammarError;
     IExprList4 exprList4() throws GrammarError;
-    IBoolVal boolval() throws GrammarError;
+    IToken boolval() throws GrammarError;
     ICmd1 cmd1() throws GrammarError;
     ICmd2 cmd2() throws GrammarError;
     ICmd3 cmd3() throws GrammarError;

@@ -8,7 +8,7 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IProgram;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.HeapTooSmallError;
 
-//TODO add progParams to code 
+//TODO add progParams to code() 
 public final class Program implements IProgram {
 	private final IToken ident;
 	private final IParam progParams;
@@ -30,6 +30,12 @@ public final class Program implements IProgram {
 
 	@Override
 	public String toString(final String indent) {
+		System.out.println("ident " + ident);
+		System.out.println("progParams " + progParams);
+		System.out.println("cpsDecl " + cpsDecl);
+		System.out.println("dbcPreCmd " + dbcPreCmd);
+		System.out.println("cmd " + cmd);
+		System.out.println("dbcPostCmd " + dbcPostCmd);
 		return indent + "<Program>\n" + ident.toString(indent + '\t')
 				+ progParams.toString(indent + '\t') + cpsDecl.toString(indent + '\t')
 				+ dbcPreCmd.toString(indent + '\t') + cmd.toString(indent + '\t')

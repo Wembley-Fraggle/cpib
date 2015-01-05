@@ -1,24 +1,22 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.parsing.IBoolVal;
+import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ILiteral;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
+import ch.fhnw.cpib.parsing.abs.impl.ExprLiteral;
 
-
-//TODO Take a IToken
 public class LiteralBool implements ILiteral{
     
-    private IBoolVal value;
-    public LiteralBool(IBoolVal value) {
+    private IToken value;
+    public LiteralBool(IToken value) {
         this.value = value;
     }
 		@Override
 		public IExpr toAbsSyn() {
-			// TODO Auto-generated method stub
-			return null;
+			return new ExprLiteral(value);
 		}
 		@Override
 		public String toString(String indent) {
-			return indent + "<LITERAL>" + value + "</LITERAL>\n";
+			return indent + "<LITERAL>" + value.getValue() + "</LITERAL>\n";
 		}
 }
