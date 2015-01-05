@@ -2,8 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICCmd;
-import ch.fhnw.cpib.parsing.as.IAbsCmd;
-import ch.fhnw.cpib.parsing.as.impl.AbsSkipCmd;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
 
 public class CmdSkip implements ICCmd {
 
@@ -13,8 +12,8 @@ public class CmdSkip implements ICCmd {
 		this.skip = skip;
 	}
 
-	public IAbsCmd toAbsSyn() {
-		return new AbsSkipCmd();
+	public ICmd toAbsSyn() {
+		return new ch.fhnw.cpib.parsing.abs.impl.CmdSkip();
 	}
 
 	@Override

@@ -4,17 +4,14 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
 public final class CmdSkip implements ICmd {
-	private final ICmd repCmd;
 	
-	public CmdSkip(final ICmd repCmd) {
-		this.repCmd = repCmd;
+	public CmdSkip() {
 	}
 
 	@Override
     public String toString(final String indent) {
 		return indent
 				+ "<CmdSkip>\n"
-				+ repCmd.toString(indent + '\t')
 				+ indent
 				+ "</CmdSkip>\n";
 	}
@@ -26,11 +23,10 @@ public final class CmdSkip implements ICmd {
 
     @Override
     public void check(final boolean canInit) throws ContextError {
-        repCmd.check(canInit);
     }
 
     @Override
     public int code(final int loc) throws CodeTooSmallError {
-        return repCmd.code(loc);
+        return loc;
     }
 }
