@@ -1,6 +1,7 @@
 package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
+import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.context.Routine;
 import ch.fhnw.cpib.context.Store;
 import ch.fhnw.cpib.parsing.IChangemode;
@@ -39,29 +40,20 @@ public final class ProgParam implements IParam {
 
 	@Override
 	public void checkInit() throws ContextError {
-		if (flowMode.getMode().getType().isType("OUT")) {
 			if (!IMLCompiler.getScope().getStoreTable()
 					.getStore(storeDecl.getIdent()).isInitialized()) {
 				throw new ContextError("OUT parameter is never initialized! Ident: "
 						+ storeDecl.getIdent(), storeDecl.getLine());
 			}
-		}
 		param.checkInit();
 	}
 
 	@Override
 	public int calculateAddress(final int count, final int locals) {
 		int locals1 = locals;
-		if (flowMode.getMode().getType().isType("IN")
-				|| changeMode.getMode().getType().isType("REF")) {
+		if (flowMode.getMode() == Modes.IN) {
 			store.setAddress(-count);
 			store.setRelative(true);
-			if (changeMode.getMode().getType().isType("REF")) {
-				store.setReference(true);
-			} else {
-				store.setReference(false);
-			}
-
 		} else {
 			store.setAddress(2 + ++locals1);
 			store.setRelative(true);
@@ -75,9 +67,8 @@ public final class ProgParam implements IParam {
 			throws CodeTooSmallError {
 		int locals1 = locals;
 		int loc1 = loc;
-		if (flowMode.getMode().getType().isType("IN")
-				&& changeMode.getMode().getType().isType("COPY")) {
-			if (flowMode.getMode().getType().isType("INOUT")) {
+		if (flowMode.getMode() == Modes.IN) {
+			if (flowMode.getMode() == Modes.INOUT) {
 				IMLCompiler.getVM().CopyIn(loc1++, -count, 3 + locals1);
 			}
 			locals1++;
@@ -90,8 +81,7 @@ public final class ProgParam implements IParam {
 			throws CodeTooSmallError {
 		int locals1 = locals;
 		int loc1 = loc;
-		if (flowMode.getMode().getType().isType("IN")
-				&& changeMode.getMode().getType().isType("COPY")) {
+		if (flowMode.getMode() == Modes.IN) {
 			IMLCompiler.getVM().CopyOut(loc1++, 2 + ++locals1, -count);
 		}
 		return param.codeOut(loc1, count - 1, locals1);
