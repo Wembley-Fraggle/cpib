@@ -3,6 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICmd4;
 import ch.fhnw.cpib.parsing.ICExprList;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
 import ch.fhnw.cpib.parsing.as.IAbsProcCallCmd;
 import ch.fhnw.cpib.parsing.as.impl.AbsProcCallCmd;
 
@@ -18,7 +19,7 @@ public class Cmd4 implements ICmd4 {
 		this.exprList = exprList;
 	}
 
-	public IAbsProcCallCmd toAbsSyn() {
+	public ICmd toAbsSyn() {
 		return new AbsProcCallCmd(ident, exprList.toAbsSyn());
 	}
 
