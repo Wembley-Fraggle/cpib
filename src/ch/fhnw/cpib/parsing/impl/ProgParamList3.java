@@ -25,7 +25,7 @@ public class ProgParamList3 implements IProgParamList3 {
 
 	@Override
 	public IParam toAbsSyn(IParam iParam) {
-		return progParamList3.toAbsSyn(progParamList4.toAbsSyn());
+		return progParamList3.toAbsSyn(progParamList4.toAbsSyn(iParam));
 	}
 
 }

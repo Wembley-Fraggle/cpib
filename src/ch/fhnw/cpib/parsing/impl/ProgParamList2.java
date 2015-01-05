@@ -4,6 +4,7 @@ import ch.fhnw.cpib.parsing.IProgParam;
 import ch.fhnw.cpib.parsing.IProgParamList2;
 import ch.fhnw.cpib.parsing.IProgParamList3;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
+import ch.fhnw.cpib.parsing.abs.impl.ProgParamEps;
 
 public class ProgParamList2 implements IProgParamList2 {
 
@@ -24,7 +25,7 @@ public class ProgParamList2 implements IProgParamList2 {
 
     @Override
     public IParam toAbsSyn() {
-        return progParamList3.toAbsSyn(progParam.toAbsSyn());
+        return progParamList3.toAbsSyn(progParam.toAbsSyn(new ProgParamEps()));
 //        return new CpsDecl(progParam.toAbsSyn(), progParamList3.toAbsSyn());
     }
 

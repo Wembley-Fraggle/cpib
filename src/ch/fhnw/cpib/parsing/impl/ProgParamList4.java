@@ -7,6 +7,7 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 
 public class ProgParamList4 implements IProgParamList4 {
 
+	@SuppressWarnings("unused")
 	private IToken comma;
 	private IProgParam progParam;
 
@@ -17,13 +18,13 @@ public class ProgParamList4 implements IProgParamList4 {
 
 	@Override
 	public String toString(String indent) {
-		return indent + "<ProgParamList4>\n"
-				+ progParam.toString(indent + '\t') + indent + "</ProgParamList4>\n";
+		return indent + "<ProgParamList4>\n" + progParam.toString(indent + '\t')
+				+ indent + "</ProgParamList4>\n";
 	}
 
-    @Override
-    public IParam toAbsSyn() {
-        return progParam.toAbsSyn();
-    }
+	@Override
+	public IParam toAbsSyn(IParam iParam) {
+		return progParam.toAbsSyn(iParam);
+	}
 
 }

@@ -7,9 +7,11 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 
 public class ProgParamList implements IProgParamList {
 
-    private IToken lParent;
+    @SuppressWarnings("unused")
+		private IToken lParent;
     private IProgParamList1 progParamList1;
-    private IToken rParent;
+    @SuppressWarnings("unused")
+		private IToken rParent;
     
     public ProgParamList(IToken lParent, IProgParamList1 progParamList1,
             IToken rParent) {
@@ -26,9 +28,7 @@ public class ProgParamList implements IProgParamList {
     @Override
     public String toString(String indent) {
         return indent + "<ProgParamList>\n"
-                + lParent.toString(indent + '\t')
                 + progParamList1.toString(indent + '\t')
-                + rParent.toString(indent + '\t')
                 + indent + "</ProgParamList>\n";
     }
 
