@@ -7,12 +7,10 @@ import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
 public final class CmdOut implements ICmd {
 	private final IExpr expr;
-	private final ICmd repCmd;
 	private ITerminal type;
 	
-	public CmdOut(final IExpr expr, final ICmd repCmd) {
+	public CmdOut(final IExpr expr) {
 		this.expr = expr;
-		this.repCmd = repCmd;
 	}
 	
 	@Override
@@ -20,7 +18,6 @@ public final class CmdOut implements ICmd {
 		return indent
 				+ "<CmdOut>\n"
 				+ expr.toString(indent + '\t')
-				+ repCmd.toString(indent + '\t')
 				+ indent
 				+ "</CmdOut>\n";
 	}
@@ -38,7 +35,6 @@ public final class CmdOut implements ICmd {
                     "Output needs to be a store!",
                      expr.getLine());
         }
-        repCmd.check(canInit);
     }
 
     @Override
@@ -51,6 +47,6 @@ public final class CmdOut implements ICmd {
             IMLCompiler.getVM().IntOutput(
                     loc1++, ((ExprStore) expr).getIdent());
         }
-        return repCmd.code(loc1);
+        return loc1;
     }
 }

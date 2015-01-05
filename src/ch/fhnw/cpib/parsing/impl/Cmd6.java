@@ -3,8 +3,8 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICmd6;
 import ch.fhnw.cpib.parsing.IConcExpr;
-import ch.fhnw.cpib.parsing.as.IAbsDebOutCmd;
-import ch.fhnw.cpib.parsing.as.impl.AbsDebOutCmd;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
+import ch.fhnw.cpib.parsing.abs.impl.CmdOut;
 
 public class Cmd6 implements ICmd6 {
 	IToken debugOut;
@@ -15,8 +15,8 @@ public class Cmd6 implements ICmd6 {
 		this.expr = expr;
 	}
 
-	public IAbsDebOutCmd toAbsSyn() {
-		return new AbsDebOutCmd(expr.toAbsSyn());
+	public ICmd toAbsSyn() {
+		return new CmdOut(expr.toAbsSyn());
 	}
 
 	@Override
