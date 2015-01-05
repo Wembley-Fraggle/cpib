@@ -64,7 +64,7 @@ public final class Param implements IParam {
                 store.initialize();
                 break;
             case INOUT:
-                if (routine.getRoutineType() != RoutineTypes.PROCEDURE) {
+                if (routine.getRoutineType() != RoutineTypes.FUNCTION) {
                     throw new ContextError(
                             "INOUT parameter in function declaration! Ident: "
                                     + store.getIdent(),
@@ -79,7 +79,7 @@ public final class Param implements IParam {
                 store.initialize();
                 break;
             case OUT:
-                if (routine.getRoutineType() != RoutineTypes.PROCEDURE) {
+                if (routine.getRoutineType() != RoutineTypes.FUNCTION) {
                     throw new ContextError(
                             "OUT parameter in function declaration! Ident: "
                                     + store.getIdent(),
