@@ -17,4 +17,9 @@ public class ProgParam2 implements IProgParam2 {
 				+ indent + "</Changemode>\n";
 	}
 
+	@Override
+	public IChangemode toAbsSyn() {
+		return changemode;
+	}
+
 }

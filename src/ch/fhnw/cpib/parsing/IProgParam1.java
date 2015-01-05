@@ -5,4 +5,6 @@ public interface IProgParam1 extends IConcSynNode {
 
 	String toString(String indent);
 
+	IFlowmode toAbsSyn();
+
 }

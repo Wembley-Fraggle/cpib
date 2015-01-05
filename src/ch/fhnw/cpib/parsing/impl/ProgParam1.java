@@ -17,4 +17,9 @@ public class ProgParam1 implements IProgParam1 {
 				+ "</Flowmode>\n";
 	}
 
+	@Override
+	public IFlowmode toAbsSyn() {
+		return flowmode;
+	}
+
 }

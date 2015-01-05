@@ -1,6 +1,5 @@
 package ch.fhnw.cpib.parsing.impl;
 
-import ch.fhnw.cpib.helping.ChangemodeEps;
 import ch.fhnw.cpib.parsing.ICParam;
 import ch.fhnw.cpib.parsing.IParam1;
 import ch.fhnw.cpib.parsing.IParam2;
@@ -34,7 +33,7 @@ public class Param implements ICParam {
 
 	@Override
 	public IParam toAbsSyn() {
-		IStoreDecl stoDecl = new StoreDecl(new ChangemodeEps(),
+		IStoreDecl stoDecl = new StoreDecl(param3.toAbsSyn(),
 				typedIdent.getIdent(), typedIdent.getAtomtype().toAbsSyn().getType());
 		return new ch.fhnw.cpib.parsing.abs.impl.Param(param1.toAbsSyn(),
 				param2.toAbsSyn(), param3.toAbsSyn(), stoDecl);

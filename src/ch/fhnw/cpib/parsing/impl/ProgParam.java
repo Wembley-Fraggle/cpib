@@ -4,8 +4,9 @@ import ch.fhnw.cpib.parsing.IProgParam;
 import ch.fhnw.cpib.parsing.IProgParam1;
 import ch.fhnw.cpib.parsing.IProgParam2;
 import ch.fhnw.cpib.parsing.ITypedIdent;
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDecl;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IStoreDecl;
+import ch.fhnw.cpib.parsing.abs.impl.StoreDecl;
 
 public class ProgParam implements IProgParam {
 
@@ -27,10 +28,11 @@ public class ProgParam implements IProgParam {
 				+ typedIdent.toString(indent + '\t') + indent + "</ProgParam>\n";
 	}
 
-    @Override
-    public IParam toAbsSyn() {
-        return new FunDe()
-        // TODO Auto-generated method stub
-        return null;
-    }
+	@Override
+	public IParam toAbsSyn() {
+		IStoreDecl stoDecl = new StoreDecl(progParam2.toAbsSyn(),
+				typedIdent.getIdent(), typedIdent.getAtomtype().toAbsSyn().getType());
+		return new ch.fhnw.cpib.parsing.abs.impl.ProgParam(progParam1.toAbsSyn(),
+				progParam2.toAbsSyn(), stoDecl);
+	}
 }

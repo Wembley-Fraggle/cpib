@@ -2,7 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.IProgParamList1;
 import ch.fhnw.cpib.parsing.IProgParamList2;
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsDecl;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 
 public class ProgParamList1 implements IProgParamList1 {
 
@@ -20,7 +20,7 @@ public class ProgParamList1 implements IProgParamList1 {
 	}
 
     @Override
-    public ICpsDecl toAbsSyn() {
+    public IParam toAbsSyn() {
         return progParamList2.toAbsSyn();
     }
 

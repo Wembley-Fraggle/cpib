@@ -3,9 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.IProgParam;
 import ch.fhnw.cpib.parsing.IProgParamList2;
 import ch.fhnw.cpib.parsing.IProgParamList3;
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsDecl;
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDecl;
-import ch.fhnw.cpib.parsing.abs.impl.CpsDecl;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 
 public class ProgParamList2 implements IProgParamList2 {
 
@@ -25,9 +23,9 @@ public class ProgParamList2 implements IProgParamList2 {
 	}
 
     @Override
-    public ICpsDecl toAbsSyn() {
-        
-        return new CpsDecl(progParam.toAbsSyn(), progParamList3.toAbsSyn());
+    public IParam toAbsSyn() {
+        return progParamList3.toAbsSyn(progParam.toAbsSyn());
+//        return new CpsDecl(progParam.toAbsSyn(), progParamList3.toAbsSyn());
     }
 
 }

@@ -1,11 +1,11 @@
 package ch.fhnw.cpib.parsing;
 
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDecl;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 
 //TODO Auto-generated stub
 public interface IProgParamList4 extends IConcSynNode {
 
-    IDecl toAbsSyn();
+	IParam toAbsSyn();
 	String toString(String indent);
 
 }

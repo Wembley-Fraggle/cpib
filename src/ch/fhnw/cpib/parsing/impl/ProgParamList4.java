@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IProgParam;
 import ch.fhnw.cpib.parsing.IProgParamList4;
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDecl;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 
 public class ProgParamList4 implements IProgParamList4 {
 
@@ -22,7 +22,7 @@ public class ProgParamList4 implements IProgParamList4 {
 	}
 
     @Override
-    public IDecl toAbsSyn() {
+    public IParam toAbsSyn() {
         return progParam.toAbsSyn();
     }
 
