@@ -52,7 +52,7 @@ public final class Program implements IProgram {
 		cpsDecl.checkDeclaration();
 		cpsDecl.check(-1);
 		IMLCompiler.setScope(new Scope(IMLCompiler.getGlobalStoreTable().clone()));
-		cmd.check(false);
+//		cmd.check(false);
 	}
 
 	@Override
