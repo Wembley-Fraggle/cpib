@@ -41,6 +41,11 @@ public interface IAbstSyn {
 	    void check(boolean canInit) throws ContextError;
         int code(int loc) throws CodeTooSmallError;
 	}
+	
+	public interface ICpsCmd extends ICmd {
+	    
+	}
+	
 	public interface IParam extends IAbstSyn {
 	    void check(Routine routine) throws ContextError;
 	    void checkInit() throws ContextError;

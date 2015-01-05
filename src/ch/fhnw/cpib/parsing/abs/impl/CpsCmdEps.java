@@ -1,14 +1,16 @@
 package ch.fhnw.cpib.parsing.abs.impl;
 
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsCmd;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
 
-public final class CmdEps implements ICmd {
+public final class CpsCmdEps implements ICpsCmd {
     
+    public CpsCmdEps() {
+    }
     
 	@Override
     public String toString(final String indent) {
-		return indent + "<CmdEps/>\n";
+		return indent + "<CpsCmdEps/>\n";
 	}
 	
 	@Override
@@ -17,9 +19,7 @@ public final class CmdEps implements ICmd {
 	}
 
     @Override
-    public void check(final boolean canInit) {
-        
-    }
+    public void check(final boolean canInit) { }
 
     @Override
     public int code(final int loc) throws CodeTooSmallError {
