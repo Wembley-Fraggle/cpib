@@ -1,7 +1,8 @@
 package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.ICpsCmd1;
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsCmd;
+import ch.fhnw.cpib.parsing.abs.impl.CpsCmdEps;
 
 public class CpsCmd1Eps implements ICpsCmd1 {
 	@Override
@@ -10,7 +11,7 @@ public class CpsCmd1Eps implements ICpsCmd1 {
 	}
 
 	@Override
-	public ICmd toAbsSyn(ICmd iCmd) {
-		return iCmd;
+	public ICpsCmd toAbsSyn() {
+		return new CpsCmdEps();
 	}
 }

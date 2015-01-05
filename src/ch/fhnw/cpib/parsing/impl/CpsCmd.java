@@ -16,7 +16,7 @@ public class CpsCmd implements ICpsCmd {
 
 	@Override
 	public ICmd toAbsSyn() {
-		return cpsCmd1.toAbsSyn(cmd.toAbsSyn());
+		return new ch.fhnw.cpib.parsing.abs.impl.CpsCmd(cmd.toAbsSyn(), cpsCmd1.toAbsSyn());
 	}
 
 	@Override

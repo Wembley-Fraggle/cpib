@@ -2,7 +2,7 @@ package ch.fhnw.cpib.parsing.impl;
 
 import ch.fhnw.cpib.parsing.ICpsCmd1;
 import ch.fhnw.cpib.parsing.ICpsCmd2;
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICmd;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsCmd;
 
 public class CpsCmd1 implements ICpsCmd1 {
 
@@ -21,8 +21,8 @@ public class CpsCmd1 implements ICpsCmd1 {
 	}
 
 	@Override
-	public ICmd toAbsSyn(ICmd iCmd) {
-		return cpsCmd1.toAbsSyn(cpsCmd2.toAbsSyn());
+	public ICpsCmd toAbsSyn() {
+		return new ch.fhnw.cpib.parsing.abs.impl.CpsCmd(cpsCmd2.toAbsSyn(), cpsCmd1.toAbsSyn());
 	}
 
 }
