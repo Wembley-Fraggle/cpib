@@ -12,7 +12,7 @@ public class CpsDeclEps implements ICpsDecl1 {
 	}
 
 	@Override
-	public ICpsDecl toAbsSyn(IDecl absSyn) {
+	public ICpsDecl toAbsSyn() {
 		return new ch.fhnw.cpib.parsing.abs.impl.CpsDeclEps();
 	}
 
