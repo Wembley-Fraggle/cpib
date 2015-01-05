@@ -3,7 +3,7 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.parsing.ICpsDecl1;
 import ch.fhnw.cpib.parsing.ICpsDecl2;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsDecl;
-import ch.fhnw.cpib.parsing.abs.impl.CpsDecl;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDecl;
 
 public class CpsDecl1 implements ICpsDecl1 {
 
@@ -22,8 +22,9 @@ public class CpsDecl1 implements ICpsDecl1 {
 	}
 
 	@Override
-	public ICpsDecl toAbsSyn() {
-	    return new CpsDecl(cpsDecl2.toAbsSyn(), cpsDecl1.toAbsSyn());
+	public ICpsDecl toAbsSyn(IDecl iDecl) {
+		return cpsDecl2.toAbsSyn(cpsDecl1.toAbsSyn(iDecl));
+//		return new CpsDecl(cpsDecl2.toAbsSyn(), cpsDecl1.toAbsSyn());
 	}
 
 }

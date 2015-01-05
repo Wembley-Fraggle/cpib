@@ -45,8 +45,15 @@ public class FunDecl implements IFunDecl {
 	}
 
 	public IAbstSyn.IDecl toAbsSyn() {
-		return new ch.fhnw.cpib.parsing.abs.impl.FunDecl(ident, paramList.toAbsSyn(), stoDecl.toAbsSyn(), funDecl1.toAbsSyn(),
-				funDecl2.toAbsSyn(), funDecl3.toAbsSyn(), cpsCmd.toAbsSyn(), funDecl4.toAbsSyn());
+		return new ch.fhnw.cpib.parsing.abs.impl.FunDecl(
+				ident, 
+				paramList.toAbsSyn(), 
+				stoDecl.toAbsSyn(), 
+				funDecl1.toAbsSyn(),
+				funDecl2.toAbsSyn(), 
+				funDecl3.toAbsSyn(), 
+				cpsCmd.toAbsSyn(), 
+				funDecl4.toAbsSyn());
 	}
 	
 	@Override

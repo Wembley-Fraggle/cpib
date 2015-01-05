@@ -16,7 +16,8 @@ global
  returns const r:int32
  local
    var q:int32;
-   var r:int32
+   var x:int32;
+   var y:int32
  pre  Q : b >= 0 && c > 0
  
  do

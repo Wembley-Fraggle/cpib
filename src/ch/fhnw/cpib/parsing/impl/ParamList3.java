@@ -22,6 +22,7 @@ public class ParamList3 implements IParamList3 {
 
 	@Override
 	public IParam toAbsSyn(IParam iParam) {
+//		new ch.fhnw.cpib.parsing.abs.impl.Param();
 		return paramList3.toAbsSyn(paramList4.toAbsSyn(iParam));
 	}
 

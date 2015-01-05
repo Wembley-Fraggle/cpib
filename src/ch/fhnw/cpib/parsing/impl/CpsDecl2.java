@@ -3,7 +3,8 @@ package ch.fhnw.cpib.parsing.impl;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.ICDecl;
 import ch.fhnw.cpib.parsing.ICpsDecl2;
-import ch.fhnw.cpib.parsing.abs.IAbstSyn.IDecl;
+import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsDecl;
+import ch.fhnw.cpib.parsing.abs.impl.CpsDecl;
 
 public class CpsDecl2 implements ICpsDecl2 {
 
@@ -23,8 +24,8 @@ public class CpsDecl2 implements ICpsDecl2 {
 	}
 
 	@Override
-	public IDecl toAbsSyn() {
-		return decl.toAbsSyn();
+	public ICpsDecl toAbsSyn(ICpsDecl iCpsDecl) {
+		return new CpsDecl(decl.toAbsSyn(), iCpsDecl);
 	}
 
 }

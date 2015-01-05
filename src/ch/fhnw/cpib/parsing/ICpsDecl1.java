@@ -7,6 +7,6 @@ public interface ICpsDecl1 extends IConcSynNode {
 
 	String toString(String indent);
 
-	ICpsDecl toAbsSyn();
+	ICpsDecl toAbsSyn(IDecl iDecl);
 
 }
