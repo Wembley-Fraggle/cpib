@@ -20,7 +20,7 @@ public class FlowmodeInOut implements IFlowmode {
 
 	@Override
 	public Modes getMode() {
-		return return Modes.INOUT;
+		return Modes.INOUT;
 	}
 
 }

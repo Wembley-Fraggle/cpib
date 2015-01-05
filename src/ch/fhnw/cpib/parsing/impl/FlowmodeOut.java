@@ -1,5 +1,6 @@
 package ch.fhnw.cpib.parsing.impl;
 
+import ch.fhnw.cpib.context.Modes;
 import ch.fhnw.cpib.lexing.IToken;
 import ch.fhnw.cpib.parsing.IFlowmode;
 
@@ -15,8 +16,8 @@ public class FlowmodeOut implements IFlowmode {
 			return indent + outMode.getValue() + '\n';
 		}
 		@Override
-		public IToken getMode() {
-			return outMode;
+		public Modes getMode() {
+			return Modes.OUT;
 		}
 
 }
