@@ -4,6 +4,7 @@ import ch.fhnw.cpib.parsing.ICpsStoDecl;
 import ch.fhnw.cpib.parsing.ICpsStoDecl1;
 import ch.fhnw.cpib.parsing.IStoDecl;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.ICpsDecl;
+import ch.fhnw.cpib.parsing.abs.impl.CpsDecl;
 
 public class CpsStoDecl implements ICpsStoDecl {
 
@@ -17,7 +18,7 @@ public class CpsStoDecl implements ICpsStoDecl {
 
 	@Override
 	public ICpsDecl toAbsSyn() {
-		return cpsStoDecl1.toAbsSyn(stoDecl.toAbsSyn());
+	    return new CpsDecl(stoDecl.toAbsSyn(), cpsStoDecl1.toAbsSyn());
 	}
 
 	@Override
