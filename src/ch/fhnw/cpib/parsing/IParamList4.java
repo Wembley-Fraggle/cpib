@@ -6,6 +6,6 @@ public interface IParamList4 {
 
 	public String toString(String indent);
 
-	public IParam toAbsSyn();
+	public IParam toAbsSyn(IParam iParam);
 
 }

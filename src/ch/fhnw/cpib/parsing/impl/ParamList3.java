@@ -21,8 +21,8 @@ public class ParamList3 implements IParamList3 {
 	}
 
 	@Override
-	public IParam toAbsSyn(IParam absSyn) {
-		return paramList3.toAbsSyn(paramList4.toAbsSyn());
+	public IParam toAbsSyn(IParam iParam) {
+		return paramList3.toAbsSyn(paramList4.toAbsSyn(iParam));
 	}
 
 }

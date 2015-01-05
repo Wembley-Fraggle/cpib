@@ -31,7 +31,7 @@ public final class Program implements IProgram {
 	@Override
 	public String toString(final String indent) {
 		System.out.println("ident " + ident);
-		System.out.println("progParams " + progParams.toString(""));
+		System.out.println("progParams " + progParams);
 		System.out.println("cpsDecl " + cpsDecl);
 		System.out.println("dbcPreCmd " + dbcPreCmd);
 		System.out.println("cmd " + cmd);

@@ -6,6 +6,6 @@ public interface ICParam extends IConcSynNode{
 
 	String toString(String indent);
 
-	IParam toAbsSyn();
+	IParam toAbsSyn(IParam iParam);
 
 }

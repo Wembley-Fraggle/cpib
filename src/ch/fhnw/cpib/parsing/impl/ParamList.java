@@ -7,9 +7,11 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 
 public class ParamList implements IParamList {
 
-    private IToken lparent;
+    @SuppressWarnings("unused")
+		private IToken lparent;
     private IParamList1 paramList1;
-    private IToken rParent;
+    @SuppressWarnings("unused")
+		private IToken rParent;
 
     public ParamList(IToken lparent, IParamList1 paramList1, IToken rParent) {
         this.lparent = lparent;

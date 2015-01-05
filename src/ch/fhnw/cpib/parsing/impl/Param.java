@@ -32,11 +32,11 @@ public class Param implements ICParam {
 	}
 
 	@Override
-	public IParam toAbsSyn() {
+	public IParam toAbsSyn(IParam iParam) {
 		IStoreDecl stoDecl = new StoreDecl(param3.toAbsSyn(),
 				typedIdent.getIdent(), typedIdent.getAtomtype().toAbsSyn().getType());
 		return new ch.fhnw.cpib.parsing.abs.impl.Param(param1.toAbsSyn(),
-				param2.toAbsSyn(), param3.toAbsSyn(), stoDecl);
+				param2.toAbsSyn(), param3.toAbsSyn(), stoDecl, iParam);
 	}
 
 }

@@ -7,6 +7,7 @@ import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
 
 public class ParamList4 implements IParamList4 {
 
+	@SuppressWarnings("unused")
 	private IToken comma;
 	private ICParam param;
 
@@ -22,8 +23,8 @@ public class ParamList4 implements IParamList4 {
 	}
 
 	@Override
-	public IParam toAbsSyn() {
-		return param.toAbsSyn();
+	public IParam toAbsSyn(IParam iParam) {
+		return param.toAbsSyn(iParam);
 	}
 
 }

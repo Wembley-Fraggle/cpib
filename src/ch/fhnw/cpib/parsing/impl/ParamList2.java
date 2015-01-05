@@ -4,6 +4,7 @@ import ch.fhnw.cpib.parsing.ICParam;
 import ch.fhnw.cpib.parsing.IParamList2;
 import ch.fhnw.cpib.parsing.IParamList3;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IParam;
+import ch.fhnw.cpib.parsing.abs.impl.ParamEps;
 
 public class ParamList2 implements IParamList2 {
 
@@ -17,7 +18,7 @@ public class ParamList2 implements IParamList2 {
 
 	@Override
 	public IParam toAbsSyn() {
-		return paramList3.toAbsSyn(param.toAbsSyn());
+		return paramList3.toAbsSyn(param.toAbsSyn(new ParamEps()));
 	}
 
 	@Override
