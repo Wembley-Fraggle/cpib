@@ -42,8 +42,17 @@ public final class ExprLiteral implements IExpr {
 
     @Override
     public int code(final int loc) throws CodeTooSmallError {
-        // FIXME Can be either a int or bool
-        IMLCompiler.getVM().IntLoad(loc, literal.getLiteral());
+        if(literal.getType().isType("TRUE")) {
+            IMLCompiler.getVM().IntLoad(loc, 1);
+        }
+        else if(literal.getType().isType("FALSE")) {
+            IMLCompiler.getVM().IntLoad(loc, 0);
+        }
+        else {
+            // Must be an integer
+            int val = Integer.parseInt(literal.getValue());
+            IMLCompiler.getVM().IntLoad(loc, val);
+        }
         return loc + 1;
     }
 }
