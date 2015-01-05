@@ -17,4 +17,9 @@ public class Param1 implements IParam1 {
 				+ "</Flowmode>\n";
 	}
 
+	@Override
+	public IFlowmode toAbsSyn() {
+		return flowmode;
+	}
+
 }
