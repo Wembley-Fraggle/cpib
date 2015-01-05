@@ -13,7 +13,7 @@ global
  fun modulo(
 	in copy const b:int32,
 	in copy const c:int32 )
- returns const r:int32
+ returns var r:int32
  local
    var q:int32;
    var x:int32;
