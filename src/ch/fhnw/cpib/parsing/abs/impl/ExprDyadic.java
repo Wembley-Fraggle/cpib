@@ -1,9 +1,7 @@
 package ch.fhnw.cpib.parsing.abs.impl;
 
 import ch.fhnw.cpib.IMLCompiler;
-import ch.fhnw.cpib.lexing.ITerminal;
 import ch.fhnw.cpib.lexing.IToken;
-import ch.fhnw.cpib.lexing.Terminal;
 import ch.fhnw.cpib.parsing.ILiteralVal;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.IExpr;
 import ch.fhnw.lederer.virtualmachine.IVirtualMachine.CodeTooSmallError;
@@ -73,7 +71,7 @@ public final class ExprDyadic implements IExpr {
 	        case "GE":
 	        case "LE":
 	            if (type1 == ILiteralVal.Type.INT32
-                    && type1 == ILiteralVal.Type.INT32) {
+                    && type2 == ILiteralVal.Type.INT32) {
 	                return ILiteralVal.Type.BOOL;
                 } else {
                     throw new ContextError(
