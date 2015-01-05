@@ -44,6 +44,8 @@ public final class CmdExpr implements ICmd {
             if (typeR != typeL) {
                 throw new ContextError(
                         "Types in assignemt don't match!: "
+                        + "left:" +  typeL + " "
+                        + "right " + typeR + " "
                         , targetExpr.getLine());
             }
         }
