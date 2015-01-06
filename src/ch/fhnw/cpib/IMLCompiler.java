@@ -64,18 +64,22 @@ public final class IMLCompiler {
 		throw new AssertionError("Instantiating utility class...");
 	}
 
-	public static synchronized void compile(final String imlCode)
+	public static synchronized void compile(final String path)
 			throws LexicalError, GrammarError, ContextError, HeapTooSmallError,
-			CodeTooSmallError, ExecutionError {
-		File f = new File(
-				"resource/TestFile.txt");
+			CodeTooSmallError, ExecutionError, FileNotFoundException {
+		File f;
+		if (path.trim().isEmpty()) {
+			f = new File("resource/TestFile.txt");
+		} else {
+			f = new File(path);
+		}
 		FileInputStream fis = null;
 		FileInputStream fis2 = null;
 		try {
 			fis = new FileInputStream(f);
 			fis2 = new FileInputStream(f);
 		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
+			throw new FileNotFoundException();
 		}
 		System.out.println("Scanning:");
 		LexerRuleFactory builder = new LexerRuleFactory();
