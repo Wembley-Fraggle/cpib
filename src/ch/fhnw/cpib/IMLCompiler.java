@@ -78,8 +78,8 @@ public final class IMLCompiler {
 		try {
 			fis = new FileInputStream(f);
 			fis2 = new FileInputStream(f);
-		} catch (FileNotFoundException e1) {
-			throw new FileNotFoundException();
+		} catch (FileNotFoundException e) {
+			throw e;
 		}
 		System.out.println("Scanning:");
 		LexerRuleFactory builder = new LexerRuleFactory();
