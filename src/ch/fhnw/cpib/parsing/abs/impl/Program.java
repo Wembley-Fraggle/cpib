@@ -30,12 +30,6 @@ public final class Program implements IProgram {
 
 	@Override
 	public String toString(final String indent) {
-		System.out.println("ident " + ident);
-		System.out.println("progParams " + progParams);
-		System.out.println("cpsDecl " + cpsDecl);
-		System.out.println("dbcPreCmd " + dbcPreCmd);
-		System.out.println("cmd " + cmd);
-		System.out.println("dbcPostCmd " + dbcPostCmd);
 		return indent + "<Program>\n" + ident.toString(indent + '\t')
 				+ progParams.toString(indent + '\t') + cpsDecl.toString(indent + '\t')
 				+ dbcPreCmd.toString(indent + '\t') + cmd.toString(indent + '\t')
