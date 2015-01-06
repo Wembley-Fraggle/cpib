@@ -10,13 +10,6 @@ public class VirtualMachineFile implements IVirtualMachine {
 
 	private final Writer fileWriter;
 
-//	private IInstruction[] code;
-
-  // stores the data
-  //  - stack: index 0 upto sp-1
-  //  - heap: index store.length - 1 downto hp+1
-//  private Data.IBaseData[] store;
-
   // heap pointer
   //  - points to the first free location on the heap
   //  - heap grows from store.length - 1 downwards

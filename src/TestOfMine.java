@@ -15,8 +15,13 @@ public class TestOfMine {
 	public TestOfMine(String path) {
 		try {
 			try {
-				IMLCompiler.setVm(new VirtualMachineFile(1000,
-						"resource/Sample.iml"));
+				if (path.trim().isEmpty()) {
+					IMLCompiler
+							.setVm(new VirtualMachineFile(1000, "resource/Sample.iml"));
+				} else {
+					IMLCompiler
+							.setVm(new VirtualMachineFile(1000, "Sample.iml"));
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

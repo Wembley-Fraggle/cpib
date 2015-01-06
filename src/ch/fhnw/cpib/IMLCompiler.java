@@ -116,7 +116,60 @@ public final class IMLCompiler {
 			System.out.println("Success!");
 
 			System.out.println("\nExecuting:");
+			// System.out.println(vm.toString());
 			vm.execute();
+			fis.close();
+			fis2.close();
+			if (!path.trim().isEmpty()) {
+				vm = new VirtualMachine(CODE_SIZE, STORE_SIZE);
+				routineTable = new RoutineTable();
+				globalStoreTable = new StoreTable();
+				scope = null;
+				try {
+					fis = new FileInputStream(f);
+					fis2 = new FileInputStream(f);
+				} catch (FileNotFoundException e) {
+					throw e;
+				}
+				System.out.println("Scanning:");
+				builder = new LexerRuleFactory();
+				syntax = builder.create();
+				lexer = new IlmLexer(syntax);
+				try {
+					ctx = new LexerContext(fis2);
+					for (IToken k : lexer.consume(fis)) {
+						ctx.addToken(k);
+					}
+					tokenList = ctx.getTokens();
+					System.out.println("Success!");
+					System.out.println("\nTokenList:");
+					for (IToken t : tokenList) {
+						System.out.println(t);
+					}
+					System.out.println("\nParsing:");
+					final Parser parser2 = new Parser(tokenList);
+					final ICProgram concSyn2 = parser2.parse();
+					System.out.println("\nSuccess!");
+					System.out.println("\nConcrete syntax tree:");
+					System.out.println(concSyn2.toString(""));
+					System.out.println("Generating abstract syntax tree:");
+					final IAbstSyn.IProgram abstSyn2 = concSyn2.toAbstrSyntax();
+					System.out.println("Success!");
+					System.out.println("\nAbstract syntax tree:");
+					System.out.println(abstSyn2.toString(""));
+					System.out.println("Context check:");
+					abstSyn2.check();
+					System.out.println("Success!");
+					System.out.println("\nCode generation:");
+					abstSyn2.code(0);
+					System.out.println("Success!");
+
+					System.out.println("\nExecuting:");
+					vm.execute();
+				} catch (IOException | LexerException e) {
+					e.printStackTrace();
+				}
+			}
 		} catch (IOException | LexerException e) {
 			e.printStackTrace();
 		}
