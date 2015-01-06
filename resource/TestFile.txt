@@ -43,7 +43,7 @@ global
 // The main program
 do
  r init := 0;
- b init := 111;
- c init := 0;
+ b init := 132;
+ c init := 7;
  r := modulo(b, c)
 endprogram
