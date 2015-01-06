@@ -25,8 +25,8 @@ public class ProgParamList2 implements IProgParamList2 {
 
     @Override
     public IParam toAbsSyn() {
-        return progParamList3.toAbsSyn(progParam.toAbsSyn(new ProgParamEps()));
-//        return new CpsDecl(progParam.toAbsSyn(), progParamList3.toAbsSyn());
+    	return progParam.toAbsSyn(progParamList3.toAbsSyn(new ProgParamEps()));
+//        return progParamList3.toAbsSyn(progParam.toAbsSyn(new ProgParamEps()));
     }
 
 }
