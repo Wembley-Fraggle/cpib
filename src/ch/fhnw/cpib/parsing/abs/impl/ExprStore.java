@@ -122,7 +122,6 @@ public final class ExprStore implements IExpr {
     }
     
     public int codeRef(final int loc) throws CodeTooSmallError {
-    	System.out.println("ident: " + ident.getValue());
         Store store = IMLCompiler.getScope().getStoreTable().getStore(
                 ident.getValue());
         return store.codeRef(loc);
