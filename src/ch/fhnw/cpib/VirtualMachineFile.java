@@ -10,8 +10,22 @@ public class VirtualMachineFile implements IVirtualMachine {
 
 	private final Writer fileWriter;
 
-	public VirtualMachineFile(String path) throws IOException {
+//	private IInstruction[] code;
+
+  // stores the data
+  //  - stack: index 0 upto sp-1
+  //  - heap: index store.length - 1 downto hp+1
+//  private Data.IBaseData[] store;
+
+  // heap pointer
+  //  - points to the first free location on the heap
+  //  - heap grows from store.length - 1 downwards
+  private int hp;
+
+	
+	public VirtualMachineFile(int heapSize, String path) throws IOException {
 		fileWriter = new FileWriter(path);
+    hp= heapSize - 1;
 	}
 
 	@Override
@@ -26,7 +40,7 @@ public class VirtualMachineFile implements IVirtualMachine {
 
 	@Override
 	public int BoolInitHeapCell() throws HeapTooSmallError {
-		return 0;
+		return hp--;
 	}
 
 	@Override
@@ -123,7 +137,7 @@ public class VirtualMachineFile implements IVirtualMachine {
 
 	@Override
 	public int FloatInitHeapCell() throws HeapTooSmallError {
-		return 0;
+		return hp--;
 	}
 
 	@Override
@@ -198,7 +212,7 @@ public class VirtualMachineFile implements IVirtualMachine {
 
 	@Override
 	public int IntInitHeapCell() throws HeapTooSmallError {
-		return 0;
+		return hp--;
 	}
 
 	@Override

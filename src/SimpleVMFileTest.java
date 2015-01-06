@@ -9,7 +9,7 @@ public class SimpleVMFileTest {
 
 	public SimpleVMFileTest(){
 		try {
-			IVirtualMachine vm = new VirtualMachineFile("resource/Sample.iml");
+			IVirtualMachine vm = new VirtualMachineFile(1000,"resource/Sample.iml");
 			vm.Alloc(0, 4);
 			vm.IntLoad(1, 0);
 			vm.IntInput(2, "m");

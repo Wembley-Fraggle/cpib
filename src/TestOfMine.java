@@ -1,6 +1,8 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import ch.fhnw.cpib.IMLCompiler;
+import ch.fhnw.cpib.VirtualMachineFile;
 import ch.fhnw.cpib.errors.GrammarError;
 import ch.fhnw.cpib.errors.LexicalError;
 import ch.fhnw.cpib.parsing.abs.IAbstSyn.ContextError;
@@ -12,12 +14,13 @@ public class TestOfMine {
 
 	public TestOfMine(String path) {
 		try {
-			// try {
-			// IMLCompiler.setVm(new VirtualMachineFile("resource/Sample.iml"));
-			// } catch (IOException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// }
+			try {
+				IMLCompiler.setVm(new VirtualMachineFile(1000,
+						"resource/Sample.iml"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			IMLCompiler.compile(path);
 		} catch (LexicalError | GrammarError | ContextError | HeapTooSmallError
 				| CodeTooSmallError | ExecutionError | FileNotFoundException e) {
