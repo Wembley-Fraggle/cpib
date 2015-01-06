@@ -7,7 +7,7 @@ global
  
  fun modulo(
 	in copy const b:int32,
-	in copy const c:int32 )
+	in copy const c:int32)
  returns var r:int32
  local
    var q:int32;
@@ -28,17 +28,22 @@ global
   do
 
    q := q + 1;
-   r := r - r
-  endwhile
+   r := r - c;
+   
+   debugout q;
+   debugout r
+   
+  endwhile;
+  
+  debugout r
  
- post R : b = q * c + r &? 0 <= r &? r < c
+ post R : b = q * c + r  &? 0 <= r &? r < c
  endfun
 
 // The main program
 do
- r init := 11;
- b init := 0;
- c init := 10;
- r := modulo(b, c);
- debugout r
+ r init := 0;
+ b init := 111;
+ c init := 0;
+ r := modulo(b, c)
 endprogram

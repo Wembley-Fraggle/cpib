@@ -13,12 +13,12 @@ public class TestOfMine {
 
 	public TestOfMine() {
 		try {
-			/* try {
-				IMLCompiler.setVm(new VirtualMachineFile("resource/Sample.iml"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
+//			try {
+//				IMLCompiler.setVm(new VirtualMachineFile("resource/Sample.iml"));
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			IMLCompiler.compile("");
 		} catch (LexicalError | GrammarError | ContextError | HeapTooSmallError
 				| CodeTooSmallError | ExecutionError e) {

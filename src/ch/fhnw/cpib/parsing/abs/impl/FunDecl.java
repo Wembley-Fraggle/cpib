@@ -106,13 +106,15 @@ public final class FunDecl implements IDecl {
 		IMLCompiler.getVM().Enter(loc1++,
 				routine.getInOutCopyCount() + cpsDecl.getCount(), 0);
 		loc1 = param.codeIn(loc1, routine.getParamList().size(), 0);
-
+		
+		loc1 = dbcPreCmd.code(loc1);
 		loc1 = cmd.code(loc1);
-
+		loc1 = dbcPostCmd.code(loc1);
+		
 		loc1 = param.codeOut(loc1, routine.getParamList().size(), 0);
 
 		IMLCompiler.getVM().Return(loc1++, 1);
-
+		
 		IMLCompiler.setScope(null);
 
 		return loc1;
